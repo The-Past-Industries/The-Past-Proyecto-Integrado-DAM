@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/shearing editor/shearing_shader.tres" type="Material" id=1]
+[ext_resource path="res://download.jpg" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+[node name="Shearing" type="Node2D"]
+position = Vector2( 141.531, 302.583 )
+
+[node name="icon" type="Sprite" parent="."]
+material = ExtResource( 1 )
+position = Vector2( -319.257, -251.04 )
+texture = ExtResource( 2 )
+script = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="icon"]
+wait_time = 5.0
+autostart = true
+
+[node name="Tween" type="Tween" parent="icon"]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+material = ExtResource( 1 )
+margin_top = 5.70155
+margin_right = 277.0
+margin_bottom = 201.702
+icon = ExtResource( 2 )
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = ExtResource( 1 )
+margin_left = -54.3467
+margin_top = 142.684
+margin_right = 222.653
+margin_bottom = 338.685
+texture = ExtResource( 2 )
+[connection signal="timeout" from="icon/Timer" to="icon" method="_on_Timer_timeout"]

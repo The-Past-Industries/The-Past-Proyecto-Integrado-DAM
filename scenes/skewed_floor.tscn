@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8m8dbkw547rv"]
+
+[ext_resource type="Shader" path="res://shaders/skew_shader.gdshader" id="1_73iow"]
+[ext_resource type="Texture2D" uid="uid://rk6jjucqmmjk" path="res://assets/world/rooms/Pixel Art Top Down - Basic v1.1.2/Texture/map.png" id="2_lew0q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_myimv"]
+shader = ExtResource("1_73iow")
+shader_parameter/topleft = Vector2(1, 0)
+shader_parameter/topright = Vector2(-1, 0)
+shader_parameter/bottomleft = Vector2(-1, 0)
+shader_parameter/bottomright = Vector2(1, 0)
+shader_parameter/SCREEN_TEXTURE = ExtResource("2_lew0q")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_myimv")
+position = Vector2(291, 164)
+texture = ExtResource("2_lew0q")

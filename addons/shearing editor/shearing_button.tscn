@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="InputEventKey" id=1]
+scancode = 80
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="Button" type="ToolButton"]
+margin_right = 49.0
+margin_bottom = 20.0
+hint_tooltip = "Shearing Mode"
+shortcut = SubResource( 2 )
+text = "Skew"
+flat = false
