@@ -1,0 +1,218 @@
+[gd_scene load_steps=28 format=3 uid="uid://bubg1ugqo4g5v"]
+
+[ext_resource type="Script" path="res://scripts/ui/enemy_ui.gd" id="1_jh8hb"]
+[ext_resource type="Theme" uid="uid://dbhdwyqwdosbl" path="res://themes/character_ui_theme.tres" id="1_weodl"]
+[ext_resource type="Texture2D" uid="uid://dsi4yg0cvhf8r" path="res://assets/npcs/enemies/Monsters_Creatures_Fantasy/Flying eye/Flight.png" id="3_2dxdq"]
+[ext_resource type="Texture2D" uid="uid://f02y5dlnu3yg" path="res://assets/npcs/enemies/Monsters_Creatures_Fantasy/Goblin/Idle.png" id="4_3wxwr"]
+[ext_resource type="Texture2D" uid="uid://d3nbk4wnt4txb" path="res://assets/npcs/enemies/Monsters_Creatures_Fantasy/Mushroom/Idle.png" id="5_x01uu"]
+[ext_resource type="Texture2D" uid="uid://bpu0stdbv24xc" path="res://assets/npcs/enemies/Monsters_Creatures_Fantasy/Skeleton/Idle.png" id="6_mjf06"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r7j8"]
+atlas = ExtResource("3_2dxdq")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocweh"]
+atlas = ExtResource("3_2dxdq")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is6xd"]
+atlas = ExtResource("3_2dxdq")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq7to"]
+atlas = ExtResource("3_2dxdq")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj2od"]
+atlas = ExtResource("3_2dxdq")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8gnn"]
+atlas = ExtResource("3_2dxdq")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mv6q"]
+atlas = ExtResource("3_2dxdq")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21j2c"]
+atlas = ExtResource("3_2dxdq")
+region = Rect2(1050, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2mro"]
+atlas = ExtResource("4_3wxwr")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvb7s"]
+atlas = ExtResource("4_3wxwr")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6735l"]
+atlas = ExtResource("4_3wxwr")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qojj"]
+atlas = ExtResource("4_3wxwr")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d84v0"]
+atlas = ExtResource("5_x01uu")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2pk3"]
+atlas = ExtResource("5_x01uu")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3ba1"]
+atlas = ExtResource("5_x01uu")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtyp3"]
+atlas = ExtResource("5_x01uu")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hr2e"]
+atlas = ExtResource("6_mjf06")
+region = Rect2(0, 0, 150, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqbq8"]
+atlas = ExtResource("6_mjf06")
+region = Rect2(150, 0, 150, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uqcv"]
+atlas = ExtResource("6_mjf06")
+region = Rect2(300, 0, 150, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy8t6"]
+atlas = ExtResource("6_mjf06")
+region = Rect2(450, 0, 150, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_21qf1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r7j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocweh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is6xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq7to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj2od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8gnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mv6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21j2c")
+}],
+"loop": true,
+"name": &"bat_idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2mro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvb7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6735l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qojj")
+}],
+"loop": true,
+"name": &"goblin_idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d84v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2pk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3ba1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtyp3")
+}],
+"loop": true,
+"name": &"mush_idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hr2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqbq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uqcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy8t6")
+}],
+"loop": true,
+"name": &"skeleton_idle",
+"speed": 7.0
+}]
+
+[node name="enemy_ui" type="Control"]
+custom_minimum_size = Vector2(108, 65)
+layout_mode = 3
+anchor_right = 0.225
+anchor_bottom = 0.241
+offset_bottom = -0.0699997
+script = ExtResource("1_jh8hb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(108, 65)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+
+[node name="stats_card" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="char_visor" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+theme = ExtResource("1_weodl")
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/char_visor"]
+clip_contents = true
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 59.0
+offset_bottom = 60.0
+theme = ExtResource("1_weodl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/char_visor/PanelContainer"]
+position = Vector2(37, 29)
+scale = Vector2(2.3, 2.3)
+sprite_frames = SubResource("SpriteFrames_21qf1")
+animation = &"bat_idle"
+frame_progress = 0.22663
+flip_h = true

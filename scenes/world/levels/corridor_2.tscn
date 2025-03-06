@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://c47w2rt8tgb1w"]
+
+[ext_resource type="PackedScene" uid="uid://b8oruifl5gou8" path="res://scenes/world/corridor.tscn" id="1_8klm2"]
+[ext_resource type="Script" path="res://scripts/world/levels/simple_corridor.gd" id="1_ro8ty"]
+[ext_resource type="PackedScene" uid="uid://bhn88viw7q02h" path="res://scenes/world/change_level_door.tscn" id="2_582ji"]
+[ext_resource type="PackedScene" uid="uid://bpyd6bj3m1w8f" path="res://scenes/world/disabled_door.tscn" id="3_ejn7k"]
+[ext_resource type="PackedScene" uid="uid://bpr35wixkx1ns" path="res://scenes/characters/main/main_character_knight.tscn" id="4_dvjwf"]
+[ext_resource type="PackedScene" uid="uid://bvsdmclxm3pdh" path="res://scenes/ui/main_ui.tscn" id="6_7q7vb"]
+
+[node name="corridor" type="Node2D"]
+script = ExtResource("1_ro8ty")
+
+[node name="TileMapLayer_corridor" parent="." instance=ExtResource("1_8klm2")]
+
+[node name="change_level_door" parent="." instance=ExtResource("2_582ji")]
+position = Vector2(381, 128)
+
+[node name="disabled_door" parent="." instance=ExtResource("3_ejn7k")]
+position = Vector2(93, 128)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_dvjwf")]
+position = Vector2(94, 128)
+
+[node name="main_ui" parent="." instance=ExtResource("6_7q7vb")]

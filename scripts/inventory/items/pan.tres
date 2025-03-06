@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dick30sjfeprc"]
+
+[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_sntd4"]
+[ext_resource type="Texture2D" uid="uid://bbu6juojx2kms" path="res://assets/items/Free - Raven Fantasy Icons/Separated Files/64x64/fc514.png" id="2_5yrjc"]
+
+[resource]
+script = ExtResource("1_sntd4")
+name = "Pan"
+detail = "Sólo es un pan"
+texture = ExtResource("2_5yrjc")

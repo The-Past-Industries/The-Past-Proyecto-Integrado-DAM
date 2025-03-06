@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0lr7vpsa0g7w"]
+
+[ext_resource type="Script" path="res://scripts/menus/actions_menu.gd" id="1_htw0m"]
+[ext_resource type="Theme" uid="uid://uvwt075kg1se" path="res://themes/actions_menu_theme.tres" id="2_bipyp"]
+
+[node name="Actions_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+script = ExtResource("1_htw0m")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(136, 99)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+offset_right = 136.0
+offset_bottom = 29.0
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("2_bipyp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Physical_Attack_Button" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme = ExtResource("2_bipyp")
+text = "ATAQUE FÍSICO"
+
+[node name="Magic_Attack_Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bipyp")
+text = "ATAQUE MÁGICO"
+
+[node name="Cover_Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bipyp")
+text = "DEFENDER"
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/Physical_Attack_Button" to="." method="_on_physical_attack_button_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/Magic_Attack_Button" to="." method="_on_magic_attack_button_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/Cover_Button" to="." method="_on_cover_button_button_down"]

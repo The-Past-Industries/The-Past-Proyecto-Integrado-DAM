@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c11mj3p4mq3xn"]
+
+[ext_resource type="PackedScene" uid="uid://dtave1fmjt08a" path="res://scenes/world/room.tscn" id="1_1ncpx"]
+[ext_resource type="PackedScene" uid="uid://bpr35wixkx1ns" path="res://scenes/characters/main/main_character_knight.tscn" id="2_85xqe"]
+[ext_resource type="PackedScene" uid="uid://bhn88viw7q02h" path="res://scenes/world/change_level_door.tscn" id="3_enjx5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer_room" parent="." instance=ExtResource("1_1ncpx")]
+
+[node name="change_level_door" parent="." instance=ExtResource("3_enjx5")]
+position = Vector2(393, 112)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_85xqe")]
+position = Vector2(95, 105)
