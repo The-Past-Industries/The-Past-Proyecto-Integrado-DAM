@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Godot-1"
-run/main_scene="res://scenes/mainCharacter_node.tscn"
+config/version="0.0.1"
+run/main_scene="res://scenes/world/levels/corridor_0.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/items/Free - Raven Fantasy Icons/Separated Files/64x64/fc36.png"
 
 [autoload]
 

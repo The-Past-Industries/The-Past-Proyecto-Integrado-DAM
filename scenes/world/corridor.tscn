@@ -1845,26 +1845,23 @@ tile_map_data = PackedByteArray("AAACAAMAAAAOAAIAAAACAAQAAAAOAAMAAAADAAMAAAAPAAI
 tile_set = SubResource("TileSet_jluvg")
 
 [node name="misc" type="TileMapLayer" parent="."]
+visible = false
 tile_map_data = PackedByteArray("AAANAAUAAAAEAAYAAAANAAYAAAAEAAcAAAANAAcAAAAEAAgAAAANAAgAAAAEAAkAAAAOAAUAAAAFAAYAAAAOAAYAAAAFAAcAAAAOAAcAAAAFAAgAAAAOAAgAAAAFAAkAAAAPAAUAAAAGAAYAAAAPAAYAAAAGAAcAAAAPAAcAAAAGAAgAAAAPAAgAAAAGAAkAAAAQAAYAAAAHAAcAAAAQAAcAAAAHAAgAAAAQAAgAAAAHAAkAAAA=")
 tile_set = SubResource("TileSet_x8d4j")
 
 [node name="platform_top" type="TileMapLayer" parent="misc"]
-visible = false
 tile_map_data = PackedByteArray("AAANAAQAAAAEAAQAAAAOAAQAAAAHAAQAAAAPAAQAAAAIAAQAAAAQAAQAAAAJAAQAAAA=")
 tile_set = SubResource("TileSet_x8d4j")
 
 [node name="platform_down" type="TileMapLayer" parent="misc"]
-visible = false
 tile_map_data = PackedByteArray("AAAOAAkAAAAHAAQAAAAPAAkAAAAIAAQAAAAQAAkAAAAJAAQAAAANAAkAAAAEAAQAAAA=")
 tile_set = SubResource("TileSet_x8d4j")
 
 [node name="bander_top" type="TileMapLayer" parent="misc"]
-visible = false
 tile_map_data = PackedByteArray("AAAOAAAAAAACAAIAAAAOAAEAAAACAAMAAAAOAAIAAAACAAYAAAAOAAMAAAACAAcAAAAPAAAAAAADAAIAAAAPAAEAAAADAAMAAAAPAAIAAAADAAYAAAAPAAMAAAADAAcAAAA=")
 tile_set = SubResource("TileSet_x8d4j")
 
 [node name="bander_down" type="TileMapLayer" parent="misc"]
-visible = false
 tile_map_data = PackedByteArray("AAAOAAsAAAACAAIAAAAOAAwAAAACAAMAAAAOAA0AAAACAAQAAAAPAAsAAAADAAIAAAAPAAwAAAADAAMAAAAPAA0AAAADAAQAAAAOAA4AAAACAAgAAAAOAA8AAAACAAkAAAAPAA4AAAADAAgAAAAPAA8AAAADAAkAAAA=")
 tile_set = SubResource("TileSet_x8d4j")
 

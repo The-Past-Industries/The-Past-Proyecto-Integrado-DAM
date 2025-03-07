@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bhn88viw7q02h" path="res://scenes/world/change_level_door.tscn" id="4_c8t5l"]
 [ext_resource type="PackedScene" uid="uid://bpr35wixkx1ns" path="res://scenes/characters/main/main_character_knight.tscn" id="5_v2jmx"]
 [ext_resource type="PackedScene" uid="uid://bypwuyjpnaneh" path="res://scenes/characters/npc/enemy.tscn" id="6_cnqh1"]
-[ext_resource type="PackedScene" uid="uid://bvsdmclxm3pdh" path="res://scenes/ui/main_ui.tscn" id="7_c4i64"]
+[ext_resource type="PackedScene" uid="uid://bvsdmclxm3pdh" path="res://scenes/ui/main_ui.tscn" id="7_kg3d6"]
 
 [node name="room" type="Node2D"]
 script = ExtResource("1_0vhba")
@@ -25,4 +25,4 @@ position = Vector2(87, 112)
 [node name="Enemy" parent="." instance=ExtResource("6_cnqh1")]
 position = Vector2(304, 118)
 
-[node name="main_ui" parent="." instance=ExtResource("7_c4i64")]
+[node name="main_ui" parent="." instance=ExtResource("7_kg3d6")]

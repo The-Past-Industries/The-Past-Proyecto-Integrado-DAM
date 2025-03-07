@@ -1232,48 +1232,41 @@ frame_progress = 0.754758
 [node name="window_light" type="AnimatedSprite2D" parent="ambiental_animations"]
 position = Vector2(240, 115)
 rotation = -0.785398
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fcoch")
 animation = &"window_light"
 
 [node name="chains_long" type="AnimatedSprite2D" parent="ambiental_animations"]
 position = Vector2(265, 81)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fcoch")
 animation = &"chains_long"
 frame_progress = 0.107084
 
 [node name="chains_short" type="AnimatedSprite2D" parent="ambiental_animations"]
 position = Vector2(215, 65)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fcoch")
 animation = &"chains_short"
 frame_progress = 0.225846
 
 [node name="candle4" type="AnimatedSprite2D" parent="ambiental_animations"]
 position = Vector2(363, 73)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fcoch")
 animation = &"candle"
 frame_progress = 0.525193
 
 [node name="candle3" type="AnimatedSprite2D" parent="ambiental_animations"]
 position = Vector2(277, 73)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fcoch")
 animation = &"candle"
 frame_progress = 0.365457
 
 [node name="candle2" type="AnimatedSprite2D" parent="ambiental_animations"]
 position = Vector2(203, 73)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fcoch")
 animation = &"candle"
 frame_progress = 0.316833
 
 [node name="candle" type="AnimatedSprite2D" parent="ambiental_animations"]
 position = Vector2(117, 73)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_fcoch")
 animation = &"candle"
 frame_progress = 0.22456
