@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bh7ttgs3e3joe"
+path="res://.godot/imported/chestTop_common.obj-0d570a5afe5e042b1ee69691e07661cb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chestTop_common.obj-0d570a5afe5e042b1ee69691e07661cb.mesh"]
+
+source_file="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/chestTop_common.obj"
+dest_files=["res://.godot/imported/chestTop_common.obj-0d570a5afe5e042b1ee69691e07661cb.mesh", "res://.godot/imported/chestTop_common.obj-0d570a5afe5e042b1ee69691e07661cb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

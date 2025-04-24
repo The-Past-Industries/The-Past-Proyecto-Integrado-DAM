@@ -1,0 +1,319 @@
+[gd_scene load_steps=106 format=3 uid="uid://cuvn71tqn3ew7"]
+
+[ext_resource type="PackedScene" uid="uid://baakl2ygux0sq" path="res://assets/world/3D/kenny-medieval/Models/GLB format/barrels.glb" id="1_3oqge"]
+[ext_resource type="PackedScene" uid="uid://c68g8gtexgm2o" path="res://assets/world/3D/kenny-medieval/Models/GLB format/battlement-corner-inner.glb" id="2_novt8"]
+[ext_resource type="PackedScene" uid="uid://bmkdcr2pet20w" path="res://assets/world/3D/kenny-medieval/Models/GLB format/battlement-corner-outer.glb" id="3_raxpc"]
+[ext_resource type="PackedScene" uid="uid://dsso42guhcsld" path="res://assets/world/3D/kenny-medieval/Models/GLB format/battlement-half.glb" id="4_a6cwd"]
+[ext_resource type="PackedScene" uid="uid://bbomvtm4i7c6x" path="res://assets/world/3D/kenny-medieval/Models/GLB format/battlement.glb" id="5_y8usj"]
+[ext_resource type="PackedScene" uid="uid://c1vg4c3cp3o6c" path="res://assets/world/3D/kenny-medieval/Models/GLB format/bricks.glb" id="6_7ht6e"]
+[ext_resource type="PackedScene" uid="uid://chkh8baxobcyj" path="res://assets/world/3D/kenny-medieval/Models/GLB format/column-damaged.glb" id="7_nwtcc"]
+[ext_resource type="PackedScene" uid="uid://c0bfktgc4m8yu" path="res://assets/world/3D/kenny-medieval/Models/GLB format/column-paint-damaged.glb" id="8_x4va3"]
+[ext_resource type="PackedScene" uid="uid://qdc8fuervddq" path="res://assets/world/3D/kenny-medieval/Models/GLB format/column-paint.glb" id="9_u2pxo"]
+[ext_resource type="PackedScene" uid="uid://c652e8bjjs31i" path="res://assets/world/3D/kenny-medieval/Models/GLB format/column-wood.glb" id="10_axcxw"]
+[ext_resource type="PackedScene" uid="uid://bm1otmcqfdjkw" path="res://assets/world/3D/kenny-medieval/Models/GLB format/column.glb" id="11_eeec8"]
+[ext_resource type="PackedScene" uid="uid://dv3myfh8cinbi" path="res://assets/world/3D/kenny-medieval/Models/GLB format/detail-barrel.glb" id="12_gap2v"]
+[ext_resource type="PackedScene" uid="uid://cfnu66lx1dnob" path="res://assets/world/3D/kenny-medieval/Models/GLB format/detail-crate-ropes.glb" id="13_5txhn"]
+[ext_resource type="PackedScene" uid="uid://5xovrao5jnpk" path="res://assets/world/3D/kenny-medieval/Models/GLB format/detail-crate-small.glb" id="14_y56os"]
+[ext_resource type="PackedScene" uid="uid://c30fb87jxibdk" path="res://assets/world/3D/kenny-medieval/Models/GLB format/detail-crate.glb" id="15_ovibr"]
+[ext_resource type="PackedScene" uid="uid://c6ut3j7utwhga" path="res://assets/world/3D/kenny-medieval/Models/GLB format/dock-corner.glb" id="16_coxp6"]
+[ext_resource type="PackedScene" uid="uid://cl0cyy1t1i0kb" path="res://assets/world/3D/kenny-medieval/Models/GLB format/dock-side.glb" id="17_xslpt"]
+[ext_resource type="PackedScene" uid="uid://c6fe3qm04fuym" path="res://assets/world/3D/kenny-medieval/Models/GLB format/fence-top.glb" id="18_vc5dt"]
+[ext_resource type="PackedScene" uid="uid://cl2h5xdarwrru" path="res://assets/world/3D/kenny-medieval/Models/GLB format/fence-wood.glb" id="19_3iklb"]
+[ext_resource type="PackedScene" uid="uid://dqy1sd50urqfn" path="res://assets/world/3D/kenny-medieval/Models/GLB format/fence.glb" id="20_i8ihr"]
+[ext_resource type="PackedScene" uid="uid://cpkpibhkmn7yd" path="res://assets/world/3D/kenny-medieval/Models/GLB format/floor-flat.glb" id="21_hyjgr"]
+[ext_resource type="PackedScene" uid="uid://884roc7kq6kl" path="res://assets/world/3D/kenny-medieval/Models/GLB format/floor-stairs-corner-inner.glb" id="22_1ngyf"]
+[ext_resource type="PackedScene" uid="uid://o77lluciwgrl" path="res://assets/world/3D/kenny-medieval/Models/GLB format/floor-stairs-corner-outer.glb" id="23_3isvg"]
+[ext_resource type="PackedScene" uid="uid://qpbbmrw1wodo" path="res://assets/world/3D/kenny-medieval/Models/GLB format/floor-stairs.glb" id="24_h44cb"]
+[ext_resource type="PackedScene" uid="uid://wx5m3m11ugen" path="res://assets/world/3D/kenny-medieval/Models/GLB format/floor-steps-corner-inner.glb" id="25_ietpp"]
+[ext_resource type="PackedScene" uid="uid://bjcpdkdcjntsu" path="res://assets/world/3D/kenny-medieval/Models/GLB format/floor-steps-corner-outer.glb" id="26_htd3n"]
+[ext_resource type="PackedScene" uid="uid://b1xu2eksuwtww" path="res://assets/world/3D/kenny-medieval/Models/GLB format/floor-steps.glb" id="27_qidwb"]
+[ext_resource type="PackedScene" uid="uid://dkqhbacs5qnq4" path="res://assets/world/3D/kenny-medieval/Models/GLB format/floor.glb" id="28_us1yx"]
+[ext_resource type="PackedScene" uid="uid://qs4vbwinimyg" path="res://assets/world/3D/kenny-medieval/Models/GLB format/ladder.glb" id="29_sewqu"]
+[ext_resource type="PackedScene" uid="uid://c28v25m0qgy4w" path="res://assets/world/3D/kenny-medieval/Models/GLB format/overhang-fence.glb" id="30_dt38t"]
+[ext_resource type="PackedScene" uid="uid://b27eo1yywnrrm" path="res://assets/world/3D/kenny-medieval/Models/GLB format/overhang-round-railing.glb" id="31_mwl5m"]
+[ext_resource type="PackedScene" uid="uid://6ftaf2vaypeu" path="res://assets/world/3D/kenny-medieval/Models/GLB format/overhang-round.glb" id="32_7qpqr"]
+[ext_resource type="PackedScene" uid="uid://3r8xfb4bn67u" path="res://assets/world/3D/kenny-medieval/Models/GLB format/overhang.glb" id="33_4my4u"]
+[ext_resource type="PackedScene" uid="uid://dg5fv3nrg8s6d" path="res://assets/world/3D/kenny-medieval/Models/GLB format/pulley-crate.glb" id="34_4j874"]
+[ext_resource type="PackedScene" uid="uid://bw0tllf7awomk" path="res://assets/world/3D/kenny-medieval/Models/GLB format/pulley.glb" id="35_jeai4"]
+[ext_resource type="PackedScene" uid="uid://bfvrb5okxd3fj" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof-corner.glb" id="36_hc8tc"]
+[ext_resource type="PackedScene" uid="uid://clslur67wnmel" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof-edge.glb" id="37_db3uc"]
+[ext_resource type="PackedScene" uid="uid://b7iidh8yifs8a" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof-high-side-corner-inner.glb" id="38_efkhc"]
+[ext_resource type="PackedScene" uid="uid://dewhfi57jp0av" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof-high-side-corner.glb" id="39_2q7lu"]
+[ext_resource type="PackedScene" uid="uid://b0vdtp6fnsy47" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof-high-side.glb" id="40_4janm"]
+[ext_resource type="PackedScene" uid="uid://x4gkrigrujp0" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof-side-corner-inner.glb" id="41_jn43e"]
+[ext_resource type="PackedScene" uid="uid://cpiyoo2kcsmjh" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof-side-corner.glb" id="42_tdomp"]
+[ext_resource type="PackedScene" uid="uid://b7fgm1cg1cc53" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof-side.glb" id="43_n7k6o"]
+[ext_resource type="PackedScene" uid="uid://i7gasmnlxkfy" path="res://assets/world/3D/kenny-medieval/Models/GLB format/roof.glb" id="44_ss3de"]
+[ext_resource type="PackedScene" uid="uid://cnk3vrmbd7a5e" path="res://assets/world/3D/kenny-medieval/Models/GLB format/stairs-corner.glb" id="45_ws7si"]
+[ext_resource type="PackedScene" uid="uid://xfq6o0g47h4k" path="res://assets/world/3D/kenny-medieval/Models/GLB format/stairs-stone.glb" id="46_y8nca"]
+[ext_resource type="PackedScene" uid="uid://bwrth7vggohe0" path="res://assets/world/3D/kenny-medieval/Models/GLB format/stairs-wood.glb" id="47_x1kbi"]
+[ext_resource type="PackedScene" uid="uid://cahfkc7157vls" path="res://assets/world/3D/kenny-medieval/Models/GLB format/structure-cross.glb" id="48_u638y"]
+[ext_resource type="PackedScene" uid="uid://c05hqvo65peuh" path="res://assets/world/3D/kenny-medieval/Models/GLB format/structure-pole.glb" id="49_1bt6m"]
+[ext_resource type="PackedScene" uid="uid://c5y7k57jmtjoq" path="res://assets/world/3D/kenny-medieval/Models/GLB format/structure-poles.glb" id="50_nvabt"]
+[ext_resource type="PackedScene" uid="uid://b11rl5s7q251m" path="res://assets/world/3D/kenny-medieval/Models/GLB format/structure-wall-cross.glb" id="51_u5vey"]
+[ext_resource type="PackedScene" uid="uid://dtht64o86ecmy" path="res://assets/world/3D/kenny-medieval/Models/GLB format/structure-wall.glb" id="52_0jhpo"]
+[ext_resource type="PackedScene" uid="uid://box7v05aee3q7" path="res://assets/world/3D/kenny-medieval/Models/GLB format/structure.glb" id="53_66maj"]
+[ext_resource type="PackedScene" uid="uid://yaik1ccavtor" path="res://assets/world/3D/kenny-medieval/Models/GLB format/tower-base.glb" id="54_lx8n7"]
+[ext_resource type="PackedScene" uid="uid://crjgnaxi7sbr8" path="res://assets/world/3D/kenny-medieval/Models/GLB format/tower-edge.glb" id="55_v7gxp"]
+[ext_resource type="PackedScene" uid="uid://bhikuyockrkfk" path="res://assets/world/3D/kenny-medieval/Models/GLB format/tower-paint-base.glb" id="56_icfoy"]
+[ext_resource type="PackedScene" uid="uid://ckx4p75lkmsns" path="res://assets/world/3D/kenny-medieval/Models/GLB format/tower-paint.glb" id="57_soieg"]
+[ext_resource type="PackedScene" uid="uid://bdsj04fuu2iec" path="res://assets/world/3D/kenny-medieval/Models/GLB format/tower-top.glb" id="58_yehqn"]
+[ext_resource type="PackedScene" uid="uid://bt5hl21xqnyfc" path="res://assets/world/3D/kenny-medieval/Models/GLB format/tower.glb" id="59_25wny"]
+[ext_resource type="PackedScene" uid="uid://c4ic2iev06lru" path="res://assets/world/3D/kenny-medieval/Models/GLB format/tree-large.glb" id="60_g3vsw"]
+[ext_resource type="PackedScene" uid="uid://djlh5t2imbhtc" path="res://assets/world/3D/kenny-medieval/Models/GLB format/tree-shrub.glb" id="61_mdqkk"]
+[ext_resource type="PackedScene" uid="uid://c4jpikv00yjpg" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-detail.glb" id="62_tee4w"]
+[ext_resource type="PackedScene" uid="uid://bbsvcni15yu7e" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-door.glb" id="63_bt7e5"]
+[ext_resource type="PackedScene" uid="uid://b8qubfn2uo0i2" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-flat-gate.glb" id="64_ot641"]
+[ext_resource type="PackedScene" uid="uid://dx4yvbxgyp8lf" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-door.glb" id="65_74msg"]
+[ext_resource type="PackedScene" uid="uid://p44fsqj5ls4d" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-gate-half.glb" id="66_q1n1d"]
+[ext_resource type="PackedScene" uid="uid://bivq5qy0cao7h" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-gate.glb" id="67_1kyo0"]
+[ext_resource type="PackedScene" uid="uid://bej54diw88gy7" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-half.glb" id="68_i2po7"]
+[ext_resource type="PackedScene" uid="uid://c7e0v0ptncjqx" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-paint-door.glb" id="69_jd4e4"]
+[ext_resource type="PackedScene" uid="uid://cxq88aapqld8y" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-paint-gate.glb" id="70_6jf6y"]
+[ext_resource type="PackedScene" uid="uid://df7otchhsn1g0" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-paint-half.glb" id="71_3bcfw"]
+[ext_resource type="PackedScene" uid="uid://bsmekoqgum2f7" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-paint-window.glb" id="72_yjkfo"]
+[ext_resource type="PackedScene" uid="uid://d2pdm0sjmlalk" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-paint.glb" id="73_he3vh"]
+[ext_resource type="PackedScene" uid="uid://dkox2o6hk6hcp" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified-window.glb" id="74_qrxme"]
+[ext_resource type="PackedScene" uid="uid://d2t7scdurm5eh" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-fortified.glb" id="75_swncr"]
+[ext_resource type="PackedScene" uid="uid://vpj11dxaqhse" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-gate-half.glb" id="76_u3nho"]
+[ext_resource type="PackedScene" uid="uid://deuse3y223ee3" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-gate.glb" id="77_7wmam"]
+[ext_resource type="PackedScene" uid="uid://54p4px28gcd" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-half.glb" id="78_enf18"]
+[ext_resource type="PackedScene" uid="uid://c707wey5tssd1" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-low.glb" id="79_l5npy"]
+[ext_resource type="PackedScene" uid="uid://xa0nnvj1a8av" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-paint-detail.glb" id="80_70ebr"]
+[ext_resource type="PackedScene" uid="uid://umtjnoxewt3h" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-paint-door.glb" id="81_b0h6n"]
+[ext_resource type="PackedScene" uid="uid://bxj3msy4itgff" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-paint-flat.glb" id="82_f65l1"]
+[ext_resource type="PackedScene" uid="uid://de66wvstwsvmu" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-paint-gate.glb" id="83_bmojk"]
+[ext_resource type="PackedScene" uid="uid://k4mu20f88lws" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-paint-half.glb" id="84_kkkaa"]
+[ext_resource type="PackedScene" uid="uid://bwass01ay5h8o" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-paint-window.glb" id="85_3oh7u"]
+[ext_resource type="PackedScene" uid="uid://cm8qp5dtgdxk8" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-paint.glb" id="86_r5rt3"]
+[ext_resource type="PackedScene" uid="uid://i64766qmv8b" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-door.glb" id="87_lc6ie"]
+[ext_resource type="PackedScene" uid="uid://bttbpfvtlcsew" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-paint-door.glb" id="88_m310m"]
+[ext_resource type="PackedScene" uid="uid://rqroaenn1g55" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-paint-window.glb" id="89_k38cj"]
+[ext_resource type="PackedScene" uid="uid://c8f5x5pnrfmyx" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-paint.glb" id="90_mujm3"]
+[ext_resource type="PackedScene" uid="uid://clykexjt1op1g" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-painted-wood-door.glb" id="91_uq0oh"]
+[ext_resource type="PackedScene" uid="uid://b82ow27hneml4" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-painted-wood-window.glb" id="92_v1juj"]
+[ext_resource type="PackedScene" uid="uid://b000o3l2padsr" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-painted-wood.glb" id="93_idku2"]
+[ext_resource type="PackedScene" uid="uid://wianet3e5jey" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-window.glb" id="94_balu4"]
+[ext_resource type="PackedScene" uid="uid://difwlilpxqd26" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-wood-door.glb" id="95_4yswx"]
+[ext_resource type="PackedScene" uid="uid://dx6d1d3u34nya" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-wood-window.glb" id="96_75nad"]
+[ext_resource type="PackedScene" uid="uid://b1fl07gx53v0t" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane-wood.glb" id="97_j7ohh"]
+[ext_resource type="PackedScene" uid="uid://cipud00mroaiv" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-pane.glb" id="98_jsxsv"]
+[ext_resource type="PackedScene" uid="uid://bmp5d766dmhea" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall-window.glb" id="99_xfc6a"]
+[ext_resource type="PackedScene" uid="uid://b0xa3rm52ypag" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wall.glb" id="100_frye4"]
+[ext_resource type="PackedScene" uid="uid://dcgo8nmufiir7" path="res://assets/world/3D/kenny-medieval/Models/GLB format/water.glb" id="101_1u5bn"]
+[ext_resource type="PackedScene" uid="uid://bho6c6oy3kcaj" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wood-floor-half.glb" id="102_6asp1"]
+[ext_resource type="PackedScene" uid="uid://bjexeoa2myvgo" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wood-floor-quarter.glb" id="103_68m6q"]
+[ext_resource type="PackedScene" uid="uid://c6qmaumhx642m" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wood-floor-railing.glb" id="104_tj8fr"]
+[ext_resource type="PackedScene" uid="uid://b3lk0wmb1gonl" path="res://assets/world/3D/kenny-medieval/Models/GLB format/wood-floor.glb" id="105_v55ar"]
+
+[node name="medieval_kit" type="Node3D"]
+
+[node name="barrels2" parent="." instance=ExtResource("1_3oqge")]
+
+[node name="battlement-corner-inner2" parent="." instance=ExtResource("2_novt8")]
+
+[node name="battlement-corner-outer2" parent="." instance=ExtResource("3_raxpc")]
+
+[node name="battlement-half2" parent="." instance=ExtResource("4_a6cwd")]
+
+[node name="battlement2" parent="." instance=ExtResource("5_y8usj")]
+
+[node name="bricks2" parent="." instance=ExtResource("6_7ht6e")]
+
+[node name="column-damaged2" parent="." instance=ExtResource("7_nwtcc")]
+
+[node name="column-paint-damaged2" parent="." instance=ExtResource("8_x4va3")]
+
+[node name="column-paint2" parent="." instance=ExtResource("9_u2pxo")]
+
+[node name="column-wood2" parent="." instance=ExtResource("10_axcxw")]
+
+[node name="column2" parent="." instance=ExtResource("11_eeec8")]
+
+[node name="detail-barrel2" parent="." instance=ExtResource("12_gap2v")]
+
+[node name="detail-crate-ropes2" parent="." instance=ExtResource("13_5txhn")]
+
+[node name="detail-crate-small2" parent="." instance=ExtResource("14_y56os")]
+
+[node name="detail-crate2" parent="." instance=ExtResource("15_ovibr")]
+
+[node name="dock-corner2" parent="." instance=ExtResource("16_coxp6")]
+
+[node name="dock-side2" parent="." instance=ExtResource("17_xslpt")]
+
+[node name="fence-top2" parent="." instance=ExtResource("18_vc5dt")]
+
+[node name="fence-wood2" parent="." instance=ExtResource("19_3iklb")]
+
+[node name="fence2" parent="." instance=ExtResource("20_i8ihr")]
+
+[node name="floor-flat2" parent="." instance=ExtResource("21_hyjgr")]
+
+[node name="floor-stairs-corner-inner2" parent="." instance=ExtResource("22_1ngyf")]
+
+[node name="floor-stairs-corner-outer2" parent="." instance=ExtResource("23_3isvg")]
+
+[node name="floor-stairs2" parent="." instance=ExtResource("24_h44cb")]
+
+[node name="floor-steps-corner-inner2" parent="." instance=ExtResource("25_ietpp")]
+
+[node name="floor-steps-corner-outer2" parent="." instance=ExtResource("26_htd3n")]
+
+[node name="floor-steps2" parent="." instance=ExtResource("27_qidwb")]
+
+[node name="floor2" parent="." instance=ExtResource("28_us1yx")]
+
+[node name="ladder2" parent="." instance=ExtResource("29_sewqu")]
+
+[node name="overhang-fence2" parent="." instance=ExtResource("30_dt38t")]
+
+[node name="overhang-round-railing2" parent="." instance=ExtResource("31_mwl5m")]
+
+[node name="overhang-round2" parent="." instance=ExtResource("32_7qpqr")]
+
+[node name="overhang2" parent="." instance=ExtResource("33_4my4u")]
+
+[node name="pulley-crate2" parent="." instance=ExtResource("34_4j874")]
+
+[node name="pulley2" parent="." instance=ExtResource("35_jeai4")]
+
+[node name="roof-corner2" parent="." instance=ExtResource("36_hc8tc")]
+
+[node name="roof-edge2" parent="." instance=ExtResource("37_db3uc")]
+
+[node name="roof-high-side-corner-inner2" parent="." instance=ExtResource("38_efkhc")]
+
+[node name="roof-high-side-corner2" parent="." instance=ExtResource("39_2q7lu")]
+
+[node name="roof-high-side2" parent="." instance=ExtResource("40_4janm")]
+
+[node name="roof-side-corner-inner2" parent="." instance=ExtResource("41_jn43e")]
+
+[node name="roof-side-corner2" parent="." instance=ExtResource("42_tdomp")]
+
+[node name="roof-side2" parent="." instance=ExtResource("43_n7k6o")]
+
+[node name="roof2" parent="." instance=ExtResource("44_ss3de")]
+
+[node name="stairs-corner2" parent="." instance=ExtResource("45_ws7si")]
+
+[node name="stairs-stone2" parent="." instance=ExtResource("46_y8nca")]
+
+[node name="stairs-wood2" parent="." instance=ExtResource("47_x1kbi")]
+
+[node name="structure-cross2" parent="." instance=ExtResource("48_u638y")]
+
+[node name="structure-pole2" parent="." instance=ExtResource("49_1bt6m")]
+
+[node name="structure-poles2" parent="." instance=ExtResource("50_nvabt")]
+
+[node name="structure-wall-cross2" parent="." instance=ExtResource("51_u5vey")]
+
+[node name="structure-wall2" parent="." instance=ExtResource("52_0jhpo")]
+
+[node name="structure2" parent="." instance=ExtResource("53_66maj")]
+
+[node name="tower-base2" parent="." instance=ExtResource("54_lx8n7")]
+
+[node name="tower-edge2" parent="." instance=ExtResource("55_v7gxp")]
+
+[node name="tower-paint-base2" parent="." instance=ExtResource("56_icfoy")]
+
+[node name="tower-paint2" parent="." instance=ExtResource("57_soieg")]
+
+[node name="tower-top2" parent="." instance=ExtResource("58_yehqn")]
+
+[node name="tower2" parent="." instance=ExtResource("59_25wny")]
+
+[node name="tree-large2" parent="." instance=ExtResource("60_g3vsw")]
+
+[node name="tree-shrub2" parent="." instance=ExtResource("61_mdqkk")]
+
+[node name="wall-detail2" parent="." instance=ExtResource("62_tee4w")]
+
+[node name="wall-door2" parent="." instance=ExtResource("63_bt7e5")]
+
+[node name="wall-flat-gate2" parent="." instance=ExtResource("64_ot641")]
+
+[node name="wall-fortified-door2" parent="." instance=ExtResource("65_74msg")]
+
+[node name="wall-fortified-gate-half2" parent="." instance=ExtResource("66_q1n1d")]
+
+[node name="wall-fortified-gate2" parent="." instance=ExtResource("67_1kyo0")]
+
+[node name="wall-fortified-half2" parent="." instance=ExtResource("68_i2po7")]
+
+[node name="wall-fortified-paint-door2" parent="." instance=ExtResource("69_jd4e4")]
+
+[node name="wall-fortified-paint-gate2" parent="." instance=ExtResource("70_6jf6y")]
+
+[node name="wall-fortified-paint-half2" parent="." instance=ExtResource("71_3bcfw")]
+
+[node name="wall-fortified-paint-window2" parent="." instance=ExtResource("72_yjkfo")]
+
+[node name="wall-fortified-paint2" parent="." instance=ExtResource("73_he3vh")]
+
+[node name="wall-fortified-window2" parent="." instance=ExtResource("74_qrxme")]
+
+[node name="wall-fortified2" parent="." instance=ExtResource("75_swncr")]
+
+[node name="wall-gate-half2" parent="." instance=ExtResource("76_u3nho")]
+
+[node name="wall-gate2" parent="." instance=ExtResource("77_7wmam")]
+
+[node name="wall-half2" parent="." instance=ExtResource("78_enf18")]
+
+[node name="wall-low2" parent="." instance=ExtResource("79_l5npy")]
+
+[node name="wall-paint-detail2" parent="." instance=ExtResource("80_70ebr")]
+
+[node name="wall-paint-door2" parent="." instance=ExtResource("81_b0h6n")]
+
+[node name="wall-paint-flat2" parent="." instance=ExtResource("82_f65l1")]
+
+[node name="wall-paint-gate2" parent="." instance=ExtResource("83_bmojk")]
+
+[node name="wall-paint-half2" parent="." instance=ExtResource("84_kkkaa")]
+
+[node name="wall-paint-window2" parent="." instance=ExtResource("85_3oh7u")]
+
+[node name="wall-paint2" parent="." instance=ExtResource("86_r5rt3")]
+
+[node name="wall-pane-door2" parent="." instance=ExtResource("87_lc6ie")]
+
+[node name="wall-pane-paint-door2" parent="." instance=ExtResource("88_m310m")]
+
+[node name="wall-pane-paint-window2" parent="." instance=ExtResource("89_k38cj")]
+
+[node name="wall-pane-paint2" parent="." instance=ExtResource("90_mujm3")]
+
+[node name="wall-pane-painted-wood-door2" parent="." instance=ExtResource("91_uq0oh")]
+
+[node name="wall-pane-painted-wood-window2" parent="." instance=ExtResource("92_v1juj")]
+
+[node name="wall-pane-painted-wood2" parent="." instance=ExtResource("93_idku2")]
+
+[node name="wall-pane-window2" parent="." instance=ExtResource("94_balu4")]
+
+[node name="wall-pane-wood-door2" parent="." instance=ExtResource("95_4yswx")]
+
+[node name="wall-pane-wood-window2" parent="." instance=ExtResource("96_75nad")]
+
+[node name="wall-pane-wood2" parent="." instance=ExtResource("97_j7ohh")]
+
+[node name="wall-pane2" parent="." instance=ExtResource("98_jsxsv")]
+
+[node name="wall-window2" parent="." instance=ExtResource("99_xfc6a")]
+
+[node name="wall2" parent="." instance=ExtResource("100_frye4")]
+
+[node name="water2" parent="." instance=ExtResource("101_1u5bn")]
+
+[node name="wood-floor-half2" parent="." instance=ExtResource("102_6asp1")]
+
+[node name="wood-floor-quarter2" parent="." instance=ExtResource("103_68m6q")]
+
+[node name="wood-floor-railing2" parent="." instance=ExtResource("104_tj8fr")]
+
+[node name="wood-floor2" parent="." instance=ExtResource("105_v55ar")]

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvn6e1f5cyct8"
+path="res://.godot/imported/scaffold_low_cornerBoth.obj-b174cf714267eb9d39cddb556f78faba.mesh"
+
+[deps]
+
+files=["res://.godot/imported/scaffold_low_cornerBoth.obj-b174cf714267eb9d39cddb556f78faba.mesh"]
+
+source_file="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/scaffold_low_cornerBoth.obj"
+dest_files=["res://.godot/imported/scaffold_low_cornerBoth.obj-b174cf714267eb9d39cddb556f78faba.mesh", "res://.godot/imported/scaffold_low_cornerBoth.obj-b174cf714267eb9d39cddb556f78faba.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c847rsin6gw3j"
+path="res://.godot/imported/floor-stairs-corner-outer.obj-bc72ae979d32edf214518c8940efd024.mesh"
+
+[deps]
+
+files=["res://.godot/imported/floor-stairs-corner-outer.obj-bc72ae979d32edf214518c8940efd024.mesh"]
+
+source_file="res://assets/world/3D/kenny-medieval/Models/OBJ format/floor-stairs-corner-outer.obj"
+dest_files=["res://.godot/imported/floor-stairs-corner-outer.obj-bc72ae979d32edf214518c8940efd024.mesh", "res://.godot/imported/floor-stairs-corner-outer.obj-bc72ae979d32edf214518c8940efd024.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

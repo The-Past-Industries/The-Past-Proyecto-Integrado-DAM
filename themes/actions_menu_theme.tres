@@ -1,10 +1,8 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://uvwt075kg1se"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://uvwt075kg1se"]
 
-[ext_resource type="Texture2D" uid="uid://bqvbouoly65hb" path="res://assets/ui/GUI.png" id="1_1vh5p"]
 [ext_resource type="FontFile" uid="uid://rs55abjy0jvm" path="res://assets/fonts/monogram-extended.ttf" id="1_k0tgn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0pi26"]
-texture = ExtResource("1_1vh5p")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
@@ -14,7 +12,6 @@ region_rect = Rect2(113, 113, 30, 14)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avrqq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55153"]
-texture = ExtResource("1_1vh5p")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
@@ -23,7 +20,6 @@ region_rect = Rect2(113, 81, 30, 14)
 modulate_color = Color(1, 1, 1, 0.980392)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5y41j"]
-texture = ExtResource("1_1vh5p")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
@@ -31,7 +27,6 @@ texture_margin_bottom = 8.0
 region_rect = Rect2(113, 81, 30, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ko65g"]
-texture = ExtResource("1_1vh5p")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
@@ -43,7 +38,6 @@ content_margin_left = 8.0
 content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
-texture = ExtResource("1_1vh5p")
 texture_margin_left = 13.0
 texture_margin_top = 13.0
 texture_margin_right = 13.0

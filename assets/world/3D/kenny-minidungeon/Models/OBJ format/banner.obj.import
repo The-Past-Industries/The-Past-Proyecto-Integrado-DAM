@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://catbwdkeq4bd0"
+path="res://.godot/imported/banner.obj-67b5f05272a466b4d2100c8b501f652d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/banner.obj-67b5f05272a466b4d2100c8b501f652d.mesh"]
+
+source_file="res://assets/world/3D/kenny-minidungeon/Models/OBJ format/banner.obj"
+dest_files=["res://.godot/imported/banner.obj-67b5f05272a466b4d2100c8b501f652d.mesh", "res://.godot/imported/banner.obj-67b5f05272a466b4d2100c8b501f652d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

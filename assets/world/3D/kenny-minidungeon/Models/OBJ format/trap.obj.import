@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://iu7pjhi18y0d"
+path="res://.godot/imported/trap.obj-af1005a908f0e6361be01cba0cef6638.mesh"
+
+[deps]
+
+files=["res://.godot/imported/trap.obj-af1005a908f0e6361be01cba0cef6638.mesh"]
+
+source_file="res://assets/world/3D/kenny-minidungeon/Models/OBJ format/trap.obj"
+dest_files=["res://.godot/imported/trap.obj-af1005a908f0e6361be01cba0cef6638.mesh", "res://.godot/imported/trap.obj-af1005a908f0e6361be01cba0cef6638.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

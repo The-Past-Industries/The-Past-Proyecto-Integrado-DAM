@@ -1,0 +1,356 @@
+[gd_scene load_steps=25 format=3 uid="uid://bf62af257iyge"]
+
+[ext_resource type="PackedScene" uid="uid://dnafb3annmq4i" path="res://scenes/characters/enemies/fem_warrior.tscn" id="1_bm6xc"]
+[ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/backgrounds/VoidPix-FreePack/blink/cubemap.png" id="1_hqbwi"]
+[ext_resource type="PackedScene" uid="uid://cl7v7lwkiudus" path="res://scenes/world/assets/grass_bricks_platform.tscn" id="3_i7qd7"]
+[ext_resource type="PackedScene" uid="uid://dxcctlr3sskr" path="res://scenes/characters/main/mage.tscn" id="3_k2s0j"]
+[ext_resource type="Texture2D" uid="uid://vdfu43j86vwc" path="res://assets/world/levels/the_bridge/Grass/1.png" id="5_jx0mq"]
+[ext_resource type="Texture2D" uid="uid://bm5nc3u5hghni" path="res://assets/world/levels/the_bridge/Grass/2.png" id="6_ej7gp"]
+[ext_resource type="PackedScene" uid="uid://cej75y4t3c1a2" path="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/fbx/crypt.fbx" id="7_7jm2p"]
+[ext_resource type="PackedScene" uid="uid://d0vrptkpqm7ck" path="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/fbx/floor_dirt.fbx" id="8_lvd8r"]
+[ext_resource type="PackedScene" uid="uid://dch7a4jk0ohul" path="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/gltf/arch.gltf" id="8_ryjra"]
+[ext_resource type="PackedScene" uid="uid://dylx3yrynm35o" path="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/fbx/fence_pillar.fbx" id="10_mivy5"]
+[ext_resource type="PackedScene" uid="uid://b6y7fy7frr7xd" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/dae/scaffold_small_high.dae" id="13_fqv0a"]
+[ext_resource type="PackedScene" uid="uid://dxkk2e800ab1n" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/dae/floorDecoration_wood.dae" id="13_uahvm"]
+[ext_resource type="PackedScene" uid="uid://nwyc4hq20twn" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/dae/door_gate.dae" id="14_wbo86"]
+[ext_resource type="PackedScene" uid="uid://b4tbns5kxwskq" path="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/fbx/fence_seperate.fbx" id="15_4m3ci"]
+[ext_resource type="PackedScene" uid="uid://bpg74hiqgci8d" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/gltf/floor_tile_extralarge_grates_open.gltf" id="16_2isw4"]
+[ext_resource type="PackedScene" uid="uid://bs61x3kut2q3" path="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/fbx/fence_seperate_broken.fbx" id="16_kyrdi"]
+[ext_resource type="PackedScene" uid="uid://bfk2tivfnvhj" path="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/fbx/tree_pine_orange_small.fbx" id="17_gxbra"]
+[ext_resource type="PackedScene" uid="uid://bkgo5bbocgors" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/gltf/banner_shield_red.gltf" id="17_i33oo"]
+[ext_resource type="PackedScene" uid="uid://dyty5fypae7ss" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/gltf/banner_red.gltf" id="18_00552"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hsr6n"]
+panorama = ExtResource("1_hqbwi")
+
+[sub_resource type="Sky" id="Sky_41voi"]
+sky_material = SubResource("PanoramaSkyMaterial_hsr6n")
+
+[sub_resource type="Environment" id="Environment_x3s3p"]
+background_mode = 2
+sky = SubResource("Sky_41voi")
+tonemap_mode = 3
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_bloom = 0.05
+glow_blend_mode = 0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hb3y4"]
+dof_blur_amount = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txx30"]
+
+[node name="bridge_test" type="Node3D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_bm6xc")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 1.041, 0.889, 0.238)
+
+[node name="Player" parent="." instance=ExtResource("3_k2s0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8291, 0.975587, 0.238098)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.90358, 4.83103)
+fov = 33.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x3s3p")
+camera_attributes = SubResource("CameraAttributesPractical_hb3y4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.553012, -0.724357, 0.411685, 0.662628, -0.0828348, 0.744354, -0.505076, 0.68443, 0.525788, -2.85461, 1.41742, 4.59725)
+light_color = Color(0.81003, 0.407264, 0.725164, 1)
+shadow_enabled = true
+shadow_opacity = 0.72
+shadow_blur = 3.409
+directional_shadow_blend_splits = true
+
+[node name="debug_light" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.356065, -0.926661, -0.120484, 0.0556429, -0.149731, 0.98716, -0.932803, 0.344789, 0.104876, 0, 2.6341, 0)
+visible = false
+light_color = Color(0.891403, 0.903641, 0.889804, 1)
+shadow_enabled = true
+shadow_opacity = 0.72
+shadow_blur = 3.409
+directional_shadow_blend_splits = true
+
+[node name="Reference_walls" type="Node3D" parent="."]
+visible = false
+
+[node name="CSGBox3D_floor" type="CSGBox3D" parent="Reference_walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77162e-05, 0.00386298, -0.00144053)
+use_collision = true
+size = Vector3(6, 0.001, 2)
+material = SubResource("StandardMaterial3D_txx30")
+
+[node name="CSGBox3D_backwall" type="CSGBox3D" parent="Reference_walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.5)
+size = Vector3(6, 2, 0.001)
+
+[node name="CSGBox3D_rightwall" type="CSGBox3D" parent="Reference_walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+size = Vector3(0.001, 2, 2)
+
+[node name="CSGBox3D_leftwall" type="CSGBox3D" parent="Reference_walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+size = Vector3(0.001, 2, 2)
+
+[node name="Vegetation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.226379, 0)
+
+[node name="trees" type="Node3D" parent="Vegetation"]
+visible = false
+
+[node name="tree_pine_orange_small" parent="Vegetation/trees" instance=ExtResource("17_gxbra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26783, 0.226379, -6.77249)
+
+[node name="floor_grass" type="Node3D" parent="Vegetation"]
+visible = false
+
+[node name="grass_1" type="Node3D" parent="Vegetation/floor_grass"]
+
+[node name="grass_1" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09074, 0.699952, 0.549215)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_2" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56581, 0.699952, 0.163137)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_3" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.338974, 0.699952, -0.53538)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_4" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37307, 0.699952, -0.53538)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_5" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19055, 0.699952, -0.30216)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_6" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59699, 0.699952, -0.861299)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_7" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26986, 0.699952, -0.36292)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_8" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26986, 0.699952, 0.371422)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_9" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34017, 0.699952, 0.708008)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_10" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0936371, 0.699952, 0.708008)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_11" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90317, 0.699952, 0.708008)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_12" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28393, 0.699952, 0.247064)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_13" type="Sprite3D" parent="Vegetation/floor_grass/grass_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28393, 0.699952, 0.247064)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_jx0mq")
+
+[node name="grass_2" type="Node3D" parent="Vegetation/floor_grass"]
+
+[node name="grass_1" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.796813, 0.699952, 0.549215)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_2" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225493, 0.699952, 0.549215)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_3" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06294, 0.699952, 0.734641)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_4" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366523, 0.699952, 0.734641)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_5" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366523, 0.699952, 0.966294)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_6" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.242753, 0.699952, -0.68018)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_7" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57407, 0.699952, -0.762859)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_8" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23986, 0.699952, -0.762859)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_9" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23986, 0.699952, 0.500624)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_10" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23986, 0.699952, 0.995961)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="grass_11" type="Sprite3D" parent="Vegetation/floor_grass/grass_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86764, 0.699952, 0.8241)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_ej7gp")
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="arch2" parent="Buildings" instance=ExtResource("8_ryjra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.39911, -5.80321)
+
+[node name="floor_dirt" parent="Buildings" instance=ExtResource("8_lvd8r")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.117908, -0.331426, -3.33092)
+
+[node name="crypts" type="Node3D" parent="Buildings"]
+
+[node name="crypt_L_front" parent="Buildings/crypts" instance=ExtResource("7_7jm2p")]
+transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, -4.29379, -0.35, -1.19472)
+
+[node name="crypt_L_back" parent="Buildings/crypts" instance=ExtResource("7_7jm2p")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.29379, -0.35, -4.40348)
+
+[node name="crypt_R_front" parent="Buildings/crypts" instance=ExtResource("7_7jm2p")]
+transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 4.294, -0.35, -1.19472)
+
+[node name="crypt_R_back" parent="Buildings/crypts" instance=ExtResource("7_7jm2p")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.294, -0.35, -4.40348)
+
+[node name="fences" type="Node3D" parent="Buildings"]
+
+[node name="fence_seperate" parent="Buildings/fences" instance=ExtResource("15_4m3ci")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.79768, 0.37782, -1.14927)
+
+[node name="fence_seperate2" parent="Buildings/fences" instance=ExtResource("15_4m3ci")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.195029, 0.37782, -1.14927)
+
+[node name="fence_seperate3" parent="Buildings/fences" instance=ExtResource("15_4m3ci")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.69385, 0.37782, -1.14927)
+visible = false
+
+[node name="fence_seperate_broken" parent="Buildings/fences" instance=ExtResource("16_kyrdi")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.694, 0.378, -1.149)
+
+[node name="Bridge" type="Node3D" parent="."]
+
+[node name="bridge_floor_gridmap" parent="Bridge" instance=ExtResource("3_i7qd7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.22218, 0)
+visible = false
+data = {
+"cells": PackedInt32Array(65534, 65534, 1048577, 65535, 65534, 1048577, 0, 65534, 1048577, 1, 65534, 1048577, 1, 1, 1441793, 0, 1, 1441793, 65535, 1, 1441793, 65533, 1, 1441793, 65533, 65534, 1048577, 65532, 65535, 655361, 65532, 0, 655361, 65532, 1, 1441794, 65532, 65534, 655362, 2, 65534, 1048577, 2, 1, 1441793, 3, 65534, 1048578, 3, 1, 2, 3, 0, 1, 3, 65535, 1, 2, 65535, 0, 1, 65535, 0, 0, 65535, 0, 65535, 65535, 0, 65534, 65535, 0, 65533, 65535, 0, 65533, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65534, 0, 0, 65534, 1, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="bridge_floor_hole_gridmap" parent="Bridge" instance=ExtResource("3_i7qd7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.22218, 0)
+data = {
+"cells": PackedInt32Array(65534, 65534, 1048577, 65535, 65534, 1048577, 0, 65534, 1048577, 1, 65534, 1048577, 1, 1, 1441793, 0, 1, 1441793, 65535, 1, 1441793, 65533, 1, 1441793, 65533, 65534, 1048577, 65532, 65535, 655361, 65532, 0, 655361, 65532, 1, 1441794, 65532, 65534, 655362, 2, 65534, 1048577, 2, 1, 1441793, 3, 65534, 1048578, 3, 1, 2, 3, 0, 1, 3, 65535, 1, 2, 65535, 0, 1, 65535, 0, 0, 65535, 0, 65535, 65535, 0, 65534, 65535, 0, 65533, 65535, 0, 65533, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65534, 0, 0, 65534, 1, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="extra_decoration" type="Node3D" parent="Bridge"]
+
+[node name="pillar_L" parent="Bridge/extra_decoration" instance=ExtResource("10_mivy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4407, 0.00436294, -0.851073)
+
+[node name="pillar_R" parent="Bridge/extra_decoration" instance=ExtResource("10_mivy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.441, 0.004, -0.851)
+
+[node name="floor_wood" type="Node3D" parent="Bridge/extra_decoration"]
+visible = false
+
+[node name="floorDecoration_wood" parent="Bridge/extra_decoration/floor_wood" instance=ExtResource("13_uahvm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.32422, 0.357373, 0.0312093)
+
+[node name="floorDecoration_wood2" parent="Bridge/extra_decoration/floor_wood" instance=ExtResource("13_uahvm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.32675, 0.357373, 0.0312093)
+
+[node name="floorDecoration_wood3" parent="Bridge/extra_decoration/floor_wood" instance=ExtResource("13_uahvm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.339352, 0.357373, 0.0312093)
+
+[node name="floorDecoration_wood4" parent="Bridge/extra_decoration/floor_wood" instance=ExtResource("13_uahvm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.658123, 0.357373, 0.0312093)
+
+[node name="floorDecoration_wood5" parent="Bridge/extra_decoration/floor_wood" instance=ExtResource("13_uahvm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.63246, 0.357373, 0.0312093)
+
+[node name="floorDecoration_wood6" parent="Bridge/extra_decoration/floor_wood" instance=ExtResource("13_uahvm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.62994, 0.357373, 0.0312093)
+
+[node name="Elevator" type="Node3D" parent="."]
+visible = false
+
+[node name="scaffold_small_high" parent="Elevator" instance=ExtResource("13_fqv0a")]
+
+[node name="floor_tile_extralarge_grate" parent="Elevator" instance=ExtResource("16_2isw4")]
+transform = Transform3D(0.265, 0, 0, 0, 0.265, 0, 0, 0, 0.265, -0.00930983, 0.426706, -0.002644)
+
+[node name="door_gate" parent="." instance=ExtResource("14_wbo86")]
+transform = Transform3D(1.38567, 0, 0, 0, 1.68411, 0, 0, 0, 0.963223, -1.4127, -1.07826, -5.71478)
+
+[node name="banner_shield_red" parent="." instance=ExtResource("17_i33oo")]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, -3.60024, 0, -4.45618)
+
+[node name="banner_red" parent="." instance=ExtResource("18_00552")]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 3.49531, 0, -4.456)

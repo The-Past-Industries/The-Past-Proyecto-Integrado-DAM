@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://desjnquckbruj"
+path="res://.godot/imported/candle.obj-d2a556334f1975b8b5b369e1b3d5628e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/candle.obj-d2a556334f1975b8b5b369e1b3d5628e.mesh"]
+
+source_file="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/obj/candle.obj"
+dest_files=["res://.godot/imported/candle.obj-d2a556334f1975b8b5b369e1b3d5628e.mesh", "res://.godot/imported/candle.obj-d2a556334f1975b8b5b369e1b3d5628e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

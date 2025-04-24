@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://djrr5kk07d6th"]
+
+[ext_resource type="Script" path="res://scripts/test/character_body_3d.gd" id="1_bs34x"]
+[ext_resource type="Texture2D" uid="uid://bhh7l1r0tp4fh" path="res://assets/mainCharacter/light_demon/fly.png" id="2_gxvit"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ej5le"]
+height = 1.21659
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lystl"]
+atlas = ExtResource("2_gxvit")
+region = Rect2(0, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xorke"]
+atlas = ExtResource("2_gxvit")
+region = Rect2(128, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knw66"]
+atlas = ExtResource("2_gxvit")
+region = Rect2(256, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jou6r"]
+atlas = ExtResource("2_gxvit")
+region = Rect2(384, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyeb5"]
+atlas = ExtResource("2_gxvit")
+region = Rect2(512, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guygh"]
+atlas = ExtResource("2_gxvit")
+region = Rect2(640, 0, 128, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cy8ei"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lystl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xorke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knw66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jou6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyeb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guygh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="beast" type="CharacterBody3D"]
+script = ExtResource("1_bs34x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14865, 0)
+shape = SubResource("CapsuleShape3D_ej5le")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_cy8ei")
+autoplay = "default"
+frame_progress = 0.0624073

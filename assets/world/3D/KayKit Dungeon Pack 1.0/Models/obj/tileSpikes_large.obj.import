@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bj8nvppcredcm"
+path="res://.godot/imported/tileSpikes_large.obj-bead30a5e5b75d2038f717256a0e2ea2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tileSpikes_large.obj-bead30a5e5b75d2038f717256a0e2ea2.mesh"]
+
+source_file="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/tileSpikes_large.obj"
+dest_files=["res://.godot/imported/tileSpikes_large.obj-bead30a5e5b75d2038f717256a0e2ea2.mesh", "res://.godot/imported/tileSpikes_large.obj-bead30a5e5b75d2038f717256a0e2ea2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

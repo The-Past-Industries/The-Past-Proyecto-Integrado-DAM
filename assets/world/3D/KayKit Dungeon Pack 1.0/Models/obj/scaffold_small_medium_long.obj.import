@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bivfq3b3l1xqt"
+path="res://.godot/imported/scaffold_small_medium_long.obj-ca3c044d674e61b71633cffc091cd623.mesh"
+
+[deps]
+
+files=["res://.godot/imported/scaffold_small_medium_long.obj-ca3c044d674e61b71633cffc091cd623.mesh"]
+
+source_file="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/scaffold_small_medium_long.obj"
+dest_files=["res://.godot/imported/scaffold_small_medium_long.obj-ca3c044d674e61b71633cffc091cd623.mesh", "res://.godot/imported/scaffold_small_medium_long.obj-ca3c044d674e61b71633cffc091cd623.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

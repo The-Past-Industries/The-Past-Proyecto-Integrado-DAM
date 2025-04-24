@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cwawdjp37x5eo"
+path="res://.godot/imported/crate.obj-da6a1d30472c4430fab38f971c8ef13f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/crate.obj-da6a1d30472c4430fab38f971c8ef13f.mesh"]
+
+source_file="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/crate.obj"
+dest_files=["res://.godot/imported/crate.obj-da6a1d30472c4430fab38f971c8ef13f.mesh", "res://.godot/imported/crate.obj-da6a1d30472c4430fab38f971c8ef13f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

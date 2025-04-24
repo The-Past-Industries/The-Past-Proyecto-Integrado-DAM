@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bipxernglu550"
+path="res://.godot/imported/detail-barrel.obj-aa08fd8ecbafa500a0ddca42da99a47d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/detail-barrel.obj-aa08fd8ecbafa500a0ddca42da99a47d.mesh"]
+
+source_file="res://assets/world/3D/kenny-medieval/Models/OBJ format/detail-barrel.obj"
+dest_files=["res://.godot/imported/detail-barrel.obj-aa08fd8ecbafa500a0ddca42da99a47d.mesh", "res://.godot/imported/detail-barrel.obj-aa08fd8ecbafa500a0ddca42da99a47d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

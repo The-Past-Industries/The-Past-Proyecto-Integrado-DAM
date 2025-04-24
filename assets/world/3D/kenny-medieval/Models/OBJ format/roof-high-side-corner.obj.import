@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://fn0282n8opl4"
+path="res://.godot/imported/roof-high-side-corner.obj-2d29b82c03510ff67dde9641a9fe8487.mesh"
+
+[deps]
+
+files=["res://.godot/imported/roof-high-side-corner.obj-2d29b82c03510ff67dde9641a9fe8487.mesh"]
+
+source_file="res://assets/world/3D/kenny-medieval/Models/OBJ format/roof-high-side-corner.obj"
+dest_files=["res://.godot/imported/roof-high-side-corner.obj-2d29b82c03510ff67dde9641a9fe8487.mesh", "res://.godot/imported/roof-high-side-corner.obj-2d29b82c03510ff67dde9641a9fe8487.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

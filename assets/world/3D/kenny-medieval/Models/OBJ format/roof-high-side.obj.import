@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkt0w0hmifavq"
+path="res://.godot/imported/roof-high-side.obj-d02748b6d829da9dde941f4780b1835b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/roof-high-side.obj-d02748b6d829da9dde941f4780b1835b.mesh"]
+
+source_file="res://assets/world/3D/kenny-medieval/Models/OBJ format/roof-high-side.obj"
+dest_files=["res://.godot/imported/roof-high-side.obj-d02748b6d829da9dde941f4780b1835b.mesh", "res://.godot/imported/roof-high-side.obj-d02748b6d829da9dde941f4780b1835b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

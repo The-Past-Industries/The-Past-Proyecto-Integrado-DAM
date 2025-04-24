@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ds6ut8jqnwvcg"
+path="res://.godot/imported/wallSplit.obj-ba94b55773f6b9922abdb07d8780f5ed.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallSplit.obj-ba94b55773f6b9922abdb07d8780f5ed.mesh"]
+
+source_file="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/wallSplit.obj"
+dest_files=["res://.godot/imported/wallSplit.obj-ba94b55773f6b9922abdb07d8780f5ed.mesh", "res://.godot/imported/wallSplit.obj-ba94b55773f6b9922abdb07d8780f5ed.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

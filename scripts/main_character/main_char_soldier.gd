@@ -25,16 +25,17 @@ func _process(delta: float) -> void:
 	var is_jumping: bool = velocity.y < 0
 	var is_falling: bool = velocity.y > 0
 	var is_idle: bool = !is_moving and !is_jumping and !is_falling
+	var is_moving_vert: bool = is_jumping or is_falling
 	
 	var is_taking_hit = false
 	var is_dead = data.health <= 0
 	
 	if is_moving:
 		sprite.flip_h = is_facing_left
+	
 	anim_tree.set("parameters/conditions/jumping", is_jumping)
 	anim_tree.set("parameters/conditions/falling", is_falling)
 	anim_tree.set("parameters/conditions/idle", is_idle)
-	var is_moving_vert = is_jumping or is_falling
 	anim_tree.set("parameters/conditions/running", is_moving and !is_moving_vert)
 
 func animations_attack(physical: bool):

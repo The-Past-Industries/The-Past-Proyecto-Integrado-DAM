@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bikwxlk6m1g7r"
+path="res://.godot/imported/column-damaged.obj-b11daf419052bb08ec2082d4abb71a5c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/column-damaged.obj-b11daf419052bb08ec2082d4abb71a5c.mesh"]
+
+source_file="res://assets/world/3D/kenny-miniarena/Models/OBJ format/column-damaged.obj"
+dest_files=["res://.godot/imported/column-damaged.obj-b11daf419052bb08ec2082d4abb71a5c.mesh", "res://.godot/imported/column-damaged.obj-b11daf419052bb08ec2082d4abb71a5c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

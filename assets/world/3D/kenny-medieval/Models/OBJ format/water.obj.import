@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cn8hhl8h803ru"
+path="res://.godot/imported/water.obj-ca30d304baff8f3d87c8c316127cf427.mesh"
+
+[deps]
+
+files=["res://.godot/imported/water.obj-ca30d304baff8f3d87c8c316127cf427.mesh"]
+
+source_file="res://assets/world/3D/kenny-medieval/Models/OBJ format/water.obj"
+dest_files=["res://.godot/imported/water.obj-ca30d304baff8f3d87c8c316127cf427.mesh", "res://.godot/imported/water.obj-ca30d304baff8f3d87c8c316127cf427.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

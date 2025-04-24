@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bhn88viw7q02h" path="res://scenes/world/change_level_door.tscn" id="2_582ji"]
 [ext_resource type="PackedScene" uid="uid://bpyd6bj3m1w8f" path="res://scenes/world/disabled_door.tscn" id="3_ejn7k"]
 [ext_resource type="PackedScene" uid="uid://bpr35wixkx1ns" path="res://scenes/characters/main/main_character_knight.tscn" id="4_dvjwf"]
-[ext_resource type="PackedScene" uid="uid://bvsdmclxm3pdh" path="res://scenes/ui/main_ui.tscn" id="6_7q7vb"]
+[ext_resource type="PackedScene" uid="uid://bvsdmclxm3pdh" path="res://scenes/ui/main_ui_border.tscn" id="6_7q7vb"]
 
 [node name="corridor" type="Node2D"]
 script = ExtResource("1_ro8ty")

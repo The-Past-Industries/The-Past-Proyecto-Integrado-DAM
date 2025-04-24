@@ -1,0 +1,67 @@
+[gd_scene load_steps=22 format=3 uid="uid://ftqnss5g2ooa"]
+
+[ext_resource type="PackedScene" uid="uid://1jxtobjv8f64" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/banner.glb" id="1_546l8"]
+[ext_resource type="PackedScene" uid="uid://dmsen07d6cj6f" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/barrel.glb" id="2_tu5rr"]
+[ext_resource type="PackedScene" uid="uid://bwc5n57ew3wia" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/character-human.glb" id="3_0yls0"]
+[ext_resource type="PackedScene" uid="uid://d1s2kxeaw4o4h" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/character-orc.glb" id="4_qajly"]
+[ext_resource type="PackedScene" uid="uid://dhwwu1hk3qcbn" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/chest.glb" id="5_7u1nu"]
+[ext_resource type="PackedScene" uid="uid://crkp8q0h2hlau" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/coin.glb" id="6_7aecj"]
+[ext_resource type="PackedScene" uid="uid://bbova74budbtm" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/column.glb" id="7_0o0e5"]
+[ext_resource type="PackedScene" uid="uid://b3te73mworu05" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/dirt.glb" id="8_7jh3d"]
+[ext_resource type="PackedScene" uid="uid://ggotcsnruvs5" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/floor-detail.glb" id="9_c5k2x"]
+[ext_resource type="PackedScene" uid="uid://clfjky3b66cnk" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/floor.glb" id="10_t7ndl"]
+[ext_resource type="PackedScene" uid="uid://c5qgnsopm4wrs" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/gate.glb" id="11_8810x"]
+[ext_resource type="PackedScene" uid="uid://hg6osgovvdjw" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/rocks.glb" id="12_20e8q"]
+[ext_resource type="PackedScene" uid="uid://br4v7ap76wdod" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/stairs.glb" id="13_usq7l"]
+[ext_resource type="PackedScene" uid="uid://7vwwcdym72bt" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/stones.glb" id="14_xx4rb"]
+[ext_resource type="PackedScene" uid="uid://cxj27fxk37xdo" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/trap.glb" id="15_bu6ay"]
+[ext_resource type="PackedScene" uid="uid://w2ixiyf77iai" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/wall-half.glb" id="16_5yvit"]
+[ext_resource type="PackedScene" uid="uid://y15futqwljsc" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/wall-narrow.glb" id="17_coy6p"]
+[ext_resource type="PackedScene" uid="uid://1a1rydssngnl" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/wall-opening.glb" id="18_8trpb"]
+[ext_resource type="PackedScene" uid="uid://c3efj7aofe2b" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/wall.glb" id="19_hwe6g"]
+[ext_resource type="PackedScene" uid="uid://r5tgf20xmg1i" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/wood-structure.glb" id="20_mlosy"]
+[ext_resource type="PackedScene" uid="uid://bvjyip83lhneo" path="res://assets/world/3D/kenny-minidungeon/Models/GLB format/wood-support.glb" id="21_8bgx4"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="banner2" parent="." instance=ExtResource("1_546l8")]
+
+[node name="barrel2" parent="." instance=ExtResource("2_tu5rr")]
+
+[node name="character-human2" parent="." instance=ExtResource("3_0yls0")]
+
+[node name="character-orc2" parent="." instance=ExtResource("4_qajly")]
+
+[node name="chest2" parent="." instance=ExtResource("5_7u1nu")]
+
+[node name="coin2" parent="." instance=ExtResource("6_7aecj")]
+
+[node name="column2" parent="." instance=ExtResource("7_0o0e5")]
+
+[node name="dirt2" parent="." instance=ExtResource("8_7jh3d")]
+
+[node name="floor-detail2" parent="." instance=ExtResource("9_c5k2x")]
+
+[node name="floor2" parent="." instance=ExtResource("10_t7ndl")]
+
+[node name="gate2" parent="." instance=ExtResource("11_8810x")]
+
+[node name="rocks2" parent="." instance=ExtResource("12_20e8q")]
+
+[node name="stairs2" parent="." instance=ExtResource("13_usq7l")]
+
+[node name="stones2" parent="." instance=ExtResource("14_xx4rb")]
+
+[node name="trap2" parent="." instance=ExtResource("15_bu6ay")]
+
+[node name="wall-half2" parent="." instance=ExtResource("16_5yvit")]
+
+[node name="wall-narrow2" parent="." instance=ExtResource("17_coy6p")]
+
+[node name="wall-opening2" parent="." instance=ExtResource("18_8trpb")]
+
+[node name="wall2" parent="." instance=ExtResource("19_hwe6g")]
+
+[node name="wood-structure2" parent="." instance=ExtResource("20_mlosy")]
+
+[node name="wood-support2" parent="." instance=ExtResource("21_8bgx4")]

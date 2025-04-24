@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://r4ijablfu3c6"
+path="res://.godot/imported/barrels.obj-153a084982acdaca374339c813c5956e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/barrels.obj-153a084982acdaca374339c813c5956e.mesh"]
+
+source_file="res://assets/world/3D/kenny-medieval/Models/OBJ format/barrels.obj"
+dest_files=["res://.godot/imported/barrels.obj-153a084982acdaca374339c813c5956e.mesh", "res://.godot/imported/barrels.obj-153a084982acdaca374339c813c5956e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

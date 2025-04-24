@@ -1,0 +1,70 @@
+[gd_scene load_steps=23 format=3 uid="uid://b36pabqalqjs5"]
+
+[ext_resource type="PackedScene" uid="uid://crhlg450bmn1x" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/banner.glb" id="1_r6pik"]
+[ext_resource type="PackedScene" uid="uid://co1yauxror8n2" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/block.glb" id="2_12iid"]
+[ext_resource type="PackedScene" uid="uid://cn4xco3igkjvr" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/border-corner.glb" id="3_hfx1a"]
+[ext_resource type="PackedScene" uid="uid://6g762ckkbgls" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/border-straight.glb" id="4_k4a3f"]
+[ext_resource type="PackedScene" uid="uid://cqj1rgstqwxas" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/bricks.glb" id="5_jmjix"]
+[ext_resource type="PackedScene" uid="uid://c6jxshq4j5wao" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/character-soldier.glb" id="6_8n37q"]
+[ext_resource type="PackedScene" uid="uid://bypta7dluk8il" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/column-damaged.glb" id="7_vx0dx"]
+[ext_resource type="PackedScene" uid="uid://d23xk5nbpc0gi" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/column.glb" id="8_n7gdf"]
+[ext_resource type="PackedScene" uid="uid://bxgalvcgtjaxs" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/floor-detail.glb" id="9_a7cnf"]
+[ext_resource type="PackedScene" uid="uid://btrh613vasa3v" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/floor.glb" id="10_v7ky2"]
+[ext_resource type="PackedScene" uid="uid://hwnpx447gqkq" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/stairs-corner-inner.glb" id="11_uk33u"]
+[ext_resource type="PackedScene" uid="uid://domspwo3bkcob" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/stairs-corner.glb" id="12_nghi0"]
+[ext_resource type="PackedScene" uid="uid://dcrw3khlplhsa" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/stairs.glb" id="13_ebb4o"]
+[ext_resource type="PackedScene" uid="uid://o24k80pwauuv" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/statue.glb" id="14_v7q1r"]
+[ext_resource type="PackedScene" uid="uid://ddjpo1douw3o3" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/tree.glb" id="15_k7m36"]
+[ext_resource type="PackedScene" uid="uid://clm1wu7gcpmby" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/trophy.glb" id="16_bypkr"]
+[ext_resource type="PackedScene" uid="uid://ds4d7ev8anxkd" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/wall-corner.glb" id="17_xbffe"]
+[ext_resource type="PackedScene" uid="uid://dcvwo2cab4iel" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/wall-gate.glb" id="18_qukof"]
+[ext_resource type="PackedScene" uid="uid://d270debi3iimc" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/wall.glb" id="19_afgk7"]
+[ext_resource type="PackedScene" uid="uid://bkleigvjf5vph" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/weapon-rack.glb" id="20_f753v"]
+[ext_resource type="PackedScene" uid="uid://doaohete8napm" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/weapon-spear.glb" id="21_5j73r"]
+[ext_resource type="PackedScene" uid="uid://b8133xnc4y1bf" path="res://assets/world/3D/kenny-miniarena/Models/GLB format/weapon-sword.glb" id="22_qo682"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="banner2" parent="." instance=ExtResource("1_r6pik")]
+
+[node name="block2" parent="." instance=ExtResource("2_12iid")]
+
+[node name="border-corner2" parent="." instance=ExtResource("3_hfx1a")]
+
+[node name="border-straight2" parent="." instance=ExtResource("4_k4a3f")]
+
+[node name="bricks2" parent="." instance=ExtResource("5_jmjix")]
+
+[node name="character-soldier2" parent="." instance=ExtResource("6_8n37q")]
+
+[node name="column-damaged2" parent="." instance=ExtResource("7_vx0dx")]
+
+[node name="column2" parent="." instance=ExtResource("8_n7gdf")]
+
+[node name="floor-detail2" parent="." instance=ExtResource("9_a7cnf")]
+
+[node name="floor2" parent="." instance=ExtResource("10_v7ky2")]
+
+[node name="stairs-corner-inner2" parent="." instance=ExtResource("11_uk33u")]
+
+[node name="stairs-corner2" parent="." instance=ExtResource("12_nghi0")]
+
+[node name="stairs2" parent="." instance=ExtResource("13_ebb4o")]
+
+[node name="statue2" parent="." instance=ExtResource("14_v7q1r")]
+
+[node name="tree2" parent="." instance=ExtResource("15_k7m36")]
+
+[node name="trophy2" parent="." instance=ExtResource("16_bypkr")]
+
+[node name="wall-corner2" parent="." instance=ExtResource("17_xbffe")]
+
+[node name="wall-gate2" parent="." instance=ExtResource("18_qukof")]
+
+[node name="wall2" parent="." instance=ExtResource("19_afgk7")]
+
+[node name="weapon-rack2" parent="." instance=ExtResource("20_f753v")]
+
+[node name="weapon-spear2" parent="." instance=ExtResource("21_5j73r")]
+
+[node name="weapon-sword2" parent="." instance=ExtResource("22_qo682")]

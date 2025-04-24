@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bpr35wixkx1ns"]
+[gd_scene load_steps=88 format=3 uid="uid://bpr35wixkx1ns"]
 
 [ext_resource type="Script" path="res://scripts/main_character/main_char_soldier.gd" id="1_yfjvp"]
 [ext_resource type="Texture2D" uid="uid://4gny6v6ms8ih" path="res://assets/mainCharacter/Knight/Knight/Attack1.png" id="2_bmc3d"]
@@ -8,9 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dan8nixc05p74" path="res://assets/mainCharacter/Knight/Knight/idle.png" id="6_gp2gl"]
 [ext_resource type="Texture2D" uid="uid://tafoldgkyxq7" path="res://assets/mainCharacter/Knight/Knight/Jump.png" id="7_gytxt"]
 [ext_resource type="Texture2D" uid="uid://68hhvy8osbak" path="res://assets/mainCharacter/Knight/Knight/Run.png" id="8_kceni"]
-[ext_resource type="Texture2D" uid="uid://db46oj2n1o4od" path="res://assets/ui/Lucid V1.2/SVG/Shadow/Chevron-Arrow-Down.svg" id="9_qke51"]
 [ext_resource type="Script" path="res://scripts/main_character/indicator_sprite_2d.gd" id="10_3gatv"]
-[ext_resource type="Texture2D" uid="uid://cpa1w436ij85w" path="res://assets/ui/Lucid V1.2/SVG/Shadow/Cursor-6.svg" id="11_en85u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsvxy"]
 atlas = ExtResource("2_bmc3d")
@@ -653,9 +651,9 @@ states/Start/position = Vector2(371, -14)
 states/attack_1/node = SubResource("AnimationNodeAnimation_t6b20")
 states/attack_1/position = Vector2(256, -55.2951)
 states/attack_2/node = SubResource("AnimationNodeAnimation_x25sp")
-states/attack_2/position = Vector2(117, -55.2951)
+states/attack_2/position = Vector2(118, -55.2951)
 states/death/node = SubResource("AnimationNodeAnimation_mycyp")
-states/death/position = Vector2(371, 350.705)
+states/death/position = Vector2(371, 349.705)
 states/fall/node = SubResource("AnimationNodeAnimation_vsdjb")
 states/fall/position = Vector2(439, 275)
 states/hit/node = SubResource("AnimationNodeAnimation_ulnsq")
@@ -667,10 +665,13 @@ states/jump/position = Vector2(444, 47)
 states/run/node = SubResource("AnimationNodeAnimation_qio2e")
 states/run/position = Vector2(522, 157)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_drmi6"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_g2bti"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_fhqpw"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_0dhbt"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_cp08x"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_k6byr"), "jump", "run", SubResource("AnimationNodeStateMachineTransition_lee4c"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_oudxw"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_ldjhe"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_pibnr"), "fall", "run", SubResource("AnimationNodeStateMachineTransition_vohal"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_aklgh"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_fj62c"), "attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_uocli"), "idle", "attack_2", SubResource("AnimationNodeStateMachineTransition_5uw8h"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_w4ny2"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_esq7l"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_qmq0a"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_brkpx")]
-graph_offset = Vector2(-276, 117.705)
+graph_offset = Vector2(-152, -230.295)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmmda"]
 size = Vector2(16, 27)
+
+[sub_resource type="Resource" id="Resource_gnq7n"]
+metadata/__load_path__ = "res://assets/ui/Lucid V1.2/SVG/Shadow/Chevron-Arrow-Down.svg"
 
 [sub_resource type="Animation" id="Animation_414om"]
 length = 0.001
@@ -684,7 +685,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_qke51")]
+"values": [SubResource("Resource_gnq7n")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -711,6 +712,9 @@ tracks/2/keys = {
 "values": [Vector2(0.3, 0.3)]
 }
 
+[sub_resource type="Resource" id="Resource_ueb8c"]
+metadata/__load_path__ = "res://assets/ui/Lucid V1.2/SVG/Shadow/Chevron-Arrow-Down.svg"
+
 [sub_resource type="Animation" id="Animation_2x4gf"]
 resource_name = "oscillation"
 loop_mode = 1
@@ -724,7 +728,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_qke51")]
+"values": [SubResource("Resource_ueb8c")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -739,6 +743,9 @@ tracks/1/keys = {
 "values": [Vector2(-2, -23), Vector2(-2, -25)]
 }
 
+[sub_resource type="Resource" id="Resource_y0a6r"]
+metadata/__load_path__ = "res://assets/ui/Lucid V1.2/SVG/Shadow/Cursor-6.svg"
+
 [sub_resource type="Animation" id="Animation_do6a6"]
 resource_name = "pulsation"
 loop_mode = 1
@@ -752,7 +759,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("11_en85u")]
+"values": [SubResource("Resource_y0a6r")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -821,7 +828,6 @@ shape = SubResource("RectangleShape2D_vmmda")
 [node name="Indicator_Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, -23)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("9_qke51")
 script = ExtResource("10_3gatv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator_Sprite2D"]
