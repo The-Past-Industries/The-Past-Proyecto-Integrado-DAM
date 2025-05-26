@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bpyd6bj3m1w8f"]
 
-[ext_resource type="Script" uid="uid://dqvbw8jx1cg1t" path="res://scripts/world/disabled_door.gd" id="1_8aa6n"]
+[ext_resource type="Script" uid="uid://dqvbw8jx1cg1t" path="res://scripts/old_world/disabled_door.gd" id="1_8aa6n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21t2f"]
 region = Rect2(0, 96, 96, 96)

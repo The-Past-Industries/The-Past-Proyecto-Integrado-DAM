@@ -1,6 +1,6 @@
 [gd_scene load_steps=118 format=4 uid="uid://dtave1fmjt08a"]
 
-[ext_resource type="Script" uid="uid://b20ibidpa8t8y" path="res://scripts/world/room.gd" id="1_pamhe"]
+[ext_resource type="Script" uid="uid://b20ibidpa8t8y" path="res://scripts/old_world/room.gd" id="1_pamhe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s4bwa"]
 2:2/0 = 0

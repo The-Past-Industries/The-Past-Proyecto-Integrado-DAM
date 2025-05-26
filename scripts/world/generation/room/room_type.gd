@@ -1,0 +1,13 @@
+class_name RoomType
+
+enum {
+	INITIAL,
+	COMMON,
+	CORRIDOR,
+	BOSS,
+	SHOP,
+	TREASURE,
+	LIMBO,
+	STAIRS,
+	CAMPUS
+	}
