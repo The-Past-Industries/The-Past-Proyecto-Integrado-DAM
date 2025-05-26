@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0lr7vpsa0g7w"]
+[gd_scene load_steps=6 format=3 uid="uid://c0lr7vpsa0g7w"]
 
-[ext_resource type="Script" path="res://scripts/menus/actions_menu.gd" id="1_htw0m"]
-[ext_resource type="Theme" uid="uid://uvwt075kg1se" path="res://themes/actions_menu_theme.tres" id="2_bipyp"]
+[ext_resource type="Script" uid="uid://bx6wcdqf1sm5" path="res://scripts/menus/actions_menu.gd" id="1_htw0m"]
+
+[sub_resource type="Resource" id="Resource_6k603"]
+metadata/__load_path__ = "res://themes/actions_menu_theme.tres"
+
+[sub_resource type="Resource" id="Resource_t8dlq"]
+metadata/__load_path__ = "res://themes/actions_menu_theme.tres"
+
+[sub_resource type="Resource" id="Resource_yk8lg"]
+metadata/__load_path__ = "res://themes/actions_menu_theme.tres"
+
+[sub_resource type="Resource" id="Resource_1l3uf"]
+metadata/__load_path__ = "res://themes/actions_menu_theme.tres"
 
 [node name="Actions_Menu" type="Control"]
 layout_mode = 3
@@ -25,7 +36,7 @@ offset_right = 136.0
 offset_bottom = 29.0
 grow_vertical = 0
 scale = Vector2(0.7, 0.7)
-theme = ExtResource("2_bipyp")
+theme = SubResource("Resource_6k603")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -34,17 +45,17 @@ size_flags_vertical = 0
 [node name="Physical_Attack_Button" type="Button" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-theme = ExtResource("2_bipyp")
+theme = SubResource("Resource_t8dlq")
 text = "ATAQUE FÍSICO"
 
 [node name="Magic_Attack_Button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_bipyp")
+theme = SubResource("Resource_yk8lg")
 text = "ATAQUE MÁGICO"
 
 [node name="Cover_Button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_bipyp")
+theme = SubResource("Resource_1l3uf")
 text = "DEFENDER"
 
 [connection signal="button_down" from="PanelContainer/VBoxContainer/Physical_Attack_Button" to="." method="_on_physical_attack_button_button_down"]

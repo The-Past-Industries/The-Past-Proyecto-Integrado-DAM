@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://dgm4rynu0y1ht"]
 
 [ext_resource type="Texture2D" uid="uid://doms5t0oj7c2e" path="res://assets/enemies/common/Sicklezeep/sickle_sheet.png" id="1_4aute"]
-[ext_resource type="Script" path="res://scripts/enemies/enemy_dagger.gd" id="1_bpu43"]
+[ext_resource type="Script" uid="uid://clxen5sne2f1i" path="res://scripts/enemies/enemy_dagger.gd" id="1_bpu43"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2r872"]
 radius = 0.223285

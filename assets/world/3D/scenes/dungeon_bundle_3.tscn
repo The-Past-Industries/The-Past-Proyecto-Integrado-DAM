@@ -1,0 +1,196 @@
+[gd_scene load_steps=49 format=3 uid="uid://c36drsw2h0wjw"]
+
+[ext_resource type="PackedScene" uid="uid://bhp57dgvdtwxd" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Arch.blend" id="1_bp4xo"]
+[ext_resource type="PackedScene" uid="uid://tbvggub5o3vf" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Arch_bars.blend" id="2_k6lpe"]
+[ext_resource type="PackedScene" uid="uid://bflgnjqowx5h4" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Arch_Door.blend" id="3_5eq1m"]
+[ext_resource type="PackedScene" uid="uid://byovdgojlmu56" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Arch_Door_bottompivot.blend" id="4_yr2xh"]
+[ext_resource type="PackedScene" uid="uid://b6jsmxq7ktdd8" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Bag_Coins.blend" id="5_vtne5"]
+[ext_resource type="PackedScene" uid="uid://ca7ig83r5y3ce" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Bag_Standing.blend" id="6_offbr"]
+[ext_resource type="PackedScene" uid="uid://bdrkk4sax0obv" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Banner.blend" id="7_7xaxb"]
+[ext_resource type="PackedScene" uid="uid://cpjo4874hyqb1" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Banner_wall.blend" id="8_ierpf"]
+[ext_resource type="PackedScene" uid="uid://ceywd3ieff20f" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Barrel2.blend" id="9_j1743"]
+[ext_resource type="PackedScene" uid="uid://t5jdx1q86i36" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Barrel.blend" id="10_w2f4c"]
+[ext_resource type="PackedScene" uid="uid://bidahp4yv6sxe" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Brick.blend" id="11_xsfsf"]
+[ext_resource type="PackedScene" uid="uid://bsixt37yfv35n" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Bucket.blend" id="12_fg0pa"]
+[ext_resource type="PackedScene" uid="uid://bub34x570ek4y" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Chair.blend" id="13_ocvft"]
+[ext_resource type="PackedScene" uid="uid://c5x23k1k5ka3j" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Chest.blend" id="14_ask21"]
+[ext_resource type="PackedScene" uid="uid://bndfdmoww8oah" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Chest_Gold.blend" id="15_xfy18"]
+[ext_resource type="PackedScene" uid="uid://dfgm34ptahgp2" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Cobweb2.blend" id="16_inaxp"]
+[ext_resource type="PackedScene" uid="uid://0jr2eb5dtl4c" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Cobweb.blend" id="17_dtksk"]
+[ext_resource type="PackedScene" uid="uid://chw8p6gxn00qg" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Coin_Pile.blend" id="18_4uso3"]
+[ext_resource type="PackedScene" uid="uid://sh230yoruhth" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Column2.blend" id="19_hqk8u"]
+[ext_resource type="PackedScene" uid="uid://dyi42mg3sjdmv" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Column.blend" id="20_yafoo"]
+[ext_resource type="PackedScene" uid="uid://b4hnnfmy3mhnr" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Crate.blend" id="21_ig761"]
+[ext_resource type="PackedScene" uid="uid://dxhd6f5fg2nvn" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Decorative_Wall.blend" id="22_oc7xg"]
+[ext_resource type="PackedScene" uid="uid://b7psa8ihpkdw6" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Fence_90_Modular.blend" id="23_jg45x"]
+[ext_resource type="PackedScene" uid="uid://bq3loseqa8hkh" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Fence_End_Modular.blend" id="24_bwq3q"]
+[ext_resource type="PackedScene" uid="uid://df0m4fss3bwxh" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Fence_Straight_Modular.blend" id="25_y66qx"]
+[ext_resource type="PackedScene" uid="uid://cninss05t1cv2" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Floor_BricksSeparate2.blend" id="26_avkt2"]
+[ext_resource type="PackedScene" uid="uid://cnl7fsutl8uxi" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Floor_BricksSeparate.blend" id="27_70m5g"]
+[ext_resource type="PackedScene" uid="uid://02ckbs508b8c" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Floor_Modular.blend" id="28_s5qbw"]
+[ext_resource type="PackedScene" uid="uid://gsaaqoomeeai" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Pedestal2.blend" id="29_w0hqv"]
+[ext_resource type="PackedScene" uid="uid://dgol82sbrr2rt" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Pedestal.blend" id="30_fonrh"]
+[ext_resource type="PackedScene" uid="uid://rcxxfo5v0ycq" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Skull.blend" id="31_vhos1"]
+[ext_resource type="PackedScene" uid="uid://brhlxo7dwonv8" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Spikes.blend" id="32_hwreq"]
+[ext_resource type="PackedScene" uid="uid://ce0uvmpw022ky" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Stairs_Modular.blend" id="33_1exe2"]
+[ext_resource type="PackedScene" uid="uid://cg8xburxsvp7n" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Stairs_SideCover.blend" id="34_kvoxs"]
+[ext_resource type="PackedScene" uid="uid://kelpb6sig2oa" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Stairs_SideCoverWall.blend" id="35_2ytp5"]
+[ext_resource type="PackedScene" uid="uid://gmk6ug8fkqav" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Statue_Horse.blend" id="36_xgbt0"]
+[ext_resource type="PackedScene" uid="uid://gno08etkb8nj" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Sword_WallMount.blend" id="37_rt544"]
+[ext_resource type="PackedScene" uid="uid://d18u51db7qmim" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Table_Big.blend" id="38_kcsan"]
+[ext_resource type="PackedScene" uid="uid://bc1evwasthtni" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Table_Small.blend" id="39_4ghuv"]
+[ext_resource type="PackedScene" uid="uid://2bqlu0eyx0h6" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Torch.blend" id="40_8xfwc"]
+[ext_resource type="PackedScene" uid="uid://bwuvxou8ujyd3" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Trapdoor.blend" id="41_5bi3f"]
+[ext_resource type="PackedScene" uid="uid://i4ey30aov27d" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Trapdoor_open.blend" id="42_6okl7"]
+[ext_resource type="PackedScene" uid="uid://wsifl516soha" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Trap_empty.blend" id="43_1ny4m"]
+[ext_resource type="PackedScene" uid="uid://djx5eeebvkosc" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Trap_spikes.blend" id="44_pvlw0"]
+[ext_resource type="PackedScene" uid="uid://dj7ba2on1nsdg" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Vase.blend" id="45_sk7a7"]
+[ext_resource type="PackedScene" uid="uid://cb8etemdi18vl" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/WallCover_Modular.blend" id="46_36dgg"]
+[ext_resource type="PackedScene" uid="uid://bddk17c0vp5ya" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Wall_Modular.blend" id="47_fffat"]
+[ext_resource type="PackedScene" uid="uid://pvrnxqlba2cy" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Woodfire.blend" id="48_gljsv"]
+
+[node name="dungeon_bundle_3" type="Node3D"]
+
+[node name="Arch2" parent="." instance=ExtResource("1_bp4xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="Arch_bars2" parent="." instance=ExtResource("2_k6lpe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4.5)
+
+[node name="Arch_Door2" parent="." instance=ExtResource("3_5eq1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Arch_Door_bottompivot2" parent="." instance=ExtResource("4_yr2xh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2.5)
+
+[node name="Bag_Coins2" parent="." instance=ExtResource("5_vtne5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 14)
+
+[node name="Bag_Standing2" parent="." instance=ExtResource("6_offbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 9)
+
+[node name="Banner2" parent="." instance=ExtResource("7_7xaxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 4)
+
+[node name="Banner_wall2" parent="." instance=ExtResource("8_ierpf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1.5)
+
+[node name="Barrel2" parent="." instance=ExtResource("9_j1743")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4.5)
+
+[node name="Barrel3" parent="." instance=ExtResource("10_w2f4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 6)
+
+[node name="Brick2" parent="." instance=ExtResource("11_xsfsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 4.5)
+
+[node name="Bucket2" parent="." instance=ExtResource("12_fg0pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+
+[node name="Chair2" parent="." instance=ExtResource("13_ocvft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 9)
+
+[node name="Chest" parent="." instance=ExtResource("14_ask21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 11)
+
+[node name="Chest_Gold" parent="." instance=ExtResource("15_xfy18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2.5)
+
+[node name="Cobweb22" parent="." instance=ExtResource("16_inaxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 15.5)
+
+[node name="Cobweb2" parent="." instance=ExtResource("17_dtksk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 15.5)
+
+[node name="Coin_Pile2" parent="." instance=ExtResource("18_4uso3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 9)
+
+[node name="Column22" parent="." instance=ExtResource("19_hqk8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 2)
+
+[node name="Column2" parent="." instance=ExtResource("20_yafoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 1.5)
+
+[node name="Crate2" parent="." instance=ExtResource("21_ig761")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 7)
+
+[node name="Decorative_Wall2" parent="." instance=ExtResource("22_oc7xg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 9)
+
+[node name="Fence_90_Modular2" parent="." instance=ExtResource("23_jg45x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 13.5)
+
+[node name="Fence_End_Modular2" parent="." instance=ExtResource("24_bwq3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 2.5)
+
+[node name="Fence_Straight_Modular2" parent="." instance=ExtResource("25_y66qx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 6.5)
+
+[node name="Floor_BricksSeparate22" parent="." instance=ExtResource("26_avkt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4.5)
+
+[node name="Floor_BricksSeparate2" parent="." instance=ExtResource("27_70m5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6.5)
+
+[node name="Floor_Modular2" parent="." instance=ExtResource("28_s5qbw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 13)
+
+[node name="Pedestal22" parent="." instance=ExtResource("29_w0hqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7.5)
+
+[node name="Pedestal2" parent="." instance=ExtResource("30_fonrh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1.5, 6.5)
+
+[node name="Skull2" parent="." instance=ExtResource("31_vhos1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 10)
+
+[node name="Spikes2" parent="." instance=ExtResource("32_hwreq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 10.5)
+
+[node name="Stairs_Modular2" parent="." instance=ExtResource("33_1exe2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 10)
+
+[node name="Stairs_SideCover2" parent="." instance=ExtResource("34_kvoxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -5.5)
+
+[node name="Stairs_SideCoverWall2" parent="." instance=ExtResource("35_2ytp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 1.5)
+
+[node name="Statue_Horse" parent="." instance=ExtResource("36_xgbt0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7.5)
+
+[node name="Sword_WallMount2" parent="." instance=ExtResource("37_rt544")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 5)
+
+[node name="Table_Big2" parent="." instance=ExtResource("38_kcsan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.5)
+
+[node name="Table_Small2" parent="." instance=ExtResource("39_4ghuv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11)
+
+[node name="Torch2" parent="." instance=ExtResource("40_8xfwc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1)
+
+[node name="Trapdoor2" parent="." instance=ExtResource("41_5bi3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 13)
+
+[node name="Trapdoor_open2" parent="." instance=ExtResource("42_6okl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0, 13.5)
+
+[node name="Trap_empty2" parent="." instance=ExtResource("43_1ny4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 13)
+
+[node name="Trap_spikes2" parent="." instance=ExtResource("44_pvlw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3)
+
+[node name="Vase2" parent="." instance=ExtResource("45_sk7a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 5)
+
+[node name="WallCover_Modular2" parent="." instance=ExtResource("46_36dgg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 5)
+
+[node name="Wall_Modular2" parent="." instance=ExtResource("47_fffat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 9)
+
+[node name="Woodfire" parent="." instance=ExtResource("48_gljsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 7.5)

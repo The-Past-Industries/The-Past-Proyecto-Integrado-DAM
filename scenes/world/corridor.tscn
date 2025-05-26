@@ -1,13 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://b8oruifl5gou8"]
+[gd_scene load_steps=15 format=4 uid="uid://b8oruifl5gou8"]
 
-[ext_resource type="Script" path="res://scripts/world/corridor.gd" id="1_663y2"]
-[ext_resource type="Texture2D" uid="uid://b4ry332bk82qy" path="res://assets/world/rooms/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_scfh1"]
-[ext_resource type="Texture2D" uid="uid://bywkapvb7jts5" path="res://assets/world/rooms/Pirate Bomb/Sprites/8-Tile-Sets/Tile-Sets (64-64).png" id="2_mkap7"]
-[ext_resource type="Texture2D" uid="uid://x5dj6hi7gp3o" path="res://assets/world/rooms/Pirate Bomb/Sprites/8-Tile-Sets/Variations/6.png" id="3_tgrvi"]
-[ext_resource type="Texture2D" uid="uid://5j2y5ajp0aw8" path="res://assets/world/rooms/Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="4_sjc8e"]
+[ext_resource type="Script" uid="uid://bfl504dm83xt8" path="res://scripts/world/corridor.gd" id="1_663y2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o00uw"]
-texture = ExtResource("1_scfh1")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -397,7 +392,6 @@ texture = ExtResource("1_scfh1")
 sources/0 = SubResource("TileSetAtlasSource_o00uw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1dy6j"]
-texture = ExtResource("2_mkap7")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -832,14 +826,12 @@ texture = ExtResource("2_mkap7")
 15:19/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aaqv5"]
-texture = ExtResource("3_tgrvi")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2f2j6"]
-texture = ExtResource("1_scfh1")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -1236,7 +1228,6 @@ sources/1 = SubResource("TileSetAtlasSource_aaqv5")
 sources/2 = SubResource("TileSetAtlasSource_2f2j6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogpbe"]
-texture = ExtResource("1_scfh1")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -1615,7 +1606,6 @@ texture = ExtResource("1_scfh1")
 35:23/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07k4u"]
-texture = ExtResource("4_sjc8e")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -1684,7 +1674,6 @@ sources/0 = SubResource("TileSetAtlasSource_ogpbe")
 sources/1 = SubResource("TileSetAtlasSource_07k4u")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37m46"]
-texture = ExtResource("4_sjc8e")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0

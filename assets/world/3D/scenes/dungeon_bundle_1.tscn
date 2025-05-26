@@ -1,0 +1,152 @@
+[gd_scene load_steps=22 format=3 uid="uid://c10msp62lyfua"]
+
+[ext_resource type="PackedScene" uid="uid://cgeacaj8jjbg3" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Floor_1.blend" id="1_ydnsc"]
+[ext_resource type="Texture2D" uid="uid://xiw1u5hujodu" path="res://assets/world/3D/RPG Mini Bundle 3/Texture/Color2.png" id="2_4uthl"]
+[ext_resource type="PackedScene" uid="uid://vip3buxltpb3" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Floor_2.blend" id="3_rqi8k"]
+[ext_resource type="PackedScene" uid="uid://u5uod3lqtc5q" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Floor_3.blend" id="4_p4m8t"]
+[ext_resource type="PackedScene" uid="uid://b0tpgkfyuh8n3" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Floor_4.blend" id="5_p2j00"]
+[ext_resource type="PackedScene" uid="uid://c5y7ltiws562p" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Floor_5.blend" id="6_xex0j"]
+[ext_resource type="PackedScene" uid="uid://dq8103hibywwc" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Floor_6.blend" id="7_04n6m"]
+[ext_resource type="PackedScene" uid="uid://dry7mgbumfdaf" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Floor_7.blend" id="8_juqea"]
+[ext_resource type="PackedScene" uid="uid://cw7jc222sp55s" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Floor_8.blend" id="9_ot0nm"]
+[ext_resource type="PackedScene" uid="uid://bb4gvjcv3vx70" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Pillar_Corner.blend" id="10_8twws"]
+[ext_resource type="PackedScene" uid="uid://b8n7uvge5mqc4" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Pillar_Standalone.blend" id="11_vlw5f"]
+[ext_resource type="PackedScene" uid="uid://c8r221533hc86" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Pillar_Wall.blend" id="12_7r1sk"]
+[ext_resource type="PackedScene" uid="uid://cqaqrqsf06was" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_1.blend" id="13_uepci"]
+[ext_resource type="PackedScene" uid="uid://jewm02jdtg70" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_2.blend" id="14_3ag5c"]
+[ext_resource type="PackedScene" uid="uid://bjn0btk3gq132" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_Archway.blend" id="15_1n0fx"]
+[ext_resource type="PackedScene" uid="uid://casao57ye0hbw" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_Archway_Door.blend" id="16_s0d28"]
+[ext_resource type="PackedScene" uid="uid://d1o74mp1lma3b" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_Window.blend" id="17_ybno7"]
+[ext_resource type="PackedScene" uid="uid://ccqhgsne3lse7" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_Window_Bars.blend" id="18_6q3md"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m77bb"]
+cull_mode = 2
+albedo_texture = ExtResource("2_4uthl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljvb7"]
+cull_mode = 2
+albedo_texture = ExtResource("2_4uthl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igh4o"]
+cull_mode = 2
+albedo_texture = ExtResource("2_4uthl")
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+
+[node name="Floor_1" parent="." instance=ExtResource("1_ydnsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="Floor_1" parent="Floor_1" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_m77bb")
+
+[node name="Floor_2" parent="." instance=ExtResource("3_rqi8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
+
+[node name="Floor_2" parent="Floor_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Floor_3" parent="." instance=ExtResource("4_p4m8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 1)
+
+[node name="Floor_3" parent="Floor_3" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Floor_4" parent="." instance=ExtResource("5_p2j00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 1)
+
+[node name="Floor_4" parent="Floor_4" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Floor_5" parent="." instance=ExtResource("6_xex0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 4.5)
+
+[node name="Floor_5" parent="Floor_5" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Floor_6" parent="." instance=ExtResource("7_04n6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 4.5)
+
+[node name="Floor_6" parent="Floor_6" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Floor_7" parent="." instance=ExtResource("8_juqea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 4.5)
+
+[node name="Floor_7" parent="Floor_7" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Floor_8" parent="." instance=ExtResource("9_ot0nm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 4.5)
+
+[node name="Pillar_Corner" parent="." instance=ExtResource("10_8twws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="Pillar_Corner" parent="Pillar_Corner" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Pillar_Standalone" parent="." instance=ExtResource("11_vlw5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7)
+
+[node name="Pillar_Standalone" parent="Pillar_Standalone" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Pillar_Wall" parent="." instance=ExtResource("12_7r1sk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 7)
+
+[node name="Pillar_Wall" parent="Pillar_Wall" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Wall_1" parent="." instance=ExtResource("13_uepci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 9)
+
+[node name="Wall_1" parent="Wall_1" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Wall_2" parent="." instance=ExtResource("14_3ag5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 9)
+
+[node name="Wall_2" parent="Wall_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Wall_Archway" parent="." instance=ExtResource("15_1n0fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 9)
+
+[node name="Wall_Archway" parent="Wall_Archway" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Wall_Archway_Door" parent="." instance=ExtResource("16_s0d28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 9)
+
+[node name="Wall_Archway_Door" parent="Wall_Archway_Door" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Wall_Window" parent="." instance=ExtResource("17_ybno7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 9)
+
+[node name="Wall_Window" parent="Wall_Window" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ljvb7")
+
+[node name="Wall_Window_Bars" parent="." instance=ExtResource("18_6q3md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 9)
+
+[node name="Wall_Window_Bars" parent="Wall_Window_Bars" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_igh4o")
+
+[editable path="Floor_1"]
+[editable path="Floor_2"]
+[editable path="Floor_3"]
+[editable path="Floor_4"]
+[editable path="Floor_5"]
+[editable path="Floor_6"]
+[editable path="Floor_7"]
+[editable path="Floor_8"]
+[editable path="Pillar_Corner"]
+[editable path="Pillar_Standalone"]
+[editable path="Pillar_Wall"]
+[editable path="Wall_1"]
+[editable path="Wall_2"]
+[editable path="Wall_Archway"]
+[editable path="Wall_Archway_Door"]
+[editable path="Wall_Window"]
+[editable path="Wall_Window_Bars"]

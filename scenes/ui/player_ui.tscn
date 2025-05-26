@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://k652evkoa0jy"]
+[gd_scene load_steps=18 format=3 uid="uid://k652evkoa0jy"]
 
-[ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="1_7nxh8"]
-[ext_resource type="Theme" uid="uid://dbhdwyqwdosbl" path="res://themes/character_ui_theme.tres" id="1_weodl"]
+[ext_resource type="Script" uid="uid://hh1vgvhlgy5k" path="res://scripts/ui/player_ui.gd" id="1_7nxh8"]
 [ext_resource type="Texture2D" uid="uid://dan8nixc05p74" path="res://assets/mainCharacter/Knight/Knight/idle.png" id="2_ek0wl"]
 [ext_resource type="FontFile" uid="uid://rs55abjy0jvm" path="res://assets/fonts/monogram-extended.ttf" id="4_dr0db"]
 [ext_resource type="Texture2D" uid="uid://gvtju1rai2hl" path="res://assets/items/Free - Raven Fantasy Icons/Separated Files/64x64/fc657.png" id="4_f4ks8"]
@@ -10,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://cak3wgcq24tww" path="res://assets/items/Free - Raven Fantasy Icons/Separated Files/64x64/fc597.png" id="7_00fnu"]
 [ext_resource type="Texture2D" uid="uid://bvqjiduxitgse" path="res://assets/items/Free - Raven Fantasy Icons/Separated Files/64x64/fc598.png" id="8_jinap"]
 [ext_resource type="Texture2D" uid="uid://b7dw447qbrin1" path="res://assets/items/Free - Raven Fantasy Icons/Separated Files/64x64/fc724.png" id="9_78e7p"]
+
+[sub_resource type="Resource" id="Resource_0cbkn"]
+metadata/__load_path__ = "res://themes/character_ui_theme.tres"
+
+[sub_resource type="Resource" id="Resource_wm4y2"]
+metadata/__load_path__ = "res://themes/character_ui_theme.tres"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76mdu"]
 atlas = ExtResource("2_ek0wl")
@@ -73,7 +78,7 @@ custom_minimum_size = Vector2(65, 65)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme = ExtResource("1_weodl")
+theme = SubResource("Resource_0cbkn")
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/char_visor"]
 clip_contents = true
@@ -82,7 +87,7 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 59.0
 offset_bottom = 60.0
-theme = ExtResource("1_weodl")
+theme = SubResource("Resource_wm4y2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/char_visor/PanelContainer"]
 position = Vector2(32, 32)

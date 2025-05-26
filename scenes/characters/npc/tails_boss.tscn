@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bj2q4krernr2f"]
 
-[ext_resource type="Texture2D" uid="uid://cnxgyyrbn7ado" path="res://assets/npcs/enemies/spritesheets/tails_full_sheet.png" id="1_4e305"]
+[sub_resource type="Resource" id="Resource_i4tlt"]
+metadata/__load_path__ = "res://assets/npcs/enemies/spritesheets/tails_full_sheet.png"
 
 [sub_resource type="Animation" id="Animation_r3alm"]
 length = 0.001
@@ -91,17 +92,17 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mssn1"]
 _data = {
-"RESET": SubResource("Animation_r3alm"),
-"heavy_attack": SubResource("Animation_gjv13"),
-"idle": SubResource("Animation_1riys"),
-"light_attack": SubResource("Animation_21eii"),
-"walk": SubResource("Animation_obl57")
+&"RESET": SubResource("Animation_r3alm"),
+&"heavy_attack": SubResource("Animation_gjv13"),
+&"idle": SubResource("Animation_1riys"),
+&"light_attack": SubResource("Animation_21eii"),
+&"walk": SubResource("Animation_obl57")
 }
 
 [node name="tailsBoss" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4e305")
+texture = SubResource("Resource_i4tlt")
 hframes = 14
 vframes = 4
 frame = 1

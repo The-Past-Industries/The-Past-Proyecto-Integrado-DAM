@@ -1,7 +1,7 @@
 [gd_scene load_steps=66 format=3 uid="uid://dnafb3annmq4i"]
 
 [ext_resource type="Texture2D" uid="uid://c26j8isv7brp7" path="res://assets/enemies/common/Hero Knight/Hero Knight/Sprites/Idle.png" id="1_l63r0"]
-[ext_resource type="Script" path="res://scripts/fem_warrior.gd" id="1_motac"]
+[ext_resource type="Script" uid="uid://cf4q0tkm4528o" path="res://scripts/fem_warrior.gd" id="1_motac"]
 [ext_resource type="Texture2D" uid="uid://cvq3siocksf12" path="res://assets/enemies/common/Hero Knight/Hero Knight/Sprites/Attack1.png" id="1_wikq4"]
 [ext_resource type="Texture2D" uid="uid://c6b3k8uk0jkcn" path="res://assets/enemies/common/Hero Knight/Hero Knight/Sprites/Attack2.png" id="2_2lco4"]
 [ext_resource type="Texture2D" uid="uid://bqiy8mxs8hnad" path="res://assets/enemies/common/Hero Knight/Hero Knight/Sprites/Death.png" id="3_ttvda"]

@@ -1,0 +1,123 @@
+{
+  "items": [
+    {
+      "item_class": "PASSIVE",
+      "item_detail": {
+        "item_id": 0,
+        "item_name": "Espada Flamígera",
+        "item_alias": "espada_flamigera",
+        "item_description": "Una espada envuelta en llamas eternas.",
+        "item_tier": 1,
+        "stat_variations": [
+          {
+            "stat_type": 0,
+            "variation_value": 200.0,
+            "is_multiplying": false
+          },
+          {
+            "stat_type": 3,
+            "variation_value": 2.0,
+            "is_multiplying": true
+          }
+        ],
+        "spawn_ratio": 75
+      },
+      "sprite_file": "res://sprites/espada.png",
+      "passive_effects": [
+        {
+          "effect_details": [
+            {
+              "effect_id": 0,
+              "effect_name": "NONE",
+              "effect_decription": "Pues si está bien chiloso wey",
+              "proc_type": 0,
+              "effect_type": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "item_class": "ACTIVE",
+      "item_detail": {
+        "item_id": 10,
+        "item_name": "Granada de Humo",
+        "item_alias": "granada_humo",
+        "item_description": "Cubre el área con una nube de humo.",
+        "item_tier": 1,
+        "stat_variations": [
+          {
+            "stat_type": 2,
+            "variation_value": 0.0,
+            "is_multiplying": false
+          }
+        ],
+        "spawn_ratio": 50
+      },
+      "sprite_file": "res://sprites/granada.png",
+      "active_effects": [
+        {
+          "effect_details": [
+            {
+              "effect_id": 20,
+              "effect_name": "Nube de Humo",
+              "effect_decription": "Los enemigos no pueden verte por 3 segundos.",
+              "proc_type": 1,
+              "effect_type": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "item_class": "MULTI_EFFECT",
+      "item_detail": {
+        "item_id": 99,
+        "item_name": "Orbe del Caos",
+        "item_alias": "orbe_caos",
+        "item_description": "Un artefacto que canaliza energías impredecibles.",
+        "item_tier": 3,
+        "stat_variations": [
+          {
+            "stat_type": 1,
+            "variation_value": 50.0,
+            "is_multiplying": false
+          },
+          {
+            "stat_type": 4,
+            "variation_value": 1.5,
+            "is_multiplying": true
+          }
+        ],
+        "spawn_ratio": 20
+      },
+      "sprite_file": "res://sprites/orbe.png",
+      "active_effects": [
+        {
+          "effect_details": [
+            {
+              "effect_id": 30,
+              "effect_name": "Explosión Caótica",
+              "effect_decription": "Produce un efecto aleatorio al impactar.",
+              "proc_type": 2,
+              "effect_type": 2
+            }
+          ]
+        }
+      ],
+      "passive_effects": [
+        {
+          "effect_details": [
+            {
+              "effect_id": 31,
+              "effect_name": "Resonancia Caótica",
+              "effect_decription": "Cambia de forma cada cierto tiempo.",
+              "proc_type": 0,
+              "effect_type": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

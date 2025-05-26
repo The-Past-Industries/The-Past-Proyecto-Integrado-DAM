@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://dxcctlr3sskr"]
 
-[ext_resource type="Script" path="res://scripts/test/character_body_3d.gd" id="1_bx8xu"]
+[ext_resource type="Script" uid="uid://42j7xvxfssvm" path="res://scripts/test/character_body_3d.gd" id="1_bx8xu"]
 [ext_resource type="SpriteFrames" uid="uid://s506gskge5du" path="res://assets/mainCharacter/mage_spriteframes.tres" id="2_02i2c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5w2sj"]
@@ -272,15 +272,15 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hog5b"]
 _data = {
-"RESET": SubResource("Animation_0u6vq"),
-"attack": SubResource("Animation_67qjr"),
-"cover": SubResource("Animation_ae5qq"),
-"death": SubResource("Animation_s3o8n"),
-"fall": SubResource("Animation_7nyx2"),
-"hit": SubResource("Animation_5lvlj"),
-"idle": SubResource("Animation_ggs8j"),
-"jump": SubResource("Animation_3v8ch"),
-"run": SubResource("Animation_xitoj")
+&"RESET": SubResource("Animation_0u6vq"),
+&"attack": SubResource("Animation_67qjr"),
+&"cover": SubResource("Animation_ae5qq"),
+&"death": SubResource("Animation_s3o8n"),
+&"fall": SubResource("Animation_7nyx2"),
+&"hit": SubResource("Animation_5lvlj"),
+&"idle": SubResource("Animation_ggs8j"),
+&"jump": SubResource("Animation_3v8ch"),
+&"run": SubResource("Animation_xitoj")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7rxq4"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d22cq1syouvps"]
+
+[ext_resource type="PackedScene" uid="uid://lxsw3253hu7q" path="res://assets/world/3D/Dungeon Asset Pack/Dungeon Asset Pack.fbx" id="1_nws68"]
+
+[node name="Dungeon Asset Pack" instance=ExtResource("1_nws68")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)

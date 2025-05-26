@@ -6,7 +6,8 @@ extends Control
 @onready var cover_button:Button = $PanelContainer/VBoxContainer/Cover_Button
 
 func _process(delta):
-	print(visible)
+	# print(visible)
+	pass
 
 func open_menu():
 	visible = true

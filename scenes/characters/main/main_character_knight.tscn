@@ -1,6 +1,6 @@
 [gd_scene load_steps=88 format=3 uid="uid://bpr35wixkx1ns"]
 
-[ext_resource type="Script" path="res://scripts/main_character/main_char_soldier.gd" id="1_yfjvp"]
+[ext_resource type="Script" uid="uid://dlyjf7ham6wni" path="res://scripts/main_character/main_char_soldier.gd" id="1_yfjvp"]
 [ext_resource type="Texture2D" uid="uid://4gny6v6ms8ih" path="res://assets/mainCharacter/Knight/Knight/Attack1.png" id="2_bmc3d"]
 [ext_resource type="Texture2D" uid="uid://b2olt461xlr3b" path="res://assets/mainCharacter/Knight/Knight/Attack2.png" id="3_5qud3"]
 [ext_resource type="Texture2D" uid="uid://crg55slfutfan" path="res://assets/mainCharacter/Knight/Knight/Death.png" id="4_yn2o5"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dan8nixc05p74" path="res://assets/mainCharacter/Knight/Knight/idle.png" id="6_gp2gl"]
 [ext_resource type="Texture2D" uid="uid://tafoldgkyxq7" path="res://assets/mainCharacter/Knight/Knight/Jump.png" id="7_gytxt"]
 [ext_resource type="Texture2D" uid="uid://68hhvy8osbak" path="res://assets/mainCharacter/Knight/Knight/Run.png" id="8_kceni"]
-[ext_resource type="Script" path="res://scripts/main_character/indicator_sprite_2d.gd" id="10_3gatv"]
+[ext_resource type="Script" uid="uid://qrdsm2gahyen" path="res://scripts/main_character/indicator_sprite_2d.gd" id="10_3gatv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dsvxy"]
 atlas = ExtResource("2_bmc3d")
@@ -528,15 +528,15 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hrmdo"]
 _data = {
-"RESET": SubResource("Animation_kxvv0"),
-"attack_1": SubResource("Animation_sh73s"),
-"attack_2": SubResource("Animation_itj20"),
-"death": SubResource("Animation_x1m0v"),
-"fall": SubResource("Animation_8o75u"),
-"hit": SubResource("Animation_vmgn1"),
-"idle": SubResource("Animation_7ulxq"),
-"jump": SubResource("Animation_h02sr"),
-"run": SubResource("Animation_oj3eg")
+&"RESET": SubResource("Animation_kxvv0"),
+&"attack_1": SubResource("Animation_sh73s"),
+&"attack_2": SubResource("Animation_itj20"),
+&"death": SubResource("Animation_x1m0v"),
+&"fall": SubResource("Animation_8o75u"),
+&"hit": SubResource("Animation_vmgn1"),
+&"idle": SubResource("Animation_7ulxq"),
+&"jump": SubResource("Animation_h02sr"),
+&"run": SubResource("Animation_oj3eg")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t6b20"]
@@ -788,9 +788,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8pevd"]
 _data = {
-"RESET": SubResource("Animation_414om"),
-"selected": SubResource("Animation_2x4gf"),
-"target": SubResource("Animation_do6a6")
+&"RESET": SubResource("Animation_414om"),
+&"selected": SubResource("Animation_2x4gf"),
+&"target": SubResource("Animation_do6a6")
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Physic"]]

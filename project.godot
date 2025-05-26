@@ -12,17 +12,13 @@ config_version=5
 
 config/name="Godot-1"
 run/main_scene="res://scenes/mainCharacter_node.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-CombatManager="*res://scripts/combat_manager.gd"
-MenuManager="*res://scripts/menus/menu_manager.gd"
-PlayerDataManager="*res://scripts/data/player_data.gd"
-EnemyDataManager="*res://scripts/data/enemy_data.gd"
-LevelManagerGlobal="*res://scripts/world/level_manager.gd"
-MainUi="*res://scripts/main_scene/main_ui.gd"
+MainTest="*res://scripts/global/test/main_test.gd"
+Logger="*res://scripts/global/Utils/logger_class.gd"
 
 [display]
 

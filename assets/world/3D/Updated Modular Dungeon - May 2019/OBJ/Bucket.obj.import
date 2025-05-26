@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dxcb6qetjcuw6"
+path="res://.godot/imported/Bucket.obj-3d5d7bb07ba55cd113a2e622c8edfa7f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Bucket.obj-3d5d7bb07ba55cd113a2e622c8edfa7f.mesh"]
+
+source_file="res://assets/world/3D/Updated Modular Dungeon - May 2019/OBJ/Bucket.obj"
+dest_files=["res://.godot/imported/Bucket.obj-3d5d7bb07ba55cd113a2e622c8edfa7f.mesh", "res://.godot/imported/Bucket.obj-3d5d7bb07ba55cd113a2e622c8edfa7f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

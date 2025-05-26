@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://djrr5kk07d6th"]
 
-[ext_resource type="Script" path="res://scripts/test/character_body_3d.gd" id="1_bs34x"]
+[ext_resource type="Script" uid="uid://42j7xvxfssvm" path="res://scripts/test/character_body_3d.gd" id="1_bs34x"]
 [ext_resource type="Texture2D" uid="uid://bhh7l1r0tp4fh" path="res://assets/mainCharacter/light_demon/fly.png" id="2_gxvit"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ej5le"]
