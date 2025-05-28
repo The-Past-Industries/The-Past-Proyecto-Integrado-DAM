@@ -27,11 +27,14 @@ func _enter_tree() -> void:
 		file.seek_end()
 		info("LoggerClass initialized. Log file in: %s" % log_file_path)
 
-func write_log(message: String, level: String = "INFO") -> void:
+func write_log(message: String, level: String = "INFO", error = false) -> void:
 	var dt = Time.get_datetime_dict_from_system()
 	var timestamp = "[%02d/%02d/%04d-%02d:%02d:%02d]" % [dt.day, dt.month, dt.year, dt.hour, dt.minute, dt.second]
 	var full_message = "%s[%s] %s" % [timestamp, level, message]
-	print(full_message)
+	if !error:
+		print(full_message)
+	else:
+		push_error(full_message)
 
 	if file:
 		file.store_line(full_message)
@@ -45,7 +48,7 @@ func warning(message: String) -> void:
 	write_log(message, "WARNING")
 
 func error(message: String) -> void:
-	write_log(message, "ERROR")
+	write_log(message, "ERROR", true)
 
 func _exit_tree() -> void:
 	if file:

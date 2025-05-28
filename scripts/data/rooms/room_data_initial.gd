@@ -1,0 +1,16 @@
+extends RoomData
+class_name RoomDataInitial
+
+func _init(
+	level: int,
+	distance: int = -1,
+	shown: bool = true
+):
+	super(level, RoomType.INITIAL, distance, shown)
+
+func add_connections(connections: Array[Vector2i]):
+# Check only one horizontal direction
+	if connections.has(Vector2i.LEFT):
+		self.connections.append(Vector2i.LEFT)
+	elif connections.has(Vector2i.RIGHT):
+		self.connections.append(Vector2i.RIGHT)

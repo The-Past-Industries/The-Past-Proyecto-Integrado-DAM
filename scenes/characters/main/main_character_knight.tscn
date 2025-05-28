@@ -804,7 +804,7 @@ autoplay = "idle"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_hrmdo")
+&"": SubResource("AnimationLibrary_hrmdo")
 }
 autoplay = "idle"
 
@@ -832,5 +832,5 @@ script = ExtResource("10_3gatv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator_Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_8pevd")
+&"": SubResource("AnimationLibrary_8pevd")
 }

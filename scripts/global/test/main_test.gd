@@ -1,11 +1,18 @@
 extends Node
 
 var item_repository: ItemRepository
+var world_generator: WorldGenerator
 
 # Ready
 func _ready():
-	load_item_repository()
-	show_items()
+	# load_item_repository()
+	# show_items()
+	# load_path_level()
+	pass
+
+func load_path_level():
+	world_generator = WorldGenerator.new()
+	#world_generator.generate_level(1, 0)
 
 # Load items
 func load_item_repository():

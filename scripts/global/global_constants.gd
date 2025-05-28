@@ -1,0 +1,22 @@
+class_name GlobalConstants
+
+const ITEMS_LIST_JSON_PATH: String = "res://raw_data/item_list.json"
+const LOG_FILE_DEBUG: String = "user://log.txt"
+
+# WORLD GENERATION PROPERTIES
+
+const WORLDGEN_MAX_LENGTH_FROM_INIT: int = 20
+const WORLDGEN_MAX_LENGTH_LEVEL_MULTIPIER: int = 2
+const WORLDGEN_MAX_INSTANCES_PER_POPULATION: int = 1
+const WORLDGEN_MAX_INSTANCES_MULTIPIER: int = 0
+
+# WORLD GENERATION RULES
+
+# Main branch
+const WORLDGEN_MAX_VERTICAL_CORRIDORS: int = 3
+const WORLDGEN_VERTICAL_CORRIDOR_TURN_CHANCE: float = 0.5
+
+# Branching
+const WORLDGEN_BRANCHING_ROOM_CHANCE: float = 0.3
+const WORLDGEN_BRANCH_LENGTH_MIN: int = 2
+const WORLDGEN_BRANCH_LENGTH_MAX: int = 4

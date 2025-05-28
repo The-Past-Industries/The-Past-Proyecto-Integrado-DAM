@@ -418,7 +418,7 @@ autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hog5b")
+&"": SubResource("AnimationLibrary_hog5b")
 }
 autoplay = "idle"
 
