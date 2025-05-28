@@ -20,12 +20,13 @@ var last_direction: Vector2i = Vector2i.ZERO
 
 # === Entry point for generation ===
 # Main method to generate entire level
-func generate_level(seed: int, level: int, max_population: int, treasure_count: int, campus_chance: float) -> void:
+func generate_level(seed: int = GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, level: int = 0, max_population: int = GlobalConstants.WORLDGEN_MAX_INSTANCES_PER_POPULATION, treasure_count: int = GlobalConstants.WORLDGEN_MAX_TREASURE_ROOMS_PER_LEVEL, campus_chance: float = GlobalConstants.WORLDGEN_CAMPUS_ROOM_CHANCE) -> void:
 	self.seed = seed
 	self.level = level
 	_generate_path(max_population)
 	_place_special_rooms(treasure_count, campus_chance)
-	_clean_isolated_corridors()
+	# _clean_isolated_corridors()
+	_expand_dead_end_corridors_with_common_rooms()
 
 
 # --- Main path and branches ---
@@ -33,8 +34,8 @@ func _generate_path(max_population: int) -> void:
 	rng.seed = seed
 	map_data.clear()
 	_generate_main_branch(rng)
-	_populate_branches(visited_cells, max_population)
-	_generate_secondary_branches(max_population)
+	#_populate_branches(visited_cells, max_population)
+	#_generate_secondary_branches(max_population)
 
 # GENERATE MAIN BRANCH
 
@@ -180,44 +181,36 @@ func _generate_secondary_branches(target_total_rooms: int):
 func _create_instance(current_cell_pos: Vector2i, new_cell_pos: Vector2i, distance_from_origin: int, instance_type: int):
 	
 	var room_data: RoomData
-	var backwards_door: bool = false
 	
 	match instance_type:
 		RoomType.INITIAL:
 			room_data = RoomDataInitial.new(level,distance_from_origin)
 		RoomType.COMMON:
 			room_data = RoomDataCommon.new(level,distance_from_origin)
-			backwards_door = true
 		RoomType.CORRIDOR:
 			room_data = RoomDataCorridor.new(level, distance_from_origin)
-			backwards_door = true
 		RoomType.BOSS:
 			room_data = RoomDataBoss.new(level, distance_from_origin)
-			backwards_door = true
 		RoomType.SHOP:
 			room_data = RoomDataShop.new(level, distance_from_origin)
-			backwards_door = true
 		RoomType.TREASURE:
 			room_data = RoomDataTreasure.new(level, distance_from_origin)
-			backwards_door = true
 		RoomType.LIMBO:
 			pass
 		RoomType.STAIRS:
 			pass
 		RoomType.CAMPUS:
 			room_data = RoomDataCampus.new(level, distance_from_origin)
-			backwards_door = true
 		RoomType.IMANERROR:
 			room_data = RoomData.new(level, RoomType.IMANERROR, distance_from_origin)
 		_:
 			room_data = RoomData.new(level, RoomType.IMANERROR, distance_from_origin)
 	
 	map_data[new_cell_pos] = room_data
-	Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: %s][CLASS: %s]" % [new_cell_pos, room_data.distance, get_room_type_name(room_data.type), room_data.get_script().get_class()])
+	Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: %s]" % [new_cell_pos, room_data.distance, get_room_type_name(room_data.type)])
 
-	
-	if backwards_door:
-		_link_cells_connections(current_cell_pos, new_cell_pos)
+	_link_cells_connections(current_cell_pos, new_cell_pos)
+
 
 func _link_cells_connections(current_cell_pos: Vector2i, new_cell_pos: Vector2i):
 	# Current cell connection add
@@ -374,6 +367,26 @@ func _place_campus(probability: float) -> void:
 				room.type = RoomType.CAMPUS
 				Logger.info("CAMPUS PLACED at %s" % [pos])
 				return
+
+# Intenta expandir pasillos muertos con habitaciones comunes
+func _expand_dead_end_corridors_with_common_rooms() -> void:
+	for pos in map_data.keys():
+		var data = map_data[pos]
+		if data.type != RoomType.CORRIDOR:
+			continue
+
+		# Aquí va tu lógica para detectar si es un pasillo "muerto"
+		if true:
+			# Intenta colocar una habitación común a la izquierda o derecha
+			for dir in [Vector2i.LEFT, Vector2i.RIGHT]:
+				var new_pos = pos + dir
+				if map_data.has(new_pos):
+					continue  # Ya hay algo ahí
+
+				_create_instance(pos, new_pos, data.distance + 1, RoomType.COMMON)
+				Logger.info("COMMON ROOM EXPANSION at %s from corridor %s" % [new_pos, pos])
+				break  # Sólo colocamos una
+
 
 # CLEANING LEVEL
 

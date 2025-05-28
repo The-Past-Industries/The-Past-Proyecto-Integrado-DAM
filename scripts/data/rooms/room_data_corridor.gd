@@ -7,3 +7,6 @@ func _init(
 	shown: bool = false
 ):
 	super(level, RoomType.CORRIDOR, distance, shown)
+
+func add_connections(connections: Array[Vector2i]):
+	self.connections.append_array(connections)

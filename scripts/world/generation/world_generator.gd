@@ -20,12 +20,17 @@ var last_direction: Vector2i = Vector2i.ZERO
 
 # === Entry point for generation ===
 # Main method to generate entire level
-func generate_level(seed: int, level: int, max_population: int, treasure_count: int, campus_chance: float) -> void:
+func generate_level(seed: int = GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, level: int = 0, max_population: int = GlobalConstants.WORLDGEN_MAX_INSTANCES_PER_POPULATION, max_target_secundary_branch: int = GlobalConstants.WORLDGEN_MAX_TARGET_SECUNDARY_BRANCH, treasure_count: int = GlobalConstants.WORLDGEN_MAX_TREASURE_ROOMS_PER_LEVEL, campus_chance: float = GlobalConstants.WORLDGEN_CAMPUS_ROOM_CHANCE) -> void:
 	self.seed = seed
 	self.level = level
 	_generate_path(max_population)
+	_ensure_minimum_common_rooms(GlobalConstants.WORLDGEN_MIN_COMMON_ROOMS_PER_LEVEL)
+	_ensure_instances_range()
+	_place_boss_room()
 	_place_special_rooms(treasure_count, campus_chance)
-	# _clean_isolated_corridors()
+	_connect_corridors_to_adjacent_rooms()
+	_clean_isolated_corridors()
+	# _expand_dead_end_corridors_with_common_rooms()
 
 
 # --- Main path and branches ---
@@ -42,26 +47,37 @@ func _generate_path(max_population: int) -> void:
 # === Main Branch Generation ===
 func _generate_main_branch(rng: RandomNumberGenerator):
 	var boss_matching_boost: int = 0
-	var MAX_LENGTH_FROM_INIT = GlobalConstants.WORLDGEN_MAX_LENGTH_FROM_INIT + (level * GlobalConstants.WORLDGEN_MAX_LENGTH_LEVEL_MULTIPIER)
+	var MAX_LENGTH_FROM_INIT = GlobalConstants.WORLDGEN_MAX_LENGTH_FROM_INIT + (level * GlobalConstants.WORLDGEN_MAX_LENGTH_LEVEL_MULTLIPIER)
 	var distance_from_origin = 0
 	var last_pos = 0
 	var current_pos = START_CELL_POSITION
 	var current_instance_type = RoomType.INITIAL
 	var vertical_corridors_counter = 0
+	var backtrack_attempts = 0
+
 	visited_cells = [current_pos]
 
 	var init_room_direction: Vector2i = _random_room_direction(rng)
 	Logger.info("Init room direction: %s" % [init_room_direction])
-	map_data[START_CELL_POSITION] = _create_initial_room([init_room_direction])
+	map_data[START_CELL_POSITION] = _create_initial_room()
 	distance_from_origin += 1
 
 	while distance_from_origin <= MAX_LENGTH_FROM_INIT + boss_matching_boost:
 		var adjacent_directions_available = _get_adjacent(current_instance_type, current_pos, init_room_direction)
 		if adjacent_directions_available.is_empty():
+			if backtrack_attempts >= GlobalConstants.WORLDGEN_MAX_BACKTRACK_ATTEMPTS:
+				Logger.error("Max backtrack attempts reached. Stopping generation.")
+				break
 			Logger.warning("WorldGenerator: Blocked at %s, attempting backtrack..." % current_pos)
+			last_pos = current_pos
 			current_pos = _backtrack(visited_cells, last_pos)
+			last_pos = current_pos
 			current_instance_type = map_data.get(current_pos).type
+			backtrack_attempts += 1
 			continue
+
+		backtrack_attempts = 0
+
 
 		var new_cell_direction = _get_random_available_direction(rng, adjacent_directions_available)
 		Logger.info("NEW DIRECTION: %s" % [get_direction_name(new_cell_direction)])
@@ -77,14 +93,15 @@ func _generate_main_branch(rng: RandomNumberGenerator):
 			vertical_corridors_counter = 0
 
 		if distance_from_origin >= MAX_LENGTH_FROM_INIT + boss_matching_boost:
-			if current_instance_type == RoomType.CORRIDOR and !is_vertical:
-				new_cell_type = RoomType.BOSS
-			else:
-				boss_matching_boost += 1
-				new_cell_type = RoomType.CORRIDOR
+			boss_matching_boost += 1
+			new_cell_type = RoomType.CORRIDOR
+
 
 		var new_cell_pos = current_pos + new_cell_direction
-		distance_from_origin += 1
+
+		if not (new_cell_type == RoomType.CORRIDOR && (new_cell_direction == Vector2i.UP || new_cell_direction == Vector2i.UP)):
+			distance_from_origin += 1
+
 		_create_instance(current_pos, new_cell_pos, distance_from_origin, new_cell_type)
 		visited_cells.append(new_cell_pos)
 
@@ -178,64 +195,56 @@ func _generate_secondary_branches(target_total_rooms: int):
 
 # === Instantiate room at given position ===
 func _create_instance(current_cell_pos: Vector2i, new_cell_pos: Vector2i, distance_from_origin: int, instance_type: int):
-	
 	var room_data: RoomData
-	var backwards_door: bool = false
-	
+
 	match instance_type:
 		RoomType.INITIAL:
-			room_data = RoomDataInitial.new(level,distance_from_origin)
+			room_data = RoomDataInitial.new(level, distance_from_origin)
 		RoomType.COMMON:
-			room_data = RoomDataCommon.new(level,distance_from_origin)
-			backwards_door = true
+			room_data = RoomDataCommon.new(level, distance_from_origin)
 		RoomType.CORRIDOR:
 			room_data = RoomDataCorridor.new(level, distance_from_origin)
-			backwards_door = true
 		RoomType.BOSS:
 			room_data = RoomDataBoss.new(level, distance_from_origin)
-			backwards_door = true
 		RoomType.SHOP:
 			room_data = RoomDataShop.new(level, distance_from_origin)
-			backwards_door = true
 		RoomType.TREASURE:
 			room_data = RoomDataTreasure.new(level, distance_from_origin)
-			backwards_door = true
-		RoomType.LIMBO:
-			pass
-		RoomType.STAIRS:
-			pass
 		RoomType.CAMPUS:
 			room_data = RoomDataCampus.new(level, distance_from_origin)
-			backwards_door = true
-		RoomType.IMANERROR:
-			room_data = RoomData.new(level, RoomType.IMANERROR, distance_from_origin)
 		_:
 			room_data = RoomData.new(level, RoomType.IMANERROR, distance_from_origin)
-	
-	map_data[new_cell_pos] = room_data
-	Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: %s][CLASS: %s]" % [new_cell_pos, room_data.distance, get_room_type_name(room_data.type), room_data.get_script().get_class()])
 
-	
-	if backwards_door:
+	map_data[new_cell_pos] = room_data
+
+	Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: %s]" % [new_cell_pos, room_data.distance, get_room_type_name(room_data.type)])
+
+	if current_cell_pos != new_cell_pos:
 		_link_cells_connections(current_cell_pos, new_cell_pos)
+	elif instance_type in [RoomType.CAMPUS, RoomType.SHOP, RoomType.TREASURE, RoomType.BOSS]:
+		pass
+
+
+
+
 
 func _link_cells_connections(current_cell_pos: Vector2i, new_cell_pos: Vector2i):
-	# Current cell connection add
-	map_data[current_cell_pos].add_connections([new_cell_pos - current_cell_pos] as Array[Vector2i])
-
-	# New cell connection add
-	map_data[new_cell_pos].add_connections([current_cell_pos - new_cell_pos] as Array[Vector2i])
-
+	var delta1: Vector2i = new_cell_pos - current_cell_pos
+	var delta2: Vector2i = current_cell_pos - new_cell_pos
+	var connections1: Array[Vector2i] = [delta1]
+	var connections2: Array[Vector2i] = [delta2]
+	map_data[current_cell_pos].add_connections(connections1)
+	map_data[new_cell_pos].add_connections(connections2)
 
 # CREATE INITIAL ROOM
 
 # === Setup initial room manually ===
-func _create_initial_room(connections: Array[Vector2i]) -> RoomData:
-	# TODO: Connections
+func _create_initial_room() -> RoomData:
 	var init_room = RoomDataInitial.new(level, 0)
-	init_room.add_connections(connections)
-	_create_instance(START_CELL_POSITION, START_CELL_POSITION, init_room.distance, init_room.type)
+	map_data[START_CELL_POSITION] = init_room
+	Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: INITIAL]" % [START_CELL_POSITION, init_room.distance])
 	return init_room
+
 
 # GETTING ADJACENT AVAILABLE
 
@@ -303,6 +312,31 @@ func _get_random_available_direction(rng: RandomNumberGenerator, available_dirs:
 	last_direction = chosen
 	return chosen
 
+func _connect_corridors_to_adjacent_rooms() -> void:
+	for pos in map_data.keys():
+		var data = map_data[pos]
+		if data.type != RoomType.CORRIDOR:
+			continue
+
+		for dir in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]:
+			var neighbor_pos = pos + dir
+			if not map_data.has(neighbor_pos):
+				continue
+
+			var neighbor = map_data[neighbor_pos]
+			if neighbor.type != RoomType.CORRIDOR:
+				continue
+
+			# Si no están conectados todavía, conectarlos
+			if not data.connections.has(dir):
+				Logger.warning("\n\n\n\n\nDIR: %s\n\n\n\n\n" % dir)
+				data.add_connections([dir] as Array[Vector2i])
+			if not neighbor.connections.has(-dir):
+				Logger.warning("\n\n\n\n\nDIR NEGATIVO: %s\n\n\n\n\n" % -dir)
+				neighbor.add_connections([-dir] as Array[Vector2i])
+			Logger.info("CONNECTED CORRIDOR %s <--> %s %s" % [pos,get_room_type_name(neighbor.type),neighbor_pos])
+
+
 # BACKTRACK FOR PATHING
 
 
@@ -319,6 +353,71 @@ func _backtrack(visited_cells: Array[Vector2i], last_pos) -> Vector2i:
 
 	return visited_cells.back()
 
+func _ensure_instances_range():
+	var room_count := map_data.size()
+
+	var max_rooms = (
+		GlobalConstants.WORLDGEN_MAX_LENGTH_FROM_INIT + (level * GlobalConstants.WORLDGEN_MAX_LENGTH_LEVEL_MULTLIPIER)
+		+ GlobalConstants.WORLDGEN_MAX_TARGET_SECUNDARY_BRANCH * GlobalConstants.WORLDGEN_BRANCH_LENGTH_MAX
+	)
+
+	if room_count > max_rooms:
+		Logger.warning("Room count (%d) out of max (%d). Retrying..." % [room_count, max_rooms])
+		map_data.clear()
+		visited_cells.clear()
+		last_direction = Vector2i.ZERO
+		generate_level(seed, level)
+
+
+func _ensure_minimum_common_rooms(min_required: int) -> void:
+	var current_common_count := 0
+	for data in map_data.values():
+		if data.type == RoomType.COMMON:
+			current_common_count += 1
+
+	if current_common_count >= min_required:
+		return
+
+	Logger.warning("Insufficient common rooms (%d/%d). Adding more..." % [current_common_count, min_required])
+
+	# First, expand from corridors
+	var corridors = map_data.keys().filter(func(pos):
+		var data = map_data[pos]
+		return data.type == RoomType.CORRIDOR
+	)
+
+	for pos in corridors:
+		if current_common_count >= min_required:
+			break
+		for dir in [Vector2i.LEFT, Vector2i.RIGHT]:
+			var corridor_pos = pos + dir
+			var room_pos = corridor_pos + dir
+			if map_data.has(corridor_pos) or map_data.has(room_pos):
+				continue
+			_create_instance(pos, corridor_pos, map_data[pos].distance + 1, RoomType.CORRIDOR)
+			_create_instance(corridor_pos, room_pos, map_data[pos].distance + 2, RoomType.COMMON)
+			current_common_count += 1
+			break
+
+	# If still not enough, expand from any room
+	if current_common_count < min_required:
+		Logger.warning("Retrying with all rooms as origin...")
+		var all_rooms = map_data.keys()
+		for pos in all_rooms:
+			if current_common_count >= min_required:
+				break
+			for dir in [Vector2i.LEFT, Vector2i.RIGHT]:
+				var corridor_pos = pos + dir
+				var room_pos = corridor_pos + dir
+				if map_data.has(corridor_pos) or map_data.has(room_pos):
+					continue
+				_create_instance(pos, corridor_pos, map_data[pos].distance + 1, RoomType.CORRIDOR)
+				_create_instance(corridor_pos, room_pos, map_data[pos].distance + 2, RoomType.COMMON)
+				current_common_count += 1
+				break
+
+
+
 # SPECIAL ROOMS
 
 
@@ -328,20 +427,29 @@ func _place_special_rooms(treasure_count: int, campus_chance: float) -> void:
 	_place_treasure_rooms(treasure_count)
 	_place_campus(campus_chance)
 
+
 # Look for suitable COMMON to become SHOP
 func _place_shop() -> void:
 	for pos in map_data.keys():
 		var room: RoomData = map_data[pos]
-		if room.type == RoomType.COMMON:
-			var corridor_count = 0
-			for dir in [Vector2i.LEFT, Vector2i.RIGHT]:
-				var neighbor = pos + dir
-				if map_data.has(neighbor) and map_data[neighbor].type == RoomType.CORRIDOR:
-					corridor_count += 1
-			if corridor_count == 1:
-				room.type = RoomType.SHOP
-				Logger.info("SHOP PLACED at %s" % [pos])
-				return
+		if room.type != RoomType.COMMON:
+			continue
+
+		if room.connections.size() != 1:
+			continue
+
+		var dir = room.connections[0]
+		if dir != Vector2i.LEFT and dir != Vector2i.RIGHT:
+			continue
+
+		var connections = room.connections.duplicate()
+		var distance = room.distance
+		_create_instance(pos, pos, distance, RoomType.SHOP)
+		map_data[pos].add_connections(connections)
+		Logger.info("SHOP PLACED at %s" % [pos])
+		return
+
+
 
 # N TREASURE rooms placement
 func _place_treasure_rooms(max_count: int) -> void:
@@ -349,31 +457,133 @@ func _place_treasure_rooms(max_count: int) -> void:
 	for pos in map_data.keys():
 		if count >= max_count:
 			return
+
 		var room: RoomData = map_data[pos]
-		if room.type == RoomType.COMMON:
-			var corridor_count = 0
-			for dir in [Vector2i.LEFT, Vector2i.RIGHT]:
-				var neighbor = pos + dir
-				if map_data.has(neighbor) and map_data[neighbor].type == RoomType.CORRIDOR:
-					corridor_count += 1
-			if corridor_count == 1:
-				room.type = RoomType.TREASURE
-				Logger.info("TREASURE PLACED at %s" % [pos])
-				count += 1
+		if room.type != RoomType.COMMON:
+			continue
+
+		if room.connections.size() != 1:
+			continue
+
+		var dir = room.connections[0]
+		if dir != Vector2i.LEFT and dir != Vector2i.RIGHT:
+			continue
+
+		var connections = room.connections.duplicate()
+		var distance = room.distance
+		_create_instance(pos, pos, distance, RoomType.TREASURE)
+		map_data[pos].add_connections(connections)
+		Logger.info("TREASURE PLACED at %s" % [pos])
+		count += 1
+
 
 # CAMPUS room placement
 func _place_campus(probability: float) -> void:
 	if rng.randf() > probability:
 		return
 
+	# Prevent duplicate CAMPUS
+	for data in map_data.values():
+		if data.type == RoomType.CAMPUS:
+			Logger.warning("Campus already exists. Skipping placement.")
+			return
+
+	for corridor_pos in map_data.keys():
+		var corridor = map_data[corridor_pos]
+		if corridor.type != RoomType.CORRIDOR:
+			continue
+
+		var campus_pos = corridor_pos + Vector2i.UP
+		if map_data.has(campus_pos):
+			continue
+
+		# Create the campus room above the corridor and connect them
+		_create_instance(corridor_pos, campus_pos, corridor.distance + 1, RoomType.CAMPUS)
+		Logger.info("CAMPUS PLACED at %s" % [campus_pos])
+		return
+
+
+
+func _place_boss_room():
+	# Check if a BOSS room already exists
+	for data in map_data.values():
+		if data.type == RoomType.BOSS:
+			Logger.warning("Boss room already exists. Skipping placement.")
+			return
+
+	var attempts := 0
+	var boss_placed := false
+
+	while attempts < GlobalConstants.WORLDGEN_MAX_BOSS_ATTEMPTS:
+		var furthest_pos: Vector2i = START_CELL_POSITION
+		var max_distance := -1
+
+		for pos in map_data.keys():
+			var data = map_data[pos]
+			if data.type != RoomType.COMMON:
+				continue
+			if data.connections.size() != 1:
+				continue
+			var dir = data.connections[0]
+			if dir != Vector2i.LEFT and dir != Vector2i.RIGHT:
+				continue
+			if data.distance > max_distance:
+				max_distance = data.distance
+				furthest_pos = pos
+
+		if max_distance > -1:
+			var original = map_data[furthest_pos]
+			var connections = original.connections.duplicate()
+			_create_instance(
+				furthest_pos,
+				furthest_pos,
+				original.distance,
+				RoomType.BOSS
+			)
+			map_data[furthest_pos].add_connections(connections)
+			Logger.info("BOSS PLACED at %s" % furthest_pos)
+			boss_placed = true
+			break
+
+		attempts += 1
+		Logger.warning("Boss placement attempt #%d failed" % attempts)
+
+	if not boss_placed:
+		Logger.error("Boss placement failed after %d attempts. Regenerating level..." % attempts)
+		map_data.clear()
+		visited_cells.clear()
+		last_direction = Vector2i.ZERO
+		generate_level(seed, level)
+
+
+	if not boss_placed:
+		Logger.error("Boss placement failed after %d attempts. Regenerating level..." % attempts)
+		# Limpia todo y vuelve a empezar
+		map_data.clear()
+		visited_cells.clear()
+		last_direction = Vector2i.ZERO
+		generate_level(seed, level)
+
+
+# Intenta expandir pasillos muertos con habitaciones comunes
+func _expand_dead_end_corridors_with_common_rooms() -> void:
 	for pos in map_data.keys():
-		var room: RoomData = map_data[pos]
-		if room.type == RoomType.COMMON:
-			var below = pos + Vector2i.DOWN
-			if map_data.has(below) and map_data[below].type == RoomType.CORRIDOR:
-				room.type = RoomType.CAMPUS
-				Logger.info("CAMPUS PLACED at %s" % [pos])
-				return
+		var data = map_data[pos]
+		if data.type != RoomType.CORRIDOR:
+			continue
+
+		# Aquí va tu lógica para detectar si es un pasillo "muerto"
+		if true:
+			# Intenta colocar una habitación común a la izquierda o derecha
+			for dir in [Vector2i.LEFT, Vector2i.RIGHT]:
+				var new_pos = pos + dir
+				if map_data.has(new_pos):
+					continue  # Ya hay algo ahí
+
+				_create_instance(pos, new_pos, data.distance + 1, RoomType.COMMON)
+				Logger.info("COMMON ROOM EXPANSION at %s from corridor %s" % [new_pos, pos])
+				break  # Sólo colocamos una
+
 
 # CLEANING LEVEL
 
@@ -397,8 +607,23 @@ func _clean_isolated_corridors():
 			to_remove.append(pos)
 
 	for pos in to_remove:
-		map_data.erase(pos)
-		Logger.info("Removed corridor with only one neighbor at %s" % [pos])
+		_remove_corridor_and_cleanup_neighbors(pos)
+
+func _remove_corridor_and_cleanup_neighbors(pos: Vector2i) -> void:
+	for dir in [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]:
+		var neighbor_pos = pos + dir
+		if not map_data.has(neighbor_pos):
+			continue
+
+		var neighbor = map_data[neighbor_pos]
+		if neighbor.connections.has(-dir):
+			neighbor.connections.erase(-dir)
+			Logger.info("Removed connection from %s to %s" % [neighbor_pos, pos])
+
+	map_data.erase(pos)
+	Logger.info("Removed isolated corridor at %s" % pos)
+
+
 
 
 # UTILS

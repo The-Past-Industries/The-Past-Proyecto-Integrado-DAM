@@ -1,5 +1,5 @@
 extends Node2D
-class_name MapVisualizer2DO
+class_name MapVisualizer2D
 
 @export var world_generator: WorldGenerator
 
@@ -28,14 +28,15 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):  # Espacio por defecto
+		Logger.info("\n\n=====================NEW MAP_DATA GENERATED=====================\n")
 		_generate_and_visualize()
 
 func _generate_and_visualize():
 	clear_level()
 	await get_tree().process_frame  # Espera a que clear_level termine
 
-	var random_seed = Time.get_ticks_msec() % 100000000
-	world_generator.generate_level(random_seed, 0, 50, 4, 0.05)
+	# var random_seed = Time.get_ticks_msec() % 100000000
+	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, 3)
 
 	Logger.info("Celdas generadas: %d" % world_generator.map_data.size())
 	visualize_map(world_generator.map_data)
@@ -59,24 +60,52 @@ func _flush_children():
 	world_generator.last_direction = Vector2i.ZERO
 
 
-func visualize_map(map_data: Dictionary):
+func visualize_map(map_data: Dictionary) -> void:
 	for cell_pos in map_data.keys():
 		var room_data: RoomData = map_data[cell_pos]
 		var room_type: int = room_data.type
-		var color: Color = ROOM_COLORS.get(room_type, Color.BLACK)
+		var base_color: Color = ROOM_COLORS.get(room_type, Color.BLACK)
 
-		var rect := ColorRect.new()
-		rect.color = color
+		var base_pos: Vector2 = Vector2(cell_pos.x * CELL_SIZE, cell_pos.y * CELL_SIZE)
+		var center: Vector2 = base_pos + Vector2(CELL_SIZE / 2, CELL_SIZE / 2)
+
+		# Draw the room itself
+		var rect = ColorRect.new()
+		rect.color = base_color
 		rect.size = Vector2(CELL_SIZE, CELL_SIZE)
-		rect.position = Vector2(cell_pos.x * CELL_SIZE, cell_pos.y * CELL_SIZE)
+		rect.position = base_pos
 		add_child(rect)
 
-		var label := Label.new()
+		# Draw center-to-connection lines
+		for dir in room_data.connections:
+			var line = ColorRect.new()
+			line.color = Color.WHITE
+			var thickness = 6
+			var length = CELL_SIZE / 2
+
+			match dir:
+				Vector2i.UP:
+					line.size = Vector2(thickness, length)
+					line.position = center + Vector2(-thickness / 2, -length)
+				Vector2i.DOWN:
+					line.size = Vector2(thickness, length)
+					line.position = center + Vector2(-thickness / 2, 0)
+				Vector2i.LEFT:
+					line.size = Vector2(length, thickness)
+					line.position = center + Vector2(-length, -thickness / 2)
+				Vector2i.RIGHT:
+					line.size = Vector2(length, thickness)
+					line.position = center + Vector2(0, -thickness / 2)
+
+			add_child(line)
+
+		# Draw label on top
+		var label = Label.new()
 		label.text = world_generator.get_room_type_name(room_type)
-		label.size = rect.size
+		label.size = Vector2(CELL_SIZE, CELL_SIZE)
+		label.position = base_pos
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		label.position = rect.position
 		label.add_theme_color_override("font_color", Color.BLACK)
 		label.scale = Vector2(0.8, 0.8)
 		add_child(label)

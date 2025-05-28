@@ -4,7 +4,7 @@ class_name RoomData
 var level: int
 var type: int	# RoomType enum
 var distance: int
-var connections: Array[Vector2i]
+var connections: Array[Vector2i] = []
 var shown: bool
 
 func _init(
