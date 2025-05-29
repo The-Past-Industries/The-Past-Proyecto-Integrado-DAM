@@ -27,18 +27,17 @@ func _ready():
 
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):  # Espacio por defecto
+	if event.is_action_pressed("ui_accept"):
 		Logger.info("\n\n=====================NEW MAP_DATA GENERATED=====================\n")
 		_generate_and_visualize()
 
 func _generate_and_visualize():
 	clear_level()
-	await get_tree().process_frame  # Espera a que clear_level termine
+	await get_tree().process_frame
 
-	# var random_seed = Time.get_ticks_msec() % 100000000
 	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, 3)
 
-	Logger.info("Celdas generadas: %d" % world_generator.map_data.size())
+	Logger.info("GENERATED CELLS: %d" % world_generator.map_data.size())
 	visualize_map(world_generator.map_data)
 
 
@@ -69,14 +68,12 @@ func visualize_map(map_data: Dictionary) -> void:
 		var base_pos: Vector2 = Vector2(cell_pos.x * CELL_SIZE, cell_pos.y * CELL_SIZE)
 		var center: Vector2 = base_pos + Vector2(CELL_SIZE / 2, CELL_SIZE / 2)
 
-		# Draw the room itself
 		var rect = ColorRect.new()
 		rect.color = base_color
 		rect.size = Vector2(CELL_SIZE, CELL_SIZE)
 		rect.position = base_pos
 		add_child(rect)
 
-		# Draw center-to-connection lines
 		for dir in room_data.connections:
 			var line = ColorRect.new()
 			line.color = Color.WHITE
@@ -99,7 +96,6 @@ func visualize_map(map_data: Dictionary) -> void:
 
 			add_child(line)
 
-		# Draw label on top
 		var label = Label.new()
 		label.text = world_generator.get_room_type_name(room_type)
 		label.size = Vector2(CELL_SIZE, CELL_SIZE)

@@ -1,7 +1,6 @@
 extends Node
 class_name WorldGenerator
 
-# === Initialization Constants ===
 const START_CELL_POSITION = Vector2i.ZERO
 
 # Current in game level
@@ -18,22 +17,25 @@ var visited_cells: Array[Vector2i]
 var last_direction: Vector2i = Vector2i.ZERO
 
 
-# === Entry point for generation ===
-# Main method to generate entire level
 func generate_level(seed: int = GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, level: int = 0, max_population: int = GlobalConstants.WORLDGEN_MAX_INSTANCES_PER_POPULATION, max_target_secundary_branch: int = GlobalConstants.WORLDGEN_MAX_TARGET_SECUNDARY_BRANCH, treasure_count: int = GlobalConstants.WORLDGEN_MAX_TREASURE_ROOMS_PER_LEVEL, campus_chance: float = GlobalConstants.WORLDGEN_CAMPUS_ROOM_CHANCE) -> void:
 	self.seed = seed
 	self.level = level
 	_generate_path(max_population)
-	_ensure_minimum_common_rooms(GlobalConstants.WORLDGEN_MIN_COMMON_ROOMS_PER_LEVEL)
-	_ensure_instances_range()
-	_place_boss_room()
-	_place_special_rooms(treasure_count, campus_chance)
-	_connect_corridors_to_adjacent_rooms()
-	_clean_isolated_corridors()
-	# _expand_dead_end_corridors_with_common_rooms()
+	if GlobalConstants.WORLDGEN_ENABLE_ENSURE_MINIMUN_COMMON_ROOMS:
+		_ensure_minimum_common_rooms(GlobalConstants.WORLDGEN_MIN_COMMON_ROOMS_PER_LEVEL)
+	if GlobalConstants.WORLDGEN_ENABLE_ENSURE_INSTANCES_RANGE:
+		_ensure_instances_range()
+	if GlobalConstants.WORLDGEN_ENABLE_PLACE_BOSS_ROOM:
+		_place_boss_room()
+	if GlobalConstants.WORLDGEN_ENABLE_PLACE_SPECIAL_ROOMS:
+		_place_special_rooms(treasure_count, campus_chance)
+	if GlobalConstants.WORLDGEN_ENABLE_CONNECT_CORRIDORS_TO_ADJACENT:
+		_connect_corridors_to_adjacent_rooms()
+	if GlobalConstants.WORLDGEN_ENABLE_CLEAN_ISOLATED_CORRIDORS:
+		_clean_isolated_corridors()
+	if GlobalConstants.WORLDGEN_ENABLE_EXPAND_DEAD_CORRIDORS:
+		_expand_dead_end_corridors_with_common_rooms()
 
-
-# --- Main path and branches ---
 func _generate_path(max_population: int) -> void:
 	rng.seed = seed
 	map_data.clear()
@@ -41,7 +43,6 @@ func _generate_path(max_population: int) -> void:
 	_populate_branches(visited_cells, max_population)
 	_generate_secondary_branches(max_population)
 
-# === Main Branch Generation ===
 func _generate_main_branch(rng: RandomNumberGenerator):
 	var boss_matching_boost: int = 0
 	var MAX_LENGTH_FROM_INIT = GlobalConstants.WORLDGEN_MAX_LENGTH_FROM_INIT + (level * GlobalConstants.WORLDGEN_MAX_LENGTH_LEVEL_MULTLIPIER)
@@ -108,10 +109,6 @@ func _generate_main_branch(rng: RandomNumberGenerator):
 
 # POPULATE BRANCHES
 
-# POPULATE BRANCHES
-
-
-# === Fill corridors with branches ===
 func _populate_branches(candidates: Array[Vector2i], max_new_rooms: int):
 	var new_rooms = 0
 	for pos in candidates:
@@ -135,13 +132,8 @@ func _populate_branches(candidates: Array[Vector2i], max_new_rooms: int):
 			_create_instance(pos, side_pos, data.distance + 1, new_type)
 			new_rooms += 1
 
-
 # GENERATE SECONDARY BRANCHES
 
-# GENERATE SECONDARY BRANCHES
-
-
-# === Extra rooms beyond the main path ===
 func _generate_secondary_branches(target_total_rooms: int):
 	var existing_keys = map_data.keys()
 	var current_total = existing_keys.size()
@@ -189,8 +181,6 @@ func _generate_secondary_branches(target_total_rooms: int):
 
 # CREATE INSTANCE
 
-
-# === Instantiate room at given position ===
 func _create_instance(current_cell_pos: Vector2i, new_cell_pos: Vector2i, distance_from_origin: int, instance_type: int):
 	var room_data: RoomData
 
@@ -235,7 +225,6 @@ func _link_cells_connections(current_cell_pos: Vector2i, new_cell_pos: Vector2i)
 
 # CREATE INITIAL ROOM
 
-# === Setup initial room manually ===
 func _create_initial_room() -> RoomData:
 	var init_room = RoomDataInitial.new(level, 0)
 	map_data[START_CELL_POSITION] = init_room
@@ -243,10 +232,8 @@ func _create_initial_room() -> RoomData:
 	return init_room
 
 
-# GETTING ADJACENT AVAILABLE
+# GETTING ADJACENT AVAILABLE DATA
 
-
-# --- Adjacent Cells by Type ---
 func _get_adjacent(current_instance_type, current_pos, init_room_direction, exclude_dir = Vector2i.ZERO) -> Array[Vector2i]:
 	var adjacent_directions_available: Array[Vector2i]
 
@@ -263,17 +250,14 @@ func _get_adjacent(current_instance_type, current_pos, init_room_direction, excl
 
 	return adjacent_directions_available
 
-# Return directions with free neighbor cells
 func _get_adjacent_directions_available(pos: Vector2i, directions_available: Array[Vector2i]) -> Array[Vector2i]:
 	return directions_available.filter(func(dir: Vector2i) -> bool:
 		var new_pos = pos + dir
 		return not map_data.has(new_pos)
 	)
 
-# GETTING NEW CELL TYPE
+# NEW CELL TYPE SELECTION
 
-
-# --- Cell type transition logic ---
 func _get_new_cell_type(current_instance_type):
 	match (current_instance_type):
 		RoomType.COMMON:
@@ -288,18 +272,14 @@ func _get_new_cell_type(current_instance_type):
 
 # RANDOMS
 
-
-# Randomly choose LEFT or RIGHT
 func _random_room_direction(rng: RandomNumberGenerator) -> Vector2i:
 	rng.randomize()
 	var options = [Vector2i.LEFT, Vector2i.RIGHT]
 	return options[rng.randi_range(0, options.size() - 1)]
 
-# Get horizontal direction randomly
 func _random_horizontal_direction() -> Vector2i:
 	return [Vector2i.LEFT, Vector2i.RIGHT][rng.randi_range(0, 1)]
 
-# Pick direction avoiding repeats
 func _get_random_available_direction(rng: RandomNumberGenerator, available_dirs: Array[Vector2i]) -> Vector2i:
 	if last_direction != Vector2i.ZERO:
 		var filtered = available_dirs.filter(func(d): return d != last_direction)
@@ -324,12 +304,9 @@ func _connect_corridors_to_adjacent_rooms() -> void:
 			if neighbor.type != RoomType.CORRIDOR:
 				continue
 
-			# Si no están conectados todavía, conectarlos
 			if not data.connections.has(dir):
-				Logger.warning("\n\n\n\n\nDIR: %s\n\n\n\n\n" % dir)
 				data.add_connections([dir] as Array[Vector2i])
 			if not neighbor.connections.has(-dir):
-				Logger.warning("\n\n\n\n\nDIR NEGATIVO: %s\n\n\n\n\n" % -dir)
 				neighbor.add_connections([-dir] as Array[Vector2i])
 			Logger.info("CONNECTED CORRIDOR %s <--> %s %s" % [pos,get_room_type_name(neighbor.type),neighbor_pos])
 

@@ -232,13 +232,13 @@ mesh = SubResource("ArrayMesh_3ipo2")
 surface_material_override/0 = SubResource("StandardMaterial3D_qtfws")
 
 [node name="Wall_7" parent="walls/back_walls" instance=ExtResource("5_6c1uc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 
 [node name="Wall_1" parent="walls/back_walls/Wall_7" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_r1rbh")
 
 [node name="Wall_8" parent="walls/back_walls" instance=ExtResource("6_nau3k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
 
 [node name="Wall_2" parent="walls/back_walls/Wall_8" index="0"]
 mesh = SubResource("ArrayMesh_3ipo2")
