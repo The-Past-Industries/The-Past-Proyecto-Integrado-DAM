@@ -41,9 +41,6 @@ func _generate_path(max_population: int) -> void:
 	_populate_branches(visited_cells, max_population)
 	_generate_secondary_branches(max_population)
 
-# GENERATE MAIN BRANCH
-
-
 # === Main Branch Generation ===
 func _generate_main_branch(rng: RandomNumberGenerator):
 	var boss_matching_boost: int = 0

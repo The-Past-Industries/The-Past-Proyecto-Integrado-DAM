@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca6ub1i264qw6"]
+
+[ext_resource type="PackedScene" uid="uid://bux3b1ef80ipp" path="res://assets/world/3D/Outdoor_Fall.fbx" id="1_ywm5b"]
+
+[node name="Outdoor_Fall" instance=ExtResource("1_ywm5b")]
