@@ -120,4 +120,5 @@ billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_slnd5")
 autoplay = "default"
-frame_progress = 0.308492
+frame = 14
+frame_progress = 1.0
