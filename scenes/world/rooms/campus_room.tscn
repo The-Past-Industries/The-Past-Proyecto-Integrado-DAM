@@ -1,6 +1,7 @@
-[gd_scene load_steps=65 format=4 uid="uid://baq3pwxmxesx7"]
+[gd_scene load_steps=66 format=4 uid="uid://baq3pwxmxesx7"]
 
-[ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/backgrounds/VoidPix-FreePack/blink/cubemap.png" id="1_qnfty"]
+[ext_resource type="Script" uid="uid://dxqg5twi5ps3o" path="res://scripts/data/rooms/room_controller_campus.gd" id="1_bplvp"]
+[ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_qnfty"]
 [ext_resource type="PackedScene" uid="uid://cqaqrqsf06was" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_1.blend" id="2_5w5sr"]
 [ext_resource type="Texture2D" uid="uid://xiw1u5hujodu" path="res://assets/world/3D/RPG Mini Bundle 3/Texture/Color2.png" id="3_n1fge"]
 [ext_resource type="PackedScene" uid="uid://jewm02jdtg70" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_2.blend" id="4_1gu20"]
@@ -19,7 +20,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ceqjmcmsawrrp" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/bookcaseFilled.obj" id="16_n1fge"]
 [ext_resource type="ArrayMesh" uid="uid://uebaxeuhcqa5" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/bookcaseWideFilled_broken.obj" id="17_1gu20"]
 [ext_resource type="ArrayMesh" uid="uid://go26vprte7x4" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/bookcaseWideFilled.obj" id="17_n1fge"]
-[ext_resource type="Texture2D" uid="uid://cvrqae6pj3m3v" path="res://assets/world/backgrounds/moons/1 background/2.png" id="17_olge4"]
+[ext_resource type="Texture2D" uid="uid://cvrqae6pj3m3v" path="res://assets/world/sky/moons/1 background/2.png" id="17_olge4"]
 [ext_resource type="Script" uid="uid://b5bl1wjh01hwq" path="res://scripts/world/light/spot_light_blue_campus.gd" id="21_8dr1h"]
 [ext_resource type="ArrayMesh" uid="uid://bdmowwyk62jrq" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/potionSmall_red.obj" id="22_yte8m"]
 [ext_resource type="ArrayMesh" uid="uid://btokvbll1ijnl" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/obj/potionMedium_green.obj" id="23_6buet"]
@@ -201,7 +202,8 @@ albedo_texture = ExtResource("37_ttrdy")
 emission_enabled = true
 emission = Color(0.470588, 0.72549, 0.72549, 1)
 
-[node name="basic_room" type="Node3D"]
+[node name="campus_room" type="Node3D"]
+script = ExtResource("1_bplvp")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.983979, 0.178287, 0, -0.178287, 0.983979, 0, 1.71295, 7.83103)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=4 uid="uid://bi3w3wiu50egq"]
+[gd_scene load_steps=29 format=4 uid="uid://bi3w3wiu50egq"]
 
-[ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/backgrounds/VoidPix-FreePack/blink/cubemap.png" id="1_st3ty"]
+[ext_resource type="Script" uid="uid://b5uwidekcelaw" path="res://scripts/data/rooms/room_controller_common.gd" id="1_n38fs"]
+[ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_st3ty"]
 [ext_resource type="Texture2D" uid="uid://xiw1u5hujodu" path="res://assets/world/3D/RPG Mini Bundle 3/Texture/Color2.png" id="3_yacsa"]
 [ext_resource type="PackedScene" uid="uid://ccqhgsne3lse7" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_Window_Bars.blend" id="4_0iujg"]
 [ext_resource type="PackedScene" uid="uid://cqaqrqsf06was" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_1.blend" id="5_h0vcv"]
@@ -105,7 +106,8 @@ albedo_texture = ExtResource("3_yacsa")
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
-[node name="basic_room" type="Node3D"]
+[node name="common_room" type="Node3D"]
+script = ExtResource("1_n38fs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.983979, 0.178287, 0, -0.178287, 0.983979, 0, 1.71295, 7.83103)
@@ -163,10 +165,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0koot")
 [node name="left_walls" type="Node3D" parent="walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
 
-[node name="Wall_Door" parent="walls/left_walls" instance=ExtResource("7_q1q1r")]
+[node name="Wall_Door_toggleable" parent="walls/left_walls" instance=ExtResource("7_q1q1r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 1)
 
-[node name="Wall_Archway_Door" parent="walls/left_walls/Wall_Door" index="0"]
+[node name="Wall_Archway_Door" parent="walls/left_walls/Wall_Door_toggleable" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ieprk")
 
 [node name="Wall_1" parent="walls/left_walls" instance=ExtResource("5_h0vcv")]
@@ -182,21 +184,21 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0,
 mesh = SubResource("ArrayMesh_3ipo2")
 surface_material_override/0 = SubResource("StandardMaterial3D_qtfws")
 
-[node name="Wall_Window_Bars3" parent="walls/left_walls" instance=ExtResource("4_0iujg")]
+[node name="Wall_Window_Bars_toggleable" parent="walls/left_walls" instance=ExtResource("4_0iujg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 1.5)
 visible = false
 
-[node name="Wall_Window_Bars" parent="walls/left_walls/Wall_Window_Bars3" index="0"]
+[node name="Wall_Window_Bars" parent="walls/left_walls/Wall_Window_Bars_toggleable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1)
 surface_material_override/0 = SubResource("StandardMaterial3D_rv8ie")
 
 [node name="right_walls" type="Node3D" parent="walls"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.5, 0, 2)
 
-[node name="Wall_Door" parent="walls/right_walls" instance=ExtResource("7_q1q1r")]
+[node name="Wall_Door_toggleable" parent="walls/right_walls" instance=ExtResource("7_q1q1r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 1)
 
-[node name="Wall_Archway_Door" parent="walls/right_walls/Wall_Door" index="0"]
+[node name="Wall_Archway_Door" parent="walls/right_walls/Wall_Door_toggleable" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ieprk")
 
 [node name="Wall_1" parent="walls/right_walls" instance=ExtResource("5_h0vcv")]
@@ -212,11 +214,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0,
 mesh = SubResource("ArrayMesh_3ipo2")
 surface_material_override/0 = SubResource("StandardMaterial3D_qtfws")
 
-[node name="Wall_Window_Bars4" parent="walls/right_walls" instance=ExtResource("4_0iujg")]
+[node name="Wall_Window_Bars_toggleable" parent="walls/right_walls" instance=ExtResource("4_0iujg")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -5, 0, 1.5)
 visible = false
 
-[node name="Wall_Window_Bars" parent="walls/right_walls/Wall_Window_Bars4" index="0"]
+[node name="Wall_Window_Bars" parent="walls/right_walls/Wall_Window_Bars_toggleable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1)
 surface_material_override/0 = SubResource("StandardMaterial3D_rv8ie")
 
@@ -475,13 +477,13 @@ frame_progress = 0.955372
 [editable path="walls/back_walls/Wall_7"]
 [editable path="walls/back_walls/Wall_8"]
 [editable path="walls/back_walls/Wall_Window_Bars"]
-[editable path="walls/left_walls/Wall_Door"]
+[editable path="walls/left_walls/Wall_Door_toggleable"]
 [editable path="walls/left_walls/Wall_1"]
 [editable path="walls/left_walls/Wall_2"]
-[editable path="walls/left_walls/Wall_Window_Bars3"]
-[editable path="walls/right_walls/Wall_Door"]
+[editable path="walls/left_walls/Wall_Window_Bars_toggleable"]
+[editable path="walls/right_walls/Wall_Door_toggleable"]
 [editable path="walls/right_walls/Wall_1"]
 [editable path="walls/right_walls/Wall_2"]
-[editable path="walls/right_walls/Wall_Window_Bars4"]
+[editable path="walls/right_walls/Wall_Window_Bars_toggleable"]
 [editable path="pillars/back_pillars/Pillar_Wall"]
 [editable path="pillars/back_pillars/Pillar_Wall2"]

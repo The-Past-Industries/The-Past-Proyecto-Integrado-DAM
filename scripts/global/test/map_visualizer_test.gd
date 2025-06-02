@@ -1,5 +1,5 @@
 extends Node2D
-class_name MapVisualizer2D
+class_name MapVisualizerTest
 
 @export var world_generator: WorldGenerator
 

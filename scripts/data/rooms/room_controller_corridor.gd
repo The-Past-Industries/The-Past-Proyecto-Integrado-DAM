@@ -1,0 +1,2 @@
+extends RoomController
+class_name RoomControllerCorridor

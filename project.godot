@@ -11,20 +11,21 @@ config_version=5
 [application]
 
 config/name="The-Past"
-run/main_scene="res://scenes/mainCharacter_node.tscn"
+run/main_scene="uid://713j5w8ukweo"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-MainTest="*res://scripts/global/test/main_test.gd"
+MainTest="res://scripts/global/test/main_test.gd"
 Logger="*res://scripts/global/Utils/logger_class.gd"
+WorldManagerGlobal="*res://scripts/global/global_managers/world_manager.gd"
+MapUIBridge="*res://scripts/world/minimap/map_ui.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/size/borderless=true
 window/size/window_width_override=1920
 window/size/window_height_override=1080

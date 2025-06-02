@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://713j5w8ukweo"]
+
+[ext_resource type="Script" uid="uid://c420tuw1exg15" path="res://scripts/world/minimap/map_ui.gd" id="1_owi6x"]
+[ext_resource type="Script" uid="uid://cmsbcx8ux21cd" path="res://scripts/world/minimap/map_visualizer.gd" id="2_18pis"]
+
+[node name="MapUI" type="CanvasLayer"]
+script = ExtResource("1_owi6x")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+
+[node name="MapVisualizer" type="Node2D" parent="SubViewport"]
+script = ExtResource("2_18pis")
+metadata/_custom_type_script = "uid://cmsbcx8ux21cd"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

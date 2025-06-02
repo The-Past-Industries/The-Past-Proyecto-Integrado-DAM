@@ -1,11 +1,30 @@
-[gd_scene load_steps=12 format=4 uid="uid://cbrncuig3vbb2"]
+[gd_scene load_steps=24 format=4 uid="uid://cbrncuig3vbb2"]
 
+[ext_resource type="Texture2D" uid="uid://hs3s7noswe4m" path="res://assets/world/sky/VoidPix-FreePack/blood/cubemap.png" id="1_2ewe6"]
+[ext_resource type="Script" uid="uid://ce8mjo87u1rbj" path="res://scripts/world/sky/sky_rotation.gd" id="2_ds34m"]
 [ext_resource type="PackedScene" uid="uid://cqaqrqsf06was" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_1.blend" id="2_x3fk8"]
 [ext_resource type="Texture2D" uid="uid://xiw1u5hujodu" path="res://assets/world/3D/RPG Mini Bundle 3/Texture/Color2.png" id="3_4sns8"]
 [ext_resource type="PackedScene" uid="uid://jewm02jdtg70" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_2.blend" id="4_7qhfb"]
 [ext_resource type="Script" uid="uid://b3jl7honfy0xp" path="res://scripts/world/light/omni_light_3D_wave_noise.gd" id="7_2ewe6"]
 [ext_resource type="PackedScene" uid="uid://cb8etemdi18vl" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/WallCover_Modular.blend" id="9_5fuc1"]
+[ext_resource type="PackedScene" uid="uid://dgol82sbrr2rt" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Pedestal.blend" id="9_lgrij"]
+[ext_resource type="Script" uid="uid://dq3w0vik2u7ej" path="res://scripts/world/light/emission_laser_wave.gd" id="10_wkkyq"]
+[ext_resource type="PackedScene" uid="uid://de6s0u36rvedo" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/fbx/door.fbx" id="11_68b1i"]
+[ext_resource type="Script" uid="uid://db00u2dit4j1k" path="res://scripts/world/fx/emission_boss_door_wave.gd" id="12_x3fk8"]
 [ext_resource type="Texture2D" uid="uid://coigpsx8vppen" path="res://assets/world/3D/Dungeon Asset Pack/Dungeon Swatch.jpg" id="13_x3fk8"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u07hy"]
+panorama = ExtResource("1_2ewe6")
+
+[sub_resource type="Sky" id="Sky_2ewe6"]
+sky_material = SubResource("PanoramaSkyMaterial_u07hy")
+
+[sub_resource type="Environment" id="Environment_ds34m"]
+background_mode = 2
+sky = SubResource("Sky_2ewe6")
+sky_custom_fov = 75.0
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkkyq"]
 cull_mode = 2
@@ -56,7 +75,30 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8heky")
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_lgrij"]
+top_radius = 0.07
+bottom_radius = 0.0
+height = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68b1i"]
+albedo_color = Color(0.705882, 0.223529, 0.262745, 1)
+emission_enabled = true
+emission = Color(0.705882, 0.223529, 0.262745, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sns8"]
+resource_name = "BrownDark"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.607141, 0.351749, 0.27004, 1)
+emission_enabled = true
+emission = Color(0.303233, 0.303233, 0.303233, 1)
+
 [node name="basic_room" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ds34m")
+script = ExtResource("2_ds34m")
+rotation_speed_deg = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.983979, 0.178287, 0, -0.178287, 0.983979, 0, 1.71295, 7.83103)
@@ -610,7 +652,7 @@ skeleton = NodePath("")
 [node name="lights" type="Node3D" parent="."]
 
 [node name="OmniLight3D_bottom" type="OmniLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -4, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 2)
 light_color = Color(0.941176, 0.0666667, 0, 1)
 light_energy = 4.0
 shadow_enabled = true
@@ -622,46 +664,87 @@ noise_amplitude = 1.0
 wave_speed = 4.0
 noise_speed = 10.0
 
-[node name="OmniLight3D_bottom2" type="OmniLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -4, 2)
-light_color = Color(0.941176, 0.0666667, 0, 1)
-light_energy = 4.0
-shadow_enabled = true
-omni_range = 10.0
-script = ExtResource("7_2ewe6")
-base_energy = 8.0
-wave_amplitude = 1.0
-noise_amplitude = 1.0
-wave_speed = 4.0
-noise_speed = 10.0
-
-[node name="SpotLight3D" type="SpotLight3D" parent="lights"]
+[node name="SpotLight3D_left" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.5, 2.5, 2)
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 3.0
 spot_angle = 30.0
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="lights"]
+[node name="SpotLight3D_right" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 2.5, 2)
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 3.0
 spot_angle = 30.0
 
-[node name="SpotLight3D5" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 3.5, 2)
+[node name="SpotLight3D5_red" type="SpotLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5, 2)
 light_color = Color(0.926941, 0.131572, 5.77569e-07, 1)
 light_energy = 2.0
 shadow_enabled = true
 spot_angle = 50.0
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.5, 3.5, 2)
-light_color = Color(0.926941, 0.131572, 5.77569e-07, 1)
-light_energy = 2.0
-shadow_enabled = true
-spot_angle = 50.0
+[node name="Pedestal2" parent="." instance=ExtResource("9_lgrij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -3, -12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal2"]
+mesh = SubResource("CylinderMesh_lgrij")
+surface_material_override/0 = SubResource("StandardMaterial3D_68b1i")
+script = ExtResource("10_wkkyq")
+wave_speed = 1.0
+brightness_boost = 1.0
+
+[node name="Pedestal3" parent="." instance=ExtResource("9_lgrij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, -12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal3"]
+mesh = SubResource("CylinderMesh_lgrij")
+surface_material_override/0 = SubResource("StandardMaterial3D_68b1i")
+script = ExtResource("10_wkkyq")
+wave_speed = 1.0
+brightness_boost = 1.0
+
+[node name="Pedestal4" parent="." instance=ExtResource("9_lgrij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, -19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal4"]
+mesh = SubResource("CylinderMesh_lgrij")
+surface_material_override/0 = SubResource("StandardMaterial3D_68b1i")
+script = ExtResource("10_wkkyq")
+wave_speed = 1.0
+brightness_boost = 1.0
+
+[node name="Pedestal5" parent="." instance=ExtResource("9_lgrij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -3, -19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal5"]
+mesh = SubResource("CylinderMesh_lgrij")
+surface_material_override/0 = SubResource("StandardMaterial3D_68b1i")
+script = ExtResource("10_wkkyq")
+wave_speed = 1.0
+brightness_boost = 1.0
+
+[node name="door" parent="." instance=ExtResource("11_68b1i")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -3, 0, 2.5)
+
+[node name="door" parent="door" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_4sns8")
+script = ExtResource("12_x3fk8")
+wave_speed = 3.0
+brightness_boost = 1.0
+emission_on = true
+
+[node name="door2" parent="." instance=ExtResource("11_68b1i")]
+transform = Transform3D(-0.12941, 0, -0.482963, 0, 0.5, 0, 0.482963, 0, -0.12941, 3, 0, 2.5)
+
+[node name="door" parent="door2" index="0"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -1.93185, 0, 0.517638)
+surface_material_override/0 = SubResource("StandardMaterial3D_4sns8")
+script = ExtResource("12_x3fk8")
+wave_speed = 3.0
+brightness_boost = 1.0
+emission_on = true
 
 [editable path="walls/walls_1/back_walls/Wall_1"]
 [editable path="walls/walls_1/back_walls/Wall_2"]
@@ -702,3 +785,5 @@ spot_angle = 50.0
 [editable path="walls/walls_3/right_walls/Wall_2"]
 [editable path="walls/walls_3/right_walls/Wall_3"]
 [editable path="walls/walls_3/right_walls/Wall_4"]
+[editable path="door"]
+[editable path="door2"]
