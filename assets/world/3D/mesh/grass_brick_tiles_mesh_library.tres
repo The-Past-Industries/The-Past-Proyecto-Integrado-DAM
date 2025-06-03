@@ -1,7 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=138 format=4 uid="uid://bvpaxmuvyhojy"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ovvia"]
-load_path = "res://.godot/imported/grass_brick_tiles_3d_tile_brick_grass.png-5f6c069ca038c27374849dd2d7596bde.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jkee"]
 resource_name = "Grass_Brick"

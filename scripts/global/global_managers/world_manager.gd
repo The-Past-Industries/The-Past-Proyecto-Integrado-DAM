@@ -26,8 +26,6 @@ func _ready():
 	_generate_level()
 	# MapUIBridge.get_instance().get_map_visualizer().visualize_map(world_generator.map_data)
 
-
-
 func _generate_level():
 	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, level)
 	map_data = world_generator.map_data.duplicate(true)
@@ -57,7 +55,7 @@ func _instance_cell(room_data: RoomData):
 			cell_instantiated = CAMPUS_ROOM_NODE.instantiate()
 		_:
 			Logger.error("The instantiated cell type does not exist")
-	cell_instantiated.setup(cur_position, room_data) 
+	cell_instantiated.setup(cur_position, room_data)
 	_load_cell_on_tree(cell_instantiated)
 	Logger.info("CELL LOADED ON TREE: pos [%s] type [%s]" % [cur_position, get_room_type_name(room_data.type)])
 
@@ -66,8 +64,8 @@ func _load_cell_on_tree(cell_instantiated: RoomController):
 
 func move_to_cell(direction: Vector2i):
 	var new_pos = cur_position + direction
-	Logger.info("MOVING TO: pos [%s] type [%s]" % [new_pos, get_room_type_name(map_data[new_pos].type)])
-	if map_data.has(new_pos):
+	Logger.info("MOVING TO: pos [%s]" % new_pos)
+	if map_data.has(new_pos) and map_data[new_pos] is RoomData:
 		cur_position += direction
 		_change_cell(map_data[cur_position])
 	else:

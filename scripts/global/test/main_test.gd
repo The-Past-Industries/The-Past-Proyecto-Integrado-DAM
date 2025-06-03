@@ -10,7 +10,8 @@ func _ready():
 	# show_items()
 	# load_path_level()
 	pass
-func _input(event: InputEvent) -> void:
+	
+func input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up"):
 		_move_input(Vector2i.UP)
 	elif event.is_action_pressed("ui_down"):

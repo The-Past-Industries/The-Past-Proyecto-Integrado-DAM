@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The-Past"
-run/main_scene="uid://713j5w8ukweo"
+run/main_scene="uid://dee1hlgjmrgjr"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,7 +20,8 @@ config/icon="res://icon.svg"
 MainTest="res://scripts/global/test/main_test.gd"
 Logger="*res://scripts/global/Utils/logger_class.gd"
 WorldManagerGlobal="*res://scripts/global/global_managers/world_manager.gd"
-MapUIBridge="*res://scripts/world/minimap/map_ui.gd"
+MapUIBridge="res://scripts/world/minimap/map_ui.gd"
+ActionMenu="*res://scripts/global/test/action_menu_test.gd"
 
 [display]
 
@@ -33,7 +34,7 @@ window/stretch/mode="canvas_items"
 
 [global_group]
 
-Physic=""
+doors_tp_proc=""
 
 [input]
 

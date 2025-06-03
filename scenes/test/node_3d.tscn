@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://bf62af257iyge"]
 
 [ext_resource type="PackedScene" uid="uid://dnafb3annmq4i" path="res://scenes/characters/enemies/fem_warrior.tscn" id="1_bm6xc"]
-[ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/backgrounds/VoidPix-FreePack/blink/cubemap.png" id="1_hqbwi"]
+[ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_hqbwi"]
 [ext_resource type="PackedScene" uid="uid://cl7v7lwkiudus" path="res://scenes/world/assets/grass_bricks_platform.tscn" id="3_i7qd7"]
 [ext_resource type="PackedScene" uid="uid://dxcctlr3sskr" path="res://scenes/characters/main/mage.tscn" id="3_k2s0j"]
 [ext_resource type="Texture2D" uid="uid://vdfu43j86vwc" path="res://assets/world/levels/the_bridge/Grass/1.png" id="5_jx0mq"]
