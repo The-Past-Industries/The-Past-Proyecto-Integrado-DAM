@@ -1,6 +1,8 @@
 extends CanvasLayer
 class_name MapUI
 
+var is_active = false
+
 @onready var map_visualizer: MapVisualizer = $SubViewport/MapVisualizer
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var viewport: SubViewport = $SubViewport

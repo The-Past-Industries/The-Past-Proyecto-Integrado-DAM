@@ -1,6 +1,8 @@
-[gd_scene load_steps=24 format=4 uid="uid://cbrncuig3vbb2"]
+[gd_scene load_steps=26 format=4 uid="uid://cbrncuig3vbb2"]
 
 [ext_resource type="Texture2D" uid="uid://hs3s7noswe4m" path="res://assets/world/sky/VoidPix-FreePack/blood/cubemap.png" id="1_2ewe6"]
+[ext_resource type="Script" uid="uid://beq26kf0uhow3" path="res://scripts/data/rooms/room_controller_boss.gd" id="1_x3fk8"]
+[ext_resource type="PackedScene" uid="uid://we502ofvrcf2" path="res://scenes/characters/main/main_character_king.tscn" id="2_4sns8"]
 [ext_resource type="Script" uid="uid://ce8mjo87u1rbj" path="res://scripts/world/sky/sky_rotation.gd" id="2_ds34m"]
 [ext_resource type="PackedScene" uid="uid://cqaqrqsf06was" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_1.blend" id="2_x3fk8"]
 [ext_resource type="Texture2D" uid="uid://xiw1u5hujodu" path="res://assets/world/3D/RPG Mini Bundle 3/Texture/Color2.png" id="3_4sns8"]
@@ -93,7 +95,11 @@ albedo_color = Color(0.607141, 0.351749, 0.27004, 1)
 emission_enabled = true
 emission = Color(0.303233, 0.303233, 0.303233, 1)
 
-[node name="basic_room" type="Node3D"]
+[node name="boss_room" type="Node3D"]
+script = ExtResource("1_x3fk8")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_4sns8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.86502, 0, 1.59875)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ds34m")

@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name RoomController
 
 var cur_position: Vector2i

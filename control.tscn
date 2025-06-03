@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://boxm1yhlrf2xm"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="POCHOCLO" type="Label" parent="."]
+layout_mode = 0
+offset_left = 898.0
+offset_top = 525.0
+offset_right = 991.0
+offset_bottom = 548.0
+text = "POCHOCLO "

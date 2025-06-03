@@ -1,6 +1,8 @@
 extends Node
 class_name WorldManager
 
+var is_active = false
+
 # World
 var world_generator := WorldGenerator.new()
 var map_data: Dictionary
@@ -16,15 +18,17 @@ var SHOP_ROOM_NODE := preload("res://scenes/world/rooms/shop_room.tscn")
 var TREASURE_ROOM_NODE := preload("res://scenes/world/rooms/treasure_room.tscn")
 var CAMPUS_ROOM_NODE := preload("res://scenes/world/rooms/campus_room.tscn")
 
-# Scene
+# Root scene containing instance/clear process
 var root
 
-# Level 1 generation
+func init_in_root_scene(root: Node3D):
+	self.root = root
+	_generate_level()
 
 func _ready():
-	root = get_tree().current_scene
-	_generate_level()
+	# _generate_level()
 	# MapUIBridge.get_instance().get_map_visualizer().visualize_map(world_generator.map_data)
+	pass
 
 func _generate_level():
 	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, level)
@@ -40,7 +44,7 @@ func _instance_cell(room_data: RoomData):
 	var cell_instantiated: RoomController
 	match room_data.type:
 		RoomType.INITIAL:
-			cell_instantiated = INITIAL_ROOM_NODE.instantiate()
+			cell_instantiated = INITIAL_ROOM_NODE.instantiate() as RoomController
 		RoomType.COMMON:
 			cell_instantiated = COMMON_ROOM_NODE.instantiate()
 		RoomType.CORRIDOR:
@@ -60,7 +64,12 @@ func _instance_cell(room_data: RoomData):
 	Logger.info("CELL LOADED ON TREE: pos [%s] type [%s]" % [cur_position, get_room_type_name(room_data.type)])
 
 func _load_cell_on_tree(cell_instantiated: RoomController):
+	if root == null:
+		Logger.error("WorldManager: root is null")
+	else:
+		Logger.info("WorldManager: adding cell to root: %s" % root.name)
 	root.add_child(cell_instantiated)
+
 
 func move_to_cell(direction: Vector2i):
 	var new_pos = cur_position + direction

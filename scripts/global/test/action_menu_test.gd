@@ -1,11 +1,14 @@
 extends Node
 class_name ActionMenuTest
 
+var is_active = false
+
 var options: Array[String] = []
 var target_index: int = 0
 
 func _ready() -> void:
-	_refresh_menu()
+	# _refresh_menu()
+	pass
 
 func _refresh_menu():
 	Logger.info("-------ACTION BAR:-------")
