@@ -11,10 +11,10 @@ func _ready() -> void:
 	pass
 
 func _refresh_menu():
-	Logger.info("-------ACTION BAR:-------")
+	# Logger.info("-------ACTION BAR:-------")
 	for i in options.size():
 		var prefix := "→ " if i == target_index else "  "
-		Logger.info("%s%d: %s" % [prefix, i, options[i]])
+	#	Logger.info("%s%d: %s" % [prefix, i, options[i]])
 
 func _add_door_option(direction: Vector2i):
 	var str = "Atravesar puerta"

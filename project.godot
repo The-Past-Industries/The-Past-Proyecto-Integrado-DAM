@@ -19,9 +19,10 @@ config/icon="res://icon.svg"
 
 MainTest="*res://scripts/global/test/main_test.gd"
 Logger="*res://scripts/global/Utils/logger_class.gd"
-WorldManagerGlobal="*res://scripts/global/global_managers/world_manager.gd"
+WorldManagerGlobal="*res://scripts/global/global_managers/global_world_manager.gd"
 MapUIBridge="res://scripts/world/minimap/map_ui.gd"
 ActionMenu="res://scripts/global/test/action_menu_test.gd"
+EntityManagerGlobal="*res://scripts/global/global_managers/global_entity_manager.gd"
 
 [display]
 

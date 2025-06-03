@@ -9,3 +9,6 @@ func setup(cur_position: Vector2i, room_data: RoomData):
 		$walls/right_walls/Wall_Door_toggleable,
 		$walls/right_walls/Wall_Window_Bars_toggleable
 	])
+
+func _ready():
+	pass

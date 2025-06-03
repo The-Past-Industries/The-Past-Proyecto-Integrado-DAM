@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bi3w3wiu50egq"]
+[gd_scene load_steps=31 format=4 uid="uid://bi3w3wiu50egq"]
 
 [ext_resource type="Script" uid="uid://b5uwidekcelaw" path="res://scripts/data/rooms/room_controller_common.gd" id="1_n38fs"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_st3ty"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bjkkspl5bh41n" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/gltf/floor_wood_small_dark.gltf" id="11_wmkcq"]
 [ext_resource type="PackedScene" uid="uid://cb8etemdi18vl" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/WallCover_Modular.blend" id="12_73ent"]
 [ext_resource type="PackedScene" uid="uid://3de55fn8cdb4" path="res://assets/world/3D/scenes/lights/torch_fire.tscn" id="12_xm7ym"]
-[ext_resource type="PackedScene" uid="uid://dxcctlr3sskr" path="res://scenes/characters/main/mage.tscn" id="14_u8wrh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hsr6n"]
 panorama = ExtResource("1_st3ty")
@@ -107,7 +106,7 @@ albedo_texture = ExtResource("3_yacsa")
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n3ji1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_n38fs"]
 size = Vector3(1, 1.5, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u8wrh"]
@@ -123,9 +122,6 @@ metadata/_edit_lock_ = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x3s3p")
 camera_attributes = SubResource("CameraAttributesPractical_hb3y4")
-
-[node name="CharacterBody3D" parent="." groups=["doors_tp_proc"] instance=ExtResource("14_u8wrh")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2, 1)
 
 [node name="walls" type="Node3D" parent="."]
 
@@ -480,21 +476,35 @@ script = ExtResource("11_h0vcv")
 [node name="torch_fire" parent="wall_torch2/fire" instance=ExtResource("12_xm7ym")]
 frame_progress = 0.955372
 
+[node name="position_markers" type="Node3D" parent="."]
+
+[node name="door_left" type="Marker3D" parent="position_markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 1)
+
+[node name="door_right" type="Marker3D" parent="position_markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1)
+
+[node name="combat_right" type="Marker3D" parent="position_markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1)
+
+[node name="combat_left" type="Marker3D" parent="position_markers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1)
+
 [node name="collisions" type="Node3D" parent="."]
 
 [node name="proc_areas" type="Node3D" parent="collisions"]
 
 [node name="Area3D_right" type="Area3D" parent="collisions/proc_areas" groups=["doors_tp_proc"]]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.5, 0.5, 1)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.75, 0.5, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/proc_areas/Area3D_right"]
-shape = SubResource("BoxShape3D_n3ji1")
+shape = SubResource("BoxShape3D_n38fs")
 
 [node name="Area3D_left" type="Area3D" parent="collisions/proc_areas" groups=["doors_tp_proc"]]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.5, 0.5, 1)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.75, 0.5, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/proc_areas/Area3D_left"]
-shape = SubResource("BoxShape3D_n3ji1")
+shape = SubResource("BoxShape3D_n38fs")
 
 [node name="floor_area" type="Node3D" parent="collisions"]
 
@@ -503,9 +513,6 @@ shape = SubResource("BoxShape3D_n3ji1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/floor_area/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("WorldBoundaryShape3D_u8wrh")
-
-[connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
-[connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
 
 [editable path="walls/back_walls/Wall_1"]
 [editable path="walls/back_walls/Wall_9"]

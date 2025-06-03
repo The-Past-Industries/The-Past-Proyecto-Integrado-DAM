@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://frwwjm51iyxx"]
+[gd_scene load_steps=68 format=4 uid="uid://frwwjm51iyxx"]
 
 [ext_resource type="Script" uid="uid://dfcfwshuxpbrx" path="res://scripts/data/rooms/room_controller_shop.gd" id="1_23mih"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_humxt"]
@@ -469,6 +469,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jdxkj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_23mih"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_glcf5"]
 
 [node name="shop_room" type="Node3D"]
 script = ExtResource("1_23mih")
@@ -1194,6 +1199,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53, 0.43, -0.79)
 
 [node name="_hammer_21" parent="." instance=ExtResource("29_x1flu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.39, -0.8)
+
+[node name="collisions" type="Node3D" parent="."]
+
+[node name="proc_areas" type="Node3D" parent="collisions"]
+
+[node name="Area3D_right" type="Area3D" parent="collisions/proc_areas" groups=["doors_tp_proc"]]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.75, 0.5, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/proc_areas/Area3D_right"]
+shape = SubResource("BoxShape3D_23mih")
+
+[node name="Area3D_left" type="Area3D" parent="collisions/proc_areas" groups=["doors_tp_proc"]]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.75, 0.5, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/proc_areas/Area3D_left"]
+shape = SubResource("BoxShape3D_23mih")
+
+[node name="floor_area" type="Node3D" parent="collisions"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="collisions/floor_area"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/floor_area/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+shape = SubResource("WorldBoundaryShape3D_glcf5")
 
 [editable path="walls/back_walls/Wall_1"]
 [editable path="walls/back_walls/Wall_2"]
