@@ -8,9 +8,10 @@ var world_generator := WorldGenerator.new()
 var map_data: Dictionary
 var map_repository: Array[Dictionary] = []
 var cur_position := Vector2i(0,0)
+var last_position
 var level: int = 1
 
-var INITIAL_ROOM_NODE := preload("res://scenes/world/rooms/common_room.tscn")
+var INITIAL_ROOM_NODE := preload("res://scenes/world/rooms/initial_room.tscn")
 var COMMON_ROOM_NODE := preload("res://scenes/world/rooms/common_room.tscn")
 var CORRIDOR_ROOM_NODE := preload("res://scenes/world/rooms/corridor_room.tscn")
 var BOSS_ROOM_NODE := preload("res://scenes/world/rooms/boss_room.tscn")
@@ -46,17 +47,17 @@ func _instance_cell(room_data: RoomData):
 		RoomType.INITIAL:
 			cell_instantiated = INITIAL_ROOM_NODE.instantiate() as RoomController
 		RoomType.COMMON:
-			cell_instantiated = COMMON_ROOM_NODE.instantiate()
+			cell_instantiated = COMMON_ROOM_NODE.instantiate() as RoomController
 		RoomType.CORRIDOR:
-			cell_instantiated = CORRIDOR_ROOM_NODE.instantiate()
+			cell_instantiated = CORRIDOR_ROOM_NODE.instantiate() as RoomController
 		RoomType.BOSS:
-			cell_instantiated = BOSS_ROOM_NODE.instantiate()
+			cell_instantiated = BOSS_ROOM_NODE.instantiate() as RoomController
 		RoomType.SHOP:
-			cell_instantiated = SHOP_ROOM_NODE.instantiate()
+			cell_instantiated = SHOP_ROOM_NODE.instantiate() as RoomController
 		RoomType.TREASURE:
-			cell_instantiated = TREASURE_ROOM_NODE.instantiate()
+			cell_instantiated = TREASURE_ROOM_NODE.instantiate() as RoomController
 		RoomType.CAMPUS:
-			cell_instantiated = CAMPUS_ROOM_NODE.instantiate()
+			cell_instantiated = CAMPUS_ROOM_NODE.instantiate() as RoomController
 		_:
 			Logger.error("The instantiated cell type does not exist")
 	cell_instantiated.setup(cur_position, room_data)
@@ -75,6 +76,7 @@ func move_to_cell(direction: Vector2i):
 	var new_pos = cur_position + direction
 	Logger.info("MOVING TO: pos [%s]" % new_pos)
 	if map_data.has(new_pos) and map_data[new_pos] is RoomData:
+		last_position = cur_position
 		cur_position += direction
 		_change_cell(map_data[cur_position])
 	else:

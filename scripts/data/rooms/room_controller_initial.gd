@@ -1,27 +1,29 @@
-extends RoomController
+extends RoomControllerFlat
 class_name RoomControllerInitial
 
-# Left wall
-@onready var door_left = $walls/left_walls/Wall_Door_toggleable
-@onready var window_bars_left = $walls/left_walls/Wall_Window_Bars_toggleable
+# SPAWN POINT
+@onready var spawn_point_marker: Marker3D = $position_markers/spawn_point
 
-# Right wall
-@onready var door_right = $walls/right_walls/Wall_Door_toggleable
-@onready var window_bars_right = $walls/right_walls/Wall_Window_Bars_toggleable
+func setup(cur_position: Vector2i, room_data: RoomData):
+	super.setup(cur_position, room_data)
+	self._init_room_components([
+		$walls/left_walls/Wall_Door_toggleable,
+		$walls/left_walls/Wall_Window_Bars_toggleable,
+		$walls/right_walls/Wall_Door_toggleable,
+		$walls/right_walls/Wall_Window_Bars_toggleable,
+		$position_markers/door_left,
+		$position_markers/door_right,
+		$position_markers/combat_left,
+		$position_markers/combat_right
+	])
 
 func _ready():
 	_load_door_by_room_connections()
+	_spawn_player()
 
-func _load_door_by_room_connections():
-	for direction in self.room_data.connections:
-		
-		# Left walls toggle
-		var is_left = direction == Vector2i.LEFT
-		door_left.visible = is_left
-		window_bars_left.visible = not is_left
-		
-		# Right walls toggle
-		var is_right = direction == Vector2i.RIGHT
-		door_right.visible = is_right
-		window_bars_right.visible = not is_right
-		
+func _spawn_player():
+	EntityManagerGlobal.spawn_player_in_pos(self, spawn_point_marker.global_position)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		_spawn_player()

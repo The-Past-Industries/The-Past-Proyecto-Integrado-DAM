@@ -30,6 +30,6 @@ fallbacks=[]
 Compress=null
 compress=true
 preload=[]
-language_support={}
+=null
 script_support={}
 opentype_features={}

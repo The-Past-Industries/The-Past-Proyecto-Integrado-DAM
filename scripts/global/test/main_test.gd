@@ -11,15 +11,15 @@ func _ready():
 	# load_path_level()
 	pass
 	
-func input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up"):
-		_move_input(Vector2i.UP)
+		pass#_move_input(Vector2i.UP)
 	elif event.is_action_pressed("ui_down"):
-		_move_input(Vector2i.DOWN)
+		pass#_move_input(Vector2i.DOWN)
 	elif event.is_action_pressed("ui_left"):
-		_move_input(Vector2i.LEFT)
+		pass#_move_input(Vector2i.LEFT)
 	elif event.is_action_pressed("ui_right"):
-		_move_input(Vector2i.RIGHT)
+		pass#_move_input(Vector2i.RIGHT)
 
 func _move_input(direction: Vector2i) -> void:
 	WorldManagerGlobal.move_to_cell(direction)

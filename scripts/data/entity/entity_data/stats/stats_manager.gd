@@ -16,6 +16,11 @@ var physical_damage: Stat = Stat.new(StatType.PHYSICAL_DMG)
 var magic_damage: Stat = Stat.new(StatType.MAGIC_DMG)
 var true_damage: Stat = Stat.new(StatType.TRUE_DMG)
 
+# Penetrations
+
+var physical_penetration: Stat = Stat.new(StatType.PHYSICAL_PEN, true)
+var magic_penetration: Stat = Stat.new(StatType.MAGIC_PEN, true)
+
 # Stat Management
 var statVariator: StatVariator
 var statsList: Array[Stat] = []
@@ -30,6 +35,8 @@ func _init():
 		physical_damage,
 		magic_damage,
 		true_damage,
+		physical_penetration,
+		magic_penetration,
 		critical_chance
 	]
 	statVariator = StatVariator.new(statsList)

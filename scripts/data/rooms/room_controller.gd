@@ -10,3 +10,6 @@ func setup(cur_position: Vector2i, room_data: RoomData):
 
 func _load_door_by_room_connections():
 	pass
+
+func _spawn_player_by_dir_connection(dir_comming: Vector2i):
+	pass

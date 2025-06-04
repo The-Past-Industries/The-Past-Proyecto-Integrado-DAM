@@ -12,8 +12,9 @@ var enemy: EntityEnemy
 var boss: EntityBoss
 
 func _ready():
-	generator.generate_entity(EntityType.PLAYER)
+	player = generator.generate_entity(EntityType.PLAYER)
 
-func spawn_player_in_pos(position:Vector3, root: Node3D):
+func spawn_player_in_pos(root: Node3D, position: Vector3):
+	Logger.info("PLAYER SPAWNS IN: (%s)" % position)
 	root.add_child(player)
 	player.global_position = position

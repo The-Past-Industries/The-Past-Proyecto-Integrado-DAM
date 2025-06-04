@@ -7,7 +7,7 @@ func _init(statsList: Array[Stat]):
 	self.statsList = statsList
 
 func alterStat(statVariation: StatVariation):
-	var stat: Stat = _getStatByType(statVariation.stat_type)
+	var stat: Stat = _get_stat_by_type(statVariation.stat_type)
 	
 	if (statVariation.is_multiplying):
 		stat.value *= statVariation.variation_value
@@ -45,7 +45,7 @@ func alterStat(statVariation: StatVariation):
 		stat.value = 0
 	return
 
-func _getStatByType(stat_type: int) -> Stat:
+func _get_stat_by_type(stat_type: int) -> Stat:
 	for stat in statsList:
 		if stat.stat_type == stat_type:
 			return stat

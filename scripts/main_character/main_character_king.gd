@@ -20,7 +20,7 @@ var is_falling: bool
 var is_idle: bool
 var is_moving_vert: bool
 
-func _process(delta):
+func _process(_delta):
 	#Animations
 	is_moving = velocity.x != 0
 	is_facing_left= velocity.x < 0
