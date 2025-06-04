@@ -1,6 +1,5 @@
 extends Node3D
+class_name GameRoot
 
-@onready var camera = $Camera3D
-
-func _ready():
-	WorldManagerGlobal.init_in_root_scene(self)
+func _init():
+	WorldManagerGlobal.set_root(self)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://i0rpox6yh88h"]
+
+[ext_resource type="Script" uid="uid://c517x80oucghp" path="res://scripts/global/test/map_visualizer_test.gd" id="1_wghbv"]
+[ext_resource type="Script" uid="uid://djrk7howpvur5" path="res://scripts/world/generation/world_generator.gd" id="2_feutr"]
+[ext_resource type="Script" uid="uid://8t0jrkomd8k" path="res://scenes/test/camera_2d_moving_arros.gd" id="3_i0hnu"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MapVisualizer2D" type="Node2D" parent="Node2D"]
+position = Vector2(967, 552)
+script = ExtResource("1_wghbv")
+metadata/_custom_type_script = "uid://c517x80oucghp"
+
+[node name="WorldGenerator" type="Node" parent="Node2D"]
+script = ExtResource("2_feutr")
+metadata/_custom_type_script = "uid://djrk7howpvur5"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(963, 549)
+script = ExtResource("3_i0hnu")

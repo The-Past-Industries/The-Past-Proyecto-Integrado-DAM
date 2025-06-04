@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://vcw6m3nxy60j"]
+[gd_scene load_steps=3 format=3 uid="uid://vcw6m3nxy60j"]
+
+[ext_resource type="Script" uid="uid://cho2v8ptu55uf" path="res://scripts/ui/map/mini_map.gd" id="1_hcnxy"]
+[ext_resource type="Script" uid="uid://c517x80oucghp" path="res://scripts/global/test/map_visualizer_test.gd" id="1_hnesk"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -36,3 +39,22 @@ size_flags_vertical = 8
 [node name="background" type="ColorRect" parent="main_ui/bottom_panel"]
 layout_mode = 2
 color = Color(0.0705882, 0.0705882, 0.0705882, 0.917647)
+
+[node name="Panel" type="Panel" parent="main_ui"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 400.0
+grow_horizontal = 0
+
+[node name="Minimap" type="Node2D" parent="main_ui/Panel"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_hcnxy")
+
+[node name="MapVisualizer2D" type="Node2D" parent="main_ui/Panel/Minimap"]
+position = Vector2(967, 552)
+script = ExtResource("1_hnesk")
+metadata/_custom_type_script = "uid://c517x80oucghp"

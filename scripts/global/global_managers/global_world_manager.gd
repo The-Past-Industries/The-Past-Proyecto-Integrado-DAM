@@ -20,15 +20,15 @@ var TREASURE_ROOM_NODE := preload("res://scenes/world/rooms/treasure_room.tscn")
 var CAMPUS_ROOM_NODE := preload("res://scenes/world/rooms/campus_room.tscn")
 
 # Root scene containing instance/clear process
-var root
+var root: Node3D
 
-func init_in_root_scene(root: Node3D):
+func set_root(root: Node3D):
 	self.root = root
-	_generate_level()
 
 func _ready():
 	# _generate_level()
 	# MapUIBridge.get_instance().get_map_visualizer().visualize_map(world_generator.map_data)
+	_generate_level()
 	pass
 
 func _generate_level():
@@ -42,26 +42,26 @@ func _change_cell(room_data: RoomData):
 	_instance_cell(room_data)
 
 func _instance_cell(room_data: RoomData):
-	var cell_instantiated: RoomController
+	var cell_instantiated
 	match room_data.type:
 		RoomType.INITIAL:
-			cell_instantiated = INITIAL_ROOM_NODE.instantiate() as RoomController
+			cell_instantiated = INITIAL_ROOM_NODE.instantiate() as RoomControllerInitial
 		RoomType.COMMON:
-			cell_instantiated = COMMON_ROOM_NODE.instantiate() as RoomController
+			cell_instantiated = COMMON_ROOM_NODE.instantiate() as RoomControllerCommon
 		RoomType.CORRIDOR:
-			cell_instantiated = CORRIDOR_ROOM_NODE.instantiate() as RoomController
+			cell_instantiated = CORRIDOR_ROOM_NODE.instantiate() as RoomControllerCorridor
 		RoomType.BOSS:
-			cell_instantiated = BOSS_ROOM_NODE.instantiate() as RoomController
+			cell_instantiated = BOSS_ROOM_NODE.instantiate() as RoomControllerBoss
 		RoomType.SHOP:
-			cell_instantiated = SHOP_ROOM_NODE.instantiate() as RoomController
+			cell_instantiated = SHOP_ROOM_NODE.instantiate() as RoomControllerShop
 		RoomType.TREASURE:
-			cell_instantiated = TREASURE_ROOM_NODE.instantiate() as RoomController
+			cell_instantiated = TREASURE_ROOM_NODE.instantiate() as RoomControllerTreasure
 		RoomType.CAMPUS:
-			cell_instantiated = CAMPUS_ROOM_NODE.instantiate() as RoomController
+			cell_instantiated = CAMPUS_ROOM_NODE.instantiate() as RoomControllerCampus
 		_:
 			Logger.error("The instantiated cell type does not exist")
-	cell_instantiated.setup(cur_position, room_data)
 	_load_cell_on_tree(cell_instantiated)
+	cell_instantiated.setup(cur_position, room_data)
 	Logger.info("CELL LOADED ON TREE: pos [%s] type [%s]" % [cur_position, get_room_type_name(room_data.type)])
 
 func _load_cell_on_tree(cell_instantiated: RoomController):
@@ -84,6 +84,7 @@ func move_to_cell(direction: Vector2i):
 
 func _clear_tree():
 	for child in root.get_children():
+		Logger.info("WorldManager: CHILD DELETED: %s" % child)
 		child.queue_free()
 
 # Utils
@@ -102,3 +103,13 @@ func get_room_type_name(value: int) -> String:
 		RoomType.STAIRS: return "STAIRS"
 		RoomType.CAMPUS: return "CAMPUS"
 		_: return "UNKNOWN"
+
+func get_comming_direction() -> Vector2i:
+	Logger.info("WorldManager: Getting comming direction for spawn on new instance")
+	if last_position != null && cur_position != null:
+		var comming_direction = last_position - cur_position
+		Logger.info("WorldManager: CUR_POSITION:%s LAST_POSITION:%s COMMING_DIR:%s" % [cur_position, last_position, comming_direction])
+		return comming_direction
+	else:
+		Logger.error("WRONG COMMING DIRECTION. Last position is NULL")
+		return Vector2i.ZERO

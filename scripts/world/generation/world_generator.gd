@@ -97,7 +97,7 @@ func _generate_main_branch(rng: RandomNumberGenerator):
 
 		var new_cell_pos = current_pos + new_cell_direction
 
-		if not (new_cell_type == RoomType.CORRIDOR && (new_cell_direction == Vector2i.UP || new_cell_direction == Vector2i.UP)):
+		if not (new_cell_type == RoomType.CORRIDOR && (new_cell_direction == Vector2i.UP || new_cell_direction == Vector2i.DOWN)):
 			distance_from_origin += 1
 
 		_create_instance(current_pos, new_cell_pos, distance_from_origin, new_cell_type)

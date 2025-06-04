@@ -24,21 +24,15 @@ func _ready():
 	_generate_and_visualize()
 
 func _generate_and_visualize():
-	clear_level()
-	await get_tree().process_frame
 	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, 3)
 	visualize_map(world_generator.map_data)
-
-func clear_level():
-	for child in get_children():
-		child.queue_free()
-	world_generator.map_data.clear()
-	world_generator.visited_cells.clear()
-	world_generator.last_direction = Vector2i.ZERO
 
 func visualize_map(map_data: Dictionary) -> void:
 	for cell_pos in map_data.keys():
 		var room_data: RoomData = map_data[cell_pos]
+		if not room_data.shown:
+			continue
+
 		var room_type: int = room_data.type
 		var base_color: Color = ROOM_COLORS.get(room_type, Color.BLACK)
 

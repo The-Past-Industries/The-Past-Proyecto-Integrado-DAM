@@ -8,10 +8,9 @@
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="MapVisualizer2D" type="Node2D" parent="Node2D" node_paths=PackedStringArray("world_generator")]
+[node name="MapVisualizer2D" type="Node2D" parent="Node2D"]
 position = Vector2(967, 552)
 script = ExtResource("1_jqsno")
-world_generator = NodePath("../WorldGenerator")
 metadata/_custom_type_script = "uid://c517x80oucghp"
 
 [node name="WorldGenerator" type="Node" parent="Node2D"]

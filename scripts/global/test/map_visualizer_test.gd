@@ -1,7 +1,7 @@
 extends Node2D
 class_name MapVisualizerTest
 
-@export var world_generator: WorldGenerator
+var world_generator: WorldGenerator = WorldManagerGlobal.world_generator
 
 const CELL_SIZE := 100
 
@@ -19,35 +19,16 @@ const ROOM_COLORS := {
 }
 
 func _ready():
-	if world_generator == null:
-		Logger.error("MapVisualizer2D: No se ha asignado WorldGenerator.")
-		return
 	set_process_input(true)
-	_generate_and_visualize()
-
-
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		Logger.info("\n\n=====================NEW MAP_DATA GENERATED=====================\n")
-		_generate_and_visualize()
-
-func _generate_and_visualize():
-	clear_level()
-	await get_tree().process_frame
-
-	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, 3)
-
-	Logger.info("GENERATED CELLS: %d" % world_generator.map_data.size())
 	visualize_map(world_generator.map_data)
-
-
 
 func clear_level():
 	for child in get_children():
 		child.queue_free()
-	world_generator.map_data.clear()
-	world_generator.visited_cells.clear()
-	world_generator.last_direction = Vector2i.ZERO
+	if world_generator:
+		world_generator.map_data.clear()
+		world_generator.visited_cells.clear()
+		world_generator.last_direction = Vector2i.ZERO
 
 
 func _flush_children():
