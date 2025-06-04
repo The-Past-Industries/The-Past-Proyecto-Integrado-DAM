@@ -21,12 +21,17 @@ class_name RoomControllerFlat
 
 func setup(cur_position: Vector2i, room_data: RoomData):
 	super.setup(cur_position, room_data)
-	#if room_data.type != RoomType.INITIAL:
-	#	_spawn_player_by_dir_connection(WorldManagerGlobal.get_comming_direction())
-	#else:
-	await get_tree().process_frame
-	EntityManagerGlobal.spawn_player_in_pos(self, Vector3i(0,0,1))
-	
+	spawn_player()
+
+func spawn_player():
+	Logger.info("----SPAWN PLAYER CALLED----")
+	if room_data.type != RoomType.INITIAL:
+		Logger.info("----SPAWN PLAYER DIRECTIONAL----")
+		_spawn_player_by_dir_connection(WorldManagerGlobal.get_comming_direction())
+	else:
+		Logger.info("----SPAWN PLAYER INITIAL----")
+		EntityManagerGlobal.spawn_player_in_pos(self, Vector3i(0,0,1))
+
 func _init_room_components(components: Array[Node3D]):
 	# Left wall
 	door_left = components[0]

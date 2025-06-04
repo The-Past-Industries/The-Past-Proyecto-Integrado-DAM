@@ -60,8 +60,8 @@ func _physics_process(delta):
 	
 	
 	# Caída por gravedad
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	#if not is_on_floor():
+	#	velocity += get_gravity() * delta
 	
 	
 	# Bloqueo del movimiento del Player

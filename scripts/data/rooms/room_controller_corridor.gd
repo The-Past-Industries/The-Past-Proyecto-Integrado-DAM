@@ -18,6 +18,8 @@ func setup(cur_position: Vector2i, room_data: RoomData):
 		door_right_marker_aux
 	])
 	super.setup(cur_position, room_data)
+	
+	spawn_player()
 
 func _on_area_3d_left_body_entered(body: Node3D) -> void:
 	super._on_area_3d_left_body_entered(body)

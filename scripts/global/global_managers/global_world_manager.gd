@@ -84,8 +84,9 @@ func move_to_cell(direction: Vector2i):
 
 func _clear_tree():
 	for child in root.get_children():
-		Logger.info("WorldManager: CHILD DELETED: %s" % child)
-		child.queue_free()
+		if child is RoomController:
+			Logger.info("WorldManager: CHILD DELETED: %s" % child)
+			child.queue_free()
 
 # Utils
 

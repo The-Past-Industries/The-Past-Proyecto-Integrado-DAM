@@ -539,7 +539,7 @@ shape = SubResource("WorldBoundaryShape3D_u8wrh")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1)
 
 [node name="AnimatedSprite3D" parent="main_character_king" index="1"]
-frame = 4
+frame = 2
 
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
