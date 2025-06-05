@@ -14,15 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://cb8etemdi18vl" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/WallCover_Modular.blend" id="12_73ent"]
 [ext_resource type="PackedScene" uid="uid://3de55fn8cdb4" path="res://assets/world/3D/scenes/lights/torch_fire.tscn" id="12_xm7ym"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hsr6n"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n38fs"]
 panorama = ExtResource("1_st3ty")
 
-[sub_resource type="Sky" id="Sky_h0vcv"]
-sky_material = SubResource("PanoramaSkyMaterial_hsr6n")
+[sub_resource type="Sky" id="Sky_blufq"]
+sky_material = SubResource("PanoramaSkyMaterial_n38fs")
 
-[sub_resource type="Environment" id="Environment_x3s3p"]
+[sub_resource type="Environment" id="Environment_u8wrh"]
 background_mode = 2
-sky = SubResource("Sky_h0vcv")
+sky = SubResource("Sky_blufq")
 ambient_light_color = Color(1, 0.636437, 0.416718, 1)
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.5
@@ -35,8 +35,10 @@ glow_blend_mode = 0
 fog_enabled = true
 fog_light_color = Color(0.0588235, 0.0588235, 0.0941176, 1)
 fog_light_energy = 3.53
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hb3y4"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_n3ji1"]
 dof_blur_amount = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1rbh"]
@@ -117,14 +119,14 @@ size = Vector3(0.7, 1.5, 1)
 [node name="common_room" type="Node3D"]
 script = ExtResource("1_n38fs")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u8wrh")
+camera_attributes = SubResource("CameraAttributesPractical_n3ji1")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.983979, 0.178287, 0, -0.178287, 0.983979, 0, 1.71295, 7.83103)
 fov = 33.0
 metadata/_edit_lock_ = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_x3s3p")
-camera_attributes = SubResource("CameraAttributesPractical_hb3y4")
 
 [node name="walls" type="Node3D" parent="."]
 
@@ -447,38 +449,6 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 [node name="WallCover_Modular19" parent="top_wall_borders" instance=ExtResource("12_73ent")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 3.5, 2.5, 3.5)
 
-[node name="wall_torch" type="Node3D" parent="."]
-
-[node name="torchWall" parent="wall_torch" instance=ExtResource("10_yacsa")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 1, -1)
-
-[node name="fire" type="Node3D" parent="wall_torch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -0.7)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="wall_torch/fire"]
-light_color = Color(1, 0.498039, 0.0980392, 1)
-omni_range = 4.0
-script = ExtResource("11_h0vcv")
-
-[node name="torch_fire" parent="wall_torch/fire" instance=ExtResource("12_xm7ym")]
-
-[node name="wall_torch2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-
-[node name="torchWall" parent="wall_torch2" instance=ExtResource("10_yacsa")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 1, -1)
-
-[node name="fire" type="Node3D" parent="wall_torch2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -0.7)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="wall_torch2/fire"]
-light_color = Color(1, 0.498039, 0.0980392, 1)
-omni_range = 4.0
-script = ExtResource("11_h0vcv")
-
-[node name="torch_fire" parent="wall_torch2/fire" instance=ExtResource("12_xm7ym")]
-frame_progress = 0.955372
-
 [node name="position_markers" type="Node3D" parent="."]
 
 [node name="door_left" type="Marker3D" parent="position_markers"]
@@ -527,6 +497,48 @@ shape = SubResource("BoxShape3D_u8wrh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("WorldBoundaryShape3D_u8wrh")
 
+[node name="wall_torch" type="Node3D" parent="."]
+
+[node name="torchWall" parent="wall_torch" instance=ExtResource("10_yacsa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 1, -1)
+
+[node name="torchWall" parent="wall_torch/torchWall" index="0"]
+cast_shadow = 0
+
+[node name="fire" type="Node3D" parent="wall_torch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -0.7)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="wall_torch/fire"]
+light_color = Color(1, 0.498039, 0.0980392, 1)
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 4.0
+script = ExtResource("11_h0vcv")
+
+[node name="torch_fire" parent="wall_torch/fire" instance=ExtResource("12_xm7ym")]
+
+[node name="wall_torch2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="torchWall" parent="wall_torch2" instance=ExtResource("10_yacsa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 1, -1)
+
+[node name="torchWall" parent="wall_torch2/torchWall" index="0"]
+cast_shadow = 0
+
+[node name="fire" type="Node3D" parent="wall_torch2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -0.7)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="wall_torch2/fire"]
+light_color = Color(1, 0.498039, 0.0980392, 1)
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 4.0
+script = ExtResource("11_h0vcv")
+
+[node name="torch_fire" parent="wall_torch2/fire" instance=ExtResource("12_xm7ym")]
+frame_progress = 0.955372
+
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
 
@@ -546,3 +558,5 @@ shape = SubResource("WorldBoundaryShape3D_u8wrh")
 [editable path="walls/right_walls/Wall_Window_Bars_toggleable"]
 [editable path="pillars/back_pillars/Pillar_Wall"]
 [editable path="pillars/back_pillars/Pillar_Wall2"]
+[editable path="wall_torch/torchWall"]
+[editable path="wall_torch2/torchWall"]

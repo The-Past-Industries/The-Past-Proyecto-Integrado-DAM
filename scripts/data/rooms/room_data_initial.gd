@@ -4,7 +4,7 @@ class_name RoomDataInitial
 func _init(
 	level: int,
 	distance: int = -1,
-	shown: bool = true
+	shown: bool = false
 ):
 	super(level, RoomType.INITIAL, distance, shown)
 

@@ -56,7 +56,7 @@ func _generate_main_branch(rng: RandomNumberGenerator):
 	visited_cells = [current_pos]
 
 	var init_room_direction: Vector2i = _random_room_direction(rng)
-	Logger.info("Init room direction: %s" % [init_room_direction])
+	# Logger.info("Init room direction: %s" % [init_room_direction])
 	map_data[START_CELL_POSITION] = _create_initial_room()
 	distance_from_origin += 1
 
@@ -64,9 +64,9 @@ func _generate_main_branch(rng: RandomNumberGenerator):
 		var adjacent_directions_available = _get_adjacent(current_instance_type, current_pos, init_room_direction)
 		if adjacent_directions_available.is_empty():
 			if backtrack_attempts >= GlobalConstants.WORLDGEN_MAX_BACKTRACK_ATTEMPTS:
-				Logger.error("Max backtrack attempts reached. Stopping generation.")
+				# Logger.warning("Max backtrack attempts reached. Stopping generation.")
 				break
-			Logger.warning("WorldGenerator: Blocked at %s, attempting backtrack..." % current_pos)
+			# Logger.warning("WorldGenerator: Blocked at %s, attempting backtrack..." % current_pos)
 			last_pos = current_pos
 			current_pos = _backtrack(visited_cells, last_pos)
 			last_pos = current_pos
@@ -78,7 +78,7 @@ func _generate_main_branch(rng: RandomNumberGenerator):
 
 
 		var new_cell_direction = _get_random_available_direction(rng, adjacent_directions_available)
-		Logger.info("NEW DIRECTION: %s" % [get_direction_name(new_cell_direction)])
+		# Logger.info("NEW DIRECTION: %s" % [get_direction_name(new_cell_direction)])
 
 		var new_cell_type = _get_new_cell_type(current_instance_type)
 		var is_vertical = new_cell_direction == Vector2i.DOWN || new_cell_direction == Vector2i.UP
@@ -139,7 +139,7 @@ func _generate_secondary_branches(target_total_rooms: int):
 	var current_total = existing_keys.size()
 	while current_total < target_total_rooms:
 		if existing_keys.is_empty():
-			Logger.error("No cells available to branch from.")
+			# Logger.error("No cells available to branch from.")
 			return
 		var origin_pos = existing_keys[rng.randi_range(0, existing_keys.size() - 1)]
 		var origin_data = map_data.get(origin_pos) as RoomData
@@ -204,7 +204,7 @@ func _create_instance(current_cell_pos: Vector2i, new_cell_pos: Vector2i, distan
 
 	map_data[new_cell_pos] = room_data
 
-	Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: %s]" % [new_cell_pos, room_data.distance, get_room_type_name(room_data.type)])
+	# Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: %s]" % [new_cell_pos, room_data.distance, get_room_type_name(room_data.type)])
 
 	if current_cell_pos != new_cell_pos:
 		_link_cells_connections(current_cell_pos, new_cell_pos)
@@ -228,7 +228,7 @@ func _link_cells_connections(current_cell_pos: Vector2i, new_cell_pos: Vector2i)
 func _create_initial_room() -> RoomData:
 	var init_room = RoomDataInitial.new(level, 0)
 	map_data[START_CELL_POSITION] = init_room
-	Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: INITIAL]" % [START_CELL_POSITION, init_room.distance])
+	# Logger.info("INSTANCE [POS: %s][DIS.ORIG: %d][TYPE: INITIAL]" % [START_CELL_POSITION, init_room.distance])
 	return init_room
 
 
@@ -267,7 +267,7 @@ func _get_new_cell_type(current_instance_type):
 		RoomType.CORRIDOR:
 			return RoomType.COMMON
 		_:
-			Logger.error("Error in WorldGenerator._generate_main_branch: Invalid current cell type")
+			# Logger.error("Error in WorldGenerator._generate_main_branch: Invalid current cell type")
 			return RoomType.IMANERROR
 
 # RANDOMS
@@ -308,7 +308,7 @@ func _connect_corridors_to_adjacent_rooms() -> void:
 				data.add_connections([dir] as Array[Vector2i])
 			if not neighbor.connections.has(-dir):
 				neighbor.add_connections([-dir] as Array[Vector2i])
-			Logger.info("CONNECTED CORRIDOR %s <--> %s %s" % [pos,get_room_type_name(neighbor.type),neighbor_pos])
+			# Logger.info("CONNECTED CORRIDOR %s <--> %s %s" % [pos,get_room_type_name(neighbor.type),neighbor_pos])
 
 
 # BACKTRACK FOR PATHING
@@ -317,13 +317,13 @@ func _connect_corridors_to_adjacent_rooms() -> void:
 # --- Backtracking when blocked ---
 func _backtrack(visited_cells: Array[Vector2i], last_pos) -> Vector2i:
 	if visited_cells.size() <= 1:
-		Logger.error("Backtracking failed: only initial room remains.")
+		# Logger.error("Backtracking failed: only initial room remains.")
 		return START_CELL_POSITION
 
 	var last_type: int = (map_data.get(last_pos) as RoomData).type
 	if last_type == RoomType.CORRIDOR:
 		visited_cells.pop_back()
-		Logger.info("Removing dead-end corridor at %s" % last_pos)
+		# Logger.info("Removing dead-end corridor at %s" % last_pos)
 
 	return visited_cells.back()
 
@@ -336,7 +336,7 @@ func _ensure_instances_range():
 	)
 
 	if room_count > max_rooms:
-		Logger.warning("Room count (%d) out of max (%d). Retrying..." % [room_count, max_rooms])
+		# Logger.warning("Room count (%d) out of max (%d). Retrying..." % [room_count, max_rooms])
 		map_data.clear()
 		visited_cells.clear()
 		last_direction = Vector2i.ZERO
@@ -352,7 +352,7 @@ func _ensure_minimum_common_rooms(min_required: int) -> void:
 	if current_common_count >= min_required:
 		return
 
-	Logger.warning("Insufficient common rooms (%d/%d). Adding more..." % [current_common_count, min_required])
+	# Logger.warning("Insufficient common rooms (%d/%d). Adding more..." % [current_common_count, min_required])
 
 	# First, expand from corridors
 	var corridors = map_data.keys().filter(func(pos):
@@ -375,7 +375,7 @@ func _ensure_minimum_common_rooms(min_required: int) -> void:
 
 	# If still not enough, expand from any room
 	if current_common_count < min_required:
-		Logger.warning("Retrying with all rooms as origin...")
+		# Logger.warning("Retrying with all rooms as origin...")
 		var all_rooms = map_data.keys()
 		for pos in all_rooms:
 			if current_common_count >= min_required:
@@ -420,7 +420,7 @@ func _place_shop() -> void:
 		var distance = room.distance
 		_create_instance(pos, pos, distance, RoomType.SHOP)
 		map_data[pos].add_connections(connections)
-		Logger.info("SHOP PLACED at %s" % [pos])
+		# Logger.info("SHOP PLACED at %s" % [pos])
 		return
 
 
@@ -447,7 +447,7 @@ func _place_treasure_rooms(max_count: int) -> void:
 		var distance = room.distance
 		_create_instance(pos, pos, distance, RoomType.TREASURE)
 		map_data[pos].add_connections(connections)
-		Logger.info("TREASURE PLACED at %s" % [pos])
+		# Logger.info("TREASURE PLACED at %s" % [pos])
 		count += 1
 
 
@@ -459,7 +459,7 @@ func _place_campus(probability: float) -> void:
 	# Prevent duplicate CAMPUS
 	for data in map_data.values():
 		if data.type == RoomType.CAMPUS:
-			Logger.warning("Campus already exists. Skipping placement.")
+			# Logger.warning("Campus already exists. Skipping placement.")
 			return
 
 	for corridor_pos in map_data.keys():
@@ -473,7 +473,7 @@ func _place_campus(probability: float) -> void:
 
 		# Create the campus room above the corridor and connect them
 		_create_instance(corridor_pos, campus_pos, corridor.distance + 1, RoomType.CAMPUS)
-		Logger.info("CAMPUS PLACED at %s" % [campus_pos])
+		# Logger.info("CAMPUS PLACED at %s" % [campus_pos])
 		return
 
 
@@ -482,7 +482,7 @@ func _place_boss_room():
 	# Check if a BOSS room already exists
 	for data in map_data.values():
 		if data.type == RoomType.BOSS:
-			Logger.warning("Boss room already exists. Skipping placement.")
+			# Logger.warning("Boss room already exists. Skipping placement.")
 			return
 
 	var attempts := 0
@@ -515,15 +515,15 @@ func _place_boss_room():
 				RoomType.BOSS
 			)
 			map_data[furthest_pos].add_connections(connections)
-			Logger.info("BOSS PLACED at %s" % furthest_pos)
+			# Logger.info("BOSS PLACED at %s" % furthest_pos)
 			boss_placed = true
 			break
 
 		attempts += 1
-		Logger.warning("Boss placement attempt #%d failed" % attempts)
+		# Logger.warning("Boss placement attempt #%d failed" % attempts)
 
 	if not boss_placed:
-		Logger.error("Boss placement failed after %d attempts. Regenerating level..." % attempts)
+		# Logger.error("Boss placement failed after %d attempts. Regenerating level..." % attempts)
 		map_data.clear()
 		visited_cells.clear()
 		last_direction = Vector2i.ZERO
@@ -531,7 +531,7 @@ func _place_boss_room():
 
 
 	if not boss_placed:
-		Logger.error("Boss placement failed after %d attempts. Regenerating level..." % attempts)
+		# Logger.error("Boss placement failed after %d attempts. Regenerating level..." % attempts)
 		# Limpia todo y vuelve a empezar
 		map_data.clear()
 		visited_cells.clear()
@@ -555,7 +555,7 @@ func _expand_dead_end_corridors_with_common_rooms() -> void:
 					continue  # Ya hay algo ahí
 
 				_create_instance(pos, new_pos, data.distance + 1, RoomType.COMMON)
-				Logger.info("COMMON ROOM EXPANSION at %s from corridor %s" % [new_pos, pos])
+				# Logger.info("COMMON ROOM EXPANSION at %s from corridor %s" % [new_pos, pos])
 				break  # Sólo colocamos una
 
 
@@ -592,10 +592,10 @@ func _remove_corridor_and_cleanup_neighbors(pos: Vector2i) -> void:
 		var neighbor = map_data[neighbor_pos]
 		if neighbor.connections.has(-dir):
 			neighbor.connections.erase(-dir)
-			Logger.info("Removed connection from %s to %s" % [neighbor_pos, pos])
+			# Logger.info("Removed connection from %s to %s" % [neighbor_pos, pos])
 
 	map_data.erase(pos)
-	Logger.info("Removed isolated corridor at %s" % pos)
+	# Logger.info("Removed isolated corridor at %s" % pos)
 
 
 

@@ -60,9 +60,8 @@ func _physics_process(delta):
 	
 	
 	# Caída por gravedad
-	#if not is_on_floor():
-	#	velocity += get_gravity() * delta
-	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	
 	# Bloqueo del movimiento del Player
 	if is_locked:
@@ -77,7 +76,7 @@ func _physics_process(delta):
 			velocity.x = direction.x * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+			#velocity.z = move_toward(velocity.z, , SPEED)
 	
 	# Inicio de la física del Player
 	move_and_slide()

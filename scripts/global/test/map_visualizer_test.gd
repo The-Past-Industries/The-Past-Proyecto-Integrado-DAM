@@ -49,12 +49,22 @@ func visualize_map(map_data: Dictionary) -> void:
 		var base_pos: Vector2 = Vector2(cell_pos.x * CELL_SIZE, cell_pos.y * CELL_SIZE)
 		var center: Vector2 = base_pos + Vector2(CELL_SIZE / 2, CELL_SIZE / 2)
 
+		# Dibujar borde si es la celda actual
+		if cell_pos == WorldManagerGlobal.cur_position:
+			var border := ColorRect.new()
+			border.color = Color.YELLOW
+			border.size = Vector2(CELL_SIZE + 6, CELL_SIZE + 6)
+			border.position = base_pos - Vector2(3, 3)  # Margen para el borde
+			add_child(border)
+
+		# Celda base
 		var rect = ColorRect.new()
 		rect.color = base_color
 		rect.size = Vector2(CELL_SIZE, CELL_SIZE)
 		rect.position = base_pos
 		add_child(rect)
 
+		# Conexiones
 		for dir in room_data.connections:
 			var line = ColorRect.new()
 			line.color = Color.WHITE
@@ -77,6 +87,7 @@ func visualize_map(map_data: Dictionary) -> void:
 
 			add_child(line)
 
+		# Nombre de sala
 		var label = Label.new()
 		label.text = world_generator.get_room_type_name(room_type)
 		label.size = Vector2(CELL_SIZE, CELL_SIZE)

@@ -3,12 +3,19 @@ class_name WorldManager
 
 var is_active = false
 
+func process(delta: float) -> void:
+	Logger.info("CUR_POS:%s" % cur_position)
+	Logger.info("LAST_POS:%s" % last_position)
+	Logger.info("COMMING_DIR:%s" % get_comming_direction())
+	await get_tree().create_timer(1.5).timeout
+
 # World
 var world_generator := WorldGenerator.new()
 var map_data: Dictionary
 var map_repository: Array[Dictionary] = []
+var cur_cell_instance: Node3D
 var cur_position := Vector2i(0,0)
-var last_position
+var last_position = cur_position
 var level: int = 1
 
 var INITIAL_ROOM_NODE := preload("res://scenes/world/rooms/initial_room.tscn")
@@ -19,18 +26,14 @@ var SHOP_ROOM_NODE := preload("res://scenes/world/rooms/shop_room.tscn")
 var TREASURE_ROOM_NODE := preload("res://scenes/world/rooms/treasure_room.tscn")
 var CAMPUS_ROOM_NODE := preload("res://scenes/world/rooms/campus_room.tscn")
 
-# Root scene containing instance/clear process
-var root: Node3D
+# game_root scene containing instance/clear process
+var game_root: Node3D
 
-func set_root(root: Node3D):
-	self.root = root
+func set_game_root(game_root: Node3D):
+	self.game_root = game_root
 
 func _ready():
-	# _generate_level()
-	# MapUIBridge.get_instance().get_map_visualizer().visualize_map(world_generator.map_data)
 	_generate_level()
-	pass
-
 func _generate_level():
 	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, level)
 	map_data = world_generator.map_data.duplicate(true)
@@ -39,6 +42,7 @@ func _generate_level():
 
 func _change_cell(room_data: RoomData):
 	_clear_tree()
+	await get_tree().process_frame
 	_instance_cell(room_data)
 
 func _instance_cell(room_data: RoomData):
@@ -60,33 +64,45 @@ func _instance_cell(room_data: RoomData):
 			cell_instantiated = CAMPUS_ROOM_NODE.instantiate() as RoomControllerCampus
 		_:
 			Logger.error("The instantiated cell type does not exist")
+	cur_cell_instance = cell_instantiated
 	_load_cell_on_tree(cell_instantiated)
 	cell_instantiated.setup(cur_position, room_data)
 	Logger.info("CELL LOADED ON TREE: pos [%s] type [%s]" % [cur_position, get_room_type_name(room_data.type)])
 
 func _load_cell_on_tree(cell_instantiated: RoomController):
-	if root == null:
-		Logger.error("WorldManager: root is null")
+	if game_root == null:
+		Logger.error("WorldManager: game_root is null")
 	else:
-		Logger.info("WorldManager: adding cell to root: %s" % root.name)
-	root.add_child(cell_instantiated)
+		Logger.info("WorldManager: adding cell to game_root: %s" % game_root)
+		game_root.add_child(cell_instantiated)
+		for child in game_root.get_children(true):
+			# Logger.info("WorldManager: END OF ROOM LOAD. game_root CHILD: %s" % child)
+			pass
 
 
 func move_to_cell(direction: Vector2i):
 	var new_pos = cur_position + direction
-	Logger.info("MOVING TO: pos [%s]" % new_pos)
 	if map_data.has(new_pos) and map_data[new_pos] is RoomData:
 		last_position = cur_position
-		cur_position += direction
-		_change_cell(map_data[cur_position])
+		cur_position = new_pos
+		_change_cell(map_data[new_pos])
 	else:
 		Logger.warning("Invalid movement. No room in direction: %s" % [direction])
 
+
 func _clear_tree():
-	for child in root.get_children():
-		if child is RoomController:
-			Logger.info("WorldManager: CHILD DELETED: %s" % child)
-			child.queue_free()
+	if cur_cell_instance != null:
+		game_root.remove_child(cur_cell_instance)
+		cur_cell_instance.queue_free()
+		cur_cell_instance = null
+
+	await get_tree().process_frame
+
+	if game_root:
+		for child in game_root.get_children():
+			if not child is CharacterBody3D:
+				game_root.remove_child(child)
+				child.queue_free()
 
 # Utils
 
@@ -108,9 +124,10 @@ func get_room_type_name(value: int) -> String:
 func get_comming_direction() -> Vector2i:
 	Logger.info("WorldManager: Getting comming direction for spawn on new instance")
 	if last_position != null && cur_position != null:
-		var comming_direction = last_position - cur_position
+		var dif: Vector2i = last_position - cur_position
+		var comming_direction: Vector2i = dif.snapped(Vector2.ONE)
 		Logger.info("WorldManager: CUR_POSITION:%s LAST_POSITION:%s COMMING_DIR:%s" % [cur_position, last_position, comming_direction])
-		return comming_direction
+		return Vector2i(dif)
 	else:
 		Logger.error("WRONG COMMING DIRECTION. Last position is NULL")
 		return Vector2i.ZERO

@@ -23,8 +23,8 @@ func setup(cur_position: Vector2i, room_data: RoomData):
 	super.setup(cur_position, room_data)
 
 func _on_area_3d_left_body_entered(body: Node3D) -> void:
-	super._on_area_3d_left_body_entered(body)
+	_on_area_custom_entered(body, Vector2i.LEFT)
 
 
 func _on_area_3d_right_body_entered(body: Node3D) -> void:
-	super._on_area_3d_right_body_entered(body)
+	_on_area_custom_entered(body, Vector2i.RIGHT)

@@ -25,12 +25,17 @@ func setup(cur_position: Vector2i, room_data: RoomData):
 
 func spawn_player():
 	Logger.info("----SPAWN PLAYER CALLED----")
-	if room_data.type != RoomType.INITIAL:
-		Logger.info("----SPAWN PLAYER DIRECTIONAL----")
-		_spawn_player_by_dir_connection(WorldManagerGlobal.get_comming_direction())
-	else:
+	if room_data.type == RoomType.INITIAL  && !room_data.shown:
 		Logger.info("----SPAWN PLAYER INITIAL----")
 		EntityManagerGlobal.spawn_player_in_pos(self, Vector3i(0,0,1))
+		room_data.shown = true
+	else:
+		Logger.info("----SPAWN PLAYER DIRECTIONAL----")
+		_spawn_player_by_dir_connection(WorldManagerGlobal.get_comming_direction())
+	
+	for child in WorldManagerGlobal.game_root.get_children():
+		#Logger.info("PLAYER SPAWN. GAME ROOT CHILD: %s" % child)
+		pass
 
 func _init_room_components(components: Array[Node3D]):
 	# Left wall
@@ -75,14 +80,14 @@ func _close_room():
 		window_bars_right.visible = true
 
 func _spawn_player_by_dir_connection(dir_comming: Vector2i):
-	await get_tree().process_frame
 	var new_position
-	if dir_comming == Vector2i.LEFT:
-		new_position = door_left_marker.global_position
-	elif dir_comming == Vector2i.RIGHT:
-		new_position = door_right_marker.global_position
-	else:
-		new_position = Vector3i(0,0,1)
-		Logger.error("RoomControllerFlat: Invalid direction comming. NEW_POSITION:%s" % new_position)
-	Logger.info("RoomControllerFlat: Trying to spawn player at %s" % new_position)
+	match dir_comming:
+		Vector2i.LEFT:
+			new_position = door_left_marker.global_position
+		Vector2i.RIGHT:
+			new_position = door_right_marker.global_position
+		_:
+			new_position = Vector3i(0,1,1)
+			Logger.error("RoomControllerFlat: Invalid comming direction.")		
+	Logger.info("RoomControllerFlat: Spawn player at %s" % new_position)
 	EntityManagerGlobal.spawn_player_in_pos(self, new_position)
