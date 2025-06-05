@@ -30,6 +30,8 @@ func set_game_root(game_root: Node3D):
 
 func _ready():
 	_generate_level()
+	pass
+	
 func _generate_level():
 	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, level)
 	map_data = world_generator.map_data.duplicate(true)

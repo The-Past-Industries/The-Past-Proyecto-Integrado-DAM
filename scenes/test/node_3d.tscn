@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://bf62af257iyge"]
 
-[ext_resource type="PackedScene" uid="uid://dnafb3annmq4i" path="res://scenes/characters/enemies/fem_warrior.tscn" id="1_bm6xc"]
+[ext_resource type="PackedScene" uid="uid://dnafb3annmq4i" path="res://scenes/characters/fem_warrior.tscn" id="1_bm6xc"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_hqbwi"]
 [ext_resource type="PackedScene" uid="uid://cl7v7lwkiudus" path="res://scenes/world/assets/grass_bricks_platform.tscn" id="3_i7qd7"]
-[ext_resource type="PackedScene" uid="uid://dxcctlr3sskr" path="res://scenes/characters/main/mage.tscn" id="3_k2s0j"]
+[ext_resource type="PackedScene" path="res://scenes/characters/main/mage.tscn" id="3_k2s0j"]
 [ext_resource type="Texture2D" uid="uid://vdfu43j86vwc" path="res://assets/world/levels/the_bridge/Grass/1.png" id="5_jx0mq"]
 [ext_resource type="Texture2D" uid="uid://bm5nc3u5hghni" path="res://assets/world/levels/the_bridge/Grass/2.png" id="6_ej7gp"]
 [ext_resource type="PackedScene" uid="uid://cej75y4t3c1a2" path="res://assets/world/3D/KayKit_HalloweenBits_1.0_FREE/Assets/fbx/crypt.fbx" id="7_7jm2p"]
