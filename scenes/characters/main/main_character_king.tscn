@@ -730,7 +730,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-172, -68)
 
 [node name="main_character_king" type="CharacterBody3D" groups=["doors_tp_proc"]]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 0, 0, 0)
 script = ExtResource("1_36vp6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -746,7 +746,6 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_mf0wq")
 animation = &"idle"
 autoplay = "idle"
-frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

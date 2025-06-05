@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cvyqcsoxwijr0"]
+[gd_scene load_steps=38 format=4 uid="uid://cvyqcsoxwijr0"]
 
 [ext_resource type="Script" uid="uid://qyyev4ljismb" path="res://scripts/data/rooms/room_controller_corridor.gd" id="1_huy5t"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_vbva3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8r221533hc86" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Pillar_Wall.blend" id="7_qt1i4"]
 [ext_resource type="Texture2D" uid="uid://coigpsx8vppen" path="res://assets/world/3D/Dungeon Asset Pack/Dungeon Swatch.jpg" id="8_g2my1"]
 [ext_resource type="PackedScene" uid="uid://c8fapdqdonsx2" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/fbx/floor_tile_small_corner.fbx" id="9_5lk2q"]
+[ext_resource type="PackedScene" uid="uid://bdwdask2mtmv7" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/fbx/floor_tile_small.fbx" id="9_r6bt8"]
 [ext_resource type="PackedScene" uid="uid://44tfwxwi3f7l" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/fbx/floor_tile_big_grate_open.fbx" id="10_iqo2s"]
 [ext_resource type="PackedScene" uid="uid://bjkkspl5bh41n" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/gltf/floor_wood_small_dark.gltf" id="11_j6jbt"]
 [ext_resource type="PackedScene" uid="uid://cb8etemdi18vl" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/WallCover_Modular.blend" id="12_kbgd0"]
@@ -306,25 +307,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -2)
 [node name="Pillar_Wall" parent="pillars/back_pillars/Pillar_Wall2" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_gicbq")
 
-[node name="elevator_fence" type="Node3D" parent="."]
+[node name="elevator_fence_toggleable" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
-[node name="Dungeon_JailbarDoorway" type="MeshInstance3D" parent="elevator_fence"]
+[node name="Dungeon_JailbarDoorway" type="MeshInstance3D" parent="elevator_fence_toggleable"]
 transform = Transform3D(102.96, 0, 0, 0, 80, 0, 0, 0, 80, -0.03, 7.45058e-09, 2.22)
 mesh = SubResource("ArrayMesh_nau3k")
 skeleton = NodePath("")
 
-[node name="Dungeon_JailbarDoorway3" type="MeshInstance3D" parent="elevator_fence"]
+[node name="Dungeon_JailbarDoorway3" type="MeshInstance3D" parent="elevator_fence_toggleable"]
 transform = Transform3D(-5.40062e-06, 0, 80, 0, 80, 0, -123.552, 0, -3.49691e-06, 1.22, 7.45058e-09, 1.02)
 mesh = SubResource("ArrayMesh_nau3k")
 skeleton = NodePath("")
 
-[node name="Dungeon_JailbarDoorway4" type="MeshInstance3D" parent="elevator_fence"]
+[node name="Dungeon_JailbarDoorway4" type="MeshInstance3D" parent="elevator_fence_toggleable"]
 transform = Transform3D(-5.40062e-06, 0, 80, 0, 80, 0, -123.552, 0, -3.49691e-06, -1.23, 7.45058e-09, 1.02)
 mesh = SubResource("ArrayMesh_nau3k")
 skeleton = NodePath("")
 
-[node name="Dungeon_JailbarDoorway2" type="MeshInstance3D" parent="elevator_fence"]
+[node name="Dungeon_JailbarDoorway2" type="MeshInstance3D" parent="elevator_fence_toggleable"]
 transform = Transform3D(102.96, 0, 0, 0, 80, 0, 0, 0, 80, -0.03, 7.45058e-09, -0.23)
 mesh = SubResource("ArrayMesh_nau3k")
 skeleton = NodePath("")
@@ -351,6 +352,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ticx7")
 
 [node name="platform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+
+[node name="floor_bottom_toggleable" parent="platform" instance=ExtResource("9_r6bt8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 1)
 
 [node name="floor_tile_small_corner6" parent="platform" instance=ExtResource("9_5lk2q")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.5, 0, 1.5)
@@ -574,6 +578,7 @@ shape = SubResource("BoxShape3D_huy5t")
 shape = SubResource("BoxShape3D_r6bt8")
 
 [node name="Area3D_elevator" type="Area3D" parent="collisions/proc_areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/proc_areas/Area3D_elevator"]
 shape = SubResource("BoxShape3D_huy5t")

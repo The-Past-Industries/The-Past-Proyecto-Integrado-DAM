@@ -7,8 +7,10 @@ class_name RoomControllerCorridor
 @onready var wall_right_window_bars_toggleable = $walls/right_walls/Wall_Window_Bars_toggleable
 @onready var door_left_marker_aux = $position_markers/door_left
 @onready var door_right_marker_aux = $position_markers/door_right
+@onready var elevator_fence_toggleable = $elevator_fence_toggleable
+@onready var floor_bottom_toggleable = $platform/floor_bottom_toggleable
 
-var player_in_elevator: bool = false
+
 
 func setup(cur_position: Vector2i, room_data: RoomData):
 	super._init_room_components([
@@ -30,19 +32,48 @@ func _on_area_3d_right_body_entered(body: Node3D) -> void:
 	_on_area_custom_entered(body, Vector2i.RIGHT)
 
 
+
 func _on_area_3d_elevator_body_entered(body: Node3D) -> void:
-	player_in_elevator = true
+	EntityManagerGlobal.player.is_on_elevator = true
 
 
 func _on_area_3d_elevator_body_exited(body: Node3D) -> void:
-	player_in_elevator = false
+	EntityManagerGlobal.player.is_on_elevator = false
 
 
 func _input(event: InputEvent) -> void:
-	if player_in_elevator:
+	if EntityManagerGlobal.player.is_on_elevator:
 		if event.is_action_pressed("ui_up"):
 			Logger.info("UP ------------ PULSADO")
-			_move_to_room(EntityManagerGlobal.player.body_instance, room_data.connections, Vector2i.UP)
+			_vertical_move(Vector2i.UP)
 		elif event.is_action_pressed("ui_down"):
 			Logger.info("DOWN ------------ PULSADO")
-			_move_to_room(EntityManagerGlobal.player.body_instance, room_data.connections, Vector2i.DOWN)
+			_vertical_move(Vector2i.DOWN)
+
+func _vertical_move(move_direction: Vector2i):
+	if EntityManagerGlobal.player.body_instance.is_in_group("doors_tp_proc") and room_data.connections.has(move_direction):
+		EntityManagerGlobal.player.get_body().start_transition("teleport")
+		await EntityManagerGlobal.player.get_body().transition_teleport_finished
+		_move_to_room(EntityManagerGlobal.player.body_instance, room_data.connections, move_direction)
+
+
+func _load_door_by_room_connections():
+	super._load_door_by_room_connections()
+	await get_tree().process_frame
+	_close_vert_room()
+	for direction in self.room_data.connections:
+		
+		match direction:
+			
+			# Elevator fence toggle
+			Vector2i.UP:
+				elevator_fence_toggleable.visible = true
+		
+			# Platform tile toggle
+			Vector2i.DOWN:
+				floor_bottom_toggleable.visible = false
+
+func _close_vert_room():
+	
+		elevator_fence_toggleable.visible = false
+		floor_bottom_toggleable.visible = true

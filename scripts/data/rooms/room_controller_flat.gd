@@ -86,8 +86,12 @@ func _spawn_player_by_dir_connection(dir_comming: Vector2i):
 			new_position = door_left_marker.global_position
 		Vector2i.RIGHT:
 			new_position = door_right_marker.global_position
-		_:
+		Vector2i.UP:
 			new_position = Vector3i(0,1,1)
+		Vector2i.DOWN:
+			new_position = Vector3i(0,1,1)
+		_:
+			new_position = Vector3i(0,0.5,1)
 			Logger.error("RoomControllerFlat: Invalid comming direction.")		
 	Logger.info("RoomControllerFlat: Spawn player at %s" % new_position)
 	EntityManagerGlobal.spawn_player_in_pos(self, new_position)

@@ -1,23 +1,19 @@
 extends Node
 class_name WorldManager
 
+# Global
 var is_active = false
-
-func process(delta: float) -> void:
-	Logger.info("CUR_POS:%s" % cur_position)
-	Logger.info("LAST_POS:%s" % last_position)
-	Logger.info("COMMING_DIR:%s" % get_comming_direction())
-	await get_tree().create_timer(1.5).timeout
 
 # World
 var world_generator := WorldGenerator.new()
 var map_data: Dictionary
 var map_repository: Array[Dictionary] = []
-var cur_cell_instance: Node3D
+var cur_cell_instance: RoomController
 var cur_position := Vector2i(0,0)
 var last_position = cur_position
 var level: int = 1
 
+# Room scenes
 var INITIAL_ROOM_NODE := preload("res://scenes/world/rooms/initial_room.tscn")
 var COMMON_ROOM_NODE := preload("res://scenes/world/rooms/common_room.tscn")
 var CORRIDOR_ROOM_NODE := preload("res://scenes/world/rooms/corridor_room.tscn")
@@ -131,3 +127,10 @@ func get_comming_direction() -> Vector2i:
 	else:
 		Logger.error("WRONG COMMING DIRECTION. Last position is NULL")
 		return Vector2i.ZERO
+
+# Debug rooms position and comming direction
+func process(delta: float) -> void:
+	Logger.info("CUR_POS:%s" % cur_position)
+	Logger.info("LAST_POS:%s" % last_position)
+	Logger.info("COMMING_DIR:%s" % get_comming_direction())
+	await get_tree().create_timer(1.5).timeout
