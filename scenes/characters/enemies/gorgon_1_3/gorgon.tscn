@@ -87,7 +87,7 @@ states/hit/position = Vector2(501, 100)
 states/idle/node = SubResource("AnimationNodeAnimation_wq8du")
 states/idle/position = Vector2(380, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ykk85"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_xxthy"), "idle", "attack_3", SubResource("AnimationNodeStateMachineTransition_pwkf8"), "idle", "attack_2", SubResource("AnimationNodeStateMachineTransition_xh5d3"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_k83kh"), "hit", "death", SubResource("AnimationNodeStateMachineTransition_sldai"), "death", "End", SubResource("AnimationNodeStateMachineTransition_k8w6b"), "attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_s0kja"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_xdjnx"), "attack_3", "idle", SubResource("AnimationNodeStateMachineTransition_b3eno"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_fkjf2")]
-graph_offset = Vector2(-86, -127)
+graph_offset = Vector2(-80, -83)
 
 [sub_resource type="Animation" id="Animation_iy3gw"]
 length = 1.6
@@ -273,7 +273,7 @@ texture_filter = 0
 sprite_frames = ExtResource("1_utfai")
 animation = &"idle"
 autoplay = "idle"
-frame = 23
+frame = 2
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_bcn2d")
