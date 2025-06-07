@@ -22,11 +22,18 @@ var is_moving_vert: bool
 
 # Transitions
 var player_on_transition: bool = false
-var transition_is_teleporting: bool = false
-var transition_original_position: Vector3
-var transition_elapsed_time: float = 0.0
 var transition_phase := "idle"
+var transition_elapsed_time: float = 0.0
+var transition_original_position: Vector3
+
+# Teleport
+var transition_is_teleporting: bool = false
 signal transition_teleport_finished
+
+# Move to
+var transition_is_moving_to: bool = false
+var transition_target_position: Vector3
+signal transition_move_to_finished
 
 func _process(_delta):
 	#Animations
@@ -66,19 +73,22 @@ func hit_animation():
 
 func _physics_process(delta):
 	if transition_is_teleporting:
-		animate_teleport_jump(delta)
+		transition_teleport(delta)
+	
+	if transition_is_moving_to:
+		transition_move_to(transition_target_position, delta)
 	
 	# Caída por gravedad
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
 	# Bloqueo del movimiento del Player
-	if is_locked || player_on_transition:
-		velocity = Vector3.ZERO
+	if is_locked || transition_is_teleporting:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	else:
 		
-		var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		var input_dir = Input.get_vector("control_left", "control_right", "control_up", "control_down")
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 		if direction != Vector3.ZERO:
@@ -94,12 +104,12 @@ func _physics_process(delta):
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			attack_animation()
+			EntityManagerGlobal.player.get_body().is_locked = false
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			pass
 
 # IN GAME TRANSITIONS
-func start_transition(name: String):
+func start_flat_transition(name: String):
 	player_on_transition = true
 	match name:
 		"teleport":
@@ -107,7 +117,43 @@ func start_transition(name: String):
 		_:
 			player_on_transition = false
 
-func animate_teleport_jump(delta: float) -> void:
+func move_to(target_position: Vector3):
+	self.transition_target_position = target_position
+	transition_is_moving_to = true
+	
+	
+
+func transition_move_to(target_position: Vector3, delta: float) -> void:
+	var total_duration := 1
+
+	if transition_phase == "idle":
+		transition_original_position = global_position
+		transition_elapsed_time = 0.0
+		transition_phase = "moving"
+
+	if transition_phase == "moving":
+		var direction = (target_position - global_position)
+		var distance = direction.length()
+		var speed = distance / (total_duration - transition_elapsed_time + 0.001)
+		velocity = direction.normalized() * speed
+		transition_elapsed_time += delta
+
+		if transition_elapsed_time >= total_duration or global_position.distance_to(target_position) < 0.05:
+			velocity = Vector3.ZERO
+			transition_elapsed_time = 0.0
+			transition_phase = "end"
+		return
+
+	if transition_phase == "end":
+		transition_elapsed_time += delta
+		velocity = Vector3.ZERO
+		global_position = target_position
+		transition_phase = "idle"
+		transition_is_moving_to = false
+		player_on_transition = false
+		emit_signal("transition_move_to_finished")
+
+func transition_teleport(delta: float) -> void:
 	var total_duration := 0.7
 	var wait_duration := 0.5
 	var target_position := Vector3(0, 0, 1)
@@ -116,6 +162,7 @@ func animate_teleport_jump(delta: float) -> void:
 		transition_original_position = global_position
 		transition_elapsed_time = 0.0
 		transition_phase = "moving"
+		is_moving = true
 		return
 
 	if transition_phase == "moving":
@@ -136,5 +183,6 @@ func animate_teleport_jump(delta: float) -> void:
 			transition_phase = "idle"
 			player_on_transition = false
 			transition_is_teleporting = false
+			is_moving = false
 			set_physics_process(true)
 			emit_signal("transition_teleport_finished")

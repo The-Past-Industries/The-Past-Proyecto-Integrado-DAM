@@ -2,7 +2,7 @@ extends Node
 class_name EntityManager
 
 # ENTITIES
-
+var entity_repository := EntityRepository.new()
 var generator := EntityGenerator.new()
 var is_player_ready: bool = false
 
@@ -34,3 +34,6 @@ func spawn_player_in_pos(root: Node3D, position: Vector3):
 		player.body_instance.global_position = position
 	else:
 		Logger.error("PLAYER IS NULL AND CAN NOT SPAWN")
+
+func choose_random_enemy():
+	self.enemy = entity_repository.get_random_common_enemy()

@@ -225,7 +225,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ceg3i")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -242,7 +242,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oisuf")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 10.0
 }, {
@@ -259,7 +259,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_botmk")
 }],
-"loop": true,
+"loop": false,
 "name": &"defend",
 "speed": 10.0
 }, {
@@ -276,7 +276,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ku7cr")
 }],
-"loop": true,
+"loop": false,
 "name": &"enter",
 "speed": 10.0
 }, {
@@ -293,7 +293,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_htp4j")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 10.0
 }, {
@@ -327,7 +327,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gumnk")
 }],
-"loop": true,
+"loop": false,
 "name": &"item",
 "speed": 10.0
 }, {
@@ -344,7 +344,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_acbh7")
 }],
-"loop": true,
+"loop": false,
 "name": &"magic",
 "speed": 10.0
 }, {
@@ -361,7 +361,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u3aep")
 }],
-"loop": true,
+"loop": false,
 "name": &"run",
 "speed": 10.0
 }, {
@@ -378,7 +378,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_egvr2")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_back",
 "speed": 10.0
 }, {
@@ -395,7 +395,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sywkp")
 }],
-"loop": true,
+"loop": false,
 "name": &"skill",
 "speed": 10.0
 }, {
@@ -412,7 +412,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l38lo")
 }],
-"loop": true,
+"loop": false,
 "name": &"victory",
 "speed": 10.0
 }, {
@@ -429,7 +429,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0jjmv")
 }],
-"loop": true,
+"loop": false,
 "name": &"woozy",
 "speed": 10.0
 }]

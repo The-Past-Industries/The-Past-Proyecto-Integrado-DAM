@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://2gxdwp5mxuse"]
+
+[ext_resource type="FontFile" uid="uid://ci4f6rhurl478" path="res://assets/fonts/monogram.ttf" id="1_umnav"]
+[ext_resource type="Texture2D" uid="uid://c207ngr03v8ku" path="res://assets/ui/Pxiel Art UI borders.png" id="2_vvwxl"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_b1beo"]
+color = Color(0.605274, 0.605274, 0.605274, 1)
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_t0li6"]
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_oxwcw"]
+color = Color(0.800491, 0.800491, 0.800491, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yc0ux"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b65ll"]
+
+[sub_resource type="Theme" id="Theme_dqofn"]
+default_font = ExtResource("1_umnav")
+default_font_size = 30
+VScrollBar/styles/grabber = SubResource("StyleBoxLine_b1beo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxLine_t0li6")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxLine_oxwcw")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_yc0ux")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_b65ll")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mmvya"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6mvlw"]
+texture = ExtResource("2_vvwxl")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(18, 146, 92, 92)
+modulate_color = Color(1, 1, 1, 0.282353)
+
+[node name="travell_button" type="Button"]
+theme = SubResource("Theme_dqofn")
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/font_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 0.282353)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.282353)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mmvya")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_6mvlw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_6mvlw")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_6mvlw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6mvlw")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_6mvlw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6mvlw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_6mvlw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_6mvlw")
+text = "No hay nada que hacer..."
+alignment = 0

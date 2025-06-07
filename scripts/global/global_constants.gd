@@ -1,10 +1,10 @@
 class_name GlobalConstants
 
-# Data paths
+# -- Data paths --
 const ITEMS_LIST_JSON_PATH: String = "res://raw_data/item_list.json"
 const LOG_FILE_DEBUG: String = "user://log.txt"
 
-# === WORLD GENERATION PROPERTIES ===
+# == WORLD GENERATION PROPERTIES ==
 
 # Function enable/disable
 const WORLDGEN_ENABLE_ENSURE_MINIMUN_COMMON_ROOMS: bool = true
@@ -20,10 +20,10 @@ const WORLDGEN_ENABLE_EXPAND_DEAD_CORRIDORS:bool = false
 const WORLDGEN_ENABLE_POPULATE_BRANCHES: bool = true
 const WORLDGEN_ENABLE_GENERATE_SECUNDARY_BRANCHES: bool = true
 
-# Base length of the main path from initial room
+# -- Base length of the main path from initial room --
 const WORLDGEN_MAX_LENGTH_FROM_INIT: int = 50
 
-# Additional length per level
+# -- Additional length per level --
 const WORLDGEN_MAX_LENGTH_LEVEL_MULTLIPIER: int = 100
 
 
@@ -50,6 +50,44 @@ const WORLDGEN_MAX_SHOP_ROOMS_PER_LEVEL: int = 2
 const WORLDGEN_CAMPUS_ROOM_CHANCE: float = 1
 const WORLDGEN_MAX_BOSS_ATTEMPTS = 15
 
+
+# == ENTITY GENERATION ==
+
+# -- HP RANGE --
+const ENTTITYGEN_MIN_RANDOM_HP: int = 50
+const ENTTITYGEN_MAX_RANDOM_HP: int = 200
+
+# -- PHYSIC DAMAGE RANGE --
+const ENTTITYGEN_MIN_RANDOM_PHY_DMG: int = 10
+const ENTTITYGEN_MAX_RANDOM_PHY_DMG: int = 30
+
+# -- MAGIC DAMAGE RANGE --
+const ENTTITYGEN_MIN_RANDOM_MAG_DMG: int = 30
+const ENTTITYGEN_MAX_RANDOM_MAG_DMG: int = 50
+
+# -- PHYSIC ARMOR RANGE --
+const ENTTITYGEN_MIN_RANDOM_PHY_ARM: int = 5
+const ENTTITYGEN_MAX_RANDOM_PHY_ARM: int = 50
+
+# -- MAGIC ARMOR RANGE --
+const ENTTITYGEN_MIN_RANDOM_MAG_ARM: int = 5
+const ENTTITYGEN_MAX_RANDOM_MAG_ARM: int = 50
+
+# -- PHYSIC PENETRATION RANGE --
+const ENTTITYGEN_MIN_RANDOM_PHY_PEN: int = 5
+const ENTTITYGEN_MAX_RANDOM_PHY_PEN: int = 50
+
+# -- MAGIC PENETRATION RANGE --
+const ENTTITYGEN_MIN_RANDOM_MAG_PEN: int = 10
+const ENTTITYGEN_MAX_RANDOM_MAG_PEN: int = 60
+
+# -- ATTACK SPEED RANGE --
+const ENTTITYGEN_MIN_RANDOM_ATK_SPD: int = 1
+const ENTTITYGEN_MAX_RANDOM_ATK_SPD: int = 2
+
+# -- ATTACK SPEED RANGE --
+const ENTTITYGEN_MIN_RANDOM_TRU_DMG: int = 10
+const ENTTITYGEN_MAX_RANDOM_TRU_DMG: int = 20
 
 # -- Debug --
 const WORLDGEN_DEBUG_DEFAULT_SEED: int = 72139486

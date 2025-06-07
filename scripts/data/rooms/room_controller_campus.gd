@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 	if EntityManagerGlobal.player.is_on_elevator:
 		if event.is_action_pressed("ui_down"):
 			Logger.info("DOWN ------------ PULSADO")
-			EntityManagerGlobal.player.get_body().start_transition("teleport")
+			EntityManagerGlobal.player.get_body().start_flat_transition("teleport")
 			await EntityManagerGlobal.player.get_body().transition_teleport_finished
 			_move_to_room(EntityManagerGlobal.player.body_instance, room_data.connections, Vector2i.DOWN)
 

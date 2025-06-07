@@ -9,6 +9,7 @@ class_name RoomControllerCorridor
 @onready var door_right_marker_aux = $position_markers/door_right
 @onready var elevator_fence_toggleable = $elevator_fence_toggleable
 @onready var floor_bottom_toggleable = $platform/floor_bottom_toggleable
+@onready var teleport_ray_toggleable = $teleport_ray_toggleable
 
 
 
@@ -43,16 +44,14 @@ func _on_area_3d_elevator_body_exited(body: Node3D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if EntityManagerGlobal.player.is_on_elevator:
-		if event.is_action_pressed("ui_up"):
-			Logger.info("UP ------------ PULSADO")
+		if event.is_action_pressed("control_up"):
 			_vertical_move(Vector2i.UP)
-		elif event.is_action_pressed("ui_down"):
-			Logger.info("DOWN ------------ PULSADO")
+		elif event.is_action_pressed("control_down"):
 			_vertical_move(Vector2i.DOWN)
 
 func _vertical_move(move_direction: Vector2i):
 	if EntityManagerGlobal.player.body_instance.is_in_group("doors_tp_proc") and room_data.connections.has(move_direction):
-		EntityManagerGlobal.player.get_body().start_transition("teleport")
+		EntityManagerGlobal.player.get_body().start_flat_transition("teleport")
 		await EntityManagerGlobal.player.get_body().transition_teleport_finished
 		_move_to_room(EntityManagerGlobal.player.body_instance, room_data.connections, move_direction)
 
@@ -68,12 +67,14 @@ func _load_door_by_room_connections():
 			# Elevator fence toggle
 			Vector2i.UP:
 				elevator_fence_toggleable.visible = true
+				teleport_ray_toggleable.visible = true
 		
 			# Platform tile toggle
 			Vector2i.DOWN:
 				floor_bottom_toggleable.visible = false
+				teleport_ray_toggleable.visible = true
 
 func _close_vert_room():
-	
 		elevator_fence_toggleable.visible = false
 		floor_bottom_toggleable.visible = true
+		teleport_ray_toggleable.visible = false

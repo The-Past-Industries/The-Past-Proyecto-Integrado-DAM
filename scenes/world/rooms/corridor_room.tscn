@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=4 uid="uid://cvyqcsoxwijr0"]
+[gd_scene load_steps=39 format=4 uid="uid://cvyqcsoxwijr0"]
 
 [ext_resource type="Script" uid="uid://qyyev4ljismb" path="res://scripts/data/rooms/room_controller_corridor.gd" id="1_huy5t"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_vbva3"]
+[ext_resource type="PackedScene" uid="uid://c2hmj2wryjo62" path="res://scenes/world/teleport_ray.tscn" id="2_g6uk4"]
 [ext_resource type="PackedScene" uid="uid://cqaqrqsf06was" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_1.blend" id="2_huy5t"]
 [ext_resource type="Texture2D" uid="uid://xiw1u5hujodu" path="res://assets/world/3D/RPG Mini Bundle 3/Texture/Color2.png" id="3_r6bt8"]
 [ext_resource type="PackedScene" uid="uid://jewm02jdtg70" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_2.blend" id="4_g6uk4"]
@@ -159,6 +160,9 @@ dof_blur_amount = 0.05
 
 [node name="corridor_room" type="Node3D"]
 script = ExtResource("1_huy5t")
+
+[node name="teleport_ray_toggleable" parent="." instance=ExtResource("2_g6uk4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.1, 0.95)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.983979, 0.178287, 0, -0.178287, 0.983979, 0, 1.71295, 7.83103)

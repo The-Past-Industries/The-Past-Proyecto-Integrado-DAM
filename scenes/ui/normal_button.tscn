@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxj3a47m4v4fi"]
+
+[ext_resource type="FontFile" uid="uid://ci4f6rhurl478" path="res://assets/fonts/monogram.ttf" id="1_6dp2p"]
+[ext_resource type="Texture2D" uid="uid://c207ngr03v8ku" path="res://assets/ui/Pxiel Art UI borders.png" id="2_quymi"]
+[ext_resource type="Script" uid="uid://ut1256yun1rt" path="res://scenes/ui/normal_button.gd" id="3_quymi"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_t0li6"]
+color = Color(0.605274, 0.605274, 0.605274, 1)
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_oxwcw"]
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yc0ux"]
+color = Color(0.800491, 0.800491, 0.800491, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_m82f4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8s2gp"]
+
+[sub_resource type="Theme" id="Theme_jnrhg"]
+default_font = ExtResource("1_6dp2p")
+default_font_size = 30
+VScrollBar/styles/grabber = SubResource("StyleBoxLine_t0li6")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxLine_oxwcw")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxLine_yc0ux")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_m82f4")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_8s2gp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xw3k6"]
+texture = ExtResource("2_quymi")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+region_rect = Rect2(18, 146, 92, 92)
+modulate_color = Color(0.905362, 0.750128, 0.486191, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h4bv2"]
+texture = ExtResource("2_quymi")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(18, 146, 92, 92)
+modulate_color = Color(1, 1, 1, 0.513726)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3b03"]
+texture = ExtResource("2_quymi")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(18, 146, 92, 92)
+
+[node name="Button" type="Button"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_jnrhg")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xw3k6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xw3k6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h4bv2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_r3b03")
+text = "Example text"
+alignment = 0
+script = ExtResource("3_quymi")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

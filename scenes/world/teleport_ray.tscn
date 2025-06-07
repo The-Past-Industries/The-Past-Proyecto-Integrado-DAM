@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://c2hmj2wryjo62"]
+
+[ext_resource type="Texture2D" uid="uid://bi1mgpugyvbnq" path="res://assets/fx/vfx/floor_tp_fire_circle.png" id="1_rscyi"]
+[ext_resource type="Script" uid="uid://c0f4h5dcg8lww" path="res://scripts/world/light/spot_light_3d_tp_circle.gd" id="2_g0r4m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2n12"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(0, 0, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g26mg"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(341, 0, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iget"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(682, 0, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pdch"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(1023, 0, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qas28"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(1364, 0, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37gk3"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(0, 341, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffiu7"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(341, 341, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4dsj"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(1023, 341, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nj3l"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(1364, 341, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjf1w"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(1705, 341, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_783nc"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(1364, 682, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fti52"]
+atlas = ExtResource("1_rscyi")
+region = Rect2(1705, 682, 341, 341)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anlao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2n12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g26mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iget")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pdch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qas28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37gk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffiu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4dsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nj3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjf1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_783nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fti52")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="teleport_ray" type="Node3D"]
+
+[node name="floor_circle" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
+cast_shadow = 0
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_anlao")
+autoplay = "default"
+frame_progress = 0.769093
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0)
+light_color = Color(0.992157, 0.65098, 0.14902, 1)
+spot_range = 3.0
+spot_angle = 75.0
+script = ExtResource("2_g0r4m")
+intensity_amplitude = 1.0
+position_amplitude = 0.0
+base_energy = 5.0

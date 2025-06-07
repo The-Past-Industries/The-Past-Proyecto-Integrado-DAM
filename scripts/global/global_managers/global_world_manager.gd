@@ -4,6 +4,9 @@ class_name WorldManager
 # Global
 var is_active = false
 
+# Control
+var menu_panel: MenuPanel
+
 # World
 var world_generator := WorldGenerator.new()
 var map_data: Dictionary
@@ -39,6 +42,8 @@ func _generate_level():
 	_change_cell(map_data[cur_position])
 
 func _change_cell(room_data: RoomData):
+	if cur_cell_instance && cur_cell_instance.room_data:
+		cur_cell_instance.room_data.shown = true
 	_clear_tree()
 	await get_tree().process_frame
 	_instance_cell(room_data)
@@ -65,7 +70,11 @@ func _instance_cell(room_data: RoomData):
 	cur_cell_instance = cell_instantiated
 	_load_cell_on_tree(cell_instantiated)
 	cell_instantiated.setup(cur_position, room_data)
-	Logger.info("CELL LOADED ON TREE: pos [%s] type [%s]" % [cur_position, get_room_type_name(room_data.type)])
+	if room_data.type == RoomType.COMMON && !room_data.shown:
+		Logger.info("WorldManager: Common room not shown entered. Starting combat.")
+		EntityManagerGlobal.choose_random_enemy()
+		cell_instantiated.spawn_enemy(EntityManagerGlobal.enemy)
+		cell_instantiated.prepare_combat_state()
 
 func _load_cell_on_tree(cell_instantiated: RoomController):
 	if game_root == null:
@@ -124,7 +133,7 @@ func get_comming_direction() -> Vector2i:
 	if last_position != null && cur_position != null:
 		var dif: Vector2i = last_position - cur_position
 		var comming_direction: Vector2i = dif.snapped(Vector2.ONE)
-		Logger.info("WorldManager: CUR_POSITION:%s LAST_POSITION:%s COMMING_DIR:%s" % [cur_position, last_position, comming_direction])
+		# Logger.info("WorldManager: CUR_POSITION:%s LAST_POSITION:%s COMMING_DIR:%s" % [cur_position, last_position, comming_direction])
 		return Vector2i(dif)
 	else:
 		Logger.error("WRONG COMMING DIRECTION. Last position is NULL")
