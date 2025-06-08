@@ -4,9 +4,6 @@ class_name WorldManager
 # Global
 var is_active = false
 
-# Control
-var menu_panel: MenuPanel
-
 # World
 var world_generator := WorldGenerator.new()
 var map_data: Dictionary
@@ -75,6 +72,7 @@ func _instance_cell(room_data: RoomData):
 		EntityManagerGlobal.choose_random_enemy()
 		cell_instantiated.spawn_enemy(EntityManagerGlobal.enemy)
 		cell_instantiated.prepare_combat_state()
+	MenuManagerGlobal.update_visors()
 
 func _load_cell_on_tree(cell_instantiated: RoomController):
 	if game_root == null:
@@ -100,7 +98,7 @@ func move_to_cell(direction: Vector2i):
 func _clear_tree():
 	if cur_cell_instance != null:
 		game_root.remove_child(cur_cell_instance)
-		cur_cell_instance.queue_free()
+		cur_cell_instance.call_deferred("queue_free")
 		cur_cell_instance = null
 
 	await get_tree().process_frame
@@ -109,7 +107,7 @@ func _clear_tree():
 		for child in game_root.get_children():
 			if not child is CharacterBody3D:
 				game_root.remove_child(child)
-				child.queue_free()
+				child.call_deferred("queue_free")
 
 # Utils
 

@@ -1,5 +1,7 @@
 extends Panel
 class_name MenuPanel
 
+@onready var scroll_container = $MarginContainer/ScrollContainer
+
 func _ready():
-	WorldManagerGlobal.menu_panel = self
+	MenuManagerGlobal.menu_panel_scroll = scroll_container

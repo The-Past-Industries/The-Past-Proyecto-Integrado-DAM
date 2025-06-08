@@ -5,6 +5,7 @@ extends ScrollContainer
 var current_index := 0
 var item_count := 0
 
+
 func _ready():
 	item_count = items_container.get_child_count()
 	await get_tree().process_frame
@@ -32,3 +33,10 @@ func _focus_item(index: int) -> void:
 	if node is Control:
 		node.grab_focus()
 		ensure_control_visible(node)
+
+func refresh_items():
+	await get_tree().process_frame
+	item_count = items_container.get_child_count()
+	current_index = 0
+	if item_count > 0:
+		_focus_item(current_index)

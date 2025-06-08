@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cxj3a47m4v4fi"]
 
-[ext_resource type="FontFile" uid="uid://ci4f6rhurl478" path="res://assets/fonts/monogram.ttf" id="1_6dp2p"]
+[ext_resource type="FontFile" uid="uid://rs55abjy0jvm" path="res://assets/fonts/monogram-extended.ttf" id="1_quymi"]
 [ext_resource type="Texture2D" uid="uid://c207ngr03v8ku" path="res://assets/ui/Pxiel Art UI borders.png" id="2_quymi"]
 [ext_resource type="Script" uid="uid://ut1256yun1rt" path="res://scenes/ui/normal_button.gd" id="3_quymi"]
 
@@ -20,7 +20,7 @@ color = Color(0.800491, 0.800491, 0.800491, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8s2gp"]
 
 [sub_resource type="Theme" id="Theme_jnrhg"]
-default_font = ExtResource("1_6dp2p")
+default_font = ExtResource("1_quymi")
 default_font_size = 30
 VScrollBar/styles/grabber = SubResource("StyleBoxLine_t0li6")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxLine_oxwcw")
@@ -78,3 +78,4 @@ script = ExtResource("3_quymi")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

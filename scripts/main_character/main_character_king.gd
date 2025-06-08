@@ -71,6 +71,11 @@ func hit_animation():
 	is_hitting = false
 	is_idle = true
 
+func death_animation():
+	is_hitting = true
+	is_dying = true
+	is_idle = false
+
 func _physics_process(delta):
 	if transition_is_teleporting:
 		transition_teleport(delta)

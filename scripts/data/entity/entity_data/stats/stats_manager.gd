@@ -3,6 +3,7 @@ class_name StatsManager
 
 # Stats
 var health: Stat = Stat.new(StatType.HEALTH_PTS)
+var health_max: Stat = Stat.new(StatType.HEALTH_MAX)
 var light: Stat = Stat.new(StatType.LIGHT_PTS, true)
 var attack_speed: Stat = Stat.new(StatType.ATTACK_SPD)
 var critical_chance: Stat = Stat.new(StatType.CRITICAL_CHA)
@@ -37,7 +38,8 @@ func _init():
 		true_damage,
 		physical_penetration,
 		magic_penetration,
-		critical_chance
+		critical_chance,
+		health_max
 	]
 	statVariator = StatVariator.new(statsList)
 
@@ -45,22 +47,63 @@ func alterStat(statVariation: StatVariation):
 	statVariator.alterStat(statVariation)
 
 func set_initial_player_stats():
-	# TODO completar
-	pass
+	var randomized_variations = [
+		StatVariation.new(StatType.PHYSICAL_DMG, GlobalConstants.PLAYER_INITIAL_STAT_PHYSICAL_DAMAGE, false),
+		StatVariation.new(StatType.PHYSICAL_PEN, GlobalConstants.PLAYER_INITIAL_STAT_PHYSICAL_PENETRATION, false),
+		StatVariation.new(StatType.PHYSICAL_ARM, GlobalConstants.PLAYER_INITIAL_STAT_PHYSICAL_ARMOR, false),
+		StatVariation.new(StatType.MAGIC_DMG, GlobalConstants.PLAYER_INITIAL_STAT_MAGICAL_DAMAGE, false),
+		StatVariation.new(StatType.MAGIC_PEN, GlobalConstants.PLAYER_INITIAL_STAT_MAGICAL_PENETRATION, false),
+		StatVariation.new(StatType.MAGIC_ARM, GlobalConstants.PLAYER_INITIAL_STAT_MAGICAL_ARMOR, false),
+		StatVariation.new(StatType.ATTACK_SPD, GlobalConstants.PLAYER_INITIAL_STAT_PHYSICAL_ATTACK_SPEED, false),
+		StatVariation.new(StatType.CRITICAL_CHA, GlobalConstants.PLAYER_INITIAL_STAT_CRITICAL_CHANCE, false),
+		StatVariation.new(StatType.HEALTH_MAX, GlobalConstants.PLAYER_INITIAL_STAT_HEALTH_MAX, false),
+		StatVariation.new(StatType.HEALTH_PTS, GlobalConstants.PLAYER_INITIAL_STAT_HEALTH_MAX, false)
+	]
+	for variation in randomized_variations:
+		statVariator.alterStat(variation)
 
 func randomizeStats():
+	randomize()
+	
+	var hp_variation = StatVariation.new(StatType.HEALTH_MAX, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_HP, GlobalConstants.ENTTITYGEN_MAX_RANDOM_HP), false)
+	
 	var randomized_variations = [
-		StatVariation.new(StatType.HEALTH_PTS, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_HP, GlobalConstants.ENTTITYGEN_MAX_RANDOM_HP), false),
+		hp_variation,
+		StatVariation.new(StatType.HEALTH_PTS, hp_variation.variation_value, false),
 		StatVariation.new(StatType.PHYSICAL_DMG, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_PHY_DMG, GlobalConstants.ENTTITYGEN_MAX_RANDOM_PHY_DMG), false),
-		StatVariation.new(StatType.MAGIC_DMG, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_MAG_DMG, GlobalConstants.ENTTITYGEN_MAX_RANDOM_MAG_DMG), false),
-		StatVariation.new(StatType.PHYSICAL_ARM, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_PHY_ARM, GlobalConstants.ENTTITYGEN_MAX_RANDOM_PHY_ARM), false),
-		StatVariation.new(StatType.MAGIC_ARM, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_MAG_ARM, GlobalConstants.ENTTITYGEN_MAX_RANDOM_MAG_ARM), false),
 		StatVariation.new(StatType.PHYSICAL_PEN, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_PHY_PEN, GlobalConstants.ENTTITYGEN_MAX_RANDOM_PHY_PEN), false),
+		StatVariation.new(StatType.PHYSICAL_ARM, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_PHY_ARM, GlobalConstants.ENTTITYGEN_MAX_RANDOM_PHY_ARM), false),
+		StatVariation.new(StatType.MAGIC_DMG, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_MAG_DMG, GlobalConstants.ENTTITYGEN_MAX_RANDOM_MAG_DMG), false),
 		StatVariation.new(StatType.MAGIC_PEN, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_MAG_PEN, GlobalConstants.ENTTITYGEN_MAX_RANDOM_MAG_PEN), false),
-		StatVariation.new(StatType.ATTACK_SPD, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_ATK_SPD, GlobalConstants.ENTTITYGEN_MAX_RANDOM_ATK_SPD), false)
+		StatVariation.new(StatType.MAGIC_ARM, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_MAG_ARM, GlobalConstants.ENTTITYGEN_MAX_RANDOM_MAG_ARM), false),
+		StatVariation.new(StatType.ATTACK_SPD, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_ATK_SPD, GlobalConstants.ENTTITYGEN_MAX_RANDOM_ATK_SPD), false),
+		StatVariation.new(StatType.CRITICAL_CHA, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_CRI_CHA, GlobalConstants.ENTTITYGEN_MAX_RANDOM_CRI_CHA), false)
 	]	
 	for variation in randomized_variations:
 		statVariator.alterStat(variation)
+
+func take_damage(stat_type: int, damage_positive_value: float, pen_stat: float):
+	var armor_value: float
+	match stat_type:
+		StatType.PHYSICAL_DMG:
+			armor_value = physical_armor.value
+			armor_value *= (1.0 - clamp(pen_stat / 100.0, 0.0, 1.0))
+			
+		StatType.MAGIC_DMG:
+			armor_value = magic_armor.value
+			armor_value *= (1.0 - clamp(pen_stat / 100.0, 0.0, 1.0))
+		
+		StatType.TRUE_DMG:
+			Logger.warning("StatsManager: TRUE DAMAGE used and is not implemented yet")
+			armor_value = 0.0
+		
+		_:
+			Logger.error("StatsManager: Invalid taken damage type")
+			return
+
+	var final_damage: float = max(damage_positive_value - armor_value, 0.0)
+	Logger.info("StatsManager: Final damage taken = %.2f (base: %.2f, reduced by armor: %.2f)" % [final_damage, damage_positive_value, armor_value])
+	alterStat(StatVariation.new(StatType.HEALTH_PTS, -final_damage, false))
 
 func get_stat_value(stat_type: int) -> float:
 	match stat_type:
@@ -82,5 +125,7 @@ func get_stat_value(stat_type: int) -> float:
 			return magic_armor.value
 		StatType.CRITICAL_CHA:
 			return critical_chance.value
+		StatType.HEALTH_MAX:
+			return health_max.value
 		_:
 			return -1

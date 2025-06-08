@@ -7,6 +7,8 @@ var is_on_elevator: bool = false
 
 func _init() -> void:
 	_init_body()
+	self.type = EntityType.PLAYER
+	self.stats_manager.set_initial_player_stats()
 
 func _init_body():
 	if !self.body_instance:

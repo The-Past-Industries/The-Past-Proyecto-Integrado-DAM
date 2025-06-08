@@ -377,7 +377,7 @@ states/jump/position = Vector2(281, -41)
 states/run/node = SubResource("AnimationNodeAnimation_qkak3")
 states/run/position = Vector2(152, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ip8ms"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_hdt2m"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_04tv2"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_bh7kl"), "attack_2", "attack_3", SubResource("AnimationNodeStateMachineTransition_ufnck"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_n2bc4"), "attack_3", "idle", SubResource("AnimationNodeStateMachineTransition_d3ps3"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_xhupw"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_v2aer"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_mwts2"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_7hbui"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_7ir1t"), "hit", "death", SubResource("AnimationNodeStateMachineTransition_18uyt"), "death", "End", SubResource("AnimationNodeStateMachineTransition_d6mb4"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_cq07n")]
-graph_offset = Vector2(-56, 0)
+graph_offset = Vector2(-134, 75)
 
 [node name="main_character_king" type="CharacterBody3D" groups=["doors_tp_proc"]]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 0, 0, 0)
@@ -396,7 +396,7 @@ texture_filter = 0
 sprite_frames = ExtResource("2_upo6r")
 animation = &"idle"
 autoplay = "idle"
-frame = 5
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

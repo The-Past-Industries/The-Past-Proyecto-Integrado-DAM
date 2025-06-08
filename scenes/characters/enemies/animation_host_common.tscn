@@ -1,7 +1,8 @@
-[gd_scene load_steps=50 format=3 uid="uid://dkko57qd221eh"]
+[gd_scene load_steps=51 format=3 uid="uid://dkko57qd221eh"]
 
 [ext_resource type="Script" uid="uid://dwebqk1xgmk43" path="res://scripts/enemies/animation_host_common.gd" id="1_iuony"]
-[ext_resource type="SpriteFrames" uid="uid://c3qd1mriu5arh" path="res://scenes/characters/enemies/mechasphere_1_4/mechasphere_4.tres" id="2_iuony"]
+[ext_resource type="PackedScene" uid="uid://btdypltrfu1r2" path="res://scenes/vfx/aux_animations.tscn" id="2_2g3oi"]
+[ext_resource type="SpriteFrames" uid="uid://c3qd1mriu5arh" path="res://scenes/characters/enemies/twofaced_1_7/twofaced_7.tres" id="2_iuony"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jdpg7"]
 
@@ -521,13 +522,17 @@ _data = {
 [node name="animator_host_common" type="CharacterBody3D"]
 script = ExtResource("1_iuony")
 
+[node name="aux_animations" parent="." instance=ExtResource("2_2g3oi")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 shape = SubResource("BoxShape3D_jdpg7")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+cast_shadow = 2
 shaded = true
+alpha_cut = 2
 texture_filter = 0
 sprite_frames = ExtResource("2_iuony")
 animation = &"idle"

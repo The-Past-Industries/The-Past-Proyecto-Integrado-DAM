@@ -39,6 +39,7 @@ region_rect = Rect2(18, 146, 92, 92)
 modulate_color = Color(1, 1, 1, 0.282353)
 
 [node name="travell_button" type="Button"]
+size_flags_horizontal = 3
 theme = SubResource("Theme_dqofn")
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.282353)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0.282353)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bi3w3wiu50egq"]
+[gd_scene load_steps=34 format=4 uid="uid://bi3w3wiu50egq"]
 
 [ext_resource type="Script" uid="uid://b5uwidekcelaw" path="res://scripts/data/rooms/room_controller_common.gd" id="1_n38fs"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_st3ty"]
@@ -13,16 +13,18 @@
 [ext_resource type="PackedScene" uid="uid://bjkkspl5bh41n" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/gltf/floor_wood_small_dark.gltf" id="11_wmkcq"]
 [ext_resource type="PackedScene" uid="uid://cb8etemdi18vl" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/WallCover_Modular.blend" id="12_73ent"]
 [ext_resource type="PackedScene" uid="uid://3de55fn8cdb4" path="res://assets/world/3D/scenes/lights/torch_fire.tscn" id="12_xm7ym"]
+[ext_resource type="Script" uid="uid://vclu6s2m3iev" path="res://scripts/ui/turn_indicator.gd" id="14_n3ji1"]
+[ext_resource type="PackedScene" uid="uid://dftfvqw3bg5s2" path="res://assets/world/3D/KayKit_DungeonRemastered_1.1_FREE/Assets/fbx(unity)/sword_shield_gold.fbx" id="14_u8wrh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n38fs"]
 panorama = ExtResource("1_st3ty")
 
-[sub_resource type="Sky" id="Sky_blufq"]
+[sub_resource type="Sky" id="Sky_n3ji1"]
 sky_material = SubResource("PanoramaSkyMaterial_n38fs")
 
 [sub_resource type="Environment" id="Environment_u8wrh"]
 background_mode = 2
-sky = SubResource("Sky_blufq")
+sky = SubResource("Sky_n3ji1")
 ambient_light_color = Color(1, 0.636437, 0.416718, 1)
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.5
@@ -512,6 +514,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -0.7)
 light_color = Color(1, 0.498039, 0.0980392, 1)
 light_volumetric_fog_energy = 2.0
 shadow_enabled = true
+shadow_reverse_cull_face = true
 omni_range = 4.0
 script = ExtResource("11_h0vcv")
 
@@ -533,11 +536,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, -0.7)
 light_color = Color(1, 0.498039, 0.0980392, 1)
 light_volumetric_fog_energy = 2.0
 shadow_enabled = true
+shadow_reverse_cull_face = true
 omni_range = 4.0
 script = ExtResource("11_h0vcv")
 
 [node name="torch_fire" parent="wall_torch2/fire" instance=ExtResource("12_xm7ym")]
 frame_progress = 0.955372
+
+[node name="turn_indicator" type="Node3D" parent="."]
+script = ExtResource("14_n3ji1")
+float_amplitude = 0.05
+float_speed = 0.5
+
+[node name="turn_indicator_shield" parent="turn_indicator" instance=ExtResource("14_u8wrh")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.5, -0.5)
+
+[node name="white_SpotLight3D" type="SpotLight3D" parent="turn_indicator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
+light_color = Color(1, 0.67451, 0.486275, 1)
+light_energy = 0.5
+shadow_enabled = true
+shadow_reverse_cull_face = true
+spot_range = 1.5
+
+[node name="lights" type="Node3D" parent="."]
+
+[node name="left_white_SpotLight3D" type="SpotLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.5, 2.5, 1.15)
+light_color = Color(1, 0.675961, 0.484494, 1)
+light_energy = 10.0
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+spot_angle = 20.0
+
+[node name="right_white_SpotLight3D" type="SpotLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 2.5, 1.15)
+light_color = Color(1, 0.675961, 0.484494, 1)
+light_energy = 10.0
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+spot_angle = 20.0
 
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
@@ -560,3 +600,4 @@ frame_progress = 0.955372
 [editable path="pillars/back_pillars/Pillar_Wall2"]
 [editable path="wall_torch/torchWall"]
 [editable path="wall_torch2/torchWall"]
+[editable path="turn_indicator/turn_indicator_shield"]

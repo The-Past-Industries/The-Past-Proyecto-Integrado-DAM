@@ -4,5 +4,9 @@ enum {
 	MENU,
 	TRAVEL,
 	COMBAT,
-	LOOT
+	OPEN_CHEST,
+	LOOT_CHEST,
+	LOOT_DROP,
+	TALK,
+	END
 }

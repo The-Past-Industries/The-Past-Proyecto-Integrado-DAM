@@ -37,3 +37,13 @@ func spawn_player_in_pos(root: Node3D, position: Vector3):
 
 func choose_random_enemy():
 	self.enemy = entity_repository.get_random_common_enemy()
+
+func damage_from_to(sender: Entity, reciver: Entity, stat_type: int, damage_positive_value: float):
+	var pen
+	if stat_type == StatType.PHYSICAL_DMG:
+		pen = sender.stats_manager.get_stat_value(StatType.PHYSICAL_PEN)
+	elif stat_type == StatType.MAGIC_DMG:
+		pen = sender.stats_manager.get_stat_value(StatType.MAGIC_PEN)
+	else:
+		Logger.error("EntityManagerGlobal: Damage from to. [%d] is an invalid stat type." % stat_type)
+	reciver.stats_manager.take_damage(stat_type, damage_positive_value, pen)

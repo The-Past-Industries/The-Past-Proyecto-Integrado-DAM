@@ -22,6 +22,8 @@ WorldManagerGlobal="*res://scripts/global/global_managers/global_world_manager.g
 EntityManagerGlobal="*res://scripts/global/global_managers/global_entity_manager.gd"
 SignalManagerGlobal="*res://scripts/global/global_managers/global_signal_manager.gd"
 PhaseManagerGlobal="*res://scripts/global/global_managers/global_phase_manager.gd"
+MenuManagerGlobal="*res://scripts/global/global_managers/global_menu_manager.gd"
+CombatManagerGlobal="*res://scripts/combat/combat_manager.gd"
 
 [display]
 

@@ -40,6 +40,8 @@ func alterStat(statVariation: StatVariation):
 			pass
 		StatType.CRITICAL_CHA:
 			pass
+		StatType.HEALTH_MAX:
+			pass
 		
 	if stat.value <= 0:
 		stat.value = 0

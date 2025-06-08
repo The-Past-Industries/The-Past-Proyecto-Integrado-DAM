@@ -24,7 +24,7 @@ func _ready():
 
 func clear_level():
 	for child in get_children():
-		child.queue_free()
+		child.call_deferred("queue_free")
 	if world_generator:
 		world_generator.map_data.clear()
 		world_generator.visited_cells.clear()
@@ -34,7 +34,7 @@ func clear_level():
 func _flush_children():
 	await get_tree().process_frame
 	for child in get_children():
-		child.queue_free()
+		child.call_deferred("queue_free")
 	world_generator.map_data.clear()
 	world_generator.visited_cells.clear()
 	world_generator.last_direction = Vector2i.ZERO

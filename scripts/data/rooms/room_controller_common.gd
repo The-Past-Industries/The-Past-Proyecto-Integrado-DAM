@@ -9,6 +9,11 @@ class_name RoomControllerCommon
 @onready var door_right_marker_aux = $position_markers/door_right
 @onready var combat_right = $position_markers/combat_right
 @onready var combat_left = $position_markers/combat_left
+@onready var turn_indicator: TurnIndicator = $turn_indicator
+
+
+var player_position: Vector3
+var enemy_position: Vector3
 
 var enemy_flip_h := false
 
@@ -40,7 +45,8 @@ func _get_enemy_position() -> Vector3:
 
 func spawn_enemy(enemy: EntityEnemy):
 	self.add_child(enemy.body_instance)
-	enemy.body_instance.global_position = _get_enemy_position()
+	enemy_position = _get_enemy_position()
+	enemy.body_instance.global_position = enemy_position
 	Logger.info("RoomControllerCommon: Enemy spawn")
 	if enemy_flip_h:
 		(enemy.body_instance as AnimationHostCommon).flip_to_right()
@@ -52,6 +58,7 @@ func prepare_combat_state():
 			new_position = combat_left.global_position
 		Vector2i.RIGHT:
 			new_position = combat_right.global_position
+	player_position = new_position
 	EntityManagerGlobal.player.move_to(new_position)
 	PhaseManagerGlobal.change_phase(PhaseType.COMBAT)
 

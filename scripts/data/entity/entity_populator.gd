@@ -257,6 +257,7 @@ func load_common_enemies() -> Array[EntityEnemy]:
 		var enemy: EntityEnemy = generator.generate_entity(EntityType.ENEMY) as EntityEnemy
 		enemy.body_instance = ANIMATION_HOST_COMMON.instantiate()
 		enemy.body_instance.call_deferred("set_sprite_frames", resource)
+		enemy.stats_manager.randomizeStats()
 		list.append(enemy)
 	return list
 
