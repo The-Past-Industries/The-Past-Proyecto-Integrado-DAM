@@ -6,6 +6,10 @@ var body_instance: PlayerBody
 var is_on_elevator: bool = false
 var can_action: bool = false
 
+var player_special_animation
+
+func _ready():
+	add_child(VFXManagerGlobal.player_special_animation)
 
 func _init() -> void:
 	_init_body()
