@@ -551,6 +551,9 @@ float_speed = 0.5
 [node name="turn_indicator_shield" parent="turn_indicator" instance=ExtResource("14_u8wrh")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.5, -0.5)
 
+[node name="sword_shield_gold" parent="turn_indicator/turn_indicator_shield" index="0"]
+transform = Transform3D(-1, 1.4243e-14, 8.74228e-08, 0, 1, -1.62921e-07, -8.74228e-08, -1.62921e-07, -1, 0, 0, 0)
+
 [node name="white_SpotLight3D" type="SpotLight3D" parent="turn_indicator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
 light_color = Color(1, 0.67451, 0.486275, 1)

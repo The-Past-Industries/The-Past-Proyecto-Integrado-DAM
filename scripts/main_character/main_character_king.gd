@@ -66,15 +66,11 @@ func attack_animation():
 
 func hit_animation():
 	is_hitting = true
-	is_idle = false
 	await animation_tree.animation_finished
 	is_hitting = false
-	is_idle = true
 
 func death_animation():
-	is_hitting = true
 	is_dying = true
-	is_idle = false
 
 func _physics_process(delta):
 	if transition_is_teleporting:
@@ -105,14 +101,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-# INPUT ACTIONS
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			EntityManagerGlobal.player.get_body().is_locked = false
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			pass
-
 # IN GAME TRANSITIONS
 func start_flat_transition(name: String):
 	player_on_transition = true
@@ -125,8 +113,6 @@ func start_flat_transition(name: String):
 func move_to(target_position: Vector3):
 	self.transition_target_position = target_position
 	transition_is_moving_to = true
-	
-	
 
 func transition_move_to(target_position: Vector3, delta: float) -> void:
 	var total_duration := 1

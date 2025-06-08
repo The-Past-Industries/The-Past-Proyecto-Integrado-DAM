@@ -60,6 +60,7 @@ func prepare_combat_state():
 			new_position = combat_right.global_position
 	player_position = new_position
 	EntityManagerGlobal.player.move_to(new_position)
+	turn_indicator.visible = true
 	PhaseManagerGlobal.change_phase(PhaseType.COMBAT)
 
 func _on_area_3d_left_body_entered(body: Node3D) -> void:

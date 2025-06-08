@@ -12,33 +12,50 @@ var turn_indicator: TurnIndicator
 
 signal enemy_choose_option
 signal boss_choose_option
-signal entity_died
+signal combat_force_end
 
+func _process(_delta):
+	check_force_end()
+
+func check_force_end():
+	if combat_is_over:
+		return
+
+	var player_hp = EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.HEALTH_PTS)
+	var enemy_hp = 0
+
+	if enemy_is_boss:
+		enemy_hp = EntityManagerGlobal.boss.stats_manager.get_stat_value(StatType.HEALTH_PTS)
+	else:
+		enemy_hp = EntityManagerGlobal.enemy.stats_manager.get_stat_value(StatType.HEALTH_PTS)
+
+	if player_hp <= 0:
+		EntityManagerGlobal.player.body_instance.death_animation()
+		combat_is_over = true
+		emit_signal("combat_force_end")
+	elif enemy_hp <= 0:
+		combat_is_over = true
+		emit_signal("combat_force_end")
 
 func start_combat(is_boss: bool = false):
-	# TODO ACTUALIZAR INTERFAZ A COMBATE
 	enemy_is_boss = is_boss
 	Logger.info("========= CombatManager: COMBAT STARTED. BOSS: %s =========" % is_boss)
 	EntityManagerGlobal.player.get_body().is_locked = true
 	turn_indicator = WorldManagerGlobal.cur_cell_instance.turn_indicator as TurnIndicator
 	turn_indicator.visible = true
-	
+
 	while !combat_is_over:
 		await _launch_round()
-	
+
 	await end_combat(enemy_is_boss)
-	
 
 func end_combat(is_boss: bool = false):
-	await get_tree().create_timer(GlobalConstants.COMBAT_TIME_BEFORE_CORPSE_DESPAWNS).timeout
+	await get_tree().create_timer(GlobalConstants.COMBAT_TIME_BETWEEN_TURNS).timeout
 	EntityManagerGlobal.player.get_body().is_locked = false
 	turn_indicator.visible = false
-	EntityManagerGlobal.enemy.body_instance.aux_animations.despawn_pop()
-	
 	WorldManagerGlobal.cur_cell_instance.remove_child(EntityManagerGlobal.enemy.body_instance)
 	PhaseManagerGlobal.change_phase(PhaseType.TRAVEL)
 	MenuManagerGlobal.refresh_cur_phase_buttons()
-	MenuManagerGlobal.update_visors()
 
 func update_turns():
 	player_turn_count = int(EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.ATTACK_SPD))
@@ -49,21 +66,8 @@ func update_turns():
 
 func _launch_round():
 	update_turns()
-
-	# PLAYER DIE
-	if EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
-		EntityManagerGlobal.player.body_instance.death_animation()
-		combat_is_over = true
-		
-		# ENEMY DIE
-	elif !enemy_is_boss:
-		if EntityManagerGlobal.enemy.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
-			combat_is_over = true
-	
-	# BOSS DIE
-	else:
-		if EntityManagerGlobal.boss.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
-			combat_is_over = true
+	if combat_is_over:
+		return
 
 	if player_turn:
 		for i in player_turn_count:
@@ -109,37 +113,42 @@ func _player_turn():
 	Logger.info("CombatManager: PLAYER TURN. WAITING FOR OPTION")
 	EntityManagerGlobal.player.can_action = true
 	MenuManagerGlobal.refresh_cur_phase_buttons()
-	await MenuManagerGlobal.player_choose_option
 
+	var player_signal = MenuManagerGlobal.player_choose_option
+	var end_signal = self.combat_force_end
+
+	var completed := false
+
+	func resolve_signal(_sig):
+		completed = true
+
+	player_signal.connect(resolve_signal, CONNECT_ONE_SHOT)
+	end_signal.connect(resolve_signal, CONNECT_ONE_SHOT)
+
+	while not completed and !combat_is_over:
+		await get_tree().process_frame
 
 func _enemy_turn():
 	Logger.info("CombatManager: ENEMY TURN. WAITING FOR OPTION")
 	await get_tree().create_timer(GlobalConstants.COMBAT_TIME_BETWEEN_TURNS).timeout
-	
 	_enemy_choose_option()
 	EntityManagerGlobal.player.can_action = true
+	check_force_end()
 
 func _enemy_choose_option():
-	# TODO CAMBIAR POR PERSONALIZADO
 	(EntityManagerGlobal.enemy.body_instance as AnimationHostCommon).attack()
-	
+
 	var is_phys_dmg = randi() % 2 == 0
-	
-	var dmg_type
-	var pen_type
-	
-	if is_phys_dmg:
-		dmg_type = StatType.PHYSICAL_DMG
-		pen_type = StatType.PHYSICAL_PEN
-		
-	else:
-		dmg_type = StatType.MAGIC_DMG
-		pen_type = StatType.MAGIC_PEN
-		
+	var dmg_type = StatType.PHYSICAL_DMG if is_phys_dmg else StatType.MAGIC_DMG
+	var pen_type = StatType.PHYSICAL_PEN if is_phys_dmg else StatType.MAGIC_PEN
+
 	var dmg = EntityManagerGlobal.enemy.stats_manager.get_stat_value(dmg_type)
 	var pen = EntityManagerGlobal.enemy.stats_manager.get_stat_value(pen_type)
+
 	EntityManagerGlobal.damage_from_to(EntityManagerGlobal.enemy, EntityManagerGlobal.player, dmg_type, dmg)
 	emit_signal("enemy_choose_option")
+	check_force_end()
 
 func _boss_turn():
+	# Implement boss logic
 	pass

@@ -88,14 +88,6 @@ func walk_to_combat(delta):
 		position.x = target_position
 		is_on_combat_place = true
 
-#Input Actions
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			pass
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			pass
-
 
 #Indicator
 func show_indicator(target: bool):

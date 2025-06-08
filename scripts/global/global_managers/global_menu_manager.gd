@@ -109,13 +109,14 @@ func set_combat_buttons():
 	container.add_child(btn_skl_lst)
 	
 	# COVER
-	var btn_cover : = NORMAL_BUTTON.instantiate() as NormalButton
-	btn_cover.normal_button_type = NormalButtonType.COVER
-	btn_cover.text = "PROTECCIÓN"
-	container.add_child(btn_cover)
+	# var btn_cover : = NORMAL_BUTTON.instantiate() as NormalButton
+	# btn_cover.normal_button_type = NormalButtonType.COVER
+	# btn_cover.text = "PROTECCIÓN"
+	# container.add_child(btn_cover)
 
 func set_skills_buttons():
 	_clear_menu()
+	EntityManagerGlobal.player.can_action = true
 	var skills_list = [
 		NormalButtonType.SKL_PROJECTILE,
 		NormalButtonType.SKL_SWORD_PILAR,
@@ -161,60 +162,86 @@ func set_menu_panel(menu_panel: Panel):
 	self.menu_panel = menu_panel
 
 func btn_on_action(normal_button_type: int):
-	if PhaseManagerGlobal.cur_phase_type != PhaseType.COMBAT || CombatManagerGlobal.player_turn:
+	if EntityManagerGlobal.player.can_action:
 		match normal_button_type:
+			
 			NormalButtonType.EXIT:
 				refresh_cur_phase_buttons()
+			
 			NormalButtonType.ATTACK_PHY:
 				start_phys_attack()
+				EntityManagerGlobal.player.can_action = false
+			
 			NormalButtonType.SKILLS:
 				set_skills_buttons()
+			
 			NormalButtonType.SKL_PROJECTILE:
 				emit_signal("player_choose_option")
-				pass
+				EntityManagerGlobal.player.can_action = false
+			
 			NormalButtonType.COVER:
 				emit_signal("player_choose_option")
+				EntityManagerGlobal.player.can_action = false
+			
 			NormalButtonType.SKL_SWORD_PILAR:
 				emit_signal("player_choose_option")
-				pass
+				EntityManagerGlobal.player.can_action = false
+			
 			NormalButtonType.SKL_BELLS_AURA:
 				emit_signal("player_choose_option")
-				pass
+				EntityManagerGlobal.player.can_action = false
+			
 			NormalButtonType.SKL_LIGHT_CAST:
 				emit_signal("player_choose_option")
-				pass
+				EntityManagerGlobal.player.can_action = false
+			
 			NormalButtonType.SKL_BALL_RANDOM:
 				emit_signal("player_choose_option")
-				pass
+				EntityManagerGlobal.player.can_action = false
+			
 			NormalButtonType.SKL_SURIKEN:
 				emit_signal("player_choose_option")
-				pass
+				EntityManagerGlobal.player.can_action = false
+			
 			NormalButtonType.LOOT_DROP:
 				pass
+			
 			NormalButtonType.OPEN_CHEST:
 				pass
+			
 			NormalButtonType.LOOT_CHEST:
 				pass
+			
 			NormalButtonType.TALK:
 				pass
+			
 			NormalButtonType.BUY_1:
 				pass
+			
 			NormalButtonType.BUY_2:
 				pass
+			
 			NormalButtonType.BUY_3:
 				pass
+			
 			NormalButtonType.CAMPUS_1:
 				pass
+			
 			NormalButtonType.CAMPUS_2:
 				pass
+			
 			NormalButtonType.CAMPUS_3:
 				pass
+			
 			NormalButtonType.CAMPUS_4:
 				pass
+			
 			NormalButtonType.CAMPUS_5:
 				pass
+			
 			_:
 				Logger.warning("MenuManager: Unknown button type: %s" % normal_button_type)
+		
 
 func start_phys_attack():
 	
