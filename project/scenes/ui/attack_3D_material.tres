@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://be5mrct33w65p"]
+
+[ext_resource type="Texture2D" uid="uid://6akdtvh6oqpv" path="res://assets/ui/attack_indicator_render.png" id="1_0m825"]
+
+[resource]
+albedo_texture = ExtResource("1_0m825")
+uv1_scale = Vector3(-2, 2, 0)
+texture_filter = 0

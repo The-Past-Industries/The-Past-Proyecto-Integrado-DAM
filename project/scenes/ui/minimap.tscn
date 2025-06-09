@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://2kg2naxdq5do"]
+
+[ext_resource type="Script" uid="uid://cqybnk6p0se86" path="res://scenes/ui/minimap_root.gd" id="1_ixymw"]
+[ext_resource type="Script" uid="uid://cmsbcx8ux21cd" path="res://scripts/world/minimap/map_visualizer.gd" id="1_qqvxh"]
+[ext_resource type="Script" uid="uid://73s8p8dnr18h" path="res://scenes/ui/minimap_camera.gd" id="2_ixymw"]
+
+[node name="Minimap" type="Node2D"]
+script = ExtResource("1_ixymw")
+
+[node name="MapVisualizer" type="Node2D" parent="."]
+position = Vector2(1659, 1)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_qqvxh")
+metadata/_custom_type_script = "uid://cmsbcx8ux21cd"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_ixymw")

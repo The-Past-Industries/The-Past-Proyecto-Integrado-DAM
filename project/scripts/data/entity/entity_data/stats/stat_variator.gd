@@ -27,7 +27,8 @@ func alterStat(statVariation: StatVariation):
 	# Flats
 	match stat.stat_type:
 		StatType.HEALTH_PTS:
-			pass
+			if stat.value <= 0 and EntityManagerGlobal.player.stats_manager.is_inmortal:
+				stat.value = 1
 		StatType.LIGHT_PTS:
 			pass
 		StatType.PHYSICAL_DMG:

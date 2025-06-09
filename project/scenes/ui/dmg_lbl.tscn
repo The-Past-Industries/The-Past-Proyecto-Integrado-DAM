@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://5wp87nuvjdsq"]
+
+[ext_resource type="Theme" uid="uid://dks48t5etok0s" path="res://scenes/ui/menu_textures/dmg_label_theme.tres" id="1_dljad"]
+[ext_resource type="Script" uid="uid://be7fkpadl01ek" path="res://scenes/ui/dmg_lbl.gd" id="2_4ekk5"]
+
+[node name="dmg_lbl" type="Label"]
+offset_right = 114.0
+offset_bottom = 65.0
+theme = ExtResource("1_dljad")
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_4ekk5")

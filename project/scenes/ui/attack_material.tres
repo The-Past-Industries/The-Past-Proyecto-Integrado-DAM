@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://gve4van1sqy4"]
+
+[ext_resource type="Texture2D" uid="uid://6akdtvh6oqpv" path="res://assets/ui/attack_indicator_render.png" id="1_visk7"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_visk7")
+emission_enabled = true
+anisotropy_enabled = true
+texture_filter = 0

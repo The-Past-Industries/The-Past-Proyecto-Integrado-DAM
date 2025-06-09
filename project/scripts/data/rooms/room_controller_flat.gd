@@ -27,6 +27,7 @@ func spawn_player():
 	Logger.info("----SPAWN PLAYER CALLED. ROOM SHOWN: %s ----" % room_data.shown)
 	if room_data.type == RoomType.INITIAL  && !room_data.shown:
 		Logger.info("----SPAWN PLAYER INITIAL----")
+		room_data.shown = true
 		EntityManagerGlobal.spawn_player_in_pos(self, Vector3i(0,0,1))
 	else:
 		Logger.info("----SPAWN PLAYER DIRECTIONAL----")
@@ -52,7 +53,6 @@ func _init_room_components(components: Array[Node3D]):
 		combat_right_marker = components[7]
 
 func _load_door_by_room_connections():
-	await get_tree().process_frame
 	_close_room()
 	for direction in self.room_data.connections:
 		

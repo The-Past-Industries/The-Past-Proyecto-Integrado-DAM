@@ -22,4 +22,4 @@ func _input(event: InputEvent) -> void:
 			_move_to_room(EntityManagerGlobal.player.body_instance, room_data.connections, Vector2i.DOWN)
 
 func _spawn_player_by_dir_connection(dir_comming: Vector2i):
-	EntityManagerGlobal.spawn_player_in_pos(self, Vector3i(0,1,1))
+	EntityManagerGlobal.spawn_player_in_pos(self, Vector3i(0,0,1))

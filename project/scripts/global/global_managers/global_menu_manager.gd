@@ -3,6 +3,9 @@ class_name MenuManager
 
 const NORMAL_BUTTON = preload("res://scenes/ui/normal_button.tscn")
 const TRAVEL_BUTTON = preload("res://scenes/ui/travell_button.tscn")
+
+var player_action_called: bool = false
+
 signal player_choose_option
 
 # Control
@@ -116,7 +119,6 @@ func set_combat_buttons():
 
 func set_skills_buttons():
 	_clear_menu()
-	EntityManagerGlobal.player.can_action = true
 	var skills_list = [
 		NormalButtonType.SKL_PROJECTILE,
 		NormalButtonType.SKL_SWORD_PILAR,
@@ -162,86 +164,84 @@ func set_menu_panel(menu_panel: Panel):
 	self.menu_panel = menu_panel
 
 func btn_on_action(normal_button_type: int):
-	if EntityManagerGlobal.player.can_action:
-		match normal_button_type:
-			
-			NormalButtonType.EXIT:
-				refresh_cur_phase_buttons()
-			
-			NormalButtonType.ATTACK_PHY:
-				start_phys_attack()
-				EntityManagerGlobal.player.can_action = false
-			
-			NormalButtonType.SKILLS:
-				set_skills_buttons()
-			
-			NormalButtonType.SKL_PROJECTILE:
-				emit_signal("player_choose_option")
-				EntityManagerGlobal.player.can_action = false
-			
-			NormalButtonType.COVER:
-				emit_signal("player_choose_option")
-				EntityManagerGlobal.player.can_action = false
-			
-			NormalButtonType.SKL_SWORD_PILAR:
-				emit_signal("player_choose_option")
-				EntityManagerGlobal.player.can_action = false
-			
-			NormalButtonType.SKL_BELLS_AURA:
-				emit_signal("player_choose_option")
-				EntityManagerGlobal.player.can_action = false
-			
-			NormalButtonType.SKL_LIGHT_CAST:
-				emit_signal("player_choose_option")
-				EntityManagerGlobal.player.can_action = false
-			
-			NormalButtonType.SKL_BALL_RANDOM:
-				emit_signal("player_choose_option")
-				EntityManagerGlobal.player.can_action = false
-			
-			NormalButtonType.SKL_SURIKEN:
-				emit_signal("player_choose_option")
-				EntityManagerGlobal.player.can_action = false
-			
-			NormalButtonType.LOOT_DROP:
-				pass
-			
-			NormalButtonType.OPEN_CHEST:
-				pass
-			
-			NormalButtonType.LOOT_CHEST:
-				pass
-			
-			NormalButtonType.TALK:
-				pass
-			
-			NormalButtonType.BUY_1:
-				pass
-			
-			NormalButtonType.BUY_2:
-				pass
-			
-			NormalButtonType.BUY_3:
-				pass
-			
-			NormalButtonType.CAMPUS_1:
-				pass
-			
-			NormalButtonType.CAMPUS_2:
-				pass
-			
-			NormalButtonType.CAMPUS_3:
-				pass
-			
-			NormalButtonType.CAMPUS_4:
-				pass
-			
-			NormalButtonType.CAMPUS_5:
-				pass
-			
-			_:
-				Logger.warning("MenuManager: Unknown button type: %s" % normal_button_type)
-		
+	var keep_in_menu: bool = false
+	
+	if player_action_called:
+		return
+	
+	match normal_button_type:
+		NormalButtonType.EXIT:
+			refresh_cur_phase_buttons()
+
+		NormalButtonType.ATTACK_PHY:
+			start_phys_attack()
+
+		NormalButtonType.SKILLS:
+			keep_in_menu = true
+			set_skills_buttons()
+
+		NormalButtonType.SKL_PROJECTILE:
+			pass
+
+		NormalButtonType.COVER:
+			pass
+
+		NormalButtonType.SKL_SWORD_PILAR:
+			pass
+
+		NormalButtonType.SKL_BELLS_AURA:
+			pass
+
+		NormalButtonType.SKL_LIGHT_CAST:
+			pass
+
+		NormalButtonType.SKL_BALL_RANDOM:
+			pass
+
+		NormalButtonType.SKL_SURIKEN:
+			pass
+
+		NormalButtonType.LOOT_DROP:
+			pass
+
+		NormalButtonType.OPEN_CHEST:
+			pass
+
+		NormalButtonType.LOOT_CHEST:
+			pass
+
+		NormalButtonType.TALK:
+			pass
+
+		NormalButtonType.BUY_1:
+			pass
+
+		NormalButtonType.BUY_2:
+			pass
+
+		NormalButtonType.BUY_3:
+			pass
+
+		NormalButtonType.CAMPUS_1:
+			pass
+
+		NormalButtonType.CAMPUS_2:
+			pass
+
+		NormalButtonType.CAMPUS_3:
+			pass
+
+		NormalButtonType.CAMPUS_4:
+			pass
+
+		NormalButtonType.CAMPUS_5:
+			pass
+		_:
+			Logger.warning("MenuManager: Unknown button type: %s" % normal_button_type)
+	if !keep_in_menu:
+		player_action_called = true
+		disable_all_buttons()
+		emit_signal("player_choose_option")
 
 func start_phys_attack():
 	
@@ -259,9 +259,10 @@ func start_phys_attack():
 func disable_all_buttons():
 	for button in container.get_children():
 		if button != null:
-			button.visible = false
+			button.disabled = true
 
 func enable_all_buttons():
+	player_action_called = false
 	for button in container.get_children():
 		if button != null:
-			button.visible = true
+			button.disabled = false

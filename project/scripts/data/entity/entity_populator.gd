@@ -85,29 +85,29 @@ const ELEMENT_6 = preload("res://scenes/characters/enemies/element_1_7/element_6
 const ELEMENT_7 = preload("res://scenes/characters/enemies/element_1_7/element_7.tres")
 
 # FAIRY
-const FAIRY_1 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_1.tres")
-const FAIRY_2 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_2.tres")
-const FAIRY_3 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_3.tres")
-const FAIRY_4 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_4.tres")
-const FAIRY_5 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_5.tres")
-const FAIRY_6 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_6.tres")
-const FAIRY_7 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_7.tres")
+#const FAIRY_1 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_1.tres")
+#const FAIRY_2 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_2.tres")
+#const FAIRY_3 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_3.tres")
+#const FAIRY_4 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_4.tres")
+#const FAIRY_5 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_5.tres")
+#const FAIRY_6 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_6.tres")
+#const FAIRY_7 = preload("res://scenes/characters/enemies/fairy_1_7/fairy_7.tres")
 
 # FROG
-const FROG_1 = preload("res://scenes/characters/enemies/frog_1_14/frog_1.tres")
-const FROG_2 = preload("res://scenes/characters/enemies/frog_1_14/frog_2.tres")
-const FROG_3 = preload("res://scenes/characters/enemies/frog_1_14/frog_3.tres")
-const FROG_4 = preload("res://scenes/characters/enemies/frog_1_14/frog_4.tres")
-const FROG_5 = preload("res://scenes/characters/enemies/frog_1_14/frog_5.tres")
-const FROG_6 = preload("res://scenes/characters/enemies/frog_1_14/frog_6.tres")
-const FROG_7 = preload("res://scenes/characters/enemies/frog_1_14/frog_7.tres")
-const FROG_8 = preload("res://scenes/characters/enemies/frog_1_14/frog_8.tres")
-const FROG_9 = preload("res://scenes/characters/enemies/frog_1_14/frog_9.tres")
-const FROG_10 = preload("res://scenes/characters/enemies/frog_1_14/frog_10.tres")
-const FROG_11 = preload("res://scenes/characters/enemies/frog_1_14/frog_11.tres")
-const FROG_12 = preload("res://scenes/characters/enemies/frog_1_14/frog_12.tres")
-const FROG_13 = preload("res://scenes/characters/enemies/frog_1_14/frog_13.tres")
-const FROG_14 = preload("res://scenes/characters/enemies/frog_1_14/frog_14.tres")
+#const FROG_1 = preload("res://scenes/characters/enemies/frog_1_14/frog_1.tres")
+#const FROG_2 = preload("res://scenes/characters/enemies/frog_1_14/frog_2.tres")
+#const FROG_3 = preload("res://scenes/characters/enemies/frog_1_14/frog_3.tres")
+#const FROG_4 = preload("res://scenes/characters/enemies/frog_1_14/frog_4.tres")
+#const FROG_5 = preload("res://scenes/characters/enemies/frog_1_14/frog_5.tres")
+#const FROG_6 = preload("res://scenes/characters/enemies/frog_1_14/frog_6.tres")
+#const FROG_7 = preload("res://scenes/characters/enemies/frog_1_14/frog_7.tres")
+#const FROG_8 = preload("res://scenes/characters/enemies/frog_1_14/frog_8.tres")
+#const FROG_9 = preload("res://scenes/characters/enemies/frog_1_14/frog_9.tres")
+#const FROG_10 = preload("res://scenes/characters/enemies/frog_1_14/frog_10.tres")
+#const FROG_11 = preload("res://scenes/characters/enemies/frog_1_14/frog_11.tres")
+#const FROG_12 = preload("res://scenes/characters/enemies/frog_1_14/frog_12.tres")
+#const FROG_13 = preload("res://scenes/characters/enemies/frog_1_14/frog_13.tres")
+#const FROG_14 = preload("res://scenes/characters/enemies/frog_1_14/frog_14.tres")
 
 # GENIE
 const GENIE_1 = preload("res://scenes/characters/enemies/genie_1_7/genie_1.tres")
@@ -216,13 +216,6 @@ var resource_list: Array = [
 	# ELEMENT
 	ELEMENT_1, ELEMENT_2, ELEMENT_3, ELEMENT_4, ELEMENT_5, ELEMENT_6, ELEMENT_7,
 
-	# FAIRY
-	FAIRY_1, FAIRY_2, FAIRY_3, FAIRY_4, FAIRY_5, FAIRY_6, FAIRY_7,
-
-	# FROG
-	FROG_1, FROG_2, FROG_3, FROG_4, FROG_5, FROG_6, FROG_7,
-	FROG_8, FROG_9, FROG_10, FROG_11, FROG_12, FROG_13, FROG_14,
-
 	# GENIE
 	GENIE_1, GENIE_2, GENIE_3, GENIE_4, GENIE_5, GENIE_6, GENIE_7,
 
@@ -251,6 +244,140 @@ var resource_list: Array = [
 	TWOFACED_1, TWOFACED_2, TWOFACED_3, TWOFACED_4, TWOFACED_5, TWOFACED_6, TWOFACED_7,
 ]
 
+var resource_name_map: Dictionary = {
+	ASIMOLE_1: "asimole_1",
+	ASIMOLE_2: "asimole_2",
+	ASIMOLE_3: "asimole_3",
+	ASIMOLE_4: "asimole_4",
+	ASIMOLE_5: "asimole_5",
+	ASIMOLE_6: "asimole_6",
+	ASIMOLE_7: "asimole_7",
+
+	BARREL_1: "barrel_1",
+	BARREL_2: "barrel_2",
+	BARREL_3: "barrel_3",
+	BARREL_4: "barrel_4",
+
+	BAT_1: "bat_1",
+	BAT_2: "bat_2",
+	BAT_3: "bat_3",
+	BAT_4: "bat_4",
+	BAT_5: "bat_5",
+	BAT_6: "bat_6",
+	BAT_7: "bat_7",
+
+	CACTUAR_1: "cactuar_1",
+	CACTUAR_2: "cactuar_2",
+	CACTUAR_3: "cactuar_3",
+	CACTUAR_4: "cactuar_4",
+
+	CREEPS_1: "creeps_1",
+	CREEPS_2: "creeps_2",
+	CREEPS_3: "creeps_3",
+	CREEPS_4: "creeps_4",
+
+	DEFENCER_1: "defencer_1",
+	DEFENCER_2: "defencer_2",
+	DEFENCER_3: "defencer_3",
+	DEFENCER_4: "defencer_4",
+	DEFENCER_5: "defencer_5",
+	DEFENCER_6: "defencer_6",
+
+	DEMONPOT_1: "demonpot_1",
+	DEMONPOT_2: "demonpot_2",
+	DEMONPOT_3: "demonpot_3",
+	DEMONPOT_4: "demonpot_4",
+	DEMONPOT_5: "demonpot_5",
+
+	DRAGONFLY_1: "dragonfly_1",
+	DRAGONFLY_2: "dragonfly_2",
+	DRAGONFLY_3: "dragonfly_3",
+	DRAGONFLY_4: "dragonfly_4",
+	DRAGONFLY_5: "dragonfly_5",
+	DRAGONFLY_6: "dragonfly_6",
+	DRAGONFLY_7: "dragonfly_7",
+
+	DUMMY_1: "dummy_1",
+	DUMMY_2: "dummy_2",
+	DUMMY_3: "dummy_3",
+	DUMMY_4: "dummy_4",
+
+	ELEMENT_1: "element_1",
+	ELEMENT_2: "element_2",
+	ELEMENT_3: "element_3",
+	ELEMENT_4: "element_4",
+	ELEMENT_5: "element_5",
+	ELEMENT_6: "element_6",
+	ELEMENT_7: "element_7",
+
+	GENIE_1: "genie_1",
+	GENIE_2: "genie_2",
+	GENIE_3: "genie_3",
+	GENIE_4: "genie_4",
+	GENIE_5: "genie_5",
+	GENIE_6: "genie_6",
+	GENIE_7: "genie_7",
+
+	HOBGOB_1: "hobgob_1",
+	HOBGOB_2: "hobgob_2",
+	HOBGOB_3: "hobgob_3",
+	HOBGOB_4: "hobgob_4",
+	HOBGOB_5: "hobgob_5",
+	HOBGOB_6: "hobgob_6",
+
+	JACKOLANTERN_1: "jackolantern_1",
+	JACKOLANTERN_2: "jackolantern_2",
+	JACKOLANTERN_3: "jackolantern_3",
+	JACKOLANTERN_4: "jackolantern_4",
+	JACKOLANTERN_5: "jackolantern_5",
+
+	LANTERN_1: "lantern_1",
+	LANTERN_2: "lantern_2",
+	LANTERN_3: "lantern_3",
+	LANTERN_4: "lantern_4",
+	LANTERN_5: "lantern_5",
+	LANTERN_6: "lantern_6",
+	LANTERN_7: "lantern_7",
+
+	MECHASPHERE_1: "mechasphere_1",
+	MECHASPHERE_2: "mechasphere_2",
+	MECHASPHERE_3: "mechasphere_3",
+	MECHASPHERE_4: "mechasphere_4",
+
+	SLIME_1: "slime_1",
+	SLIME_2: "slime_2",
+	SLIME_3: "slime_3",
+	SLIME_4: "slime_4",
+	SLIME_5: "slime_5",
+	SLIME_6: "slime_6",
+	SLIME_7: "slime_7",
+	SLIME_8: "slime_8",
+
+	SPORE_1: "spore_1",
+	SPORE_2: "spore_2",
+	SPORE_3: "spore_3",
+	SPORE_4: "spore_4",
+	SPORE_5: "spore_5",
+	SPORE_6: "spore_6",
+	SPORE_7: "spore_7",
+
+	TREANT_1: "treant_1",
+	TREANT_2: "treant_2",
+	TREANT_3: "treant_3",
+	TREANT_4: "treant_4",
+	TREANT_5: "treant_5",
+	TREANT_6: "treant_6",
+	TREANT_7: "treant_7",
+
+	TWOFACED_1: "twofaced_1",
+	TWOFACED_2: "twofaced_2",
+	TWOFACED_3: "twofaced_3",
+	TWOFACED_4: "twofaced_4",
+	TWOFACED_5: "twofaced_5",
+	TWOFACED_6: "twofaced_6",
+	TWOFACED_7: "twofaced_7"
+}
+
 func load_common_enemies() -> Array[EntityEnemy]:
 	var list: Array[EntityEnemy] = []
 	for resource in resource_list:
@@ -258,6 +385,12 @@ func load_common_enemies() -> Array[EntityEnemy]:
 		enemy.body_instance = ANIMATION_HOST_COMMON.instantiate()
 		enemy.body_instance.call_deferred("set_sprite_frames", resource)
 		enemy.stats_manager.randomizeStats()
+		
+		if resource_name_map.has(resource):
+			enemy.sprite_name = resource_name_map[resource]
+		else:
+			enemy.sprite_name = "unknown"
+		
 		list.append(enemy)
 	return list
 

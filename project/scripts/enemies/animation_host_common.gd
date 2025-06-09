@@ -4,7 +4,7 @@ class_name AnimationHostCommon
 @onready var aux_animations: AuxAnimations = $aux_animations
 @onready var animated_sprite_3d = $AnimatedSprite3D
 @onready var animation_tree = $AnimationTree
-var sprite_frames
+var sprite_frames: SpriteFrames
 
 func _ready():
 	animated_sprite_3d.sprite_frames = sprite_frames

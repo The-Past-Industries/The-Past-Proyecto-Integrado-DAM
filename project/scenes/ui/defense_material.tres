@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://7rxlra72clv8"]
+
+[ext_resource type="Texture2D" uid="uid://c0m2k6w4eg7on" path="res://assets/ui/defend_indicator_render.png" id="1_e3csj"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_e3csj")
+emission_enabled = true
+anisotropy_enabled = true
+texture_filter = 0

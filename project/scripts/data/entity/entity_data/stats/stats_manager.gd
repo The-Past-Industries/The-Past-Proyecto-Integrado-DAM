@@ -1,6 +1,8 @@
 extends RefCounted
 class_name StatsManager
 
+var is_inmortal: bool = false
+
 # Stats
 var health: Stat = Stat.new(StatType.HEALTH_PTS)
 var health_max: Stat = Stat.new(StatType.HEALTH_MAX)
@@ -25,6 +27,8 @@ var magic_penetration: Stat = Stat.new(StatType.MAGIC_PEN, true)
 # Stat Management
 var statVariator: StatVariator
 var statsList: Array[Stat] = []
+
+var temp_stat_variations: Array[StatVariation] = []
 
 func _init():
 	statsList = [
@@ -101,9 +105,22 @@ func take_damage(stat_type: int, damage_positive_value: float, pen_stat: float):
 			Logger.error("StatsManager: Invalid taken damage type")
 			return
 
-	var final_damage: float = max(damage_positive_value - armor_value, 0.0)
+	var final_damage: float = max(damage_positive_value - armor_value / 2, 0.0)
 	Logger.info("StatsManager: Final damage taken = %.2f (base: %.2f, reduced by armor: %.2f)" % [final_damage, damage_positive_value, armor_value])
 	alterStat(StatVariation.new(StatType.HEALTH_PTS, -final_damage, false))
+
+func heal(heal_value: float):
+	alterStat(StatVariation.new(StatType.HEALTH_PTS, heal_value, false))
+
+func alter_stat_temporal(stat_variation: StatVariation):
+	alterStat(stat_variation)
+	temp_stat_variations.append(stat_variation)
+
+func release_temporal_stats():
+	EntityManagerGlobal.player.stats_manager.is_inmortal = false
+	for stat_variation in temp_stat_variations:
+		stat_variation.variation_value = -stat_variation.variation_value
+		alterStat(stat_variation)
 
 func get_stat_value(stat_type: int) -> float:
 	match stat_type:

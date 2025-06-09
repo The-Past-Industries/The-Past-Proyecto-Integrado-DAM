@@ -47,3 +47,6 @@ func damage_from_to(sender: Entity, reciver: Entity, stat_type: int, damage_posi
 	else:
 		Logger.error("EntityManagerGlobal: Damage from to. [%d] is an invalid stat type." % stat_type)
 	reciver.stats_manager.take_damage(stat_type, damage_positive_value, pen)
+
+func heal_entity(entity: Entity, heal_value: float):
+	entity.stats_manager.heal(heal_value)

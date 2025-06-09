@@ -62,14 +62,17 @@ func attack_animation():
 	is_idle = false
 	await animation_tree.animation_finished
 	is_attacking = false
-	is_idle = true
+	is_idle = false
 
 func hit_animation():
 	is_hitting = true
+	is_idle = false
 	await animation_tree.animation_finished
 	is_hitting = false
+	is_idle = false
 
 func death_animation():
+	is_hitting = true
 	is_dying = true
 
 func _physics_process(delta):

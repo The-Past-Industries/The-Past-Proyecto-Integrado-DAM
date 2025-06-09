@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dks48t5etok0s"]
+
+[ext_resource type="FontFile" uid="uid://rs55abjy0jvm" path="res://assets/fonts/monogram-extended.ttf" id="1_hiqkt"]
+
+[resource]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/constants/outline_size = 15
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_hiqkt")

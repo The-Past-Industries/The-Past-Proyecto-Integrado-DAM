@@ -137,9 +137,26 @@ func get_comming_direction() -> Vector2i:
 		Logger.error("WRONG COMMING DIRECTION. Last position is NULL")
 		return Vector2i.ZERO
 
+func remove_enemy_from_instance():
+	cur_cell_instance.remove_child(EntityManagerGlobal.enemy.body_instance)
+
+func teleport_player_to_boss():
+	var new_pos = _search_boss_room_position()
+	if map_data.has(new_pos) and map_data[new_pos] is RoomDataBoss:
+		last_position = cur_position
+		cur_position = new_pos
+		_change_cell(map_data[new_pos])
+
+func _search_boss_room_position() -> Vector2i:
+	for room_position in map_data.keys():
+		var room: RoomData = map_data[room_position]
+		if room.type == RoomType.BOSS:
+			return room_position
+	return Vector2i.ZERO
+
 # Debug rooms position and comming direction
-func process(delta: float) -> void:
-	Logger.info("CUR_POS:%s" % cur_position)
-	Logger.info("LAST_POS:%s" % last_position)
-	Logger.info("COMMING_DIR:%s" % get_comming_direction())
-	await get_tree().create_timer(1.5).timeout
+#func _process(delta: float) -> void:
+	#Logger.info("CUR_POS:%s" % cur_position)
+	#Logger.info("LAST_POS:%s" % last_position)
+	#Logger.info("COMMING_DIR:%s" % get_comming_direction())
+	#await get_tree().create_timer(1.5).timeout

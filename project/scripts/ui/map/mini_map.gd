@@ -1,17 +1,26 @@
-extends Node
+extends Panel
 
-@onready var map_visualizer_2d = $MapVisualizer2D
+@onready var map_visualizer = $MapVisualizer
 
-# En el script del Minimap o el Panel
+func _ready() -> void:
+	await get_tree().process_frame  # Espera un frame para asegurar que el size esté bien
+	refresh()
+
 func _process(_delta: float) -> void:
-	var cell_size = map_visualizer_2d.CELL_SIZE
+	_center_map()
+
+func refresh() -> void:
+	map_visualizer._refresh_map()
+	_center_map()
+
+func _center_map() -> void:
+	if WorldManagerGlobal == null or map_visualizer == null:
+		return
+
+	var cell_size = map_visualizer.cell_size
 	var player_pos = WorldManagerGlobal.cur_position
-	
-	# Tamaño del panel (visualmente)
-	var panel_size = self.get_parent().size
-	
-	# Offset para centrar la vista en la posición actual del jugador
-	var offset = Vector2(player_pos.x, player_pos.y) * -cell_size
-	offset += panel_size / 2
-	
-	map_visualizer_2d.position = offset
+	var panel_center = size / 2
+
+	var player_cell_center = Vector2(player_pos.x + 0.5, player_pos.y + 0.5) * cell_size
+
+	map_visualizer.position = panel_center - player_cell_center

@@ -31,13 +31,16 @@ func start_combat(is_boss: bool = false):
 
 func end_combat(is_boss: bool = false):
 	await get_tree().create_timer(GlobalConstants.COMBAT_TIME_BEFORE_CORPSE_DESPAWNS).timeout
-	EntityManagerGlobal.player.get_body().is_locked = false
-	turn_indicator.visible = false
 	EntityManagerGlobal.enemy.body_instance.aux_animations.despawn_pop()
-	
-	WorldManagerGlobal.cur_cell_instance.remove_child(EntityManagerGlobal.enemy.body_instance)
+	await EntityManagerGlobal.enemy.body_instance.despawn_node_translation()
+	WorldManagerGlobal.remove_enemy_from_instance()
+	await get_tree().create_timer(1).timeout
+	EntityManagerGlobal.player.get_body().is_locked = false
+	EntityManagerGlobal.player.stats_manager.release_temporal_stats()
+	turn_indicator.despawn_pop()
 	PhaseManagerGlobal.change_phase(PhaseType.TRAVEL)
 	MenuManagerGlobal.refresh_cur_phase_buttons()
+	(WorldManagerGlobal.cur_cell_instance as RoomControllerCommon).exit_combat_state()
 	MenuManagerGlobal.update_visors()
 
 func update_turns():
@@ -49,24 +52,9 @@ func update_turns():
 
 func _launch_round():
 	update_turns()
-
-	# PLAYER DIE
-	if EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
-		EntityManagerGlobal.player.body_instance.death_animation()
-		combat_is_over = true
-		
-		# ENEMY DIE
-	elif !enemy_is_boss:
-		if EntityManagerGlobal.enemy.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
-			combat_is_over = true
-	
-	# BOSS DIE
-	else:
-		if EntityManagerGlobal.boss.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
-			combat_is_over = true
-
 	if player_turn:
 		for i in player_turn_count:
+			_check_deaths()
 			if combat_is_over:
 				break
 			Logger.info("CombatManager: PLAYER TURN %d OF %d" % [i, player_turn_count])
@@ -80,6 +68,7 @@ func _launch_round():
 				turn_indicator.spin_360()
 	elif !enemy_is_boss:
 		for i in enemy_turn_count:
+			_check_deaths()
 			if combat_is_over:
 				break
 			Logger.info("CombatManager: ENEMY TURN %d OF %d" % [i, enemy_turn_count])
@@ -93,6 +82,7 @@ func _launch_round():
 				turn_indicator.spin_360()
 	else:
 		for i in boss_turn_count:
+			_check_deaths()
 			if combat_is_over:
 				break
 			Logger.info("CombatManager: BOSS TURN %d OF %d" % [i, boss_turn_count])
@@ -105,10 +95,30 @@ func _launch_round():
 			else:
 				turn_indicator.spin_360()
 
+func _check_deaths():
+	# PLAYER DIE
+	if EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
+		EntityManagerGlobal.player.body_instance.death_animation()
+		Logger.info("CombatManager: Player death check [true]")
+		combat_is_over = true
+		
+		
+	# ENEMY DIE
+	if !enemy_is_boss:
+		if EntityManagerGlobal.enemy.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
+			Logger.info("CombatManager: Enemy death check [true]")
+			combat_is_over = true
+		
+	# BOSS DIE
+	else:
+		if EntityManagerGlobal.boss.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
+			Logger.info("CombatManager: Boss death check [true]")
+			combat_is_over = true
+	
+
 func _player_turn():
 	Logger.info("CombatManager: PLAYER TURN. WAITING FOR OPTION")
-	EntityManagerGlobal.player.can_action = true
-	MenuManagerGlobal.refresh_cur_phase_buttons()
+	MenuManagerGlobal.enable_all_buttons()
 	await MenuManagerGlobal.player_choose_option
 
 
@@ -117,7 +127,7 @@ func _enemy_turn():
 	await get_tree().create_timer(GlobalConstants.COMBAT_TIME_BETWEEN_TURNS).timeout
 	
 	_enemy_choose_option()
-	EntityManagerGlobal.player.can_action = true
+	MenuManagerGlobal.enable_all_buttons()
 
 func _enemy_choose_option():
 	# TODO CAMBIAR POR PERSONALIZADO
@@ -136,9 +146,11 @@ func _enemy_choose_option():
 		dmg_type = StatType.MAGIC_DMG
 		pen_type = StatType.MAGIC_PEN
 		
-	var dmg = EntityManagerGlobal.enemy.stats_manager.get_stat_value(dmg_type)
+	var dmg = EntityManagerGlobal.enemy.stats_manager.get_stat_value(dmg_type) + GlobalConstants.ENEMY_BASE_DMG_COMMON_ATTACK
 	var pen = EntityManagerGlobal.enemy.stats_manager.get_stat_value(pen_type)
 	EntityManagerGlobal.damage_from_to(EntityManagerGlobal.enemy, EntityManagerGlobal.player, dmg_type, dmg)
+	EntityManagerGlobal.player.body_instance.hit_animation()
+	VFXManagerGlobal.manage_player_special_animation("holy_11_light_hit_pop")
 	emit_signal("enemy_choose_option")
 
 func _boss_turn():

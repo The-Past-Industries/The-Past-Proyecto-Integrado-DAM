@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b580r6k16hr5y"]
+
+[ext_resource type="SpriteFrames" uid="uid://bvg2iiulhbdt" path="res://scenes/ui/key_items_spriteframes.tres" id="1_gpfes"]
+
+[node name="key_items_host" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_gpfes")
+animation = &"key_item_34"
+autoplay = "key_item_-1"
