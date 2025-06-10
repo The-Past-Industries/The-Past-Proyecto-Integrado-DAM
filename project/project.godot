@@ -26,6 +26,7 @@ MenuManagerGlobal="*res://scripts/global/global_managers/global_menu_manager.gd"
 CombatManagerGlobal="*res://scripts/global/global_managers/global_combat_manager.gd"
 VFXManagerGlobal="*res://scripts/global/global_managers/global_vfx_manager.gd"
 PopNumManagerGlobal="*res://scripts/global/global_managers/global_pop_num_manager.gd"
+ApiManagerGlobal="*res://scripts/api/api_manager.gd"
 
 [display]
 

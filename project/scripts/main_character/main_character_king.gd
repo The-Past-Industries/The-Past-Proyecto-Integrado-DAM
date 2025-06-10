@@ -147,8 +147,9 @@ func transition_move_to(target_position: Vector3, delta: float) -> void:
 		emit_signal("transition_move_to_finished")
 
 func transition_teleport(delta: float) -> void:
-	var total_duration := 0.7
-	var wait_duration := 0.5
+	is_locked = true
+	var total_duration := 0.4
+	var wait_duration := 0.1
 	var target_position := Vector3(0, 0, 1)
 
 	if transition_phase == "idle":
@@ -179,3 +180,4 @@ func transition_teleport(delta: float) -> void:
 			is_moving = false
 			set_physics_process(true)
 			emit_signal("transition_teleport_finished")
+	is_locked = false

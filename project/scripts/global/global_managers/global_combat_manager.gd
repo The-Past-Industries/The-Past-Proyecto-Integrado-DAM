@@ -33,8 +33,6 @@ func start_combat(is_boss: bool = false):
 
 	_combat_round()
 
-func _process(delta: float) -> void:
-	Logger.info("%s" % MenuManagerGlobal.player_action_called)
 
 func _combat_round():
 	if combat_is_over:

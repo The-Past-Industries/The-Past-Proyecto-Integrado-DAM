@@ -1,6 +1,8 @@
 class_name NormalButtonType
 enum {
 	EXIT,
+	SCORE,
+	SCORE_CLOSE,
 	ATTACK_PHY,
 	SKILLS,
 	SKL_PROJECTILE,

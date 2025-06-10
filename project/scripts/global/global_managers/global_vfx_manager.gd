@@ -12,8 +12,8 @@ func _input(event: InputEvent) -> void:
 	if !vfx_player:
 		return
 		
-	#if event.is_action_pressed("debug_0"):
-		#await vfx_player.launch_animation("holy_1_projectile_normal")
+	if event.is_action_pressed("debug_0"):
+		await vfx_player.launch_animation("holy_2_light_pilar")
 	#elif event.is_action_pressed("debug_1"):
 		#await vfx_player.launch_animation("holy_2_light_pilar")
 	#elif event.is_action_pressed("debug_2"):

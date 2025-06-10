@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://vcw6m3nxy60j"]
+[gd_scene load_steps=63 format=3 uid="uid://vcw6m3nxy60j"]
 
 [ext_resource type="Script" uid="uid://d26y344kf4ou4" path="res://scenes/ui/main_ui_controller.gd" id="1_0cgvm"]
 [ext_resource type="Script" uid="uid://cho2v8ptu55uf" path="res://scripts/ui/map/mini_map.gd" id="1_hcnxy"]
@@ -27,6 +27,8 @@
 [ext_resource type="Script" uid="uid://cmsbcx8ux21cd" path="res://scripts/world/minimap/map_visualizer.gd" id="21_2fwbg"]
 [ext_resource type="Texture2D" uid="uid://tga2lgk8mf83" path="res://assets/ui/map_icons/player.png" id="22_8m1gu"]
 [ext_resource type="Script" uid="uid://cgo3od6weci6p" path="res://scenes/ui/player_map_indicator.gd" id="23_gcung"]
+[ext_resource type="Texture2D" uid="uid://34s5vgb1n5e" path="res://assets/ui/common_icons/Asset 33@0.5x.png" id="28_de4ms"]
+[ext_resource type="Script" uid="uid://b0ispaxgwc35x" path="res://scenes/ui/score_vbox.gd" id="29_0kf3k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ccgq"]
 
@@ -151,6 +153,10 @@ VScrollBar/styles/scroll_focus = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gcung"]
 atlas = ExtResource("22_8m1gu")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mw362"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1iknl"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -1894,3 +1900,782 @@ scale = Vector2(0.2, 0.2)
 texture = SubResource("AtlasTexture_gcung")
 script = ExtResource("23_gcung")
 color = Color(0.780694, 4.54836e-06, 4.81307e-07, 1)
+
+[node name="score_panel" type="Panel" parent="main_ui/floating_panels"]
+custom_minimum_size = Vector2(1400, 600)
+layout_mode = 2
+offset_left = 261.0
+offset_top = 153.0
+offset_right = 1661.0
+offset_bottom = 753.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mw362")
+
+[node name="ColorRect" type="ColorRect" parent="main_ui/floating_panels/score_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 0.917647)
+
+[node name="border" type="Panel" parent="main_ui/floating_panels/score_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_h2n7m")
+
+[node name="MarginContainer" type="MarginContainer" parent="main_ui/floating_panels/score_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("28_de4ms")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="Label" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 60
+text = "TOP PUNTUACIÓN DE HÉROES"
+
+[node name="TextureRect2" type="TextureRect" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("28_de4ms")
+expand_mode = 3
+
+[node name="table" type="Panel" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="id" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/HBoxContainer/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("29_0kf3k")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="nombre" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="nombre" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="nombre" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer4/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="nombre" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer5/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="nombre" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer6/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="nombre" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer7/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="nombre" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer8/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="nombre" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ID"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="fecha" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "FECHA"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="pts" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "PTS"
+horizontal_alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="oro" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "ORO"
+horizontal_alignment = 1
+
+[node name="PanelContainer5" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_inf" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9/PanelContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.INFLINGIDO"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1iknl")
+
+[node name="dm_recb" type="Label" parent="main_ui/floating_panels/score_panel/MarginContainer/VBoxContainer/table/VBoxContainer/VBoxContainer/HBoxContainer9/PanelContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 40
+text = "D.RECIBIDO"
+horizontal_alignment = 1

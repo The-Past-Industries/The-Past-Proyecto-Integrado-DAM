@@ -160,6 +160,7 @@ func _enemy_choose_option():
 	var pen = EntityManagerGlobal.enemy.stats_manager.get_stat_value(pen_type)
 	await EntityManagerGlobal.damage_from_to(EntityManagerGlobal.enemy, EntityManagerGlobal.player, dmg_type, dmg)
 	EntityManagerGlobal.player.body_instance.hit_animation()
+	VFXManagerGlobal.vfx_player.scale.x *= -1
 	VFXManagerGlobal.vfx_player.launch_animation("holy_11_light_hit_pop")
 	await get_tree().process_frame
 	emit_signal("enemy_choose_option")

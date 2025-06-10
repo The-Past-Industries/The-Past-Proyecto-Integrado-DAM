@@ -3,6 +3,9 @@ class_name GlobalConstants
 # -- Debug --
 const WORLDGEN_DEBUG_DEFAULT_SEED: int = 72139486
 
+# -- API --
+const API_URL_READ_MATCHES: String = "http://localhost/API_Rest/crud/read_partidas.php"
+
 # -- Data paths --
 const ITEMS_LIST_JSON_PATH: String = "res://raw_data/item_list.json"
 const LOG_FILE_DEBUG: String = "user://log.txt"
@@ -75,7 +78,7 @@ const PLAYER_INITIAL_STAT_CRITICAL_CHANCE: float = 0
 
 # == ATTACK & HABILITIES DAMAGES
 
-const PLAYER_BASE_DMG_PHYSICAL_ATTACK: float = 100
+const PLAYER_BASE_DMG_PHYSICAL_ATTACK: float = 20
 const PLAYER_BASE_DMG_SKILL_PROJECTILE: float = 30
 const PLAYER_BASE_DMG_SKILL_PILAR: float = 50
 const PLAYER_BASE_DMG_SKILL_BELLS: float = 20

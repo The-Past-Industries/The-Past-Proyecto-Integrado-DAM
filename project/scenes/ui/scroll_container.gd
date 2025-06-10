@@ -13,9 +13,10 @@ func _ready():
 		_focus_item(current_index)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("arrow_up"):
+	
+	if event.is_action_pressed("arrow_up") && !MenuManagerGlobal.ui_blocked:
 		_step_focus(-1)
-	elif event.is_action_pressed("arrow_down"):
+	elif event.is_action_pressed("arrow_down")&& !MenuManagerGlobal.ui_blocked:
 		_step_focus(+1)
 	elif event.is_action_pressed("control_accept"):
 		var node := items_container.get_child(current_index)

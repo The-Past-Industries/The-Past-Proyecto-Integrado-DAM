@@ -5,6 +5,8 @@ const NORMAL_BUTTON = preload("res://scenes/ui/normal_button.tscn")
 const TRAVEL_BUTTON = preload("res://scenes/ui/travell_button.tscn")
 
 var player_action_called: bool = false
+var ui_blocked: bool = false
+var main_ui: MainUIController
 
 signal player_choose_option
 
@@ -79,9 +81,14 @@ func refresh_cur_phase_buttons():
 func set_ui_by_phase(phase_type: int) -> void:
 	await get_tree().process_frame
 	container = menu_panel_scroll.items_container
+	main_ui.score_panel_visibility(false)
 	if container != null:
 		_clear_menu()
 		match phase_type:
+			PhaseType.MENU:
+				pass
+			PhaseType.SCORE:
+				set_score_button()
 			PhaseType.TRAVEL:
 				container.add_child(TRAVEL_BUTTON.instantiate())
 				remove_enemy_data_from_visor()
@@ -118,11 +125,12 @@ func set_combat_buttons():
 	# container.add_child(btn_cover)
 
 func set_skills_buttons():
+	menu_panel_scroll.refresh_items()
 	_clear_menu()
 	var skills_list = [
-		NormalButtonType.SKL_PROJECTILE,
 		NormalButtonType.SKL_SWORD_PILAR,
 		NormalButtonType.SKL_BELLS_AURA,
+		NormalButtonType.SKL_PROJECTILE,
 		NormalButtonType.SKL_LIGHT_CAST,
 		NormalButtonType.SKL_BALL_RANDOM,
 		NormalButtonType.SKL_SURIKEN,
@@ -171,8 +179,14 @@ func btn_on_action(normal_button_type: int):
 	
 	match normal_button_type:
 		NormalButtonType.EXIT:
+			keep_in_menu = true
 			refresh_cur_phase_buttons()
-
+		
+		NormalButtonType.SCORE:
+			ui_blocked = true
+			keep_in_menu = true
+			main_ui.score_panel_visibility(true)
+			
 		NormalButtonType.ATTACK_PHY:
 			start_phys_attack()
 
@@ -187,10 +201,10 @@ func btn_on_action(normal_button_type: int):
 			pass
 
 		NormalButtonType.SKL_SWORD_PILAR:
-			pass
+			start_sword_pilar()
 
 		NormalButtonType.SKL_BELLS_AURA:
-			pass
+			start_bell_aura()
 
 		NormalButtonType.SKL_LIGHT_CAST:
 			pass
@@ -253,6 +267,39 @@ func start_phys_attack():
 	await CombatManagerGlobal.entity_agains.stats_manager.stat_variation_finished
 	emit_signal("player_choose_option")
 
+func start_sword_pilar():
+	
+	await VFXManagerGlobal.vfx_player.launch_animation("holy_2_light_pilar")
+	var player_dmg = EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.PHYSICAL_DMG)
+	var base_dmg = GlobalConstants.PLAYER_BASE_DMG_SKILL_PILAR
+	
+	EntityManagerGlobal.damage_from_to(EntityManagerGlobal.player, CombatManagerGlobal.entity_agains, StatType.PHYSICAL_DMG, base_dmg + player_dmg)
+	await CombatManagerGlobal.entity_agains.stats_manager.stat_variation_finished
+	
+	emit_signal("player_choose_option")
+
+func start_bell_aura():
+	var player_dmg = EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.MAGIC_DMG)
+	var base_dmg = GlobalConstants.PLAYER_BASE_DMG_SKILL_BELLS
+	
+	await VFXManagerGlobal.vfx_player.launch_animation("holy_6_bells_aura")
+	
+	EntityManagerGlobal.damage_from_to(EntityManagerGlobal.player, CombatManagerGlobal.entity_agains, StatType.MAGIC_PEN, base_dmg + player_dmg)
+	await CombatManagerGlobal.entity_agains.stats_manager.stat_variation_finished
+	emit_signal("player_choose_option")
+	
+# SCORE
+func set_score_button():
+	var btn: = NORMAL_BUTTON.instantiate() as NormalButton
+	btn.normal_button_type = NormalButtonType.SCORE
+	btn.text = "TOP DE HÉROES"
+	container.add_child(btn)
+	
+func set_score_close_button():
+	var btn: = NORMAL_BUTTON.instantiate() as NormalButton
+	btn.normal_button_type = NormalButtonType.SCORE_CLOSE
+	btn.text = "CERRAR TOP"
+	container.add_child(btn)
 
 func disable_all_buttons():
 	for button in container.get_children():

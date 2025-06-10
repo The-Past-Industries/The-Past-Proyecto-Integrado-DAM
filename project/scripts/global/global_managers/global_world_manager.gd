@@ -19,10 +19,6 @@ var SHOP_ROOM_NODE := preload("res://scenes/world/rooms/shop_room.tscn")
 var TREASURE_ROOM_NODE := preload("res://scenes/world/rooms/treasure_room.tscn")
 var CAMPUS_ROOM_NODE := preload("res://scenes/world/rooms/campus_room.tscn")
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_9"):
-		_generate_level()
-
 # game_root scene containing instance/clear process
 var game_root: Node3D
 
@@ -31,6 +27,7 @@ func set_game_root(game_root: Node3D):
 func _ready():
 	cur_position = Vector2i(0,0)
 	last_position = cur_position
+	ApiManagerGlobal.request_score()
 	_generate_level()
 	
 	

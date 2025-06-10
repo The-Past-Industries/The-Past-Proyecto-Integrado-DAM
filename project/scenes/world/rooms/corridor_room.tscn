@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=4 uid="uid://cvyqcsoxwijr0"]
+[gd_scene load_steps=40 format=4 uid="uid://cvyqcsoxwijr0"]
 
 [ext_resource type="Script" uid="uid://qyyev4ljismb" path="res://scripts/data/rooms/room_controller_corridor.gd" id="1_huy5t"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_vbva3"]
+[ext_resource type="PackedScene" uid="uid://d1glgo6hv0jdc" path="res://scenes/teleport_flash_sprite.tscn" id="2_5qgvv"]
 [ext_resource type="PackedScene" uid="uid://c2hmj2wryjo62" path="res://scenes/world/teleport_ray.tscn" id="2_g6uk4"]
 [ext_resource type="PackedScene" uid="uid://cqaqrqsf06was" path="res://assets/world/3D/RPG Mini Bundle 3/Blends/Wall_1.blend" id="2_huy5t"]
 [ext_resource type="Texture2D" uid="uid://xiw1u5hujodu" path="res://assets/world/3D/RPG Mini Bundle 3/Texture/Color2.png" id="3_r6bt8"]
@@ -160,6 +161,14 @@ dof_blur_amount = 0.05
 
 [node name="corridor_room" type="Node3D"]
 script = ExtResource("1_huy5t")
+
+[node name="teleport_sprite" parent="." instance=ExtResource("2_5qgvv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.4, 0.95)
+script = null
+
+[node name="AnimatedSprite3D" parent="teleport_sprite" index="0"]
+transform = Transform3D(-0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, 0, 0.25, 0.25)
+frame = 8
 
 [node name="teleport_ray_toggleable" parent="." instance=ExtResource("2_g6uk4")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.1, 0.95)
@@ -641,13 +650,12 @@ script = ExtResource("14_wmf2m")
 [node name="torch_fire" parent="wall_torch2/fire" instance=ExtResource("15_qp4ql")]
 frame_progress = 0.955372
 
-[node name="teleport_ray" parent="." instance=ExtResource("2_g6uk4")]
-
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_elevator" to="." method="_on_area_3d_elevator_body_entered"]
 [connection signal="body_exited" from="collisions/proc_areas/Area3D_elevator" to="." method="_on_area_3d_elevator_body_exited"]
 
+[editable path="teleport_sprite"]
 [editable path="walls/back_walls/Wall_1"]
 [editable path="walls/back_walls/Wall_9"]
 [editable path="walls/back_walls/Wall_5"]

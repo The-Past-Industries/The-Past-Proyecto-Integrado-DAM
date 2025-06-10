@@ -3,8 +3,8 @@ class_name VFXPlayer
 
 const PARAMETER_PATH := "parameters/conditions/"
 
-@onready var animated_sprite_3d = $AnimatedSprite3D
-@onready var animation_tree = $AnimationTree
+@onready var animated_sprite_3d : AnimatedSprite3D = $AnimatedSprite3D
+@onready var animation_tree: AnimationTree = $AnimationTree
 @onready var omni_light_3d = $OmniLight3D
 
 var projectile_active := false

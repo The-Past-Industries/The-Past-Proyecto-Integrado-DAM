@@ -28,3 +28,13 @@ func _on_area_3d_left_body_entered(body: Node3D) -> void:
 
 func _on_area_3d_right_body_entered(body: Node3D) -> void:
 	_on_area_custom_entered(body, Vector2i.RIGHT)
+
+
+func _on_area_3d_center_body_entered(body):
+	if body.is_in_group("doors_tp_proc"):
+		PhaseManagerGlobal.change_phase(PhaseType.SCORE)
+
+
+func _on_area_3d_center_body_exited(body):
+	if body.is_in_group("doors_tp_proc"):
+		PhaseManagerGlobal.change_phase(PhaseType.TRAVEL)

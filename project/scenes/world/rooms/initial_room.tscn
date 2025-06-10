@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://b1u18erewn4hu"]
+[gd_scene load_steps=33 format=4 uid="uid://b1u18erewn4hu"]
 
 [ext_resource type="Script" uid="uid://dxtc4si2usjyd" path="res://scripts/data/rooms/room_controller_initial.gd" id="1_blufq"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="2_itynf"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://y0ricfb1ynkc" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/fbx/torchWall.fbx" id="11_druhr"]
 [ext_resource type="Script" uid="uid://su0cd08p7mqj" path="res://scripts/world/light/omni_light_3d_torch_fire.gd" id="12_tpbes"]
 [ext_resource type="PackedScene" uid="uid://3de55fn8cdb4" path="res://assets/world/3D/scenes/lights/torch_fire.tscn" id="13_fok46"]
+[ext_resource type="PackedScene" uid="uid://d18u51db7qmim" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/Table_Big.blend" id="14_l06sw"]
+[ext_resource type="PackedScene" uid="uid://bpvlf6yntyfhp" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/fbx/spellBook.fbx" id="15_mt703"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hsr6n"]
 panorama = ExtResource("2_itynf")
@@ -525,6 +527,13 @@ shape = SubResource("BoxShape3D_n38fs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/proc_areas/Area3D_left/StaticBody3D"]
 shape = SubResource("BoxShape3D_itynf")
 
+[node name="Area3D_center" type="Area3D" parent="collisions/proc_areas" groups=["doors_tp_proc"]]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.5, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/proc_areas/Area3D_center"]
+transform = Transform3D(1.84, 0, 0, 0, 1.84, 0, 0, 0, 1.84, 0, 0, 0)
+shape = SubResource("BoxShape3D_n38fs")
+
 [node name="floor_area" type="Node3D" parent="collisions"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="collisions/floor_area"]
@@ -533,8 +542,16 @@ shape = SubResource("BoxShape3D_itynf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("WorldBoundaryShape3D_u8wrh")
 
+[node name="Table_Big2" parent="." instance=ExtResource("14_l06sw")]
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0, 0, -0.15)
+
+[node name="spellBook" parent="." instance=ExtResource("15_mt703")]
+transform = Transform3D(-1, 6.18172e-08, -6.18172e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 0, 0.75, 0)
+
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
+[connection signal="body_entered" from="collisions/proc_areas/Area3D_center" to="." method="_on_area_3d_center_body_entered"]
+[connection signal="body_exited" from="collisions/proc_areas/Area3D_center" to="." method="_on_area_3d_center_body_exited"]
 
 [editable path="walls/back_walls/Wall_1"]
 [editable path="walls/back_walls/Wall_9"]

@@ -37,6 +37,7 @@ func _on_focus_exited():
 func get_name_from_type(type: int) -> String:
 	match type:
 		NormalButtonType.EXIT: return "EXIT"
+		NormalButtonType.SCORE: return "SCORE"
 		NormalButtonType.ATTACK_PHY: return "ATTACK_PHY"
 		NormalButtonType.SKILLS: return "SKILLS"
 		NormalButtonType.SKL_PROJECTILE: return "SKL_PROJECTILE"

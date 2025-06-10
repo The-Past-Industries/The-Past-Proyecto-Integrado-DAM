@@ -13,6 +13,8 @@ func change_phase(phase_type: int, is_boss: bool = false):
 	match phase_type:
 		PhaseType.MENU:
 			pass
+		PhaseType.SCORE:
+			pass
 		PhaseType.TRAVEL:
 			pass
 		PhaseType.COMBAT:
