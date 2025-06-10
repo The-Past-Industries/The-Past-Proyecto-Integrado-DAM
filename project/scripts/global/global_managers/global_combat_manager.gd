@@ -26,10 +26,10 @@ func start_combat(is_boss: bool = false):
 	while !combat_is_over:
 		await _launch_round()
 	
-	await end_combat(enemy_is_boss)
+	await end_combat()
 	
 
-func end_combat(is_boss: bool = false):
+func end_combat():
 	await get_tree().create_timer(GlobalConstants.COMBAT_TIME_BEFORE_CORPSE_DESPAWNS).timeout
 	EntityManagerGlobal.enemy.body_instance.aux_animations.despawn_pop()
 	await EntityManagerGlobal.enemy.body_instance.despawn_node_translation()
@@ -59,45 +59,41 @@ func _launch_round():
 				break
 			Logger.info("CombatManager: PLAYER TURN %d OF %d" % [i, player_turn_count])
 			await _player_turn()
-			if combat_is_over:
-				break
-			if i == player_turn_count - 1:
+			if i >= player_turn_count - 1:
 				turn_indicator.spin_180()
 				player_turn = false
-			else:
-				turn_indicator.spin_360()
-	elif !enemy_is_boss:
-		for i in enemy_turn_count:
-			_check_deaths()
-			if combat_is_over:
-				break
-			Logger.info("CombatManager: ENEMY TURN %d OF %d" % [i, enemy_turn_count])
-			await _enemy_turn()
-			if combat_is_over:
-				break
-			if i == enemy_turn_count - 1:
-				turn_indicator.spin_180()
-				player_turn = true
 			else:
 				turn_indicator.spin_360()
 	else:
-		for i in boss_turn_count:
-			_check_deaths()
-			if combat_is_over:
-				break
-			Logger.info("CombatManager: BOSS TURN %d OF %d" % [i, boss_turn_count])
-			await _boss_turn()
-			if combat_is_over:
-				break
-			if i == boss_turn_count - 1:
-				turn_indicator.spin_180()
-				player_turn = false
-			else:
-				turn_indicator.spin_360()
+		if !enemy_is_boss:
+			for i in enemy_turn_count:
+				_check_deaths()
+				if combat_is_over:
+					break
+				Logger.info("CombatManager: ENEMY TURN %d OF %d" % [i, enemy_turn_count])
+				await _enemy_turn()
+				if i == enemy_turn_count - 1:
+					turn_indicator.spin_180()
+					player_turn = true
+				else:
+					turn_indicator.spin_360()
+		else:
+			for i in boss_turn_count:
+				_check_deaths()
+				if combat_is_over:
+					break
+				Logger.info("CombatManager: BOSS TURN %d OF %d" % [i, boss_turn_count])
+				await _boss_turn()
+				if i == boss_turn_count - 1:
+					turn_indicator.spin_180()
+					player_turn = true
+				else:
+					turn_indicator.spin_360()
 
 func _check_deaths():
+	await get_tree().process_frame
 	# PLAYER DIE
-	if EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
+	if EntityManagerGlobal.player and EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
 		EntityManagerGlobal.player.body_instance.death_animation()
 		Logger.info("CombatManager: Player death check [true]")
 		combat_is_over = true
@@ -105,20 +101,19 @@ func _check_deaths():
 		
 	# ENEMY DIE
 	if !enemy_is_boss:
-		if EntityManagerGlobal.enemy.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
+		if EntityManagerGlobal.enemy and EntityManagerGlobal.enemy.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
 			Logger.info("CombatManager: Enemy death check [true]")
 			combat_is_over = true
 		
 	# BOSS DIE
 	else:
-		if EntityManagerGlobal.boss.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
+		if EntityManagerGlobal.boss and EntityManagerGlobal.boss.stats_manager.get_stat_value(StatType.HEALTH_PTS) <= 0:
 			Logger.info("CombatManager: Boss death check [true]")
 			combat_is_over = true
 	
 
 func _player_turn():
 	Logger.info("CombatManager: PLAYER TURN. WAITING FOR OPTION")
-	MenuManagerGlobal.enable_all_buttons()
 	await MenuManagerGlobal.player_choose_option
 
 
@@ -150,7 +145,7 @@ func _enemy_choose_option():
 	var pen = EntityManagerGlobal.enemy.stats_manager.get_stat_value(pen_type)
 	EntityManagerGlobal.damage_from_to(EntityManagerGlobal.enemy, EntityManagerGlobal.player, dmg_type, dmg)
 	EntityManagerGlobal.player.body_instance.hit_animation()
-	VFXManagerGlobal.manage_player_special_animation("holy_11_light_hit_pop")
+	VFXManagerGlobal.vfx_player.launch_animation("holy_11_light_hit_pop")
 	emit_signal("enemy_choose_option")
 
 func _boss_turn():

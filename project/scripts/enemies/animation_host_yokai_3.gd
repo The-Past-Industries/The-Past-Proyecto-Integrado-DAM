@@ -4,6 +4,7 @@ class_name AnimationHostYokai3
 @onready var animated_sprite_3d = $AnimatedSprite3D
 @onready var animation_tree = $AnimationTree
 
+
 func set_sprite_frames(sprite_frames: SpriteFrames):
 	animated_sprite_3d.sprite_frames
 	animation_tree.set("parameters/conditions/idle", true)

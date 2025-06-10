@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cbrncuig3vbb2"]
+[gd_scene load_steps=30 format=4 uid="uid://cbrncuig3vbb2"]
 
 [ext_resource type="Texture2D" uid="uid://hs3s7noswe4m" path="res://assets/world/sky/VoidPix-FreePack/blood/cubemap.png" id="1_2ewe6"]
 [ext_resource type="Script" uid="uid://beq26kf0uhow3" path="res://scripts/data/rooms/room_controller_boss.gd" id="1_x3fk8"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://de6s0u36rvedo" path="res://assets/world/3D/KayKit Dungeon Pack 1.0/Models/fbx/door.fbx" id="11_68b1i"]
 [ext_resource type="Script" uid="uid://db00u2dit4j1k" path="res://scripts/world/fx/emission_boss_door_wave.gd" id="12_x3fk8"]
 [ext_resource type="Texture2D" uid="uid://coigpsx8vppen" path="res://assets/world/3D/Dungeon Asset Pack/Dungeon Swatch.jpg" id="13_x3fk8"]
+[ext_resource type="PackedScene" uid="uid://r3144lddr6lg" path="res://scenes/vfx/vfx_player.tscn" id="14_7qhfb"]
+[ext_resource type="PackedScene" uid="uid://bq7dc4sc3e0gp" path="res://scenes/vfx/pop_num_displayer.tscn" id="15_ph7lk"]
+[ext_resource type="PackedScene" uid="uid://dlpvay6up01e1" path="res://scenes/ui/turn_indicator_3d.tscn" id="16_ph7lk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u07hy"]
 panorama = ExtResource("1_2ewe6")
@@ -24,8 +27,17 @@ sky_material = SubResource("PanoramaSkyMaterial_u07hy")
 background_mode = 2
 sky = SubResource("Sky_2ewe6")
 sky_custom_fov = 75.0
-tonemap_mode = 2
-glow_enabled = true
+ambient_light_source = 2
+ambient_light_color = Color(0.847059, 0.0588235, 0.0901961, 1)
+ambient_light_energy = 0.2
+tonemap_mode = 3
+ssao_enabled = true
+ssil_enabled = true
+glow_bloom = 0.5
+glow_blend_mode = 0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.847059, 0.0588235, 0.0901961, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wkkyq"]
 cull_mode = 2
@@ -695,40 +707,40 @@ light_energy = 2.0
 shadow_enabled = true
 spot_angle = 50.0
 
-[node name="Pedestal2" parent="." instance=ExtResource("9_lgrij")]
+[node name="Pedestal_3" parent="." instance=ExtResource("9_lgrij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -3, -13)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal2"]
+[node name="beacon_3" type="MeshInstance3D" parent="Pedestal_3"]
 mesh = SubResource("CylinderMesh_lgrij")
 surface_material_override/0 = SubResource("StandardMaterial3D_68b1i")
 script = ExtResource("10_wkkyq")
 wave_speed = 1.0
 brightness_boost = 1.0
 
-[node name="Pedestal3" parent="." instance=ExtResource("9_lgrij")]
+[node name="Pedestal_4" parent="." instance=ExtResource("9_lgrij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, -13)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal3"]
+[node name="beacon_4" type="MeshInstance3D" parent="Pedestal_4"]
 mesh = SubResource("CylinderMesh_lgrij")
 surface_material_override/0 = SubResource("StandardMaterial3D_68b1i")
 script = ExtResource("10_wkkyq")
 wave_speed = 1.0
 brightness_boost = 1.0
 
-[node name="Pedestal4" parent="." instance=ExtResource("9_lgrij")]
+[node name="Pedestal_2" parent="." instance=ExtResource("9_lgrij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, -20)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal4"]
+[node name="beacon_2" type="MeshInstance3D" parent="Pedestal_2"]
 mesh = SubResource("CylinderMesh_lgrij")
 surface_material_override/0 = SubResource("StandardMaterial3D_68b1i")
 script = ExtResource("10_wkkyq")
 wave_speed = 1.0
 brightness_boost = 1.0
 
-[node name="Pedestal5" parent="." instance=ExtResource("9_lgrij")]
+[node name="Pedestal_1" parent="." instance=ExtResource("9_lgrij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -3, -20)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal5"]
+[node name="beacon_1" type="MeshInstance3D" parent="Pedestal_1"]
 mesh = SubResource("CylinderMesh_lgrij")
 surface_material_override/0 = SubResource("StandardMaterial3D_68b1i")
 script = ExtResource("10_wkkyq")
@@ -795,6 +807,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1)
 [node name="combat_left" type="Marker3D" parent="position_markers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1)
 
+[node name="vfx" type="Node3D" parent="."]
+
+[node name="vfx_player" parent="vfx" instance=ExtResource("14_7qhfb")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.5, 0.7, 1.5)
+
+[node name="AnimatedSprite3D" parent="vfx/vfx_player" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.166667, -0.116667)
+
+[node name="pop_num_displayer_left" parent="." instance=ExtResource("15_ph7lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, 1.25)
+
+[node name="pop_num_displayer_right" parent="." instance=ExtResource("15_ph7lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 1.25)
+
+[node name="turn_indicator_3d" parent="." instance=ExtResource("16_ph7lk")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.5, 0)
+
+[connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
+[connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
+
 [editable path="walls/walls_1/back_walls/Wall_1"]
 [editable path="walls/walls_1/back_walls/Wall_2"]
 [editable path="walls/walls_1/back_walls/Wall_3"]
@@ -836,3 +868,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1)
 [editable path="walls/walls_3/right_walls/Wall_4"]
 [editable path="door"]
 [editable path="door2"]
+[editable path="vfx/vfx_player"]

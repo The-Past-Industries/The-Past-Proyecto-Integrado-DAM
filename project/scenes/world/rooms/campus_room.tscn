@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://baq3pwxmxesx7"]
+[gd_scene load_steps=69 format=4 uid="uid://baq3pwxmxesx7"]
 
 [ext_resource type="Script" uid="uid://dxqg5twi5ps3o" path="res://scripts/data/rooms/room_controller_campus.gd" id="1_bplvp"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_qnfty"]
@@ -206,6 +206,9 @@ emission = Color(0.470588, 0.72549, 0.72549, 1)
 size = Vector3(1, 1.5, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_b71xw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b71xw"]
+size = Vector3(0.6, 1.9, 1)
 
 [node name="campus_room" type="Node3D"]
 script = ExtResource("1_bplvp")
@@ -1189,6 +1192,17 @@ shape = SubResource("BoxShape3D_bplvp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collisions/floor_area/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("WorldBoundaryShape3D_b71xw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.45, 0)
+shape = SubResource("BoxShape3D_b71xw")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.45, 0)
+shape = SubResource("BoxShape3D_b71xw")
 
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_elevator" to="." method="_on_area_3d_elevator_body_entered"]
 [connection signal="body_exited" from="collisions/proc_areas/Area3D_elevator" to="." method="_on_area_3d_elevator_body_exited"]

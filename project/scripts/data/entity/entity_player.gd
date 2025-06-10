@@ -7,6 +7,7 @@ var is_on_elevator: bool = false
 var player_gold: int = 0
 var player_keys: int = 0
 var player_special_animation
+var key_item_list: Array[KeyItem] = []
 
 func _ready():
 	add_child(VFXManagerGlobal.player_special_animation)

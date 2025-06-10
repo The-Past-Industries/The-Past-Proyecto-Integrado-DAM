@@ -1,5 +1,6 @@
-[gd_scene load_steps=46 format=3 uid="uid://dtgdmftl33r3x"]
+[gd_scene load_steps=47 format=3 uid="uid://dtgdmftl33r3x"]
 
+[ext_resource type="Script" uid="uid://d4fvypqvjwd6g" path="res://scripts/enemies/animation_host_yokai_3.gd" id="1_7cof6"]
 [ext_resource type="SpriteFrames" uid="uid://bucy2qtilyfve" path="res://scenes/characters/enemies/special/yokai/yokai_3.tres" id="1_bajoi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jdpg7"]
@@ -412,6 +413,7 @@ _data = {
 }
 
 [node name="animation_host_yokai_3" type="CharacterBody3D"]
+script = ExtResource("1_7cof6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
@@ -423,7 +425,7 @@ shaded = true
 texture_filter = 0
 sprite_frames = ExtResource("1_bajoi")
 animation = &"idle"
-frame = 21
+frame = 11
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_bcn2d")

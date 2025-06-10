@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bi3w3wiu50egq"]
+[gd_scene load_steps=35 format=4 uid="uid://bi3w3wiu50egq"]
 
 [ext_resource type="Script" uid="uid://b5uwidekcelaw" path="res://scripts/data/rooms/room_controller_common.gd" id="1_n38fs"]
 [ext_resource type="Texture2D" uid="uid://xco7awwu86id" path="res://assets/world/sky/VoidPix-FreePack/blink/cubemap.png" id="1_st3ty"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cb8etemdi18vl" path="res://assets/world/3D/Updated Modular Dungeon - May 2019/Blends/WallCover_Modular.blend" id="12_73ent"]
 [ext_resource type="PackedScene" uid="uid://3de55fn8cdb4" path="res://assets/world/3D/scenes/lights/torch_fire.tscn" id="12_xm7ym"]
 [ext_resource type="PackedScene" uid="uid://dlpvay6up01e1" path="res://scenes/ui/turn_indicator_3d.tscn" id="15_i144t"]
+[ext_resource type="PackedScene" uid="uid://r3144lddr6lg" path="res://scenes/vfx/vfx_player.tscn" id="15_n3ji1"]
+[ext_resource type="PackedScene" uid="uid://bq7dc4sc3e0gp" path="res://scenes/vfx/pop_num_displayer.tscn" id="16_i144t"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n38fs"]
 panorama = ExtResource("1_st3ty")
@@ -35,9 +37,8 @@ glow_bloom = 0.05
 glow_blend_mode = 0
 fog_enabled = true
 fog_light_color = Color(0.0588235, 0.0588235, 0.0941176, 1)
-fog_light_energy = 3.53
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.1
+volumetric_fog_density = 0.08
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_n3ji1"]
 dof_blur_amount = 0.05
@@ -573,6 +574,20 @@ spot_angle = 20.0
 [node name="turn_indicator_3d" parent="." instance=ExtResource("15_i144t")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.5, 0)
 
+[node name="vfx" type="Node3D" parent="."]
+
+[node name="vfx_player" parent="vfx" instance=ExtResource("15_n3ji1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.5, 0.7, 1.5)
+
+[node name="AnimatedSprite3D" parent="vfx/vfx_player" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.166667, -0.116667)
+
+[node name="pop_num_displayer_left" parent="." instance=ExtResource("16_i144t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, 1.25)
+
+[node name="pop_num_displayer_right" parent="." instance=ExtResource("16_i144t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 1.25)
+
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
 
@@ -594,3 +609,4 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.5
 [editable path="pillars/back_pillars/Pillar_Wall2"]
 [editable path="wall_torch/torchWall"]
 [editable path="wall_torch2/torchWall"]
+[editable path="vfx/vfx_player"]

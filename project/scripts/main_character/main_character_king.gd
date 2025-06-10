@@ -59,10 +59,9 @@ func updateAnimation():
 
 func attack_animation():
 	is_attacking = true
-	is_idle = false
+	animation_tree.set("parameters/conditions/attack", is_attacking)
 	await animation_tree.animation_finished
 	is_attacking = false
-	is_idle = false
 
 func hit_animation():
 	is_hitting = true

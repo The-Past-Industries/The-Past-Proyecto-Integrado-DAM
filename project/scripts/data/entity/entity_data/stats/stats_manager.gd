@@ -85,6 +85,26 @@ func randomizeStats():
 	]	
 	for variation in randomized_variations:
 		statVariator.alterStat(variation)
+	
+func randomize_boss_stats():
+	randomize()
+	
+	var hp_variation = StatVariation.new(StatType.HEALTH_MAX, randi_range(GlobalConstants.ENTTITYGEN_MIN_RANDOM_HP, GlobalConstants.ENTTITYGEN_MAX_RANDOM_HP), false)
+	
+	var randomized_variations = [
+		hp_variation,
+		StatVariation.new(StatType.HEALTH_PTS, hp_variation.variation_value, false),
+		StatVariation.new(StatType.PHYSICAL_DMG, randi_range(GlobalConstants.ENTTITYGEN_BOSS_MIN_RANDOM_PHY_DMG, GlobalConstants.ENTTITYGEN_BOSS_MAX_RANDOM_PHY_DMG), false),
+		StatVariation.new(StatType.PHYSICAL_PEN, randi_range(GlobalConstants.ENTTITYGEN_BOSS_MIN_RANDOM_PHY_PEN, GlobalConstants.ENTTITYGEN_BOSS_MAX_RANDOM_PHY_PEN), false),
+		StatVariation.new(StatType.PHYSICAL_ARM, randi_range(GlobalConstants.ENTTITYGEN_BOSS_MIN_RANDOM_PHY_ARM, GlobalConstants.ENTTITYGEN_BOSS_MAX_RANDOM_PHY_ARM), false),
+		StatVariation.new(StatType.MAGIC_DMG, randi_range(GlobalConstants.ENTTITYGEN_BOSS_MIN_RANDOM_MAG_DMG, GlobalConstants.ENTTITYGEN_BOSS_MAX_RANDOM_MAG_DMG), false),
+		StatVariation.new(StatType.MAGIC_PEN, randi_range(GlobalConstants.ENTTITYGEN_BOSS_MIN_RANDOM_MAG_PEN, GlobalConstants.ENTTITYGEN_BOSS_MAX_RANDOM_MAG_PEN), false),
+		StatVariation.new(StatType.MAGIC_ARM, randi_range(GlobalConstants.ENTTITYGEN_BOSS_MIN_RANDOM_MAG_ARM, GlobalConstants.ENTTITYGEN_BOSS_MAX_RANDOM_MAG_ARM), false),
+		StatVariation.new(StatType.ATTACK_SPD, randi_range(GlobalConstants.ENTTITYGEN_BOSS_MIN_RANDOM_ATK_SPD, GlobalConstants.ENTTITYGEN_BOSS_MAX_RANDOM_ATK_SPD), false),
+		StatVariation.new(StatType.CRITICAL_CHA, randi_range(GlobalConstants.ENTTITYGEN_BOSS_MIN_RANDOM_CRI_CHA, GlobalConstants.ENTTITYGEN_BOSS_MAX_RANDOM_CRI_CHA), false)
+	]	
+	for variation in randomized_variations:
+		statVariator.alterStat(variation)
 
 func take_damage(stat_type: int, damage_positive_value: float, pen_stat: float):
 	var armor_value: float

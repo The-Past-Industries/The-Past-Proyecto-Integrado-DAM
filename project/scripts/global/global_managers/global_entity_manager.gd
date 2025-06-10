@@ -38,6 +38,10 @@ func spawn_player_in_pos(root: Node3D, position: Vector3):
 func choose_random_enemy():
 	self.enemy = entity_repository.get_random_common_enemy()
 
+func choose_random_boss():
+	self.boss = entity_repository.get_random_boss()
+	pass
+
 func damage_from_to(sender: Entity, reciver: Entity, stat_type: int, damage_positive_value: float):
 	var pen
 	if stat_type == StatType.PHYSICAL_DMG:

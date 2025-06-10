@@ -4,8 +4,9 @@ class_name AnimationHostWizrd2
 @onready var animated_sprite_3d = $AnimatedSprite3D
 @onready var animation_tree = $AnimationTree
 
-func set_sprite_frames(sprite_frames: SpriteFrames):
-	animated_sprite_3d.sprite_frames
+
+
+func _ready():
 	animation_tree.set("parameters/conditions/idle", true)
 
 func _launch_animation(animation_name: String):

@@ -684,8 +684,11 @@ region = Rect2(176, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ixi5q"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
 "name": &"empty",
 "speed": 5.0
 }, {
@@ -1269,8 +1272,7 @@ animations = [{
 }]
 
 [sub_resource type="Animation" id="Animation_5bmpm"]
-length = 0.001
-loop_mode = 1
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1278,10 +1280,10 @@ tracks/0/path = NodePath("AnimatedSprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1938,7 +1940,7 @@ advance_mode = 2
 states/End/position = Vector2(1377, 225)
 states/Start/position = Vector2(-13, 231)
 states/empty/node = SubResource("AnimationNodeAnimation_kgrfp")
-states/empty/position = Vector2(411, 231)
+states/empty/position = Vector2(391, 225)
 states/holy_10_light_cast/node = SubResource("AnimationNodeAnimation_1jvs3")
 states/holy_10_light_cast/position = Vector2(675, 419)
 states/holy_11_light_hit_pop/node = SubResource("AnimationNodeAnimation_tt4yr")
@@ -1972,18 +1974,18 @@ states/holy_8_suriken/position = Vector2(979, 322)
 states/holy_9_little_implosion/node = SubResource("AnimationNodeAnimation_f4qq7")
 states/holy_9_little_implosion/position = Vector2(884, 419)
 transitions = ["Start", "empty", SubResource("AnimationNodeStateMachineTransition_4cuhf"), "empty", "holy_1_light_explosion", SubResource("AnimationNodeStateMachineTransition_d3avf"), "empty", "holy_1_projectile_normal", SubResource("AnimationNodeStateMachineTransition_k5o1n"), "holy_1_projectile_normal", "empty", SubResource("AnimationNodeStateMachineTransition_tr2ph"), "empty", "holy_2_light_pilar", SubResource("AnimationNodeStateMachineTransition_r721h"), "holy_2_light_pilar", "empty", SubResource("AnimationNodeStateMachineTransition_kdqcr"), "holy_1_light_explosion", "empty", SubResource("AnimationNodeStateMachineTransition_8kjok"), "empty", "holy_3_summon_sword", SubResource("AnimationNodeStateMachineTransition_3lr8g"), "holy_3_summon_sword", "empty", SubResource("AnimationNodeStateMachineTransition_t7i7q"), "empty", "holy_4_light_parry", SubResource("AnimationNodeStateMachineTransition_ojbpr"), "holy_4_light_parry", "empty", SubResource("AnimationNodeStateMachineTransition_byajv"), "empty", "holy_5_light_delayed_exposion", SubResource("AnimationNodeStateMachineTransition_0txtf"), "holy_5_light_delayed_exposion", "empty", SubResource("AnimationNodeStateMachineTransition_xo44v"), "empty", "holy_6_bells_aura", SubResource("AnimationNodeStateMachineTransition_866au"), "holy_6_bells_aura", "empty", SubResource("AnimationNodeStateMachineTransition_26737"), "empty", "holy_7_ball_random", SubResource("AnimationNodeStateMachineTransition_w8qti"), "empty", "holy_7_light_pop", SubResource("AnimationNodeStateMachineTransition_0ymly"), "holy_7_light_pop", "empty", SubResource("AnimationNodeStateMachineTransition_8ei5l"), "holy_7_ball_random", "empty", SubResource("AnimationNodeStateMachineTransition_ebi1t"), "empty", "holy_7_little_explosion", SubResource("AnimationNodeStateMachineTransition_ofsj4"), "holy_7_little_explosion", "empty", SubResource("AnimationNodeStateMachineTransition_es25u"), "empty", "holy_8_suriken", SubResource("AnimationNodeStateMachineTransition_diact"), "holy_8_suriken", "empty", SubResource("AnimationNodeStateMachineTransition_7txyi"), "empty", "holy_9_little_implosion", SubResource("AnimationNodeStateMachineTransition_mok0w"), "holy_9_little_implosion", "empty", SubResource("AnimationNodeStateMachineTransition_bosng"), "empty", "holy_10_light_cast", SubResource("AnimationNodeStateMachineTransition_xjne2"), "holy_10_light_cast", "empty", SubResource("AnimationNodeStateMachineTransition_6c66n"), "empty", "holy_12_light_diamond", SubResource("AnimationNodeStateMachineTransition_8er0r"), "holy_12_light_diamond", "empty", SubResource("AnimationNodeStateMachineTransition_ldvxd"), "empty", "holy_1_projectile_small", SubResource("AnimationNodeStateMachineTransition_1jvs3"), "holy_1_projectile_small", "empty", SubResource("AnimationNodeStateMachineTransition_3lrs6"), "empty", "holy_11_light_hit_pop", SubResource("AnimationNodeStateMachineTransition_rgdgr"), "holy_11_light_hit_pop", "empty", SubResource("AnimationNodeStateMachineTransition_f5gk0")]
-graph_offset = Vector2(-171, -192)
+graph_offset = Vector2(-150, -124)
 
 [node name="vfx_player" type="Node3D"]
 script = ExtResource("1_agnhj")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_ixi5q")
 animation = &"empty"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
 libraries = {
 &"": SubResource("AnimationLibrary_ebi1t")
 }
@@ -2008,3 +2010,8 @@ parameters/conditions/holy_7_light_pop = false
 parameters/conditions/holy_7_little_explosion = false
 parameters/conditions/holy_8_suriken = false
 parameters/conditions/holy_9_little_implosion = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+light_color = Color(1, 0.760984, 0.287115, 1)
+omni_range = 2.0

@@ -460,7 +460,7 @@ texture_filter = 0
 sprite_frames = ExtResource("1_jrkag")
 animation = &"idle"
 autoplay = "idle"
-frame = 7
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

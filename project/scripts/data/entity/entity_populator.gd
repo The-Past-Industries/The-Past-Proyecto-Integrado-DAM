@@ -378,6 +378,39 @@ var resource_name_map: Dictionary = {
 	TWOFACED_7: "twofaced_7"
 }
 
+const ANIMATION_HOST_GORGON = preload("res://scenes/characters/enemies/special/gorgon_1_3/animation_host_gorgon.tscn")
+const GORGON_1 = preload("res://scenes/characters/enemies/special/gorgon_1_3/gorgon_1.tres")
+const GORGON_2 = preload("res://scenes/characters/enemies/special/gorgon_1_3/gorgon_2.tres")
+const GORGON_3 = preload("res://scenes/characters/enemies/special/gorgon_1_3/gorgon_3.tres")
+
+const ANIMATION_HOST_MINOTAUR = preload("res://scenes/characters/enemies/special/minotaur_1_3/animation_host_minotaur.tscn")
+const MINOTAUR_1 = preload("res://scenes/characters/enemies/special/minotaur_1_3/minotaur_1.tres")
+const MINOTAUR_2 = preload("res://scenes/characters/enemies/special/minotaur_1_3/minotaur_2.tres")
+const MINOTAUR_3 = preload("res://scenes/characters/enemies/special/minotaur_1_3/minotaur_3.tres")
+
+const ANIMATION_HOST_VAMPIRE = preload("res://scenes/characters/enemies/special/vampire_1_3/animation_host_vampire.tscn")
+const VAMPIRE_1 = preload("res://scenes/characters/enemies/special/vampire_1_3/vampire_1.tres")
+const VAMPIRE_2 = preload("res://scenes/characters/enemies/special/vampire_1_3/vampire_2.tres")
+const VAMPIRE_3 = preload("res://scenes/characters/enemies/special/vampire_1_3/vampire_3.tres")
+
+const ANIMATION_HOST_WEREWOLF = preload("res://scenes/characters/enemies/special/werewolf_1_3/animation_host_werewolf.tscn")
+const WEREWOLF_1 = preload("res://scenes/characters/enemies/special/werewolf_1_3/werewolf_1.tres")
+const WEREWOLF_2 = preload("res://scenes/characters/enemies/special/werewolf_1_3/werewolf_2.tres")
+const WEREWOLF_3 = preload("res://scenes/characters/enemies/special/werewolf_1_3/werewolf_3.tres")
+
+const ANIMATION_HOST_WIZARD_1 = preload("res://scenes/characters/enemies/special/wizard/animation_host_wizard_1.tscn")
+
+const ANIMATION_HOST_WIZARD_2 = preload("res://scenes/characters/enemies/special/wizard/animation_host_wizard_2.tscn")
+
+const ANIMATION_HOST_WIZARD_3 = preload("res://scenes/characters/enemies/special/wizard/animation_host_wizard_3.tscn")
+
+const ANIMATION_HOST_YOKAI_1_2 = preload("res://scenes/characters/enemies/special/yokai/animation_host_yokai_1_2.tscn")
+const YOKAI_1 = preload("res://scenes/characters/enemies/special/yokai/yokai_1.tres")
+const YOKAI_2 = preload("res://scenes/characters/enemies/special/yokai/yokai_2.tres")
+
+const ANIMATION_HOST_YOKAI_3 = preload("res://scenes/characters/enemies/special/yokai/animation_host_yokai_3.tscn")
+
+
 func load_common_enemies() -> Array[EntityEnemy]:
 	var list: Array[EntityEnemy] = []
 	for resource in resource_list:
@@ -390,9 +423,96 @@ func load_common_enemies() -> Array[EntityEnemy]:
 			enemy.sprite_name = resource_name_map[resource]
 		else:
 			enemy.sprite_name = "unknown"
-		
 		list.append(enemy)
 	return list
 
-func load_boss_enemies() -> Array:
-	return []
+func load_bosses() -> Array:
+	var list: Array[EntityBoss] = []
+	_load_gorgons(list)
+	_load_minotaurs(list)
+	_load_vampires(list)
+	_load_werewolves(list)
+	_load_wizard_1(list)
+	_load_wizard_2(list)
+	_load_wizard_3(list)
+	_load_yokais_1_2(list)
+	_load_yokai_3(list)
+	return list
+
+func _load_gorgons(list: Array[EntityBoss]):
+	var const_list = [GORGON_1, GORGON_2, GORGON_3]
+	for resource in const_list:
+		var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+		boss.body_instance = ANIMATION_HOST_GORGON.instantiate()
+		boss.body_instance.call_deferred("set_sprite_frames", resource)
+		boss.stats_manager.randomize_boss_stats()
+		boss.boss_type = BossType.GORGON
+		list.append(boss)
+	
+func _load_minotaurs(list: Array[EntityBoss]):
+	var const_list = [MINOTAUR_1, MINOTAUR_2, MINOTAUR_3]
+	for resource in const_list:
+		var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+		boss.body_instance = ANIMATION_HOST_MINOTAUR.instantiate()
+		boss.body_instance.call_deferred("set_sprite_frames", resource)
+		boss.stats_manager.randomize_boss_stats()
+		boss.boss_type = BossType.MINOTAUR
+		list.append(boss)
+	
+func _load_vampires(list: Array[EntityBoss]):
+	var const_list = [VAMPIRE_1, VAMPIRE_2, VAMPIRE_3]
+	for resource in const_list:
+		var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+		boss.body_instance = ANIMATION_HOST_VAMPIRE.instantiate()
+		boss.body_instance.call_deferred("set_sprite_frames", resource)
+		boss.stats_manager.randomize_boss_stats()
+		boss.boss_type = BossType.VAMPIRE
+		list.append(boss)
+	
+func _load_werewolves(list: Array[EntityBoss]):
+	var const_list = [WEREWOLF_1, WEREWOLF_2, WEREWOLF_3]
+	for resource in const_list:
+		var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+		boss.body_instance = ANIMATION_HOST_WEREWOLF.instantiate()
+		boss.body_instance.call_deferred("set_sprite_frames", resource)
+		boss.stats_manager.randomize_boss_stats()
+		boss.boss_type = BossType.WEREWOLF
+		list.append(boss)
+	
+func _load_wizard_1(list: Array[EntityBoss]):
+	var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+	boss.body_instance = ANIMATION_HOST_WIZARD_1.instantiate()
+	boss.stats_manager.randomize_boss_stats()
+	boss.boss_type = BossType.WIZARD_1
+	list.append(boss)
+	
+func _load_wizard_2(list: Array[EntityBoss]):
+	var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+	boss.body_instance = ANIMATION_HOST_WIZARD_2.instantiate()
+	boss.stats_manager.randomize_boss_stats()
+	boss.boss_type = BossType.WIZARD_2
+	list.append(boss)
+	
+func _load_wizard_3(list: Array[EntityBoss]):
+	var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+	boss.body_instance = ANIMATION_HOST_WIZARD_3.instantiate()
+	boss.stats_manager.randomize_boss_stats()
+	boss.boss_type = BossType.WIZARD_3
+	list.append(boss)
+	
+func _load_yokais_1_2(list: Array[EntityBoss]):
+	var const_list = [YOKAI_1, YOKAI_2]
+	for resource in const_list:
+		var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+		boss.body_instance = ANIMATION_HOST_YOKAI_1_2.instantiate()
+		boss.body_instance.call_deferred("set_sprite_frames", resource)
+		boss.stats_manager.randomize_boss_stats()
+		boss.boss_type = BossType.YOKAI
+		list.append(boss)
+	
+func _load_yokai_3(list: Array[EntityBoss]):
+	var boss: EntityBoss = generator.generate_entity(EntityType.BOSS)
+	boss.body_instance = ANIMATION_HOST_YOKAI_3.instantiate()
+	boss.stats_manager.randomize_boss_stats()
+	boss.boss_type = BossType.YOKAI_3
+	list.append(boss)

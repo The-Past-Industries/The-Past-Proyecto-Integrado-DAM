@@ -1,0 +1,13 @@
+class_name BossType
+
+enum {
+	GORGON,
+	MINOTAUR,
+	VAMPIRE,
+	WEREWOLF,
+	WIZARD_1,
+	WIZARD_2,
+	WIZARD_3,
+	YOKAI,
+	YOKAI_3
+}

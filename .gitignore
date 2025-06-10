@@ -6,7 +6,6 @@ export.cfg
 export_presets.cfg
 
 # Builds
-*.exe
 *.apk
 *.zip
 *.pck

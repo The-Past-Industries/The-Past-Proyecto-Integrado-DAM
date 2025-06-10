@@ -1,6 +1,8 @@
-[gd_scene load_steps=49 format=3 uid="uid://vcw6m3nxy60j"]
+[gd_scene load_steps=59 format=3 uid="uid://vcw6m3nxy60j"]
 
+[ext_resource type="Script" uid="uid://d26y344kf4ou4" path="res://scenes/ui/main_ui_controller.gd" id="1_0cgvm"]
 [ext_resource type="Script" uid="uid://cho2v8ptu55uf" path="res://scripts/ui/map/mini_map.gd" id="1_hcnxy"]
+[ext_resource type="Texture2D" uid="uid://3mxcuj6nwn00" path="res://assets/ui/common_icons/Asset 50@0.5x.png" id="1_houkv"]
 [ext_resource type="Script" uid="uid://dbwhykbruq2ns" path="res://scenes/ui/menu_panel.gd" id="1_l8t6x"]
 [ext_resource type="Script" uid="uid://ckpcd5yvgx2a0" path="res://scripts/ui/bottom_ui_h_box_container.gd" id="1_xfu30"]
 [ext_resource type="StyleBox" uid="uid://takgiwfdew16" path="res://scenes/ui/main_ui.tres" id="2_h2n7m"]
@@ -9,9 +11,11 @@
 [ext_resource type="FontFile" uid="uid://ci4f6rhurl478" path="res://assets/fonts/monogram.ttf" id="3_b1beo"]
 [ext_resource type="Texture2D" uid="uid://dnn7g226tvfmr" path="res://assets/items/stats_icons_sheet.png" id="3_yc0ux"]
 [ext_resource type="FontFile" uid="uid://rs55abjy0jvm" path="res://assets/fonts/monogram-extended.ttf" id="4_b65ll"]
+[ext_resource type="Texture2D" uid="uid://cinr85emnuk8g" path="res://assets/ui/common_icons/Asset 72@0.5x.png" id="4_fp6rd"]
 [ext_resource type="Script" uid="uid://dva7rtfyywh82" path="res://scenes/ui/arrow_button.gd" id="4_oi40j"]
 [ext_resource type="Texture2D" uid="uid://c207ngr03v8ku" path="res://assets/ui/Pxiel Art UI borders.png" id="4_t0li6"]
 [ext_resource type="Script" uid="uid://d116ue81qbjb8" path="res://scenes/ui/player_hp_container.gd" id="4_xfu30"]
+[ext_resource type="Texture2D" uid="uid://bmokdyeb7lj6u" path="res://assets/ui/common_icons/Asset 51@0.5x.png" id="5_0ccgq"]
 [ext_resource type="StyleBox" uid="uid://b2hwwn2452jaq" path="res://scenes/ui/menu_textures/arrow_button_focus.tres" id="5_m82f4"]
 [ext_resource type="Script" uid="uid://ch5j3ww8p2cfa" path="res://scenes/ui/scroll_container.gd" id="5_oxwcw"]
 [ext_resource type="StyleBox" uid="uid://cxyx3y26mvs10" path="res://scenes/ui/menu_textures/arrow_button_normal.tres" id="6_8s2gp"]
@@ -19,10 +23,22 @@
 [ext_resource type="Script" uid="uid://b6xtwa0q2p1oj" path="res://scripts/ui/enemy_visor_animatedsprite2d.gd" id="13_h2n7m"]
 [ext_resource type="Script" uid="uid://bsnq0mhv2fx27" path="res://scenes/ui/enemy_hp_container.gd" id="14_fw22d"]
 [ext_resource type="Script" uid="uid://6tevp1ix6reu" path="res://scenes/ui/enemy_stats_container.gd" id="15_2fwbg"]
-[ext_resource type="SpriteFrames" uid="uid://c3qd1mriu5arh" path="res://scenes/characters/enemies/twofaced_1_7/twofaced_1.tres" id="16_2fwbg"]
+[ext_resource type="SpriteFrames" uid="uid://c3qd1mriu5arh" path="res://scenes/characters/enemies/twofaced_1_7/twofaced_7.tres" id="16_2fwbg"]
 [ext_resource type="Script" uid="uid://cmsbcx8ux21cd" path="res://scripts/world/minimap/map_visualizer.gd" id="21_2fwbg"]
 [ext_resource type="Texture2D" uid="uid://tga2lgk8mf83" path="res://assets/ui/map_icons/player.png" id="22_8m1gu"]
 [ext_resource type="Script" uid="uid://cgo3od6weci6p" path="res://scenes/ui/player_map_indicator.gd" id="23_gcung"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ccgq"]
+
+[sub_resource type="Theme" id="Theme_fp6rd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_de4ms"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0kf3k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o4ews"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2iojb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_46cp5"]
 texture = ExtResource("4_t0li6")
@@ -145,9 +161,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0cgvm")
 
 [node name="top_panel" type="PanelContainer" parent="main_ui"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -161,19 +178,121 @@ color = Color(0.0705882, 0.0705882, 0.0705882, 0.917647)
 [node name="HBoxContainer" type="HBoxContainer" parent="main_ui/top_panel"]
 layout_mode = 2
 
-[node name="data_visor_panel" type="Panel" parent="main_ui/top_panel/HBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-
-[node name="coins" type="PanelContainer" parent="main_ui/top_panel/HBoxContainer"]
+[node name="gold" type="PanelContainer" parent="main_ui/top_panel/HBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0ccgq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main_ui/top_panel/HBoxContainer/gold"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="main_ui/top_panel/HBoxContainer/gold/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="main_ui/top_panel/HBoxContainer/gold/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_houkv")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main_ui/top_panel/HBoxContainer/gold/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="gold_label" type="Label" parent="main_ui/top_panel/HBoxContainer/gold/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fp6rd")
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 50
+text = "9999"
+horizontal_alignment = 2
 
 [node name="keys" type="PanelContainer" parent="main_ui/top_panel/HBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_de4ms")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main_ui/top_panel/HBoxContainer/keys"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="main_ui/top_panel/HBoxContainer/keys/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect2" type="TextureRect" parent="main_ui/top_panel/HBoxContainer/keys/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_fp6rd")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main_ui/top_panel/HBoxContainer/keys/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="keys_label" type="Label" parent="main_ui/top_panel/HBoxContainer/keys/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fp6rd")
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 50
+text = "9999"
+horizontal_alignment = 2
+
+[node name="spacer" type="PanelContainer" parent="main_ui/top_panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0kf3k")
+
+[node name="instance_indicator" type="PanelContainer" parent="main_ui/top_panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o4ews")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main_ui/top_panel/HBoxContainer/instance_indicator"]
+layout_mode = 2
+
+[node name="level_name_label" type="Label" parent="main_ui/top_panel/HBoxContainer/instance_indicator/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fp6rd")
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 50
+text = "Antesalas del reino"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="main_ui/top_panel/HBoxContainer/instance_indicator/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect2" type="TextureRect" parent="main_ui/top_panel/HBoxContainer/instance_indicator/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_0ccgq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="level_label" type="Label" parent="main_ui/top_panel/HBoxContainer/instance_indicator/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fp6rd")
+theme_override_fonts/font = ExtResource("4_b65ll")
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 2
+
+[node name="map_reserved" type="PanelContainer" parent="main_ui/top_panel/HBoxContainer"]
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2iojb")
 
 [node name="bottom_panel" type="PanelContainer" parent="main_ui"]
 custom_minimum_size = Vector2(0, 250)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2sonikwphm1g"]
+
+[ext_resource type="Script" uid="uid://b7xt6an1ajcri" path="res://scripts/ui/pop_num.gd" id="1_h8o81"]
+[ext_resource type="Texture2D" uid="uid://bbff1sh86bwy4" path="res://scenes/vfx/pop_num_phy.tres" id="2_xjo37"]
+
+[node name="pop_container" type="Node3D"]
+script = ExtResource("1_h8o81")
+
+[node name="Label3D" type="Label3D" parent="."]
+texture_filter = 0
+modulate = Color(0.888465, 0.452626, 0.363689, 1)
+text = "9999"
+horizontal_alignment = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0, 0)
+texture_filter = 0
+texture = ExtResource("2_xjo37")

@@ -423,7 +423,7 @@ shaded = true
 texture_filter = 0
 sprite_frames = ExtResource("1_lchr0")
 animation = &"idle"
-frame = 13
+frame = 20
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_bcn2d")

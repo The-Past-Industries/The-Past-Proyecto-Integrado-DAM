@@ -72,6 +72,11 @@ func _instance_cell(room_data: RoomData):
 		EntityManagerGlobal.choose_random_enemy()
 		cell_instantiated.spawn_enemy(EntityManagerGlobal.enemy)
 		cell_instantiated.prepare_combat_state()
+	if room_data.type == RoomType.BOSS && !room_data.shown:
+		Logger.info("WorldManager: Common room not shown entered. Starting combat.")
+		EntityManagerGlobal.choose_random_boss()
+		cell_instantiated.spawn_boss(EntityManagerGlobal.boss)
+		cell_instantiated.prepare_combat_state()
 	MenuManagerGlobal.update_visors()
 
 func _load_cell_on_tree(cell_instantiated: RoomController):

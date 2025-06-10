@@ -5,11 +5,11 @@ class_name RoomControllerFlat
 
 # Left wall
 @onready var door_left
-@onready var window_bars_left
+var window_bars_left
 
 # Right wall
 @onready var door_right
-@onready var window_bars_right
+var window_bars_right
 
 # Door teleport
 @onready var door_left_marker: Marker3D
@@ -18,6 +18,8 @@ class_name RoomControllerFlat
 # Combat teleport
 @onready var combat_left_marker: Marker3D
 @onready var combat_right_marker: Marker3D
+
+var is_boss: bool
 
 func setup(cur_position: Vector2i, room_data: RoomData):
 	super.setup(cur_position, room_data)
@@ -33,14 +35,17 @@ func spawn_player():
 		Logger.info("----SPAWN PLAYER DIRECTIONAL----")
 		_spawn_player_by_dir_connection(WorldManagerGlobal.get_comming_direction())
 
-func _init_room_components(components: Array[Node3D]):
+func _init_room_components(components: Array[Node3D], is_boss: bool = false):
+	self.is_boss = is_boss
+	if !is_boss:
+		window_bars_left = components[1]
+		window_bars_right = components[3]
+	
 	# Left wall
 	door_left = components[0]
-	window_bars_left = components[1]
 
 	# Right wall
 	door_right = components[2]
-	window_bars_right = components[3]
 
 	# Markers
 	# Door teleport
@@ -69,9 +74,11 @@ func _load_door_by_room_connections():
 				window_bars_right.visible = false
 
 func _close_room():
+		if is_boss:
+			return
 		door_left.visible = false
-		window_bars_left.visible = true
 		door_right.visible = false
+		window_bars_left.visible = true
 		window_bars_right.visible = true
 
 func _spawn_player_by_dir_connection(dir_comming: Vector2i):
