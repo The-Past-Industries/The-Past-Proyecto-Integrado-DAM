@@ -1,7 +1,6 @@
-[gd_scene load_steps=51 format=3 uid="uid://dkko57qd221eh"]
+[gd_scene load_steps=50 format=3 uid="uid://dkko57qd221eh"]
 
 [ext_resource type="Script" uid="uid://dwebqk1xgmk43" path="res://scripts/enemies/animation_host_common.gd" id="1_iuony"]
-[ext_resource type="PackedScene" uid="uid://btdypltrfu1r2" path="res://scenes/vfx/aux_animations.tscn" id="2_2g3oi"]
 [ext_resource type="SpriteFrames" uid="uid://c3qd1mriu5arh" path="res://scenes/characters/enemies/twofaced_1_7/twofaced_7.tres" id="2_iuony"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jdpg7"]
@@ -148,7 +147,7 @@ states/victory/position = Vector2(628, -27)
 states/woozy/node = SubResource("AnimationNodeAnimation_tjp3d")
 states/woozy/position = Vector2(380, 239)
 transitions = ["hit", "death", SubResource("AnimationNodeStateMachineTransition_sldai"), "death", "End", SubResource("AnimationNodeStateMachineTransition_k8w6b"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_fkjf2"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_japov"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_iyvse"), "idle", "defend", SubResource("AnimationNodeStateMachineTransition_xqaq0"), "defend", "idle", SubResource("AnimationNodeStateMachineTransition_e76g7"), "enter", "idle", SubResource("AnimationNodeStateMachineTransition_ofxuy"), "Start", "enter", SubResource("AnimationNodeStateMachineTransition_ajvk7"), "idle", "item", SubResource("AnimationNodeStateMachineTransition_o52bt"), "item", "idle", SubResource("AnimationNodeStateMachineTransition_uxtfw"), "idle", "magic", SubResource("AnimationNodeStateMachineTransition_le2hv"), "magic", "idle", SubResource("AnimationNodeStateMachineTransition_uj5xv"), "idle", "skill", SubResource("AnimationNodeStateMachineTransition_ao4cg"), "skill", "idle", SubResource("AnimationNodeStateMachineTransition_vqtap"), "idle", "victory", SubResource("AnimationNodeStateMachineTransition_kt6w4"), "victory", "idle", SubResource("AnimationNodeStateMachineTransition_3ffng"), "idle", "woozy", SubResource("AnimationNodeStateMachineTransition_faim5"), "woozy", "idle", SubResource("AnimationNodeStateMachineTransition_lavud"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_musin")]
-graph_offset = Vector2(-161, -58)
+graph_offset = Vector2(-146, -14)
 
 [sub_resource type="Animation" id="Animation_musin"]
 length = 0.4
@@ -522,8 +521,6 @@ _data = {
 [node name="animator_host_common" type="CharacterBody3D"]
 script = ExtResource("1_iuony")
 
-[node name="aux_animations" parent="." instance=ExtResource("2_2g3oi")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 shape = SubResource("BoxShape3D_jdpg7")
@@ -536,7 +533,6 @@ alpha_cut = 2
 texture_filter = 0
 sprite_frames = ExtResource("2_iuony")
 animation = &"idle"
-frame = 1
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_bcn2d")

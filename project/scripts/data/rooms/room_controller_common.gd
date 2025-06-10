@@ -44,6 +44,7 @@ func setup(cur_position: Vector2i, room_data: RoomData):
 	super.setup(cur_position, room_data)
 	if room_data.shown:
 		turn_indicator.visible = false
+		exit_combat_state()
 
 func _get_enemy_position() -> Vector3:
 	match WorldManagerGlobal.get_comming_direction():

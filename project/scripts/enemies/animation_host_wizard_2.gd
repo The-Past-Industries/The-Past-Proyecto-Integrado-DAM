@@ -8,6 +8,7 @@ class_name AnimationHostWizrd2
 
 func _ready():
 	animation_tree.set("parameters/conditions/idle", true)
+	self.sprite_frames = animated_sprite_3d.sprite_frames
 
 func _launch_animation(animation_name: String):
 	Logger.info("AnimationHost: Enemy animation set to %s" % animation_name)

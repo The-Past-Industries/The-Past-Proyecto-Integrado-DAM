@@ -26,8 +26,6 @@ class_name RoomControllerBoss
 @onready var beacon_3 = $Pedestal_3/beacon_3
 @onready var beacon_4 = $Pedestal_4/beacon_4
 
-
-
 var player_position: Vector3
 var boss_position: Vector3
 
@@ -47,9 +45,12 @@ func setup(cur_position: Vector2i, room_data: RoomData):
 		combat_right
 	])
 	super.setup(cur_position, room_data)
-	_load_beacons_by_level
+	_load_beacons_by_level()
 	if room_data.shown:
 		turn_indicator.visible = false
+		door_left.visible = false
+		door_right.visible = false
+		_load_beacons_by_level(1)
 		pass
 
 func _get_boss_position() -> Vector3:
@@ -65,6 +66,9 @@ func _get_boss_position() -> Vector3:
 			return pos
 
 func _load_door_by_room_connections():
+	door_left.visible = false
+	door_right.visible = false
+	
 	if room_data.connections.has(Vector2i.LEFT):
 		tp_on_left = false
 	elif room_data.connections.has(Vector2i.RIGHT):
@@ -73,12 +77,13 @@ func _load_door_by_room_connections():
 		Logger.error("RoomControllerBoss: Invalid comming direction for level tp door setting")
 		tp_on_left = false
 
-func _load_beacons_by_level():
-	if WorldManagerGlobal.level >= 2:
+func _load_beacons_by_level(desfase: int = 0):
+	
+	if (WorldManagerGlobal.level + desfase) >= 2:
 		beacon_1.visible = false
-	if WorldManagerGlobal.level >= 3:
+	if WorldManagerGlobal.level + desfase >= 3:
 		beacon_2.visible = false
-	if WorldManagerGlobal.level >= 4:
+	if WorldManagerGlobal.level + desfase >= 4:
 		beacon_2.visible = false
 
 func spawn_boss(boss: EntityBoss):
@@ -86,9 +91,8 @@ func spawn_boss(boss: EntityBoss):
 	boss_position = _get_boss_position()
 	boss.body_instance.global_position = boss_position
 	Logger.info("RoomControllerCommon: boss spawn")
-	if boss_flip_h:
-		pass
-		(boss.body_instance as AnimationHostCommon).flip_to_right()
+	if !boss_flip_h:
+		(boss.body_instance as AnimationHost).flip_to_right()
 
 func prepare_combat_state():
 	var new_position
@@ -114,7 +118,10 @@ func prepare_combat_state():
 	PhaseManagerGlobal.change_phase(PhaseType.COMBAT, true)
 
 func exit_combat_state():
-	_combat_lights_off
+	_combat_lights_off()
+	_load_beacons_by_level(1)
+	door_right.visible = true
+	door_left.visible = true
 
 func _combat_lights_off():
 	left_white_spot_light_3d = 0
@@ -124,16 +131,18 @@ func spawn_player():
 	super.spawn_player()
 
 func _on_area_3d_left_body_entered(body: Node3D) -> void:
-	if !tp_on_left:
-		_on_area_custom_entered(body, Vector2i.LEFT)
-	else:
-		_change_level()
+	if body.is_in_group("doors_tp_proc") && door_left.visible:
+		if !tp_on_left:
+			_on_area_custom_entered(body, Vector2i.LEFT)
+		else:
+			_change_level()
 
 func _on_area_3d_right_body_entered(body: Node3D) -> void:
-	if tp_on_left:
-		_on_area_custom_entered(body, Vector2i.RIGHT)
-	else:
-		_change_level()
+	if body.is_in_group("doors_tp_proc") && door_right.visible:
+		if tp_on_left:
+			_on_area_custom_entered(body, Vector2i.RIGHT)
+		else:
+			_change_level()
 
 func _change_level():
-	pass
+	WorldManagerGlobal._generate_level()

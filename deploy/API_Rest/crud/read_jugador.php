@@ -14,7 +14,17 @@ $database = new ThePast();
 $connection = $database->getConnection();
 $player = new Jugador($connection);
 
+
+if (isset($_GET['id_jugador'])) {
+    $player->id_jugador = $_GET['id_jugadot'];
+} else {
+
+    $player->id_jugador = -1;
+}
+
 $result = $player->read();
+
+
 
 // Gestión de resultados:
 if ($result->num_rows > 0) {

@@ -5,9 +5,12 @@ func _ready():
 	MenuManagerGlobal.enemy_visor_sprite = self
 
 func set_enemy_sprite():
-	sprite_frames = EntityManagerGlobal.enemy.body_instance.sprite_frames
-	_set_heigh_by_name(EntityManagerGlobal.enemy.sprite_name)
-	play("idle")
+	if !CombatManagerGlobal.enemy_is_boss:
+		sprite_frames = EntityManagerGlobal.enemy.body_instance.sprite_frames
+		_set_heigh_by_name(EntityManagerGlobal.enemy.sprite_name)
+		play("idle")
+	else:
+		sprite_frames = EntityManagerGlobal.boss.body_instance.sprite_frames
 
 func _set_heigh_by_name(sprite_frames_name: String):
 	var size: float

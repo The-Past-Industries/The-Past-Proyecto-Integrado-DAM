@@ -245,14 +245,12 @@ func btn_on_action(normal_button_type: int):
 
 func start_phys_attack():
 	
-	EntityManagerGlobal.player.body_instance.attack_animation()
-	EntityManagerGlobal.enemy.body_instance.hit()
-	
+	EntityManagerGlobal.player.body_instance.attack_animation()	
 	var player_dmg = EntityManagerGlobal.player.stats_manager.get_stat_value(StatType.PHYSICAL_DMG)
 	var base_dmg = GlobalConstants.PLAYER_BASE_DMG_PHYSICAL_ATTACK
 	
-	EntityManagerGlobal.damage_from_to(EntityManagerGlobal.player, EntityManagerGlobal.enemy, StatType.PHYSICAL_DMG, base_dmg + player_dmg)
-	
+	EntityManagerGlobal.damage_from_to(EntityManagerGlobal.player, CombatManagerGlobal.entity_agains, StatType.PHYSICAL_DMG, base_dmg + player_dmg)
+	await CombatManagerGlobal.entity_agains.stats_manager.stat_variation_finished
 	emit_signal("player_choose_option")
 
 

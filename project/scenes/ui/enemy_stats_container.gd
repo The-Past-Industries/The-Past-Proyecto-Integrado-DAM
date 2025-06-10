@@ -8,13 +8,16 @@ extends PanelContainer
 @onready var mag_pen_label = $GridContainer/mag_pen_container/CenterContainer/VBoxContainer/mag_pen_label
 @onready var mag_arm_label = $GridContainer/mag_arm_container/CenterContainer/VBoxContainer/mag_arm_label
 @onready var cri_cha_label = $GridContainer/cri_cha_container/CenterContainer/VBoxContainer/cri_cha_label
-@onready var entity = EntityManagerGlobal.enemy
+var entity
+	
 
 func _process(_delta):
 	if !entity:
-		entity = EntityManagerGlobal.enemy
+		if WorldManagerGlobal.cur_cell_instance.room_data.type == RoomType.COMMON:
+			entity = EntityManagerGlobal.enemy
+		elif WorldManagerGlobal.cur_cell_instance.room_data.type == RoomType.BOSS:
+			entity = EntityManagerGlobal.boss
 		return
-	# Logger.info("\n\nStatsContainer: ==================ENEMY=================\n\n")
 	
 	phy_dmg_label.text = "%.0f" % entity.stats_manager.get_stat_value(StatType.PHYSICAL_DMG)
 	# Logger.info("StatsContainer: Showing phys dmg: " + "%.0f" % entity.stats_manager.get_stat_value(StatType.PHYSICAL_DMG))

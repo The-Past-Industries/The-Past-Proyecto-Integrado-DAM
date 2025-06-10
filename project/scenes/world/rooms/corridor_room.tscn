@@ -641,6 +641,8 @@ script = ExtResource("14_wmf2m")
 [node name="torch_fire" parent="wall_torch2/fire" instance=ExtResource("15_qp4ql")]
 frame_progress = 0.955372
 
+[node name="teleport_ray" parent="." instance=ExtResource("2_g6uk4")]
+
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_right" to="." method="_on_area_3d_right_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_left" to="." method="_on_area_3d_left_body_entered"]
 [connection signal="body_entered" from="collisions/proc_areas/Area3D_elevator" to="." method="_on_area_3d_elevator_body_entered"]

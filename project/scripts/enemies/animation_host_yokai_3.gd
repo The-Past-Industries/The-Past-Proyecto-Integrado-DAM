@@ -6,7 +6,7 @@ class_name AnimationHostYokai3
 
 
 func set_sprite_frames(sprite_frames: SpriteFrames):
-	animated_sprite_3d.sprite_frames
+	animated_sprite_3d.sprite_frames = sprite_frames
 	animation_tree.set("parameters/conditions/idle", true)
 
 func _launch_animation(animation_name: String):

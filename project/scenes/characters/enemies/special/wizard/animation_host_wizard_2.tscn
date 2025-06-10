@@ -304,6 +304,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-58, -21)
 
 [node name="animation_host_wizard_2" type="CharacterBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_kr3yv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -315,7 +316,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 shaded = true
 texture_filter = 0
 sprite_frames = ExtResource("1_ix0si")
-animation = &"arrow"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

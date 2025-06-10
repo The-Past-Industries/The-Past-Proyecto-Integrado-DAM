@@ -447,6 +447,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-131, 76)
 
 [node name="animation_host_werewolf" type="CharacterBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_2etln")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -460,7 +461,6 @@ texture_filter = 0
 sprite_frames = ExtResource("1_jrkag")
 animation = &"idle"
 autoplay = "idle"
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

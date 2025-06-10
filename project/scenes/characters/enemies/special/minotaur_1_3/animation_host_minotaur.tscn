@@ -178,6 +178,7 @@ _data = {
 }
 
 [node name="animation_host_minotaur" type="CharacterBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_ewg3d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -190,7 +191,7 @@ shaded = true
 texture_filter = 0
 sprite_frames = ExtResource("1_35lfo")
 animation = &"idle"
-frame = 2
+frame = 3
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_bcn2d")

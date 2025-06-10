@@ -1,13 +1,14 @@
 extends AnimationHost
 class_name AnimationHostWizrd1
 
-@onready var animated_sprite_3d = $AnimatedSprite3D
+@onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
 @onready var animation_tree = $AnimationTree
 
 
 
 func _ready():
 	animation_tree.set("parameters/conditions/idle", true)
+	self.sprite_frames = animated_sprite_3d.sprite_frames
 
 func _launch_animation(animation_name: String):
 	Logger.info("AnimationHost: Enemy animation set to %s" % animation_name)

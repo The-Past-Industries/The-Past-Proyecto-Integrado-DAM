@@ -411,6 +411,7 @@ _data = {
 }
 
 [node name="animation_host_yokai_1_2" type="CharacterBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_dybi8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -423,7 +424,7 @@ shaded = true
 texture_filter = 0
 sprite_frames = ExtResource("1_lchr0")
 animation = &"idle"
-frame = 20
+frame = 6
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_bcn2d")

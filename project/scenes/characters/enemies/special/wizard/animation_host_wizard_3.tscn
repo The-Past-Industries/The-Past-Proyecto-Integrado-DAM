@@ -298,6 +298,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-88, -50)
 
 [node name="wizard_3" type="CharacterBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_0enh8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -311,7 +312,7 @@ texture_filter = 0
 sprite_frames = ExtResource("1_47mpi")
 animation = &"idle"
 autoplay = "idle"
-frame = 1
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

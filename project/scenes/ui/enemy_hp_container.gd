@@ -7,9 +7,14 @@ const MARGIN := 10
 
 @export var player_stats : bool
 @onready var entity
-
+	
 func _process(_delta: float) -> void:
-	entity = EntityManagerGlobal.enemy
+	if !entity:
+		if WorldManagerGlobal.cur_cell_instance.room_data.type == RoomType.COMMON:
+			entity = EntityManagerGlobal.enemy
+		elif WorldManagerGlobal.cur_cell_instance.room_data.type == RoomType.BOSS:
+			entity = EntityManagerGlobal.boss
+	
 	if entity != null:
 		var hp_max = entity.stats_manager.get_stat_value(StatType.HEALTH_MAX)
 		var hp_pts = entity.stats_manager.get_stat_value(StatType.HEALTH_PTS)

@@ -15,13 +15,14 @@ var displayer_player: PopNumDisplayer
 var displayer_enemy: PopNumDisplayer
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_0"):
-		Logger.info("PopNumDisplayer: HI =================")
-		#displayer_player.launch_pop_num(PopNumType.PHY_DMG, 444)
-		WorldManagerGlobal.teleport_player_to_boss()
-	if !displayer_player || !displayer_enemy:
-		Logger.info("PopNumDisplayer: displayers not setted")
-		return
-		
-	if event.is_action_pressed("debug_1"):
-		displayer_enemy.launch_pop_num(PopNumType.MAG_DMG, 12)
+	if displayer_player && displayer_player:
+		if event.is_action_pressed("debug_0"):
+			Logger.info("PopNumDisplayer: HI =================")
+			displayer_player.launch_pop_num(PopNumType.PHY_DMG, 444)
+			#WorldManagerGlobal.teleport_player_to_boss()
+		if !displayer_player || !displayer_enemy:
+			Logger.info("PopNumDisplayer: displayers not setted")
+			return
+			
+		if event.is_action_pressed("debug_1"):
+			displayer_enemy.launch_pop_num(PopNumType.MAG_DMG, 12)

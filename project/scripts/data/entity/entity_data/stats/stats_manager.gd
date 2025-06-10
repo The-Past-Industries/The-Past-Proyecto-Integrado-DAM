@@ -2,6 +2,7 @@ extends RefCounted
 class_name StatsManager
 
 var is_inmortal: bool = false
+signal stat_variation_finished
 
 # Stats
 var health: Stat = Stat.new(StatType.HEALTH_PTS)
@@ -49,6 +50,7 @@ func _init():
 
 func alterStat(statVariation: StatVariation):
 	statVariator.alterStat(statVariation)
+	emit_signal("stat_variation_finished")
 
 func set_initial_player_stats():
 	var randomized_variations = [

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2sonikwphm1g"]
+[gd_scene load_steps=4 format=3 uid="uid://d2sonikwphm1g"]
 
 [ext_resource type="Script" uid="uid://b7xt6an1ajcri" path="res://scripts/ui/pop_num.gd" id="1_h8o81"]
+[ext_resource type="FontFile" uid="uid://rs55abjy0jvm" path="res://assets/fonts/monogram-extended.ttf" id="2_5o47j"]
 [ext_resource type="Texture2D" uid="uid://bbff1sh86bwy4" path="res://scenes/vfx/pop_num_phy.tres" id="2_xjo37"]
 
 [node name="pop_container" type="Node3D"]
@@ -10,6 +11,7 @@ script = ExtResource("1_h8o81")
 texture_filter = 0
 modulate = Color(0.888465, 0.452626, 0.363689, 1)
 text = "9999"
+font = ExtResource("2_5o47j")
 horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

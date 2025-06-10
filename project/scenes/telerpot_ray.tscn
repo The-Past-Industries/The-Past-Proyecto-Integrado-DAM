@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1glgo6hv0jdc"]
+
+[ext_resource type="Texture2D" uid="uid://cnrqt38r31vq5" path="res://assets/fx/vfx/varius_effects/3_2.png" id="1_mphqe"]
+[ext_resource type="Script" uid="uid://bcwq10mea1kxy" path="res://scenes/telerpot_sprite.gd" id="1_qgucg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpuxf"]
+atlas = ExtResource("1_mphqe")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq1q4"]
+atlas = ExtResource("1_mphqe")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77fie"]
+atlas = ExtResource("1_mphqe")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edlnt"]
+atlas = ExtResource("1_mphqe")
+region = Rect2(216, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xradh"]
+atlas = ExtResource("1_mphqe")
+region = Rect2(288, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4g1r"]
+atlas = ExtResource("1_mphqe")
+region = Rect2(360, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3kq6"]
+atlas = ExtResource("1_mphqe")
+region = Rect2(432, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfecx"]
+atlas = ExtResource("1_mphqe")
+region = Rect2(504, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_athxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpuxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq1q4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77fie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edlnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xradh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4g1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3kq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfecx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="teleport_sprite" type="Node3D"]
+script = ExtResource("1_qgucg")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_athxy")
+frame = 7
+frame_progress = 1.0

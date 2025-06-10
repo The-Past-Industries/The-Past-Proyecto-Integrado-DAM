@@ -18,8 +18,6 @@ var texture
 var color
 
 func _process(delta: float) -> void:
-	if !data_set:
-		return
 	
 	elapsed += delta
 	var t := elapsed / duration
@@ -36,19 +34,9 @@ func _process(delta: float) -> void:
 		sprite_3d.modulate.a = alpha
 	
 	if label_3d:
-		label_3d.text = "%f" % self.value
-
-		# Asegurar que el Label3D tenga un material
-		if label_3d.material_override == null:
-			var mat := StandardMaterial3D.new()
-			mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-			mat.albedo_color = color
-			label_3d.material_override = mat
-		else:
-			var mat := label_3d.material_override as StandardMaterial3D
-			mat.albedo_color = color
-		
-		(label_3d.material_override as StandardMaterial3D).albedo_color.a = alpha
+		label_3d.text = "%.0f" % self.value
+		label_3d.modulate = color
+		label_3d.modulate.a = alpha
 
 
 func set_data(pop_num_type: int, value: float):

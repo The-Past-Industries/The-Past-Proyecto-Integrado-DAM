@@ -11,12 +11,22 @@ class Jugador {
         $this->connection = $db;
     }
 
-    function read() {        
-        $stmt = $this->connection->prepare("SELECT * FROM " . $this->tabla);      
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result;
+
+	function read()
+	{
+		if ($this->id_jugador >= 0) {
+			$stmt = $this->conn->prepare("
+			SELECT * FROM " . $this->tabla . " WHERE id = ?");
+			$stmt->bind_param("i", $this->id);
+		} else {
+			$stmt = $this->conn->prepare("SELECT * FROM " . $this->tabla);
+		}
+		$stmt->execute();
+		$result = $stmt->get_result();
+		return $result;
+
     }
+    
 
     function insert() {
         $stmt = $this->connection->prepare("INSERT INTO " . $this->tabla . " (nombre, fecha_union) VALUES (?, ?)");

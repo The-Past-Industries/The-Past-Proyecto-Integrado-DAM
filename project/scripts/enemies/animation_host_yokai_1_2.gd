@@ -3,7 +3,6 @@ class_name AnimationHostYokai1
 
 @onready var animated_sprite_3d = $AnimatedSprite3D
 @onready var animation_tree = $AnimationTree
-var sprite_frames: SpriteFrames
 
 
 func _ready():

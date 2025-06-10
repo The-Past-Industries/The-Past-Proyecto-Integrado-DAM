@@ -677,6 +677,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 2)
 light_color = Color(0.941176, 0.0666667, 0, 1)
 light_energy = 4.0
+light_volumetric_fog_energy = 20.0
 shadow_enabled = true
 omni_range = 10.0
 script = ExtResource("7_2ewe6")

@@ -1,15 +1,12 @@
 extends Node
 class_name WorldManager
 
-# Global
-var is_active = false
-
 # World
 var world_generator := WorldGenerator.new()
 var map_data: Dictionary
 var map_repository: Array[Dictionary] = []
 var cur_cell_instance: RoomController
-var cur_position := Vector2i(0,0)
+var cur_position
 var last_position = cur_position
 var level: int = 1
 
@@ -22,15 +19,20 @@ var SHOP_ROOM_NODE := preload("res://scenes/world/rooms/shop_room.tscn")
 var TREASURE_ROOM_NODE := preload("res://scenes/world/rooms/treasure_room.tscn")
 var CAMPUS_ROOM_NODE := preload("res://scenes/world/rooms/campus_room.tscn")
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_9"):
+		_generate_level()
+
 # game_root scene containing instance/clear process
 var game_root: Node3D
 
 func set_game_root(game_root: Node3D):
 	self.game_root = game_root
-
 func _ready():
+	cur_position = Vector2i(0,0)
+	last_position = cur_position
 	_generate_level()
-	pass
+	
 	
 func _generate_level():
 	world_generator.generate_level(GlobalConstants.WORLDGEN_DEBUG_DEFAULT_SEED, level)
@@ -76,6 +78,7 @@ func _instance_cell(room_data: RoomData):
 		Logger.info("WorldManager: Common room not shown entered. Starting combat.")
 		EntityManagerGlobal.choose_random_boss()
 		cell_instantiated.spawn_boss(EntityManagerGlobal.boss)
+		(EntityManagerGlobal.boss.body_instance as AnimationHost)
 		cell_instantiated.prepare_combat_state()
 	MenuManagerGlobal.update_visors()
 
@@ -144,6 +147,9 @@ func get_comming_direction() -> Vector2i:
 
 func remove_enemy_from_instance():
 	cur_cell_instance.remove_child(EntityManagerGlobal.enemy.body_instance)
+
+func remove_boss_from_instance():
+	cur_cell_instance.remove_child(EntityManagerGlobal.boss.body_instance)
 
 func teleport_player_to_boss():
 	var new_pos = _search_boss_room_position()
